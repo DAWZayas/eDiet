@@ -2,7 +2,7 @@
 
 ## Description:
 
-Our ptoyect is a web application that controls your diet and your exercice rythm.
+Our proyect is a web application that controls your diet and your exercice rythm.
 
 ## Content:
 
@@ -22,7 +22,7 @@ This application has two general purposes:
 * The user experience:
     * The user will be able to post comments about their diets, exercices, ...
     * The user will be able to upload their photos.
-    * Other users could vote and establish contact with other users of the same app.
+    * The user could vote and establish contact with other users of the same app.
 * General information about nutrition and sport.
 * The user will have a space where he could follow his own progress.
 
