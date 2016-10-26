@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "eDiet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DAWZayas/eDiet.git"
+  },
+  "author": "Andrea Sanz & Oscar Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DAWZayas/eDiet/issues"
+  },
+  "homepage": "https://github.com/DAWZayas/eDiet#readme"
+}
