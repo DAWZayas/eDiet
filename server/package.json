@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/DAWZayas/eDiet/issues"
   },
-  "homepage": "https://github.com/DAWZayas/eDiet#readme"
+  "homepage": "https://github.com/DAWZayas/eDiet#readme",
+  "keywords": [
+    "eDiet",
+    "proyect"
+  ]
 }
