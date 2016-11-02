@@ -1,7 +1,6 @@
-
 // our packages
 import app from './app';
-import {logger} from './util';
+import logger from './util';
 
 // start server
 app.listen(8080, function() {
@@ -13,4 +12,3 @@ app.listen(8080, function() {
 // output all uncaught exceptions
 process.on('uncaughtException', err => logger.error('uncaught exception:', err));
 process.on('unhandledRejection', error => logger.error('unhandled rejection:', error));
- 

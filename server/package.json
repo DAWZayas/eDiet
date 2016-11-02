@@ -21,6 +21,7 @@
     "proyect"
   ],
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-core": "^6.18.0",
     "babel-eslint": "^7.1.0",
     "babel-preset-es2015-node": "^6.1.1",
