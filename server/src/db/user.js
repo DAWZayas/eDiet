@@ -1,5 +1,5 @@
 import {thinky} from './thinky';
- +
+
 export const User = thinky.createModel('User', {
   email: thinky.type.string().required(),
   login: thinky.type.string().required(),
