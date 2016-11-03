@@ -38,7 +38,6 @@
     "eslint-plugin-react": "^6.4.1",
     "supertest": "^2.0.1",
     "tape": "^4.6.2",
-    "thinky": "^2.3.7"
   },
   "babel": {
     "presets": [
@@ -50,6 +49,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "morgan": "^1.7.0",
-    "winston": "^2.2.0"
+    "winston": "^2.2.0",
+    "thinky": "^2.3.7"
   }
 }
