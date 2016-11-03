@@ -37,7 +37,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
     "supertest": "^2.0.1",
-    "tape": "^4.6.2",
+    "tape": "^4.6.2"
   },
   "babel": {
     "presets": [

@@ -1,3 +1,3 @@
 require('babel-core/register');
  // require server code
- require('./src');
+require('./src');
