@@ -1,6 +1,6 @@
-import thinky from './thinky';
+import {thinky} from './thinky';
 
-const Question = thinky.createModel('Question', {
+export const Question = thinky.createModel('Question', {
   text: thinky.type.string().required(),
   creationDate: thinky.type.date().default(thinky.r.now()),
   expirationDate: thinky.type.date().required(),
@@ -11,6 +11,3 @@ const Question = thinky.createModel('Question', {
     })
   ),
 });
-
-export default Question;
-

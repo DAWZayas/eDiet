@@ -2,11 +2,11 @@
 import initThinky from 'thinky';
 
 // our packages
-import dbConfig from '../../config';
+import {db as dbConfig} from '../../config';
 
 // init thinky
 const thinky = initThinky(dbConfig);
 const {r} = thinky;
 
 // export
-export default {thinky, r};
+export {thinky, r};
