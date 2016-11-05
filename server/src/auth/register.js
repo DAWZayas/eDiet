@@ -12,7 +12,7 @@ export default (app) => {
       return;
     }
 
-    //hash password
+    // hash password
     const hashedPassword = hash(password);
 
     // check if login already taken
