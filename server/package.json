@@ -1,7 +1,7 @@
 {
-  "name": "eDiet",
+  "name": "experts-server",
   "version": "0.1.0",
-  "description": "A program that combines diet and exercise to be in shape.",
+  "description": "Experts REST backend",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -11,15 +11,20 @@
     "test": "eslint src/ && NODE_ENV=testing node test/index.js | tap-spec"
   },
   "keywords": [
-    "diet",
+    "rest",
     "javascript",
-    "exercise"
+    "experts"
   ],
-  "author": "Óscar Rodríguez y Andrea Sanz)",
-  "license": "",
-  "repository": "",
-  "bugs": "",
-  "homepage": "",
+  "author": "Tim Ermilov <yamalight@gmail.com> (http://codezen.net)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yamalight/building-products-with-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yamalight/building-products-with-js/issues"
+  },
+  "homepage": "https://github.com/yamalight/building-products-with-js#readme",
   "devDependencies": {
     "babel-core": "^6.11.4",
     "babel-eslint": "^6.1.2",
