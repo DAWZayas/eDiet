@@ -1,2 +1,2 @@
 export {thinky, r} from './thinky';
-export {User} from './user';
+export User from './user';

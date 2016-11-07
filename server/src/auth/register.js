@@ -1,6 +1,7 @@
 // our packages
-import {User} from '../db';
-import {hash, asyncRequest} from '../util';
+import User from '../db';
+import {hash,asyncRequest} from '../util';
+
 
 export default (app) => {
   app.post('/api/register', asyncRequest(async (req, res) => {

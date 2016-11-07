@@ -3,8 +3,8 @@ import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
 
 // our packages
-import {User} from '../db';
-import {hash} from '../util';
+import User from '../db';
+import hash from '../util';
 
 // define serialize and deserialize functions
 passport.serializeUser((user, done) => done(null, user.id));
