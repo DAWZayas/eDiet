@@ -7,7 +7,7 @@ const User = thinky.createModel('User', {
   height: thinky.type.number().required(),
   age: thinky.type.number().integer().required(),
   email: thinky.type.string().email().required(),
-  id: thinky.type.string().required(),
+  login: thinky.type.string().required(),
   password: thinky.type.string().alphanum().required(),
   registrationDate: thinky.type.date().default(thinky.r.now()),
 });
