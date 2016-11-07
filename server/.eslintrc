@@ -8,7 +8,7 @@
             "destructuring": true,
             "jsx": true
         }
-   }
+   },
    "rules": {
      "object-curly-spacing": ["warn", "never"],
      "func-names": "off",
