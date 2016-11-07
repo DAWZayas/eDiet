@@ -1,7 +1,6 @@
 // our packages
-import User from '../db';
+import {User} from '../db';
 import {hash, asyncRequest} from '../util';
-
 
 export default (app) => {
   app.post('/api/register', asyncRequest(async (req, res) => {
@@ -12,7 +11,6 @@ export default (app) => {
       res.status(400).send({error: 'Passwords do not match!'});
       return;
     }
-
     // hash password
     const hashedPassword = hash(password);
 

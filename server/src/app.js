@@ -44,8 +44,8 @@ app.get('/', (req, res) => {
 // setup authentication routes
 setupAuthRoutes(app);
 
-// catch all unhandled errors -> app.use((err, req, res, next)
-app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+// catch all unhandled errors
+app.use((err, req, res, next) => {
   logger.error('unhandled application error: ', err);
   res.status(500).send(err);
 });

@@ -3,8 +3,8 @@ import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
 
 // our packages
-import User from '../db';
-import hash from '../util';
+import {User} from '../db';
+import {hash} from '../util';
 
 // define serialize and deserialize functions
 passport.serializeUser((user, done) => done(null, user.id));
@@ -21,7 +21,7 @@ passport.deserializeUser(async (id, done) => {
 });
 
 // use LocalStrategy
-passport.use(new LocalStrategy(async (login, password, done) => {
+passport.use(new LocalStrategy({usernameField: 'login'}, async (login, password, done) => {
   // find all users with matching login
   const users = await User.filter({login}).limit(1).run();
   // get the first match
