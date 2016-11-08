@@ -2,6 +2,7 @@
 import './passport';
 import login from './login';
 import register from './register';
+import loginFacebook from './loginFacebook';
 
 export default (app) => {
   login(app);

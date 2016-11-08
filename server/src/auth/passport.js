@@ -2,6 +2,7 @@
 import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
 import {Strategy as JwtStrategy, ExtractJwt} from 'passport-jwt';
+import {Strategy as FacebookStrategy} from 'passport-facebook'
 
 // our packages
 import {User} from '../db';
@@ -68,4 +69,36 @@ passport.use(new JwtStrategy(jwtOpts, async (payload, done) => {
   }
   // return user if successful
   return done(null, user);
+}));
+
+let configAuth = require ( './facebook');
+
+passport.use(new FacebookStrategy({
+  clientID : configAuth.facebookAuth.clientID,
+  clientSecret : configAuth.facebookAuth.secretKey,
+  callbackURL : configAuth.facebookAuth.callbackURL
+},
+function (token, refreshToken, profile, done){
+  procces.nextTick(function() {
+    User.findOne({'facebook.id' : profile.id}, function(err, user){
+      if (err){
+        return done(err);
+      }
+      if (user){
+        return done(null, user);
+      } else {
+        let newUser = new User();
+        newUser.facebook.id = profile.id;
+        newUser.facebook.token = token;
+        newUser.facebook.name = profile.name.giveName + ' ' + profile.name.familyName;
+        newUser.facebook.email = profile.emails[0].value;
+
+        newUser.save(function(err)  {
+          if (err) throw err;
+
+          return done(null, newUser);
+        });
+      }
+    });
+  });
 }));
