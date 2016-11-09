@@ -1,8 +1,8 @@
 // our packages
-import addMenu from './addMenu';
+import menu from './menu';
 
 export default (app) => {
-  addMenu(app);
+  menu(app);
 };
 
-export {menuTaken} from './addMenu';
+export {menuTaken} from './menu';
