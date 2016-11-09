@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
 // setup authentication routes
 setupAuthRoutes(app);
 setupUserRoutes(app);
-// set up Menu routes
+// setup Menu routes
 setupMenuRoutes(app);
 
 // catch all unhandled errors

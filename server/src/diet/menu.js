@@ -3,8 +3,8 @@ import {asyncRequest} from '../util';
 
 export const menuTaken = async (name) => {
   // check if login already taken
-  const foodsName = await Menu.filter({name}).run();
-  return foodsName.length > 0;
+  const menuName = await Menu.filter({name}).run();
+  return menuName.length > 0;
 };
 
 export default (app) => {
