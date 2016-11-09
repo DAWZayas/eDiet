@@ -12,6 +12,7 @@ import {auth as authConfig} from '../config';
 import setupAuthRoutes from './auth';
 import setupUserRoutes from './user';
 import setupMenuRoutes from './diet';
+import setupExerciseRoutes from './exercise';
 
 // init app
 const app = express();
@@ -48,6 +49,8 @@ setupAuthRoutes(app);
 setupUserRoutes(app);
 // set up Menu routes
 setupMenuRoutes(app);
+// set up Exercise routes
+setupExerciseRoutes(app);
 
 // catch all unhandled errors
 app.use((err, req, res, next) => {
