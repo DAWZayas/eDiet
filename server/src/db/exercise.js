@@ -6,7 +6,7 @@ export const Exercise = thinky.createModel('Exercise', {
   owner: thinky.type.string().required(),
   exercises: [{
     exercise: {
-      name: thinky.type.string(),
+      name: thinky.type.string().required(),
       level: thinky.type.number(),
     },
   }],

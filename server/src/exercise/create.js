@@ -12,9 +12,9 @@ export const exerciseTaken = async (name) => {
 };
 
 export default (app) => {
-  app.post('/api/exercise/add', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+  app.post('/api/exercise/addExercise', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {  // eslint-disable-line max-len
     // get exercise input
-    const {name, owner} = req.body;
+    const {name} = req.body;
     // check if Exercise already taken
     const exists = await exerciseTaken(name);
     if (exists) {
@@ -25,8 +25,12 @@ export default (app) => {
     // save new Exercise
     const exercise = new Exercise({
       name,
-      owner: req.user.id,
     });
+
+    Exercise.exercises.push({
+      exercise,
+    });
+
     await exercise.save();
 
     res.sendStatus(201);

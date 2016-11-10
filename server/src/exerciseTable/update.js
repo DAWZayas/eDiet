@@ -6,7 +6,7 @@ import {Exercise} from '../db';
 import {asyncRequest} from '../util';
 
 export default (app) => {
-  app.post('/api/exercise/update/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+  app.post('/api/exercise/update/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {  // eslint-disable-line max-len
     const {id} = req.params;
     // get user input
     const {name} = req.body;

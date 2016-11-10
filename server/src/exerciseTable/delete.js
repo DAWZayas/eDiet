@@ -6,7 +6,7 @@ import {Exercise} from '../db';
 import {asyncRequest} from '../util';
 
 export default (app) => {
-  app.delete('/api/exercise/delete/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+  app.delete('/api/exercise/delete/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {  // eslint-disable-line max-len
     // get requested question
 
     const {id} = req.params;
