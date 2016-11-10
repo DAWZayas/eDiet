@@ -10,9 +10,9 @@ export const foodTaken = async (name) => {
 export default (app) => {
   app.post('/api/menu/:id/timeFood/add', asyncRequest(async (req, res) => {
     // get Menu input
-    const {nameFood, name, calories} = req.body;
+    const {timeFood, nameFood, calories} = req.body;
     // check if Menu already taken
-    const exists = await foodTaken(nameFood);
+    const exists = await foodTaken(timeFood);
     if (exists) {
       res.status(403).send({error: 'Name food already exists!'});
       return;
@@ -21,14 +21,10 @@ export default (app) => {
     const menu = await Menu.get(req.params.id);
 
     // save nameFood Menu and Food
-
-    menu.foods.push({
-      nameFood,
-      food:{
-        name,
-        calories,
-      },
+    menu.timeFoods.push({
+      timeFood,
     });
+
     await menu.save();
 
 

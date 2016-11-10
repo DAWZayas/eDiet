@@ -2,13 +2,30 @@ import {thinky} from './thinky';
 
 export const Menu = thinky.createModel('Menu', {
   name: thinky.type.string().required(),
-  foods: [
-    {
-    nameFood: thinky.type.string().required(),
-    food: {
-      nameFoods: thinky.type.string(),
-      calories: thinky.type.number(),
-      },
-    }
-  ],
+  timeFoods: thinky.type.array().schema(
+    thinky.type.object().schema({
+    timeFood: thinky.type.string().required(),
+    foods: thinky.type.array().schema(
+      thinky.type.object().schema({
+      nameFood: thinky.type.string().required(),
+      calories: thinky.type.number().required(),
+    }),
+    ).default([]),
+  }),
+  ).default([]),
+  owner: thinky.type.string().required(),
 });
+/* {
+nameFood: thinky.type.string().required(),
+food: {
+  nameFoods: thinky.type.string(),
+  calories: thinky.type.number(),
+  },
+}
+].default([]),
+
+
+food: thinky.type.object().schema({
+  nameFoods: thinky.type.string(),
+  calories: thinky.type.number(),
+  })*/
