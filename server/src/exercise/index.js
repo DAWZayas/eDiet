@@ -1,10 +1,8 @@
 // our packages
-import exercise from './exercise';
-import getExercise from './getExercise';
+import create from './create';
 
 export default (app) => {
-  exercise(app);
-  getExercise(app);
+  create(app);
 };
 
-export {exerciseTaken} from './exercise';
+export {exerciseTaken} from './create';
