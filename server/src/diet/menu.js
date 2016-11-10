@@ -12,7 +12,7 @@ export const menuTaken = async (name) => {
 export default (app) => {
   app.post('/api/menu/add', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     // get Menu input
-    const {name, ownner} = req.body;
+    const {name} = req.body;
     // check if Menu already taken
     const exists = await menuTaken(name);
     if (exists) {
