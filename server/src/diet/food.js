@@ -10,18 +10,27 @@ export const foodTaken = async (name) => {
 export default (app) => {
   app.post('/api/menu/:id/timeFood/add', asyncRequest(async (req, res) => {
     // get Menu input
-    const {nameFood} = req.body;
+    const {nameFood, name, calories} = req.body;
     // check if Menu already taken
     const exists = await foodTaken(nameFood);
     if (exists) {
       res.status(403).send({error: 'Name food already exists!'});
       return;
     }
+    // get row with id
+    const menu = await Menu.get(req.params.id);
 
-    // save nameFood Menu
-    const menu = await Menu.get('ac296b20-46e2-4d01-af99-e6fd0742f942').update({foods: r.table("Menu").row('nameFood').default([]).append(nameFood)}).run();
+    // save nameFood Menu and Food
 
+    menu.foods.push({
+      nameFood,
+      food:{
+        name,
+        calories,
+      },
+    });
     await menu.save();
+
 
     res.sendStatus(201);
   }));

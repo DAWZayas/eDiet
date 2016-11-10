@@ -49,7 +49,7 @@ setupAuthRoutes(app);
 setupUserRoutes(app);
 // setup Menu routes
 setupMenuRoutes(app);
-// set up Exercise routes
+// setup Exercise routes
 setupExerciseRoutes(app);
 
 // catch all unhandled errors

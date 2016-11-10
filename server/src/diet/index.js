@@ -8,8 +8,8 @@ import deleteMenu from './deleteMenu';
 export default (app) => {
   menu(app);
   getMenu(app);
-  food(app);
   updateMenu(app);
+  food(app);
   deleteMenu(app);
 };
 

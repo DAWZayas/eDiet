@@ -25,13 +25,12 @@ export default (app) => {
       res.status(400).send({error: 'Menu not found!'});
       return;
     }
-    /*
-    // check if user is the owner
+
     if (req.user.id !== menu.owner) {
-      res.status(403).send({error: 'Not enough rights to change the question!'});
+      res.status(403).send({error: 'Not enough rights to change the Menu!'});
       return;
     }
-    */
+
     // if not changes- just send OK
     if (!name) {
       res.send(menu);
