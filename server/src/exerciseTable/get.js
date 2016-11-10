@@ -9,7 +9,7 @@ export default (app) => {
       .execute();
       res.send(exercise);
     } catch (e) {
-      res.status(400).send({error: 'Exercise does not exist'});
+      res.status(400).send({error: 'Exercise table does not exist'});
     }
   }));
 };

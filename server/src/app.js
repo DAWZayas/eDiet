@@ -12,7 +12,7 @@ import {auth as authConfig} from '../config';
 import setupAuthRoutes from './auth';
 import setupUserRoutes from './user';
 import setupMenuRoutes from './diet';
-import setupExerciseRoutes from './exercise';
+import setupExerciseRoutes from './exerciseTable';
 
 // init app
 const app = express();
