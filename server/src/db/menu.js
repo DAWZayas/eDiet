@@ -15,17 +15,3 @@ export const Menu = thinky.createModel('Menu', {
   ).default([]),
   owner: thinky.type.string().required(),
 });
-/* {
-nameFood: thinky.type.string().required(),
-food: {
-  nameFoods: thinky.type.string(),
-  calories: thinky.type.number(),
-  },
-}
-].default([]),
-
-
-food: thinky.type.object().schema({
-  nameFoods: thinky.type.string(),
-  calories: thinky.type.number(),
-  })*/

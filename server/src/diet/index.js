@@ -1,7 +1,7 @@
 // our packages
 import menu from './menu';
 import getMenu from './getMenu';
-import food from './food';
+import timeFood from './timeFood';
 import updateMenu from './updateMenu';
 import deleteMenu from './deleteMenu';
 
@@ -9,7 +9,7 @@ export default (app) => {
   menu(app);
   getMenu(app);
   updateMenu(app);
-  food(app);
+  timeFood(app);
   deleteMenu(app);
 };
 
