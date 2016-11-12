@@ -6,19 +6,25 @@ import {Exercise} from '../db';
 import {asyncRequest} from '../util';
 
 export default (app) => {
-  app.delete('/api/exercise/delete/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {  // eslint-disable-line max-len
-    // get requested question
-
+  app.post('/api/exercise/delete/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {  // eslint-disable-line max-len
     const {id} = req.params;
+
+    // get the Exercise
     const exercise = await Exercise.get(id);
 
-    // check if user is the owner
-    if (req.user.id !== exercise.owner) {
-      res.status(403).send({error: 'Not enough rights to delete the question!'});
+    // check if Exercise exists
+    if (!exercise) {
+      res.status(400).send({error: 'Exercise table not found!'});
       return;
     }
 
-    // delete
+    // check if user is the owner
+    if (req.user.id !== exercise.owner) {
+      res.status(403).send({error: 'Not enough rights to delete the exercise table!'});
+      return;
+    }
+
+    // try deleting
     await exercise.delete();
 
     // send success status

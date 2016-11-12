@@ -1,4 +1,4 @@
-import {Menu} from '../db';
+import {Menu, thinky} from '../db';
 import {asyncRequest} from '../util';
 
 export const timeFoodTaken = async (name) => {
@@ -25,7 +25,6 @@ export default (app) => {
     });
 
     await menu.save();
-
 
     res.sendStatus(201);
   }));
