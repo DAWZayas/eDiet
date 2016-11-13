@@ -1,4 +1,4 @@
-import {Menu, thinky} from '../db';
+import {Menu} from '../db';
 import {asyncRequest} from '../util';
 
 export const timeFoodTaken = async (name) => {

@@ -1,26 +1,37 @@
-import {Exercise, thinky} from '../db';
+// npm packages
+import passport from 'passport';
+
+// our packages
+import {Exercise} from '../db';
 import {asyncRequest} from '../util';
 
 export const exerciseTypeTaken = async (type) => {
-  // check if login already taken
-  const exerciseType = await Exercise.exercises.filter({type}).run();
-  return exerciseType.length > 0;
+  // check if exercise already taken
+  const exerciseTypeName = await Exercise.filter('exercises').filter({type}).run();
+  return exerciseTypeName.length > 0;
 };
 
 export default (app) => {
-  app.post('/api/exercise/:id/exerciseType/add', asyncRequest(async (req, res) => {
-    // get Exercise input
+  app.post('/api/exercise/:id/typeExercise/add', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => { // eslint-disable-line max-len
+    // get exercise input
     const {type} = req.body;
-    // get row with id
-    const exercise = await Exercise.get(req.params.id);
-    // check if Exercise already taken
+    const exercise = Exercise.get(req.params.id);
+    // check if type exercise already taken
     const exists = await exerciseTypeTaken(type);
     if (exists) {
-      res.status(403).send({error: 'Exercise type already exists!'});
+      res.status(403).send({error: 'Exercice type already exists!'});
       return;
     }
+
+/*
+    // check if user is the owner
+    if (req.user.id !== exercise.owner) {
+      res.status(403).send({error: 'Not enough rights to change the exercise table!'});
+      return;
+    }
+*/
     // save exercise type
-    exercise.exercises.push({
+    exercise.filter('exercises').push({
       type,
     });
 
