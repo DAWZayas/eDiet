@@ -38,7 +38,7 @@ export default (app) => {
       return;
     }
 
-    if (name, level) {
+    if (name && level) {
       exercise.name = name;
       exercise.level = level;
     }

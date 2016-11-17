@@ -14,8 +14,6 @@ export default (app) => {
     const {nameFood, calories} = req.body;
     // get row with id
     const menu = await Menu.get(req.params.id);
-    const timeFood = await menu.get(req.params.name);
-
     // check if Menu already taken
     const exists = await foodTaken(nameFood);
     if (exists) {

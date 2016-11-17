@@ -14,7 +14,7 @@ import setupUserRoutes from './user';
 import setupMenuRoutes from './diet';
 import setupExerciseTableRoutes from './exerciseTable';
 import setupExercisesRoutes from './exerciseTable/exercises';
-import setupExerciseRoutes from './exerciseTable/exercise';
+
 
 // init app
 const app = express();
@@ -54,7 +54,7 @@ setupMenuRoutes(app);
 // setup Exercise routes
 setupExerciseTableRoutes(app);
 setupExercisesRoutes(app);
-setupExerciseRoutes(app);
+
 
 // catch all unhandled errors
 app.use((err, req, res, next) => {

@@ -3,16 +3,15 @@ import create from './create';
 import get from './get';
 import update from './update';
 import deleteTable from './delete';
-import createExercises from './exercises/index';
-import createExercise from './exercise/index';
+import exercises from './exercises/index';
 
 export default (app) => {
   create(app);
   get(app);
   update(app);
   deleteTable(app);
-  createExercises(app);
-  createExercise(app);
+  exercises.createExercises(app);
+  exercises.deleteExercises(app);
 };
 
 export {exerciseTaken} from './create';
