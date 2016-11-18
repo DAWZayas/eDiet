@@ -10,8 +10,7 @@ export default (app) => {
   get(app);
   update(app);
   deleteTable(app);
-  exercises.createExercises(app);
-  exercises.deleteExercises(app);
+  exercises(app);
 };
 
 export {exerciseTaken} from './create';

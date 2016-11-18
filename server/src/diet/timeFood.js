@@ -1,14 +1,10 @@
-import {Menu, r} from '../db';
+import {Menu, thinky, r} from '../db';
 import {asyncRequest} from '../util';
 
 export const timeFoodTaken = async (id, name) => {
   // check if login already taken
-  const timeFoodsName = await r.db('expertsdb').table('Menu').filter({id})
-    .getField('timeFoods')
-    .filter(function(timeFoods) { // eslint-disable-line
-      return timeFoods('timeFood').contains(name);
-    })
-    .run();
+  const timeFoodsName = await r.db('expertsdb').table('Menu').filter({id}).getField('timeFoods').filter(function (timeFoods) {
+  	return timeFoods("timeFood").contains(name);}).run();
   return timeFoodsName.length > 0;
 };
 
