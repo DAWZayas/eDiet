@@ -1,18 +1,15 @@
 import {thinky} from './thinky';
 
 export const Exercise = thinky.createModel('Exercise', {
+  owner: thinky.type.string().required(),
   name: thinky.type.string().required(),
   level: thinky.type.number(),
   exercises: thinky.type.array().schema(
     thinky.type.object().schema({
-      type: thinky.type.string().required(),
-      exercise: thinky.type.array().schema(
-          thinky.type.object().schema({
-            name: thinky.type.string().required(),
-            calories: thinky.type.number().required(),
-          }),
-    ).default([]),
+      name: thinky.type.string().required(),
+      calories: thinky.type.number(),
+      type: thinky.type.string(),
+      time: thinky.type.number(),
     }),
   ).default([]),
-  owner: thinky.type.string().required(),
 });

@@ -9,7 +9,7 @@ export default (app) => {
   app.post('/api/exercise/update/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {  // eslint-disable-line max-len
     const {id} = req.params;
     // get user input
-    const {name, level} = req.body;
+    const {name, level, exercises} = req.body;
 
     // make sure text is not empty
     if (name !== undefined && !name.length) {
@@ -33,23 +33,21 @@ export default (app) => {
     }
 
     // if not changes - just send OK
-    if (!name && !level) {
+    if (!name && !level && !exercises) {
       res.send(exercise);
       return;
     }
 
-    if (name && level) {
-      exercise.name = name;
+    if (!name && level && !exercises) {
+      exercise.name = exercise.name;
       exercise.level = level;
+      exercise.exercises = exercise.exercises;
     }
 
-    if (name) {
-      exercise.name = name;
-    }
-
-    // ¿Cómo cambiar sólo el nivel?
-    if (level) {
-      exercise.level = level;
+    if (!name && !level && exercises) {
+      exercise.name = exercise.name;
+      exercise.level = exercise.level;
+      exercise.exercises = exercises;
     }
 
     // try saving

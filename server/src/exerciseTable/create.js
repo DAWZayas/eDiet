@@ -14,7 +14,7 @@ export const exerciseTaken = async (name) => {
 export default (app) => {
   app.post('/api/exercise/add', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     // get exercise input
-    const {name} = req.body; // eslint-disable-line no-unused-vars
+    const {name, level, exercises} = req.body; // eslint-disable-line no-unused-vars
     // check if Exercise already taken
     const exists = await exerciseTaken(name);
     if (exists) {
@@ -25,6 +25,8 @@ export default (app) => {
     // save new Exercise
     const exercise = new Exercise({
       name,
+      level,
+      exercises,
       owner: req.user.id,
     });
     await exercise.save();

@@ -13,8 +13,6 @@ import setupAuthRoutes from './auth';
 import setupUserRoutes from './user';
 import setupMenuRoutes from './diet';
 import setupExerciseTableRoutes from './exerciseTable';
-import setupExercisesRoutes from './exerciseTable/exercises';
-
 
 // init app
 const app = express();
@@ -53,8 +51,6 @@ setupUserRoutes(app);
 setupMenuRoutes(app);
 // setup Exercise routes
 setupExerciseTableRoutes(app);
-setupExercisesRoutes(app);
-
 
 // catch all unhandled errors
 app.use((err, req, res, next) => {
