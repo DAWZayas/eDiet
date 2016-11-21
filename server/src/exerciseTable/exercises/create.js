@@ -6,13 +6,16 @@ export const exerciseTaken = async (id, name) => {
   // check if exercise already taken
   const exerciseName = await r.db('expertsdb').table('Exercise').filter({id})
     .getField('exercises')
-    .filter(name)
+    .filter(function(exercises) { // eslint-disable-line
+      return exercises('name')
+      .contains(name);
+    })
     .run();
   return exerciseName.length > 0;
 };
 
 export default (app) => {
-  app.post('/api/exercise/:id/exercises/add', asyncRequest(async (req, res) => {
+  app.post('/api/exercise/:id/add', asyncRequest(async (req, res) => {
     // get Exercise input
     const {name, calories, type, time} = req.body;
     // get row that contain exercises

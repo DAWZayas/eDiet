@@ -25,7 +25,7 @@ export default (app) => {
     }
 
     // try deleting
-    await exercise.delete();
+    await Exercise.delete();
 
     // send success status
     res.sendStatus(204);
