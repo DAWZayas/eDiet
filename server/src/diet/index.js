@@ -1,16 +1,16 @@
 // our packages
-import menu from './menu';
+import addMenu from './addMenu';
 import getMenu from './getMenu';
-import timeFood from './timeFood';
 import updateMenu from './updateMenu';
 import deleteMenu from './deleteMenu';
+import timeFood from './timeFood';
+import food from './food';
 
 export default (app) => {
-  menu(app);
+  addMenu(app);
   getMenu(app);
   updateMenu(app);
-  timeFood(app);
   deleteMenu(app);
+  timeFood(app);
+  food(app);
 };
-
-export {menuTaken} from './menu';

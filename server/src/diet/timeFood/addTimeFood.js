@@ -1,10 +1,9 @@
-import {Menu, thinky, r} from '../db';
-import {asyncRequest} from '../util';
+import {Menu} from '../../db';
+import {asyncRequest} from '../../util';
 
-export const timeFoodTaken = async (id, name) => {
+export const timeFoodTaken = async (menu, name) => {
   // check if login already taken
-  const timeFoodsName = await r.db('expertsdb').table('Menu').filter({id}).getField('timeFoods').filter(function (timeFoods) {
-  	return timeFoods("timeFood").contains(name);}).run();
+  const timeFoodsName = menu.timeFoods.filter(obj => obj.timeFood === name ? true :false);
   return timeFoodsName.length > 0;
 };
 
@@ -15,7 +14,7 @@ export default (app) => {
     // get row that contain nameFood
     const menu = await Menu.get(req.params.id);
     // check if Menu already taken
-    const exists = await timeFoodTaken(req.params.id, timeFood);
+    const exists = await timeFoodTaken(menu, timeFood);
     if (exists) {
       res.status(403).send({error: 'Time food already exists!'});
       return;

@@ -10,7 +10,6 @@ export default (app) => {
     const {id} = req.params;
     // get user input
     const {name} = req.body;
-
     // make sure text is not empty
     if (name !== undefined && !name.length) {
       res.status(400).send({error: 'Menu name should be not empty!'});
