@@ -11,22 +11,25 @@ export default (app) => {
     const {name} = req.body;
 
     // get the Exercise
-    const exercise = await Exercise.get(id).getField('exercises').filter(name);
+    const exerciseTable = await Exercise.get(id);
+    const exercise = exerciseTable.exercises.filter(function (obj) {
+      return obj.name === name ? true : false;
+    });
     console.log(exercise);
     // check if Exercise exists
-    if (!exercise) {
+    if (exercise.length === 0) {
       res.status(400).send({error: 'Exercise not found!'});
       return;
     }
 
     // check if user is the owner
-    if (id !== exercise.owner) {
+    if (req.user.id !== exerciseTable.owner) {
       res.status(403).send({error: 'Not enough rights to delete the exercise table!'});
       return;
     }
 
     // try deleting
-    await Exercise.delete();
+    await Exercise.exercise.delete();
 
     // send success status
     res.sendStatus(204);

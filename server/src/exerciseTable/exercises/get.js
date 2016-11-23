@@ -8,11 +8,13 @@ export default (app) => {
       const {id} = req.params;
       const {name} = req.body;
 
-      const exercise = await Exercise.get(id);
-      const exercises = exercise.exercises.filter(function (obj) {
+      const exerciseTable = await Exercise.get(id);
+      const exercises = exerciseTable.exercises.filter(function (obj) {
         return obj.name === name ? true : false;
       });
-      res.send(exercises);
+      const exercise = exercises.reduce(function(a,b) {a.concat(b);});
+      console.log(exercise);
+      res.send(exercise);
     } catch (e) {
       res.status(400).send({error: 'Exercise does not exist'});
     }
