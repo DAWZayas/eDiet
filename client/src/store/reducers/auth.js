@@ -14,7 +14,7 @@ export const auth = (state = initialState, action) => {
       };
     case ActionTypes.LOGIN_SUCCESS:
       localStorage.setItem('user.token', action.payload.token);
-      localStorage.setItem('user.data', action.payload.user);
+      localStorage.setItem('user.data', JSON.stringify(action.payload.user));
       return {
         ...action.payload,
       };
