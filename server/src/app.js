@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import passport from 'passport';
 import morgan from 'morgan';
+import cors from 'cors';
 
 // our packages
 import {logger} from './util';
@@ -20,6 +21,9 @@ const app = express();
 
 // setup logging
 app.use(morgan('combined', {stream: logger.stream}));
+
+// setup CORS
+app.use(cors())
 
 // add body parsing
 app.use(bodyParser.json()); // for parsing application/json
