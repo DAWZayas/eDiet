@@ -3,7 +3,7 @@ import {asyncRequest} from '../../util';
 export default (app) => {
   app.get('/api/menu/:id/timeFood', asyncRequest(async (req, res) => {
     try {
-      const {id} = req.params.id;
+      const {id} = req.params;
       const menu = await Menu.get(id);
       res.send(menu.timeFoods);
     } catch (e) {
