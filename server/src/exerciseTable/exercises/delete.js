@@ -1,4 +1,3 @@
-// npm packages
 import passport from 'passport';
 
 // our packages
@@ -6,32 +5,41 @@ import {Exercise} from '../../db';
 import {asyncRequest} from '../../util';
 
 export default (app) => {
-  app.post('/api/exercise/:id/delete', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {  // eslint-disable-line max-len
+  app.delete('/api/exercise/:id/delete', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => { // eslint-disable-line
     const {id} = req.params;
     const {name} = req.body;
 
-    // get the Exercise
+    if (name.length === 0) {
+      res.status(400).send({error: 'Exercise name should be not empty!'});
+      return;
+    }
+
     const exerciseTable = await Exercise.get(id);
-    const exercise = exerciseTable.exercises.filter(function (obj) {
-      return obj.name === name ? true : false;
-    });
-    console.log(exercise);
-    // check if Exercise exists
-    if (exercise.length === 0) {
-      res.status(400).send({error: 'Exercise not found!'});
-      return;
-    }
 
-    // check if user is the owner
     if (req.user.id !== exerciseTable.owner) {
-      res.status(403).send({error: 'Not enough rights to delete the exercise table!'});
+      res.status(403).send({error: 'Not enough rights to change the Exercise table!'});
       return;
     }
 
-    // try deleting
-    await Exercise.exercise.delete();
+    const exerciseExist = await exerciseTable.exercises.filter(object => object.name === name);
 
-    // send success status
+    if (exerciseExist.length === 0) {
+      res.status(404).send({error: 'The exercise doesn\'t exist!'});
+      return;
+    }
+
+    if (!exercise) {
+      res.send(exerciseTable.exercises);
+      return;
+    }
+
+    const deleteExercise = exerciseTable.exercises.filter((object, index) => object.name === name ? exerciseTable.exercises.splice(index, index + 1) : true);
+    
+    // try delete and saving
+    await exerciseTable.save();
+
+    // send created question back
     res.sendStatus(204);
+
   }));
 };

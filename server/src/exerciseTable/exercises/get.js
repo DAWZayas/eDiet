@@ -9,11 +9,9 @@ export default (app) => {
       const {name} = req.body;
 
       const exerciseTable = await Exercise.get(id);
-      const exercises = exerciseTable.exercises.filter(function (obj) {
-        return obj.name === name ? true : false;
-      });
-      const exercise = exercises.reduce(function(a,b) {a.concat(b);});
-      console.log(exercise);
+      const exercises = exerciseTable.exercises.filter(object => object.name === name);
+      const exercise = exercises.reduce((a, b) => a.concat(b));
+
       res.send(exercise);
     } catch (e) {
       res.status(400).send({error: 'Exercise does not exist'});
