@@ -17,10 +17,10 @@ export default (app) => {
       return;
     }
 
-    // get the Exercise
+    // get the Exercise table
     const exercise = await Exercise.get(id);
 
-    // check if Exercise exists
+    // check if Exercise table exists
     if (!exercise) {
       res.status(400).send({error: 'Exercise table not found!'});
       return;

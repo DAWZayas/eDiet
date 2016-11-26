@@ -8,67 +8,70 @@ import {asyncRequest} from '../../util';
 export default (app) => {
   app.post('/api/exercise/:id/update', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     const {id} = req.params;
-    const {name} = req.body;
+    const {name, calories, type, time} = req.body;
+
     const exerciseTable = await Exercise.get(id);
-    const exercise = exerciseTable.exercises.filter(object => object.name).reduce((a, b) => a.concat(b));
+    const exercise = await exerciseTable.exercises.filter(object => object.name).reduce((a, b) => a.concat(b));
     console.log(exercise);
-    /*
-    // make sure text is not empty
-    if (timeFood !== undefined && !timeFood.length && oldTimeFood !== undefined && !oldTimeFood.length) {
-      res.status(400).send({error: 'Menu name should be not empty!'});
+
+    if ((name !== undefined && !name.length)
+        && (calories !== undefined && !calories.length)
+        && (type !== undefined && !type.length)
+        && (time !== undefined && !time.length)
+      ) {
+      res.status(400).send({error: 'You must change a field!'});
       return;
     }
 
-    // get the menu
-    const menu = await Menu.get(id);
-
-    // check if menu exists
-    if (!menu) {
-      res.status(400).send({error: 'Menu not found!'});
+    if (!exercise) {
+      res.status(400).send({error: 'Exercise not found!'});
       return;
     }
 
-    if (req.user.id !== menu.owner) {
-      res.status(403).send({error: 'Not enough rights to change the Menu!'});
-      return;
-    }
-    // check if exist timeFood
-    const existTimeFood = menu.timeFoods.filter(function(obj){
-        return obj.timeFood == timeFood ? true: false
-    })
-
-    if(existTimeFood.length>0){
-      res.status(404).send({error: 'The timeFood alredy exist!'});
+    if (req.user.id !== exerciseTable.owner) {
+      res.status(403).send({error: 'Not enough rights to change the exercise Table!'});
       return;
     }
 
-    // check if oldTimeFood don't exist
-    const existOldTimeFood = menu.timeFoods.filter(function(obj){
-        return obj.timeFood == oldTimeFood ? true: false
-    })
-
-    if (existOldTimeFood.length == 0){
-      res.status(404).send({error: 'The old timeFood dont\'t exist!'});
+    // if not changes - just send OK
+    if (!name && !calories && !type && !time) {
+      res.send(exerciseTable.exercises);
       return;
     }
 
-    // if not changes- just send OK
-    if (!timeFood) {
-      res.send(menu.timeFoods);
-      return;
+    if (name && !calories && !type && !time) {
+      exercise.name = name;
+      exercise.calories = exercise.calories;
+      exercise.type = exercise.type;
+      exercise.time = exercise.time;
     }
 
-    if (timeFood) {
-      menu.timeFoods.filter(function(obj){
-          return obj.timeFood==oldTimeFood ? obj.timeFood=timeFood : false
-      })
+    if (!name && calories && !type && !time) {
+      exercise.name = exercise.name;
+      exercise.calories = calories;
+      exercise.type = exercise.type;
+      exercise.time = exercise.time;
+    }
+
+    if (!name && !calories && type && !time) {
+      exercise.name = exercise.name;
+      exercise.calories = exercise.calories;
+      exercise.type = type;
+      exercise.time = exercise.time;
+    }
+
+    if (!name && !calories && !type && time) {
+      exercise.name = exercise.name;
+      exercise.calories = exercise.calories;
+      exercise.type = exercise.type;
+      exercise.time = time;
     }
 
     // try saving
-    await menu.save();
+    await exerciseTable.save();
 
     // send created question back
-    res.send(menu);
-    */
+    res.send(exerciseTable);
+
   }));
 };
