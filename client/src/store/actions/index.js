@@ -25,3 +25,10 @@ export const largeLoginAction = () => ({
 export const xsLoginAction = () => ({
   type: ActionTypes.DO_DROPDOWN_LOGIN_XS,
 });
+
+export const addMenuAction = ({name}) => ({
+  type : ActionTypes.ADD_MENU_SUCCESS,
+  payload :  {
+    name,
+  },
+})

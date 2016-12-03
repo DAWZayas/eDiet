@@ -12,3 +12,7 @@ export const REGISTER_ERROR = 'REGISTER_ERROR';
 export const DO_HAMBURGER = 'DO_HAMBURGER';
 export const DO_DROPDOWN_LOGIN_LARGE = 'DO_DROPDOWN_LOGIN_LARGE';
 export const DO_DROPDOWN_LOGIN_XS = 'DO_DROPDOWN_LOGIN_XS';
+//administration Menu
+export const DO_ADD_MENU ='DO_ADD_MENU';
+export const ADD_MENU_SUCCESS = 'ADD_MENU_SUCCESS';
+export const ADD_MENU_ERROR = 'ADD_MENU_ERROR';
