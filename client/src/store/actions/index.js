@@ -13,3 +13,15 @@ export const registerAction = payload => ({
   type: ActionTypes.DO_REGISTER,
   payload,
 });
+
+export const hamburgerAction = () => ({
+  type: ActionTypes.DO_HAMBURGER,
+});
+
+export const largeLoginAction = () => ({
+  type: ActionTypes.DO_DROPDOWN_LOGIN_LARGE,
+});
+
+export const xsLoginAction = () => ({
+  type: ActionTypes.DO_DROPDOWN_LOGIN_XS,
+});

@@ -7,7 +7,9 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import {Provider} from 'react-redux';
 
 // styles
-import 'bootstrap/dist/css/bootstrap.min.css';
+require('bootstrap/dist/css/bootstrap.min.css');
+global.jQuery = require('jquery/dist/jquery.min.js');
+require('bootstrap/dist/js/bootstrap.min.js');
 
 // our packages
 import App from './app';
