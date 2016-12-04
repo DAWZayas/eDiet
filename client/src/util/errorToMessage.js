@@ -1,4 +1,3 @@
-
 export const loginErrorToMessage = (error) => {
   if (error.status === 401) {
     return 'Wrong login or password. Please, try again!';

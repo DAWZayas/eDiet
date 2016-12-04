@@ -1,28 +1,23 @@
 {
-  "name": "experts-client",
+  "name": "eDiet",
   "version": "0.1.0",
-  "description": "Experts portal client",
+  "description": "Web application to control your diet and the mount of exercise you have to do.",
   "main": "index.js",
   "scripts": {
     "start": "node serve.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yamalight/building-products-with-js.git"
+    "url": "git+https://github.com/DAWZayas/eDiet"
   },
   "keywords": [
-    "react",
-    "react-router",
-    "webpack",
-    "tutorial",
-    "front-end"
+    "exercise",
+    "diet"
   ],
-  "author": "Tim Ermilov <yamalight@gmail.com> (http://codezen.net)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/yamalight/building-products-with-js/issues"
-  },
-  "homepage": "https://github.com/yamalight/building-products-with-js#readme",
+  "author": "Andrea Sanz y Óscar Rodríguez",
+  "license": "",
+  "bugs": "",
+  "homepage": "https://github.com/DAWZayas/eDiet#readme",
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
@@ -46,6 +41,7 @@
     "bootstrap": "^3.3.7",
     "history": "^4.2.0",
     "react": "^15.3.2",
+    "react-addons-css-transition-group": "^15.4.1",
     "react-dom": "^15.3.2",
     "react-router": "^3.0.0",
     "react-redux": "^4.4.5",
