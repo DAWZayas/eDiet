@@ -8,11 +8,10 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const DO_REGISTER = 'DO_REGISTER';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_ERROR = 'REGISTER_ERROR';
-//NavBar actions
-export const DO_HAMBURGER = 'DO_HAMBURGER';
-export const DO_DROPDOWN_LOGIN_LARGE = 'DO_DROPDOWN_LOGIN_LARGE';
-export const DO_DROPDOWN_LOGIN_XS = 'DO_DROPDOWN_LOGIN_XS';
 //administration Menu
-export const DO_ADD_MENU ='DO_ADD_MENU';
-export const ADD_MENU_SUCCESS = 'ADD_MENU_SUCCESS';
-export const ADD_MENU_ERROR = 'ADD_MENU_ERROR';
+export const CREATE_MENU = 'CREATE_MENU';
+export const CREATE_MENU_SUCCESS = 'CREATE_MENU_SUCCESS';
+export const CREATE_MENU_EROR = 'CREATE_MENU_SUCCESS';
+// notifications actions
+export const ADD_NOTIFICATION = 'ADD_NOTIFICATION';
+export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';

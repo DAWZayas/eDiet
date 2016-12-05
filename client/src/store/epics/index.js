@@ -1,12 +1,13 @@
 import {login, register} from './auth';
+import {addNotification} from './notifications';
 import {helloWorld} from './helloworld';
-import {addMenu} from './menus';
+import {createMenu} from './menus';
 
 export default [
-  // auth
+  createMenu,
   login,
-  addMenu,
   register,
+  addNotification,
   // hello world
   helloWorld,
 ];

@@ -22,7 +22,7 @@ export default class dropdownLargeLogin extends Component {
       const li = loginUser.map((obj, index) => <li key={index}><a href="#" className={obj.class}> {obj.body} </a></li>);
 
     return (
-    <ul className="nav navbar-nav navbar-right " onClick={this.props.onClick}>
+    <ul className="nav navbar-nav navbar-right ">
       <li className="dropdown hidden-xs " role="presentation">
         <a href="#" className="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span className="caret"></span></a>
         <ul className="dropdown-menu" >

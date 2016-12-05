@@ -11,11 +11,11 @@ export default class Nav extends Component {
     return (
       <nav className="navbar navbar-default" >
       <div className="container-fluid">
-        <ButtonsCollapsed onClick={this.props.onClick} xsLogin={this.props.xsLogin}/>
+        <ButtonsCollapsed />
         <div className="collapse navbar-collapse" id="collapse-1">
           <DropdownHamburger />
           <AdministrationMenu />
-          <DropdownLargeLogin largeLogin={this.props.largeLogin}/>
+          <DropdownLargeLogin />
         </div>
         <div className="collapse navbar-collapse navbar-right" id="collapse-2">
           <DropdownLoginXs />

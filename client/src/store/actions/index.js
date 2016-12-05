@@ -14,21 +14,23 @@ export const registerAction = payload => ({
   payload,
 });
 
-export const hamburgerAction = () => ({
-  type: ActionTypes.DO_HAMBURGER,
+export const createMenuAction = (payload) => ({
+  type : ActionTypes.CREATE_MENU,
+  payload,
 });
 
-export const largeLoginAction = () => ({
-  type: ActionTypes.DO_DROPDOWN_LOGIN_LARGE,
-});
+let nextNotificationId = 0;
 
-export const xsLoginAction = () => ({
-  type: ActionTypes.DO_DROPDOWN_LOGIN_XS,
-});
-
-export const addMenuAction = ({name}) => ({
-  type : ActionTypes.ADD_MENU_SUCCESS,
-  payload :  {
-    name,
+export const addNotificationAction = ({text, alertType}) => ({
+  type: ActionTypes.ADD_NOTIFICATION,
+  payload: {
+    id: nextNotificationId++,
+    text,
+    alertType,
   },
-})
+});
+
+export const removeNotificationAction = notificationId => ({
+  type: ActionTypes.REMOVE_NOTIFICATION,
+  payload: {notificationId},
+});

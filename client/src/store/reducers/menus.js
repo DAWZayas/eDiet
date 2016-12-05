@@ -1,14 +1,18 @@
 import * as ActionTypes from '../actionTypes';
 
-const initialState = {name};
+const initialState = {menu: {}, status: 'inited'};
 
-export const addMenu = (state = initialState, action) => {
+export const menus = (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.DO_ADD_MENU:
-      return {
-        ...action.payload,
-      };
-    default:
-      return state;
+      case ActionTypes.CREATE_MENU_ERROR:
+        return {
+          ...state,
+          status: 'error',
+          error: action.payload.error,
+        };
+      case ActionTypes.CREATE_MENU_SUCCESS:
+      return {...state,   menu:  action.payload};
+      default:
+        return state;
+    }
   }
-};

@@ -1,29 +1,12 @@
-// npm packages
 import React from 'react';
-import {Link} from 'react-router';
-import {connect} from 'react-redux';
 
-// our packages
-import {addMenuAction} from '../../store/actions';
-
-const mapStateToProps = state => ({
-  token: state.auth.token,
-  error: state.auth.error,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onaddMenuClick: params => dispatch(addMenuAction(params)),
-});
-
-
-const Menu = ({onaddMenuClick, token, error}) => {
-    let addMenuInput;
+export default () => {
+    let addMenuInput='';
 
     const handleClick = (e) => {
       e.preventDefault();
-      onaddMenuClick({
-        addMenuInput: addMenuInput.value,
-      });
+      addMenuInput.value = '';
+      return false;
     };
 
   return (
@@ -48,5 +31,3 @@ const Menu = ({onaddMenuClick, token, error}) => {
     </div>
   );
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);

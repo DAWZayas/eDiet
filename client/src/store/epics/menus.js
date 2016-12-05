@@ -1,19 +1,19 @@
 import {Observable} from 'rxjs/Observable';
 import * as ActionTypes from '../actionTypes';
+import {signRequest} from '../../util';
 
-export const login = action$ => action$
-  .ofType(ActionTypes.DO_ADD_MENU)
-  .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/add', payload)
+export const createMenu = action$ => action$
+  .ofType(ActionTypes.CREATE_MENU)
+  .map(signRequest)
+  .switchMap(({headers, payload}) => Observable
+    .ajax.post('http://localhost:8080/api/menu/add', payload, headers)
     .map(res => res.response)
-    .map(response => ({
-      type: ActionTypes.ADD_MENU_SUCCESS,
-      payload: response,
+    .map(menu => ({
+      type: ActionTypes.CREATE_MENU_SUCCESS,
+      payload: menu,
     }))
-    .catch(err => Observable.of({
-      type: ActionTypes.ADD_MENU_ERROR,
-      payload: {
-        error: err,
-      },
-    }))
+    .catch(error => Observable.of({
+      type: ActionTypes.CREATE_MENU_ERROR,
+      payload: {error},
+    })),
   );

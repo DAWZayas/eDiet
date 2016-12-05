@@ -1,11 +1,11 @@
 import {auth} from './auth';
 import {helloWorld} from './helloworld';
-import {dropdowns} from './dropdowns';
-import {addMenu} from './menus';
+import {notifications} from './notifications';
+import {menus} from './menus';
 
 export default {
-  addMenu,
-  dropdowns,
+  menus,
   auth,
   helloWorld,
+  notifications,
 };
