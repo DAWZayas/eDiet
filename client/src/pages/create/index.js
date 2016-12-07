@@ -2,57 +2,25 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
+import _ from 'lodash';
 
-import {createMenuAction} from '../../store/actions';
+import {createMenuAction, getMenuAction, deleteMenuAction, updateMenuAction} from '../../store/actions';
+import Menu from '../../components/menu';
 
 const mapStateToProps = (state) => ({
    menus: state.menus.menu,
  })
 
 const mapDispatchToProps = (dispatch) => ({
+  doGetMenu: _.once(() => dispatch(getMenuAction())),
   doCreateMenu: payload => dispatch(createMenuAction(payload)),
+  doDeleteMenu: payload => dispatch(deleteMenuAction(payload)),
+  doUpdateMenu: payload => dispatch(updateMenuAction(payload)),
 });
 
-
-const Create = ({doCreateMenu, menus}) => {
-  let menuName;
-  let displayMenuName;
-
-  const handleMenu = (e) => {
-    e.preventDefault();
-    const name = menuName.value;
-    doCreateMenu({name});
-    return false;
-  };
-
-  /*if (menus.length>0){ displayMenuName =<h2> menus.filter( obj => obj.name) </h2>;
-  }*/
-  console.log(menus);
-
-  return (
-      <div className="panel panel-default">
-      <div className="panel-heading">Create Menu</div>
-      <div className="panel-body">
-          {displayMenuName}
-      </div>
-      <div className="panel-footer">
-        <form className="form-horizontal">
-          <div className="col-sm-10">
-            <input
-              type="text"
-              className="form-control"
-              id="menuName"
-              placeholder="Enter your answer..."
-              ref={(i) => { menuName = i; }}
-            />
-          </div>
-          <button type="submit" className="btn btn-default" onClick={handleMenu}>
-            New menu
-          </button>
-        </form>
-      </div>
-    </div>
-  );
+const Create = ({doCreateMenu, menus, doGetMenu, doDeleteMenu, doUpdateMenu}) => {
+  doGetMenu();
+  return (  <Menu menus={menus} doCreateMenu={doCreateMenu} doDeleteMenu={doDeleteMenu} doUpdateMenu={doUpdateMenu}/>);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Create);

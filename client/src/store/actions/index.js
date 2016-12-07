@@ -34,3 +34,17 @@ export const removeNotificationAction = notificationId => ({
   type: ActionTypes.REMOVE_NOTIFICATION,
   payload: {notificationId},
 });
+
+export const getMenuAction = () =>({
+  type: ActionTypes.GET_MENU,
+});
+
+export const deleteMenuAction = (payload) => ({
+  type : ActionTypes.DELETE_MENU,
+  payload,
+});
+
+export const updateMenuAction = (payload) => ({
+  type : ActionTypes.UPDATE_MENU,
+  payload,
+});
