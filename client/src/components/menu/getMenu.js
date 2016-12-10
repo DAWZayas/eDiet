@@ -35,7 +35,8 @@ render(){
 
   <div className="panel-heading">Get Menu</div>
   <div className="panel-body">
-    {this.state.menu ? this.state.menu.map( (obj,index) => <p key= {index}> {obj.name} {obj.id} {obj.timeFoods}</p>) :this.props.menus.map( (obj,index) => <p key= {index}> {obj.name} {obj.id} {obj.timeFoods}</p>)}
+    {this.state.menu ? this.state.menu.map( (obj,index) => <p key= {index}> {obj.name} {obj.id} </p>)
+    :this.props.menus.map( (obj,index) => <p key= {index}> {obj.name} {obj.id} </p>)}
   </div>
   <div className="panel-footer">
     <form className="form-horizontal">

@@ -9,4 +9,12 @@ export default (app) => {
       res.status(400).send({error: 'Menu does not exist'});
     }
   }));
+  app.get('/api/menu', asyncRequest(async (req, res) => {
+    try {
+      const menu = await Menu;
+      res.send(menu);
+    } catch (e) {
+      res.status(400).send({error: 'Menu does not exist'});
+    }
+  }));
 };

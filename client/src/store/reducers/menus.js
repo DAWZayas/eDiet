@@ -36,8 +36,6 @@ export const menus = (state = initialState, action) => {
         };
       case ActionTypes.UPDATE_MENU_SUCCESS:
       return {...state};
-
-
       default:
         return state;
     }

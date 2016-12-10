@@ -14,11 +14,6 @@ export const registerAction = payload => ({
   payload,
 });
 
-export const createMenuAction = (payload) => ({
-  type : ActionTypes.CREATE_MENU,
-  payload,
-});
-
 let nextNotificationId = 0;
 
 export const addNotificationAction = ({text, alertType}) => ({
@@ -30,6 +25,7 @@ export const addNotificationAction = ({text, alertType}) => ({
   },
 });
 
+//menu
 export const removeNotificationAction = notificationId => ({
   type: ActionTypes.REMOVE_NOTIFICATION,
   payload: {notificationId},
@@ -46,5 +42,25 @@ export const deleteMenuAction = (payload) => ({
 
 export const updateMenuAction = (payload) => ({
   type : ActionTypes.UPDATE_MENU,
+  payload,
+});
+
+export const createMenuAction = (payload) => ({
+  type : ActionTypes.CREATE_MENU,
+  payload,
+});
+
+export const createTimeFoodAction = (payload) => ({
+  type : ActionTypes.CREATE_TIMEFOOD,
+  payload,
+});
+
+export const deleteTimeFoodAction = (payload) => ({
+  type : ActionTypes.DELETE_TIMEFOOD,
+  payload,
+});
+
+export const updateTimeFoodAction = (payload) => ({
+  type : ActionTypes.UPDATE_TIMEFOOD,
   payload,
 });
