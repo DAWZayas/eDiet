@@ -23,6 +23,7 @@ import Register from './pages/register';
 import NotFound from './pages/notfound';
 import createMenu from './pages/create';
 import TimeFood from './pages/timeFood';
+import ExerciseTable from './pages/exerciseTable';
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -37,6 +38,7 @@ ReactDOM.render((
         <Route path="addMenu" component={createMenu} />
         <Route path="timeFood" component={TimeFood} />
         <Route path="register" component={Register} />
+        <Route path="exerciseTable" component={ExerciseTable} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>

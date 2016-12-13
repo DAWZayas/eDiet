@@ -64,3 +64,9 @@ export const updateTimeFoodAction = (payload) => ({
   type : ActionTypes.UPDATE_TIMEFOOD,
   payload,
 });
+
+// exercise ActionTypes
+export const createExerciseTableAction = (payload) => ({
+  type: ActionTypes.CREATE_EXERCISE_TABLE,
+  payload,
+});
