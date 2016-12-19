@@ -9,6 +9,10 @@ export const loginAction = payload => ({
   payload,
 });
 
+export const logoutAction = () => ({
+  type: ActionTypes.DO_LOGOUT,
+})
+
 export const registerAction = payload => ({
   type: ActionTypes.DO_REGISTER,
   payload,
@@ -33,6 +37,11 @@ export const removeNotificationAction = notificationId => ({
 
 export const getMenuAction = () =>({
   type: ActionTypes.GET_MENU,
+});
+
+export const getMenuNameAction = (payload) => ({
+  type: ActionTypes.GET_MENU_NAME,
+  payload,
 });
 
 export const deleteMenuAction = (payload) => ({
@@ -64,3 +73,12 @@ export const updateTimeFoodAction = (payload) => ({
   type : ActionTypes.UPDATE_TIMEFOOD,
   payload,
 });
+
+export const getTimeFoodAction = () =>({
+  type: ActionTypes.GET_TIMEFOOD,
+});
+
+export const getTimeFoodsAction =(payload) => ({
+  type: ActionTypes.GET_TIMEFOODS,
+  payload,
+})

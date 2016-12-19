@@ -5,9 +5,9 @@ import {Menu} from '../../db';
 import {asyncRequest} from '../../util';
 
 export default (app) => {
-  app.delete('/api/menu/:id/timeFood/delete', /*passport.authenticate('jwt', {session: false}), */asyncRequest(async (req, res) => {
+  app.post('/api/menu/:id/timeFood/delete',  passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     const {id} = req.params;
-    // get user input
+    console.log(id);
     const {timeFood} = req.body;
     console.log(timeFood)
     // make sure text is not empty
@@ -15,20 +15,20 @@ export default (app) => {
       res.status(400).send({error: 'Menu name should be not empty!'});
       return;
     }
-
+    let menu;
     // get the menu
-    const menu = await Menu.get(req.params.id);
-    console.log(menu);
-    // check if menu exists
-    if (!menu) {
-      res.status(400).send({error: 'Menu not found!'});
+    try {
+      menu = await Menu.get(req.params.id);
+    } catch (e) {
+      res.status(400).send({error: 'Menu does not exist'});
       return;
     }
+    console.log(menu)
 
-    /*if (req.user.id !== menu.owner) {
+    if (req.user.id !== menu.owner) {
       res.status(403).send({error: 'Not enough rights to change the Menu!'});
       return;
-    }*/
+    }
     // check if exist timeFood
     const existTimeFood = menu.timeFoods.filter(obj => obj.timeFood == timeFood ? true : false);
     console.log(existTimeFood)

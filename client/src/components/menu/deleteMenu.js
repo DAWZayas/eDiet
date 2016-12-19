@@ -8,7 +8,6 @@ export default class DeleteMenu extends Component {
     const handleDeleteMenu = (e) => {
       e.preventDefault();
       const id = deleteMenu.value;
-      const token = localStorage.getItem('user.token')
       this.props.doDeleteMenu({id});
       return false;
     };
@@ -18,6 +17,7 @@ export default class DeleteMenu extends Component {
       <div className="panel-heading">Delete Menu</div>
       <div className="panel-body">
       <div className="col-sm-10">
+        {this.props.menuDelete ? this.props.menuDelete.map( (obj,index) => <strike key= {index}><p > {obj.name} {obj.id} </p></strike>) : null}
         <input
           type="text"
           className="form-control"

@@ -7,14 +7,6 @@ export default class GetMenu extends Component {
       this.state = {menu: null};
   }
 
-  changeContent( e) {
-    e.preventDefault();
-    const name = getMenu.value;
-    const menuFilter = this.props.menus.filter(obj => obj.name === name ? true : false);
-    this.setState({menu: menuFilter});
-    console.log(menuFilter);
-  }
-
 render(){
     let getMenu;
     let menuFilter
@@ -32,11 +24,10 @@ render(){
     };
   return(
 <div className="panel panel-default">
-
   <div className="panel-heading">Get Menu</div>
   <div className="panel-body">
     {this.state.menu ? this.state.menu.map( (obj,index) => <p key= {index}> {obj.name} {obj.id} </p>)
-    :this.props.menus.map( (obj,index) => <p key= {index}> {obj.name} {obj.id} </p>)}
+    :this.props.menus.map( (obj,index) =>  <p key={index}> {obj.name} {obj.id}  </p>)}
   </div>
   <div className="panel-footer">
     <form className="form-horizontal">

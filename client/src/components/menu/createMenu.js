@@ -17,6 +17,7 @@ export default class CreateMenu extends Component {
       <div className="panel-heading">Create Menu</div>
       <div className="panel-body">
       <div className="col-sm-10">
+        {this.props.menuCreate ? this.props.menuCreate.map( (obj,index) => <p key={index}> {obj.name} {obj.id} </p>) : null}
         <input
           type="text"
           className="form-control"

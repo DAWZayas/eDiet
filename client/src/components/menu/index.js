@@ -9,9 +9,9 @@ export default class Menu extends Component {
   render() {
     return (
       <div>
-          <CreateMenu doCreateMenu={this.props.doCreateMenu}/>
-          <DeleteMenu doDeleteMenu={this.props.doDeleteMenu}/>
-          <UpdateMenu doUpdateMenu={this.props.doUpdateMenu}/>
+          <CreateMenu doCreateMenu={this.props.doCreateMenu} menuCreate={this.props.menuCreate}/>
+          <DeleteMenu doDeleteMenu={this.props.doDeleteMenu} menuDelete={this.props.menuDelete}/>
+          <UpdateMenu doUpdateMenu={this.props.doUpdateMenu} menuUpdate={this.props.menuUpdate} menus={this.props.menus}/>
           <GetMenu menus={this.props.menus}/>
       </div>
     );

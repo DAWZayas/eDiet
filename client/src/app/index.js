@@ -1,13 +1,35 @@
-// npm packages
+// our packages
 import React from 'react';
-import Nav from '../components/navBar';
+import {Link} from 'react-router';
+import {connect} from 'react-redux';
+import _ from 'lodash';
+
+import NavBar from '../components/navBar';
 import Footer from '../components/Footer';
+import {logoutAction} from '../store/actions';
 
-export default ({children}) => (
+const mapStateToProps = (state) => ({
+   user: state.auth.user,
+   token: state.auth.token,
+ })
 
-  <div className="container">
-    <Nav />
-    {children}
-    <Footer />
-  </div>
-);
+const mapDispatchToProps = (dispatch) => ({
+  doLogOut: () => dispatch(logoutAction()),
+});
+
+class App extends React.Component {
+
+  render(){
+    const {children, token, doLogOut} = this.props;
+
+    return(
+    <div className="container">
+      <NavBar {...this.props} />
+      {children}
+      <Footer />
+    </div>
+    );
+  }
+}
+
+export default connect(mapStateToProps , mapDispatchToProps)(App);

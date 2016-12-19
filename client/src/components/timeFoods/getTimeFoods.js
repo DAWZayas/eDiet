@@ -4,34 +4,31 @@ export default class GetTimeFoods extends Component {
 
   constructor(props){
       super(props);
-      this.state = {timeFoods : null};
+      this.state = {timeFoods : false, name: false};
   }
 
 render(){
-    let getTimeFood;
-    let timeFoodFilter
+    let menuName;
 
     const handleGetTimeFoods = (e) => {
       e.preventDefault();
-      const name = getTimeFood.value;
-      const timeFoodFilter = this.props.menus.filter(obj => obj.name === name ? true : false);
-
-      if(timeFoodFilter.length > 0){
-        const timeFoods = timeFoodFilter.reduce((a,b) => a.concat(b)).timeFoods;
-        this.setState({timeFoods});
-      }
+      const name = menuName.value;
+      this.setState({timeFoods: true});
+      this.setState({name})
     };
 
     const handleGetAllMenus = (e) => {
       e.preventDefault();
-      this.setState({timeFoods: null});
+      this.setState({timeFoods: false});
     };
+
   return(
 <div className="panel panel-default">
 
   <div className="panel-heading">Get Time Foods</div>
   <div className="panel-body">
-    {this.state.timeFoods ? this.state.timeFoods.map((obj,index) => <p key={index}> {obj.timeFood} </p> ) :
+    { this.state.timeFoods ? this.props.menus.map((obj) => obj.name === this.state.name ?
+      obj.timeFoods.map((object, index) => <p key={index}> {object.timeFood} </p>) : null ) :
       this.props.menus.map((obj,index) => <p key={index}> {obj.name}  {obj.id} </p>)}
   </div>
   <div className="panel-footer">
@@ -40,9 +37,9 @@ render(){
         <input
           type="text"
           className="form-control"
-          id="getTimeFood"
+          id="menuName"
           placeholder="Enter your timeFood name..."
-          ref={(i) => { getTimeFood = i; }}
+          ref={(i) => { menuName = i; }}
         />
       </div>
       <br/><br/><br/>
@@ -54,7 +51,7 @@ render(){
       </button>
     </form>
   </div>
-</div>
+  </div>
     );
   }
 }

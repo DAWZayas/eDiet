@@ -11,10 +11,10 @@ export default (app) => {
     // get user input
     const {name} = req.body;
     // make sure text is not empty
-  /*  if (name !== undefined && !name.length) {
+   if (name !== undefined && !name.length) {
       res.status(400).send({error: 'Menu name should be not empty!'});
       return;
-    }*/
+    }
 
     // get the menu
     const menu = await Menu.get(id);
@@ -24,12 +24,12 @@ export default (app) => {
       res.status(400).send({error: 'Menu not found!'});
       return;
     }
-/*
+
     if (req.user.id !== menu.owner) {
       res.status(403).send({error: 'Not enough rights to change the Menu!'});
       return;
     }
-*/
+
     // if not changes- just send OK
     if (!name) {
       res.send(menu);
