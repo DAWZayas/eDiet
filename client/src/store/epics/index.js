@@ -3,6 +3,7 @@ import {addNotification} from './notifications';
 import {helloWorld} from './helloworld';
 import {createMenu, getMenu, deleteMenu, updateMenu} from './menus';
 import {createTimeFood, deleteTimeFood, updateTimeFood} from './timeFoods'
+import {createExerciseTable} from './exerciseTable';
 
 export default [
   login,
@@ -19,4 +20,6 @@ export default [
   updateTimeFood,
   // hello world
   helloWorld,
+  // exerciseTable
+  createExerciseTable,
 ];
