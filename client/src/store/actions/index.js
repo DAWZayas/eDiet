@@ -84,7 +84,12 @@ export const getTimeFoodsAction =(payload) => ({
 })
 
 // exercise ActionTypes
-export const createExerciseTableAction = (payload) => ({
+export const createExerciseTableAction = payload => ({
   type: ActionTypes.CREATE_EXERCISE_TABLE,
+  payload,
+});
+
+export const deleteExerciseTableAction = payload => ({
+  type: ActionTypes.DELETE_EXERCISE_TABLE,
   payload,
 });
