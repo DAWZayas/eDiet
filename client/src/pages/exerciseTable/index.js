@@ -7,7 +7,7 @@ import {createExerciseTableAction} from '../../store/actions';
 import ExerciseTable from '../../components/exerciseTable';
 
 const mapStateToProps = (state) => ({
-   // exerciseTable: state.exerciseTable.exerciseTable,
+   exerciseTable: state.exerciseTable.exerciseTable,
  });
 
  const mapDispatchToProps = (dispatch) => ({

@@ -2,7 +2,9 @@ import {login, register} from './auth';
 import {addNotification} from './notifications';
 import {helloWorld} from './helloworld';
 import {createMenu, getMenu, deleteMenu, updateMenu, getMenuName} from './menus';
-import {createTimeFood, deleteTimeFood, updateTimeFood, getTimeFood, getTimeFoods} from './timeFoods'
+import {createTimeFood, deleteTimeFood, updateTimeFood, getTimeFood, getTimeFoods} from './timeFoods';
+import {createExerciseTable} from './exerciseTable';
+
 
 export default [
   login,
@@ -22,4 +24,6 @@ export default [
   getTimeFoods,
   // hello world
   helloWorld,
+  // exercise table
+  createExerciseTable,
 ];

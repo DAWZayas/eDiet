@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes';
 
-const initialState = {exerciseTable: {}, status: 'inited'};
+const initialState = {exerciseTable: [], status: 'inited'};
 
 export const exerciseTable = (state = initialState, action) => {
   switch (action.type) {
@@ -11,7 +11,7 @@ export const exerciseTable = (state = initialState, action) => {
         error: action.payload.error,
       };
     case ActionTypes.CREATE_EXERCISE_TABLE_SUCCESS: {
-      return = {
+      return {
         ...state
       };
     }

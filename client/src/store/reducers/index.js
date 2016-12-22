@@ -3,6 +3,7 @@ import {helloWorld} from './helloworld';
 import {notifications} from './notifications';
 import {menus} from './menus';
 import {timeFoods} from './timeFoods';
+import {exerciseTable} from './exerciseTable';
 
 export default {
   menus,
@@ -10,4 +11,5 @@ export default {
   helloWorld,
   notifications,
   timeFoods,
+  exerciseTable,
 };

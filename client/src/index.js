@@ -38,7 +38,7 @@ ReactDOM.render((
         <Route path="addMenu" component={createMenu} />
         <Route path="timeFood" component={TimeFood} />
         <Route path="register" component={Register} />
-        <Route path="exerciseTable" component={ExerciseTable} />
+        <Route path="exerciseTable" component={ExerciseTable} onEnter={requireAuth}/>
         <Route path="*" component={NotFound} />
       </Route>
     </Router>
