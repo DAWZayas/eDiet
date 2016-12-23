@@ -5,8 +5,8 @@ import {Notifications} from '../notifications';
 
 const style = {
   aside: {
-    position: 'relative',
-    top: '0',
+    position: 'fixed',
+    bottom: '0',
     width: '100%',
   },
 };
