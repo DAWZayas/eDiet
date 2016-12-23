@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-
 import {removeNotificationAction} from '../../store/actions';
 
 const mapDispatchToProps = dispatch => ({
