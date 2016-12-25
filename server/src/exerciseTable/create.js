@@ -1,35 +1,35 @@
-// npm packages
 import passport from 'passport';
 
-// our packages
 import {Exercise} from '../db';
 import {asyncRequest} from '../util';
 
-export const exerciseTaken = async (name) => {
-  // check if exercise already taken
-  const exerciseName = await Exercise.filter({name}).run();
-  return exerciseName.length > 0;
+export const tableTaken = async (name) => {
+  const tableName = await Exercise.filter({name}).run();
+  return tableName.length > 0;
 };
 
 export default (app) => {
   app.post('/api/exercise/add', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
-    // get exercise input
-    const {name, level, exercises} = req.body; // eslint-disable-line no-unused-vars
+    const {name, level} = req.body;
+
+    if (!name || !level) {
+      res.status(400).send({error: 'Debes rellenar ambos campos.'});
+    }
     // check if Exercise already taken
-    const exists = await exerciseTaken(name);
+    const exists = await tableTaken(name);
     if (exists) {
-      res.status(403).send({error: 'Exercice already exists!'});
+      res.status(403).send({error: 'La tabla ya existe'});
       return;
     }
 
     // save new Exercise
-    const exercise = new Exercise({
+    const table = new Exercise({
       name,
       level,
-      exercises,
       owner: req.user.id,
     });
-    await exercise.save();
+
+    await table.save();
 
     res.sendStatus(201);
   }));
