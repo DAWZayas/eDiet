@@ -10,27 +10,34 @@ export default (app) => {
     const {id} = req.params;
     const {name} = req.body;
 
-    // get the Exercise
-    const exerciseTable = await Exercise.get(id);
-    const exercise = exerciseTable.exercises.filter(function (obj) {
-      return obj.name === name ? true : false;
-    });
-    console.log(exercise);
-    // check if Exercise exists
-    if (exercise.length === 0) {
-      res.status(400).send({error: 'Exercise not found!'});
+    if (!id.length || !name.length) {
+      res.status(400).send({error: 'Debe rellenar ambos campos'});
       return;
     }
 
-    // check if user is the owner
-    if (req.user.id !== exerciseTable.owner) {
-      res.status(403).send({error: 'Not enough rights to delete the exercise table!'});
+    let exerciseTable;
+    try {
+      exerciseTable = await Exercise.get(req.params.id);
+
+    } catch (e) {
+      res.status(400).send({error: 'No existe la tabla'});
       return;
     }
 
-    // try deleting
-    await Exercise.exercise.delete();
+    const exists = exerciseTable.exercises.filter(obj => obj.name === name);
 
+    if(exists.length === 0){
+      res.status(403).send({error: 'No existe el ejercicio'});
+      return;
+    }
+
+    if (!name) {
+      res.send(exerciseTable.exercises);
+      return;
+    }
+    const deleteExercise = exerciseTable.exercises.filter((obj, index) => obj.name === name ? exerciseTable.exercises.splice(index, index + 1) : true);
+
+    await exerciseTable.save();
     // send success status
     res.sendStatus(204);
   }));

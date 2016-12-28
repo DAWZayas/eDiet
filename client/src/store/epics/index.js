@@ -3,8 +3,8 @@ import {addNotification} from './notifications';
 import {helloWorld} from './helloworld';
 import {createMenu, getMenu, deleteMenu, updateMenu, getMenuName} from './menus';
 import {createTimeFood, deleteTimeFood, updateTimeFood, getTimeFood, getTimeFoods} from './timeFoods';
-import {createExerciseTable, deleteExerciseTable} from './exerciseTable';
-
+import {createExerciseTable, deleteExerciseTable, updateExerciseTable, getExerciseTable} from './exerciseTable';
+import {createExercise, deleteExercise, updateExercise} from './exercise';
 
 export default [
   login,
@@ -27,4 +27,10 @@ export default [
   // exercise table
   createExerciseTable,
   deleteExerciseTable,
+  updateExerciseTable,
+  getExerciseTable,
+  // exercises
+  createExercise,
+  deleteExercise,
+  updateExercise,
 ];

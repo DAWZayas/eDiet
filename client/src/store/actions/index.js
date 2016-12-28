@@ -83,7 +83,7 @@ export const getTimeFoodsAction =(payload) => ({
   payload,
 })
 
-// exercise ActionTypes
+// Exercise table actions
 export const createExerciseTableAction = payload => ({
   type: ActionTypes.CREATE_EXERCISE_TABLE,
   payload,
@@ -91,5 +91,31 @@ export const createExerciseTableAction = payload => ({
 
 export const deleteExerciseTableAction = payload => ({
   type: ActionTypes.DELETE_EXERCISE_TABLE,
+  payload,
+});
+
+export const updateExerciseTableAction = payload => ({
+  type: ActionTypes.UPDATE_EXERCISE_TABLE,
+  payload,
+});
+
+export const getExerciseTableAction = payload => ({
+  type: ActionTypes.GET_EXERCISE_TABLE,
+  payload,
+});
+
+// Exercise actions
+export const createExerciseAction = payload => ({
+  type: ActionTypes.CREATE_EXERCISE,
+  payload,
+});
+
+export const deleteExerciseAction = payload => ({
+  type: ActionTypes.DELETE_EXERCISE,
+  payload,
+});
+
+export const updateExerciseAction = payload => ({
+  type: ActionTypes.UPDATE_EXERCISE,
   payload,
 });
