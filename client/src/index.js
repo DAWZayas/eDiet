@@ -26,6 +26,7 @@ import CreateMenu from './pages/create';
 import TimeFood from './pages/timeFood';
 import Foods from './pages/foods';
 import ExerciseTable from './pages/exerciseTable';
+import Exercise from './pages/exercise';
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -41,7 +42,8 @@ ReactDOM.render((
         <Route path="timeFood" component={TimeFood} onEnter={requireAuth}/>
         <Route path="foods" component={Foods} onEnter={requireAuth}/>
         <Route path="register" component={Register} />
-        <Route path="exerciseTable" component={ExerciseTable} />
+        <Route path="exerciseTable" component={ExerciseTable} onEnter={requireAuth}/>
+        <Route path="exercises" component={Exercise} onEnter={requireAuth}/>
         <Route path="*" component={NotFound} />
       </Route>
     </Router>

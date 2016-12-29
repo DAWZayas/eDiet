@@ -18,12 +18,14 @@ const mapStateToProps = (state) => ({
 
 const ExerciseActions = ({exercise, createExercise, deleteExercise, updateExercise}) => {
   return (
-    <Exercise
-      exercise={exercise}
-      createExercise={createExercise}
-      deleteExercise={deleteExercise}
-      updateExercise={updateExercise}
-    />
+    <div className="container">
+      <Exercise
+        exercise={exercise}
+        createExercise={createExercise}
+        deleteExercise={deleteExercise}
+        updateExercise={updateExercise}
+      />
+    </div>
   );
 }
 
