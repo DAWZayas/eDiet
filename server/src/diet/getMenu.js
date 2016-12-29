@@ -1,5 +1,6 @@
 import {Menu} from '../db';
 import {asyncRequest} from '../util';
+
 export default (app) => {
   app.get('/api/menu/:name', asyncRequest(async (req, res) => {
     try {

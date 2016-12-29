@@ -10,18 +10,18 @@ export const timeFoodTaken = async (menu, name) => {
 };
 
 export default (app) => {
-  app.post('/api/menu/:id/timeFood/add', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+  app.post('/api/menu/:name/timeFood/add', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     // get Menu input
     const {timeFood} = req.body;
     let menu;
     // get row that contain nameFood
     try {
-      menu = await Menu.get(req.params.id);
+      menu = await Menu;
+      menu = menu.filter( ({name}) => name === req.params.name).reduce((a,b) => a.concat(b));
     } catch (e) {
       res.status(400).send({error: 'Menu does not exist'});
       return;
     }
-
     if (req.user.id !== menu.owner) {
       res.status(403).send({error: 'Not enough rights to add the Menu!'});
       return;

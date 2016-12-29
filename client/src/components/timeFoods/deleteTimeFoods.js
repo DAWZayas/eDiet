@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import {drawPageTimeFood} from '../../util';
 
 export default class DeleteTimeFood extends Component {
 
@@ -8,17 +9,17 @@ export default class DeleteTimeFood extends Component {
   }
 
   render () {
+
     const handleDeleteTimeFood = (e) => {
       e.preventDefault();
-      const id = menuId.value;
+      const name = menuId.value;
       const timeFood = timeFoodName.value;
-      const filter = this.props.menus.filter( obj => obj.id === id );
-      const menu = filter.reduce((a,b) => a.concat(b));
-      const foodTime = menu.timeFoods.filter( obj => obj.timeFood === timeFood)
-      this.setState({timeFoods : foodTime});
-      this.props.doDeleteTimeFood({id, timeFood});
+      const timeFoods = this.props.menus.filter( obj => obj.timeFood === timeFood && obj.name === name);
+      this.setState({timeFoods});
+      this.props.doDeleteTimeFood({name, timeFood});
       return false;
     };
+
     let timeFoodName;
     let menuId;
     return (
@@ -26,29 +27,32 @@ export default class DeleteTimeFood extends Component {
       <div className="panel-heading">Delete TimeFood</div>
       <div className="panel-body">
       <div className="col-sm-10">
-        {this.state.timeFoods ? this.state.timeFoods.map( (obj,index) => <strike key= {index}><p > {obj.timeFood} </p></strike>) : null}
-        <input
-          type="text"
-          className="form-control"
-          id="menuId"
-          placeholder="Enter your menu id..."
-          ref={(i) => { menuId = i; }}
-        />
-        <br/>
-        <input
-          type="text"
-          className="form-control"
-          id="timeFoodName"
-          placeholder="Enter your timeFood name..."
-          ref={(i) => { timeFoodName = i; }}
-        />
+        {this.state.timeFoods ?<strike> {drawPageTimeFood(this.state.timeFoods)} </strike>:null}
       </div>
       </div>
       <div className="panel-footer">
         <form className="form-horizontal">
-          <button type="submit" className="btn btn-default" onClick={handleDeleteTimeFood}>
-            Delete time food
-          </button>
+          <input
+            type="text"
+            className="form-control"
+            id="menuId"
+            placeholder="Enter your menu name..."
+            ref={(i) => { menuId = i; }}
+          />
+          <br/>
+          <div className="input-group">
+            <input className="input-group-addon"
+              type="text"
+              className="form-control"
+              id="timeFoodName"
+              placeholder="Enter your timeFood name..."
+              ref={(i) => { timeFoodName = i; }}
+            />
+            <span className="input-group-btn" >
+              <button type="submit" className="btn btn-default" onClick={handleDeleteTimeFood}>Delete time food</button>
+            </span>
+
+          </div>
         </form>
       </div>
     </div>

@@ -1,10 +1,11 @@
+
 import React from 'react';
+
 import {Notifications} from '../notifications';
 
 const style = {
   footer: {
-    zIndex: 9999,
-    position: 'fixed',
+    position: 'absolute',
     bottom: '0',
     width: '100%',
   },

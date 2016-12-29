@@ -2,7 +2,7 @@ import {Observable} from 'rxjs/Observable';
 import * as ActionTypes from '../actionTypes';
 import {signRequest} from '../../util';
 import * as Actions from '../actions';
-
+import {errorBack} from '../../util';
 
 export const createMenu = action$ => action$
   .ofType(ActionTypes.CREATE_MENU)
@@ -21,7 +21,9 @@ export const createMenu = action$ => action$
     .catch(error => Observable.of({
       type: ActionTypes.CREATE_MENU_ERROR,
       payload: {error},
-    })),
+    },
+      Actions.addNotificationAction({text: errorBack(error), alertType: 'danger'})
+    )),
   );
 
 
@@ -30,6 +32,7 @@ export const createMenu = action$ => action$
     .map(signRequest)
     .switchMap(({headers, payload}) => Observable
       .ajax.get('http://localhost:8080/api/menu', payload, headers)
+      .delay(2000)
       .map(res => res.response)
       .mergeMap( menu  => Observable.of ({
         type: ActionTypes.GET_MENU_SUCCESS,
@@ -38,14 +41,16 @@ export const createMenu = action$ => action$
       .catch(error => Observable.of({
         type: ActionTypes.GET_MENU_ERROR,
         payload: {error},
-      })),
+      },
+        Actions.addNotificationAction({text: errorBack(error), alertType: 'danger'}),
+      )),
     );
 
     export const updateMenu = action$ => action$
       .ofType(ActionTypes.UPDATE_MENU)
       .map(signRequest)
       .switchMap(({headers, payload}) => Observable
-        .ajax.post(`http://localhost:8080/api/menu/update/${payload.id}`,payload, headers)
+        .ajax.post(`http://localhost:8080/api/menu/update/${payload.oldname}`,payload, headers)
         .map(res => res.response)
         .mergeMap( menu  => Observable.of ({
           type: ActionTypes.UPDATE_MENU_SUCCESS,
@@ -57,14 +62,16 @@ export const createMenu = action$ => action$
         .catch(error => Observable.of({
           type: ActionTypes.UPDATE_MENU_ERROR,
           payload: {error},
-        })),
+        },
+          Actions.addNotificationAction({text: errorBack(error), alertType: 'danger'}),
+        )),
       );
 
     export const deleteMenu = action$ => action$
       .ofType(ActionTypes.DELETE_MENU)
       .map(signRequest)
       .switchMap(({headers, payload}) => Observable
-        .ajax.post(`http://localhost:8080/api/menu/delete/${payload.id}`, payload, headers)
+        .ajax.post(`http://localhost:8080/api/menu/delete/${payload.name}`, payload, headers)
         .map(res => res.response)
         .mergeMap( menu  => Observable.of ({
           type: ActionTypes.DELETE_MENU_SUCCESS,
@@ -76,7 +83,9 @@ export const createMenu = action$ => action$
         .catch(error => Observable.of({
           type: ActionTypes.DELETE_MENU_ERROR,
           payload: {error},
-        })),
+        },
+          Actions.addNotificationAction({text: errorBack(error), alertType: 'danger'}),
+        )),
       );
 
       export const getMenuName = action$ => action$
@@ -92,5 +101,6 @@ export const createMenu = action$ => action$
           .catch(error => Observable.of({
             type: ActionTypes.GET_MENU_NAME_ERROR,
             payload: {error},
-          })),
+          }
+          )),
         );

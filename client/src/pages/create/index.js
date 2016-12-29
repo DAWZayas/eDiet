@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
    menuDelete: state.menus.delete,
    menuCreate: state.menus.men,
    menuUpdate: state.menus.update,
+   status: state.menus.status,
  })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -22,9 +23,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-const Create = ({doCreateMenu, menus, doGetMenu, doDeleteMenu, doUpdateMenu, menuDelete, menuCreate, menuUpdate}) => {
+const Create = ({doCreateMenu, menus, doGetMenu, doDeleteMenu, doUpdateMenu, menuDelete, menuCreate, menuUpdate,status}) => {
   doGetMenu();
-  return (  <Menu menus={menus} doCreateMenu={doCreateMenu} doDeleteMenu={doDeleteMenu}
+  return (  <Menu menus={menus} doCreateMenu={doCreateMenu} doDeleteMenu={doDeleteMenu} status={status}
             doUpdateMenu={doUpdateMenu}  menuDelete={menuDelete} doGetMenu={doGetMenu} menuCreate={menuCreate}
             menuUpdate={menuUpdate}/>);
 };

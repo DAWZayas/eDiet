@@ -7,42 +7,53 @@ import {asyncRequest} from '../util';
 
 export default (app) => {
   app.post('/api/exercise/update/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {  // eslint-disable-line max-len
-      const {id} = req.params;
-      const {name, level} = req.body;
+    const {id} = req.params;
+    // get user input
+    const {name, level, exercises} = req.body;
 
-      const table = await Exercise.get(id);
+    // make sure text is not empty
+    if (name !== undefined && !name.length) {
+      res.status(400).send({error: 'Exercise table name should be not empty!'});
+      return;
+    }
 
-      if (!table) {
-        res.status(400).send({error: 'Tabla no encontrada'});
-        return;
-      }
+    // get the Exercise
+    const exercise = await Exercise.get(id);
 
-      if (req.user.id !== table.owner) {
-        res.status(403).send({error: 'No tienes permisos para modificar la tabla.'});
-        return;
-      }
+    // check if Exercise exists
+    if (!exercise) {
+      res.status(400).send({error: 'Exercise table not found!'});
+      return;
+    }
 
-      if (!name && !level) {
-        res.send(table);
-        return;
-      }
+    // check if user is the owner
+    if (req.user.id !== exercise.owner) {
+      res.status(403).send({error: 'Not enough rights to change the exercise table!'});
+      return;
+    }
 
-      if (!name && level) {
-        table.name = table.name;
-        table.level = level;
-      }
+    // if not changes - just send OK
+    if (!name && !level && !exercises) {
+      res.send(exercise);
+      return;
+    }
 
-      if (name && !level) {
-        table.name = name;
-        table.level = table.level;
-      }
+    if (!name && level && !exercises) {
+      exercise.name = exercise.name;
+      exercise.level = level;
+      exercise.exercises = exercise.exercises;
+    }
 
-      if (name && level) {
-        table.name = name;
-        table.level = level;
-      }
+    if (!name && !level && exercises) {
+      exercise.name = exercise.name;
+      exercise.level = exercise.level;
+      exercise.exercises = exercises;
+    }
 
-      await table.save();
-      res.send(table);
+    // try saving
+    await exercise.save();
+
+    // send created question back
+    res.send(exercise);
   }));
 };

@@ -6,23 +6,21 @@ import {Menu} from '../db';
 import {asyncRequest} from '../util';
 
 export default (app) => {
-  app.post('/api/menu/update/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
-    const {id} = req.params;
-    // get user input
+  app.post('/api/menu/update/:name', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+
     const {name} = req.body;
     // make sure text is not empty
    if (name !== undefined && !name.length) {
       res.status(400).send({error: 'Menu name should be not empty!'});
       return;
     }
-
+    let menu;
     // get the menu
-    const menu = await Menu.get(id);
-
-    // check if menu exists
-    if(!menu){
-      res.status(400).send({error: 'Menu not found!'});
-      return;
+    try {
+      menu = await Menu;
+      menu = menu.filter( obj => obj.name===req.params.name).reduce((a,b) => a.concat(b));
+    } catch (e) {
+      res.status(400).send({error: 'Menu not found'});
     }
 
     if (req.user.id !== menu.owner) {
@@ -31,18 +29,17 @@ export default (app) => {
     }
 
     // if not changes- just send OK
-    if (!name) {
+    if (!req.params.name) {
       res.send(menu);
       return;
     }
 
-    if (name) {
+    if (req.params.name) {
       menu.name = name;
     }
 
     // try saving
     await menu.save();
-
     // send created question back
     res.send(menu);
   }));

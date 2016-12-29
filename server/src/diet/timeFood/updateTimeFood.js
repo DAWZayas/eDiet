@@ -6,24 +6,23 @@ import {Menu} from '../../db';
 import {asyncRequest} from '../../util';
 
 export default (app) => {
-  app.post('/api/menu/:id/timeFood/update', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
-    const {id} = req.params;
+  app.post('/api/menu/:name/timeFood/update', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     // get user input
     const {timeFood, oldTimeFood} = req.body;
-    console.log(timeFood);
-    console.log(oldTimeFood);
+
     // make sure text is not empty
     if (timeFood !== undefined && !timeFood.length && oldTimeFood !== undefined && !oldTimeFood.length) {
       res.status(400).send({error: 'Menu name should be not empty!'});
       return;
     }
 
-    // get the menu
-    const menu = await Menu.get(id);
+    let menu;
 
-    // check if menu exists
-    if (!menu) {
-      res.status(400).send({error: 'Menu not found!'});
+    try {
+      menu = await Menu;
+      menu = menu.filter( ({name}) => name === req.params.name).reduce((a,b) => a.concat(b));
+    } catch (e) {
+      res.status(400).send({error: 'Menu does not exist'});
       return;
     }
 
@@ -33,8 +32,8 @@ export default (app) => {
     }
     // check if exist timeFood
     const existTimeFood = menu.timeFoods.filter(function(obj){
-        return obj.timeFood == timeFood ? true: false
-    })
+        return obj.timeFood == timeFood ? true: false;
+    });
 
     if(existTimeFood.length>0){
       res.status(404).send({error: 'The timeFood alredy exist!'});
@@ -43,10 +42,10 @@ export default (app) => {
 
     // check if oldTimeFood don't exist
     const existOldTimeFood = menu.timeFoods.filter(function(obj){
-        return obj.timeFood == oldTimeFood ? true: false
-    })
+        return obj.timeFood == oldTimeFood ? true: false;
+    });
 
-    if (existOldTimeFood.length == 0){
+    if (existOldTimeFood.length === 0){
       res.status(404).send({error: 'The old timeFood dont\'t exist!'});
       return;
     }
@@ -59,8 +58,8 @@ export default (app) => {
 
     if (timeFood) {
       menu.timeFoods.filter(function(obj){
-          return obj.timeFood==oldTimeFood ? obj.timeFood=timeFood : false
-      })
+          return obj.timeFood==oldTimeFood ? obj.timeFood=timeFood : false;
+      });
     }
 
     // try saving

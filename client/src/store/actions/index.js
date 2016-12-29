@@ -11,7 +11,7 @@ export const loginAction = payload => ({
 
 export const logoutAction = () => ({
   type: ActionTypes.DO_LOGOUT,
-})
+});
 
 export const registerAction = payload => ({
   type: ActionTypes.DO_REGISTER,
@@ -29,12 +29,12 @@ export const addNotificationAction = ({text, alertType}) => ({
   },
 });
 
-//menu
 export const removeNotificationAction = notificationId => ({
   type: ActionTypes.REMOVE_NOTIFICATION,
   payload: {notificationId},
 });
 
+//administration menu
 export const getMenuAction = () =>({
   type: ActionTypes.GET_MENU,
 });
@@ -58,7 +58,7 @@ export const createMenuAction = (payload) => ({
   type : ActionTypes.CREATE_MENU,
   payload,
 });
-
+//administration timeFoods
 export const createTimeFoodAction = (payload) => ({
   type : ActionTypes.CREATE_TIMEFOOD,
   payload,
@@ -74,23 +74,42 @@ export const updateTimeFoodAction = (payload) => ({
   payload,
 });
 
-export const getTimeFoodAction = () =>({
+export const getTimeFoodAction = (payload) =>({
   type: ActionTypes.GET_TIMEFOOD,
+  payload,
 });
 
-export const getTimeFoodsAction =(payload) => ({
+export const getTimeFoodsAction =() => ({
   type: ActionTypes.GET_TIMEFOODS,
-  payload,
-})
+});
+//administration Food
+export const getFoodsAction = () => ({
+  type: ActionTypes.GET_FOODS,
+});
 
-// Exercise table actions
-export const createExerciseTableAction = payload => ({
-  type: ActionTypes.CREATE_EXERCISE_TABLE,
+export const getFoodAction = (payload) => ({
+  type: ActionTypes.GET_FOOD,
   payload,
 });
 
-export const deleteExerciseTableAction = payload => ({
-  type: ActionTypes.DELETE_EXERCISE_TABLE,
+export const createFoodAction = (payload) => ({
+  type: ActionTypes.CREATE_FOOD,
+  payload, });
+
+
+export const deleteFoodAction = (payload) => ({
+  type: ActionTypes.DELETE_FOOD,
+  payload,
+});
+
+export const updateFoodAction = (payload) => ({
+  type: ActionTypes.UPDATE_FOOD,
+  payload,
+});
+
+// exercise ActionTypes
+export const createExerciseTableAction = (payload) => ({
+  type: ActionTypes.CREATE_EXERCISE_TABLE,
   payload,
 });
 

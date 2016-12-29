@@ -5,8 +5,7 @@ import {Menu} from '../../db';
 import {asyncRequest} from '../../util';
 
 export default (app) => {
-  app.delete('/api/menu/:id/:name/food/delete', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
-    const {id, name} = req.params;
+  app.post('/api/menu/:nameMenu/:nameTimeFood/food/delete', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     // get user input
     const {food} = req.body;
     // make sure text is not empty
@@ -16,12 +15,13 @@ export default (app) => {
     }
 
     // get the menu
-    const menu = await Menu.get(id);
+    let menu;
 
-    // check if menu exists
-    if (!menu) {
-      res.status(400).send({error: 'Menu not found!'});
-      return;
+    try {
+      menu = await Menu;
+      menu = menu.filter( ({name}) => name === req.params.nameMenu).reduce((a,b) => a.concat(b));
+    } catch (e) {
+      res.status(400).send({error: 'Menu does not exist'});
     }
 
     if (req.user.id !== menu.owner) {
@@ -29,7 +29,7 @@ export default (app) => {
       return;
     }
     // check if exist Food
-    const foodsName = menu.timeFoods.filter(obj => obj.timeFood === name ? true : false);
+    const foodsName = menu.timeFoods.filter(obj => obj.timeFood === req.params.nameTimeFood ? true : false);
     const objectFood = foodsName.reduce((a,b) => a.concat(b));
     const existFood = objectFood.foods.filter(obj => obj.nameFood === food ? true : false);
 
@@ -44,12 +44,15 @@ export default (app) => {
       return;
     }
 
-    const deleteTimeFood = objectFood.foods.filter((obj, index) => obj.nameFood === food ? objectFood.foods.splice(index, index + 1): false);
+    const deleteTimeFood = objectFood.foods.filter((obj, index) => obj.nameFood === food
+          ? objectFood.foods.splice(index, index + 1): false);
 
     // try saving
     await menu.save();
 
     // send created question back
-    res.sendStatus(204);
+
+    res.send(objectFood.foods);
+
   }));
 };

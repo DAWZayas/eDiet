@@ -11,7 +11,7 @@ import {logoutAction} from '../store/actions';
 const mapStateToProps = (state) => ({
    user: state.auth.user,
    token: state.auth.token,
- })
+ });
 
 const mapDispatchToProps = (dispatch) => ({
   doLogOut: () => dispatch(logoutAction()),
@@ -20,13 +20,15 @@ const mapDispatchToProps = (dispatch) => ({
 class App extends React.Component {
 
   render(){
-    const {children, token, doLogOut} = this.props;
+    const {children, token, doLogOut, user} = this.props;
 
     return(
-    <div className="container">
-      <NavBar {...this.props} />
-      {children}
-      <Footer />
+    <div className="bg-main">
+      <div className="container-fluid">
+        <NavBar {...this.props} />
+      </div>
+        {children}
+        <Footer />
     </div>
     );
   }

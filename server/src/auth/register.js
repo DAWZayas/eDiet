@@ -11,7 +11,13 @@ export const loginTaken = async (login) => {
 export default (app) => {
   app.post('/api/register', asyncRequest(async (req, res) => {
     // get user input
-    const {login, password, passwordRepeat} = req.body;
+    const {login, password, passwordRepeat, role} = req.body;
+
+
+    let roles;
+    
+    role ? roles = true :roles = false
+
 
     if (password !== passwordRepeat) {
       res.status(400).send({error: 'Passwords do not match!'});
@@ -26,11 +32,12 @@ export default (app) => {
       res.status(403).send({error: 'User already exists!'});
       return;
     }
-
+    console.log(roles)
     // save new user
     const user = new User({
       login,
       password: hashedPassword,
+      role: roles ,
     });
     await user.save();
 

@@ -1,4 +1,5 @@
-import React, {Component}from 'react'
+import React, {Component}from 'react';
+import {drawMenu} from '../../util';
 
 export default class UpdateMenu extends Component {
 
@@ -10,51 +11,50 @@ export default class UpdateMenu extends Component {
   render () {
     const handleUpdateMenu = (e) => {
       e.preventDefault();
-      const id = updateMenu.value;
-      const menu = this.props.menus.filter( obj => obj.id === id)
-      this.setState({menu});
+      const oldname = oldName.value;
+      const menu = this.props.menus.filter( obj => obj.name === oldname);
       const name = newName.value;
-      this.props.doUpdateMenu({id, name})
+      this.props.doUpdateMenu({oldname, name});
+      this.setState({menu});
       return false;
     };
 
-    let updateMenu;
+    let oldName;
     let newName;
     return (
     <div className="panel panel-default">
-      <div className="panel-heading">Update Menu</div>
+      <div className="panel-heading">Update Menu
+      </div>
       <div className="panel-body">
-      <div className="col-sm-10">
-        {this.state.menu ? this.state.menu.map((obj,index) => <strike key= {index}> <p > {obj.name} {obj.id} </p> </strike>) : null}
-        {this.props.menuUpdate ? this.props.menuUpdate.map( (obj,index) => <p key= {index}> {obj.name} {obj.id} </p>) : null}
-        <input
-          type="text"
-          className="form-control"
-          id="updateMenu"
-          placeholder="Enter your id..."
-          ref={(i) => { updateMenu = i; }}
-        />
-      </div>
-      <br/><br/><br/>
-      <div className="col-sm-10">
-        <input
-          type="text"
-          className="form-control"
-          id="newName"
-          placeholder="Enter your new Name..."
-          ref={(i) => { newName = i; }}
-        />
-      </div>
+        {this.state.menu ? <strike>{drawMenu(this.state.menu)}</strike> : null}
+        {this.props.menuUpdate ? drawMenu(this.props.menuUpdate) : null}
       </div>
       <div className="panel-footer">
         <form className="form-horizontal">
-
-          <button type="submit" className="btn btn-default" onClick={handleUpdateMenu}>
-            Update menu
-          </button>
+          <input className="input-group-addon"
+            type="text"
+            className="form-control"
+            id="oldName"
+            placeholder="Enter your old menu name..."
+            ref={(i) => { oldName = i; }}
+          />
+          <br/>
+          <div className="input-group">
+            <input className="input-group-addon"
+              type="text"
+              className="form-control"
+              id="newName"
+              placeholder="Enter your new menu Name..."
+              ref={(i) => { newName = i; }}
+            />
+            <span className="input-group-btn">
+              <button type="submit" className="btn btn-default " onClick={handleUpdateMenu}>Update menu</button>
+            </span>
+          </div>
         </form>
       </div>
-  </div>
+
+    </div>
     );
   }
 

@@ -1,4 +1,5 @@
-import React, {Component}from 'react'
+import React, {Component}from 'react';
+import {drawMenu} from '../../util';
 
 export default class GetMenu extends Component {
 
@@ -9,7 +10,7 @@ export default class GetMenu extends Component {
 
 render(){
     let getMenu;
-    let menuFilter
+    let menuFilter;
 
     const handleGetMenu = (e) => {
       e.preventDefault();
@@ -22,34 +23,34 @@ render(){
       e.preventDefault();
       this.setState({menu: null});
     };
+
   return(
-<div className="panel panel-default">
-  <div className="panel-heading">Get Menu</div>
-  <div className="panel-body">
-    {this.state.menu ? this.state.menu.map( (obj,index) => <p key= {index}> {obj.name} {obj.id} </p>)
-    :this.props.menus.map( (obj,index) =>  <p key={index}> {obj.name} {obj.id}  </p>)}
-  </div>
-  <div className="panel-footer">
-    <form className="form-horizontal">
-      <div className="col-sm-10">
-        <input
-          type="text"
-          className="form-control"
-          id="getMenu"
-          placeholder="Enter your menu name..."
-          ref={(i) => { getMenu = i; }}
-        />
+    <div className="panel panel-default">
+      <div className="panel-heading">Get Menu
       </div>
-      <br/><br/><br/>
-      <button type="submit" className="btn btn-default" onClick={handleGetMenu}>
-        Get menu
-      </button>
-      <button type="submit" className="btn btn-default" onClick={handleGetAllMenu}>
-        Get All menu
-      </button>
-    </form>
-  </div>
-</div>
+      <div className="panel-body">
+        {this.state.menu ? drawMenu(this.state.menu) : drawMenu(this.props.menus)}
+      </div>
+      <div className="panel-footer">
+        <form className="form-horizontal">
+            <div className="input-group">
+              <input className="input-group-addon"
+                type="text"
+                className="form-control"
+                id="getMenu"
+                placeholder="Enter your menu name..."
+                ref={(i) => { getMenu = i; }}
+              />
+              <span className="input-group-btn" >
+                <button type="submit" className="btn btn-default " onClick={handleGetMenu}>Get menu</button>
+              </span>
+              <span className="input-group-btn" >
+                <button type="submit" className="btn btn-default " onClick={handleGetAllMenu}>Get all menu</button>
+              </span>
+            </div>
+        </form>
+      </div>
+    </div>
     );
   }
 }

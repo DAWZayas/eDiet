@@ -1,6 +1,6 @@
 export {requireAuth} from './requireAuth';
-export {loginErrorToMessage, registerErrorToMessage, ajaxErrorToMessage} from './errorToMessage';
+export {loginErrorToMessage, registerErrorToMessage} from './errorToMessage';
 export {signRequest} from './signRequest';
 export {errorMenuMessage} from './errorMenu';
-
-require('./rxjs');
+export {drawMenu, drawTimeFoods, drawFood, drawPageTimeFood, drawPageTimeFoodGet, drawAllFoods, drawPageFood} from './functions';
+export {errorBack} from './errorBack';

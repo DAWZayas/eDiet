@@ -1,62 +1,43 @@
 import * as ActionTypes from '../actionTypes';
 
-const initialState = {timeFood: [], status: 'inited'};
+const initialState = {timeFoods: [], status: 'inited'};
 
 export const timeFoods = (state = initialState, action) => {
   switch (action.type) {
-      case ActionTypes.CREATE_TIMEFOOD_ERROR:
-        return {
-          ...state,
-          status: 'error',
-          error: action.payload.error,
-        };
-      case ActionTypes.CREATE_TIMEFOOD_SUCCESS:
-        console.log(action);
-        return {...state};
-      case ActionTypes.DELETE_TIMEFOOD_ERROR:
-        return {
-          ...state,
-          status: 'error',
-          error: action.payload.error,
-        };
-      case ActionTypes.DELETE_TIMEFOOD_SUCCESS:
-        const filter = state.timeFood.filter( obj => obj.id === action.payload.id);
-        const menu = filter.reduce((a,b) => a.concat(b));
-        const time = menu.timeFoods.filter(obj => obj.timeFood === action.payload.timeFood ? false : true);
-        menu.timeFoods=time;
-        const menus = state.timeFood.map( obj => obj.id === action.payload.id ? menu : obj)
-        return {...state, timeFood: menus};
-      case ActionTypes.UPDATE_TIMEFOOD_ERROR:
-        return {
-          ...state,
-          status: 'error',
-          error: action.payload.error,
-          update: null,
-        };
-      case ActionTypes.UPDATE_TIMEFOOD_SUCCESS:
-        const timeF = state.timeFood.map( obj => obj.id === action.payload.menu.id ? action.payload.menu : obj);
-        return {...state, timeFood: timeF, update:[action.payload.menu]};
+      case ActionTypes.GET_TIMEFOODS_ERROR:
       case ActionTypes.GET_TIMEFOOD_ERROR:
-        return {
-          ...state,
-          status: 'error',
-          error: action.payload.error,
-        };
+      case ActionTypes.DELETE_TIMEFOOD_ERROR:
+      case ActionTypes.CREATE_TIMEFOOD_ERROR:
+        return {...state, status: 'error', error: action.payload.error, };
+        
+      case ActionTypes.CREATE_TIMEFOOD_SUCCESS:
+        return {...state};
+
+      case ActionTypes.DELETE_TIMEFOOD_SUCCESS:
+        const timeFoodDelete = state.timeFoods.filter( ({timeFood, name}) => name === action.payload.name &&
+                                timeFood === action.payload.timeFood ? false : true );
+        return {...state, timeFoods: timeFoodDelete};
+
+      case ActionTypes.UPDATE_TIMEFOOD_ERROR:
+        return {...state, status: 'error', error: action.payload.error, updateTimeFood: null};
+
+      case ActionTypes.UPDATE_TIMEFOOD_SUCCESS:
+        const timeFood = { name: action.payload.name,  timeFood: action.payload.timeFood}
+        const updateTimeFood = state.timeFoods.map( obj  => obj.name === action.payload.name && obj.timeFood === action.payload.oldTimeFood
+                                ? timeFood : obj );
+        return {...state, timeFoods: updateTimeFood, updateTimeFood: [timeFood]  };
+
       case ActionTypes.GET_TIMEFOOD_SUCCESS:
-        return {...state, timeFood: action.payload.menu};
-        case ActionTypes.GET_TIMEFOODS_ERROR:
-          return {
-            ...state,
-            status: 'error',
-            error: action.payload.error,
-          };
-        case ActionTypes.GET_TIMEFOODS_SUCCESS:
-          const timeFil = state.timeFood.filter( obj => obj.id === action.payload.id);
-          const menuFil = timeFil.reduce((a,b) => a.concat(b));
-          menuFil.timeFoods = action.payload.menu;
-          const timeFoo = state.timeFood.map(obj => obj.id === action.payload.id ? menuFil : obj);
-          return {...state, timeFood: timeFoo, create: action.payload.menu};
+        const news = { name: action.payload.name, timeFood: action.payload.timeFood}
+        const newTimeFood = state.timeFoods.concat( news );
+        return {...state, timeFoods: newTimeFood, timeFoodCreate: [news] };
+
+      case ActionTypes.GET_TIMEFOODS:
+            return {...state, status: 'loading'}
+      case ActionTypes.GET_TIMEFOODS_SUCCESS:
+          return {...state, timeFoods: action.payload.menu, status: 'done'}
+
       default:
-      return {...state};
+        return {...state};
     }
 }
