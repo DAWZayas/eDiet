@@ -113,13 +113,13 @@ export const createExerciseTableAction = (payload) => ({
   payload,
 });
 
-export const updateExerciseTableAction = payload => ({
-  type: ActionTypes.UPDATE_EXERCISE_TABLE,
+export const deleteExerciseTableAction = payload => ({
+  type: ActionTypes.DELETE_EXERCISE_TABLE,
   payload,
 });
 
-export const getExerciseTableAction = payload => ({
-  type: ActionTypes.GET_EXERCISE_TABLE,
+export const updateExerciseTableAction = payload => ({
+  type: ActionTypes.UPDATE_EXERCISE_TABLE,
   payload,
 });
 

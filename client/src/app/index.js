@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import _ from 'lodash';
 
 import NavBar from '../components/navBar';
-import Footer from '../components/Footer';
+import Aside from '../components/aside';
 import {logoutAction} from '../store/actions';
 
 const mapStateToProps = (state) => ({
@@ -28,7 +28,7 @@ class App extends React.Component {
         <NavBar {...this.props} />
       </div>
         {children}
-        <Footer />
+        <Aside />
     </div>
     );
   }

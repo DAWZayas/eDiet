@@ -1,12 +1,16 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 
 import Create from './create';
+import Delete from './delete';
+import Update from './update';
 
 export default class ExerciseTable extends Component {
   render() {
     return (
       <div>
-          <Create createExerciseTable={this.props.createExerciseTable}/>
+        <Create createExerciseTable={this.props.createExerciseTable} />
+        <Delete deleteExerciseTable={this.props.deleteExerciseTable} />
+        <Update updateExerciseTable={this.props.updateExerciseTable} />
       </div>
     );
   }

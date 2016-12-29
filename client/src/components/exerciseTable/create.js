@@ -1,14 +1,16 @@
 import React, {Component, PropTypes} from 'react';
 
-let createExerciseTable;
+let tableName;
+let tableLevel;
 
 export default class CreateExerciseTable extends Component {
 
   render(){
     const handleCreateExerciseTable = (e) => {
       e.preventDefault();
-      const name = createExerciseTable.value;
-      this.props.createExerciseTable({name});
+      const name = tableName.value;
+      const level = tableLevel.value;
+      this.props.createExerciseTable({name, level});
       return false;
     }
 
@@ -22,9 +24,19 @@ export default class CreateExerciseTable extends Component {
             <input
               type="text"
               className="form-control"
-              id="createExerciseTable"
+              id="tableName"
               placeholder="Nombre de la tabla..."
-              ref={(i) => { createExerciseTable = i; }}
+              ref={(i) => { tableName = i; }}
+            />
+          </div>
+          <br/><br/><br/>
+          <div className="col-sm-10">
+            <input
+              type="text"
+              className="form-control"
+              id="tableLevel"
+              placeholder="Nivel de la tabla..."
+              ref={(i) => { tableLevel = i; }}
             />
           </div>
         </div>

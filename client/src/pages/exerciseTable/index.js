@@ -2,25 +2,32 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
+import _ from 'lodash';
 
-import {createExerciseTableAction} from '../../store/actions';
+import {createExerciseTableAction, deleteExerciseTableAction, updateExerciseTableAction} from '../../store/actions';
 import ExerciseTable from '../../components/exerciseTable';
 
 const mapStateToProps = (state) => ({
-   // exerciseTable: state.exerciseTable.exerciseTable,
+   exerciseTable: state.exerciseTable.exerciseTable,
  });
 
  const mapDispatchToProps = (dispatch) => ({
    createExerciseTable: payload => dispatch(createExerciseTableAction(payload)),
+   deleteExerciseTable: payload => dispatch(deleteExerciseTableAction(payload)),
+   updateExerciseTable: payload => dispatch(updateExerciseTableAction(payload)),
  });
 
-const Create = ({createExerciseTable}) => {
+const ExerciseTableActions = ({exerciseTable, createExerciseTable, deleteExerciseTable, updateExerciseTable}) => {
   return (
-    <ExerciseTable
-      exerciseTable={ExerciseTable}
-      createExerciseTable={createExerciseTable}
-    />
-  );
-}
+    <div className="container">
+      <ExerciseTable
+        exerciseTable={exerciseTable}
+        createExerciseTable={createExerciseTable}
+        deleteExerciseTable={deleteExerciseTable}
+        updateExerciseTable={updateExerciseTable}
+      />
+    </div>
+  )
+ };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Create);
+export default connect(mapStateToProps, mapDispatchToProps)(ExerciseTableActions);

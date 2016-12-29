@@ -5,11 +5,11 @@ import {asyncRequest} from '../util';
 export default (app) => {
   app.get('/api/exercise/:id', asyncRequest(async (req, res) => {
     try {
-      const exercise = await Exercise.get(req.params.id)
+      const table = await Exercise.get(req.params.id)
       .execute();
-      res.send(exercise);
+      res.send(table);
     } catch (e) {
-      res.status(400).send({error: 'Exercise table does not exist'});
+      res.status(400).send({error: 'La tabla no existe'});
     }
   }));
 };
