@@ -123,6 +123,11 @@ export const updateExerciseTableAction = payload => ({
   payload,
 });
 
+export const getExerciseTableAction = payload => ({
+  type: ActionTypes.GET_EXERCISE_TABLE,
+  payload,
+});
+
 // Exercise actions
 export const createExerciseAction = payload => ({
   type: ActionTypes.CREATE_EXERCISE,

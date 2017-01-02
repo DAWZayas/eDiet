@@ -3,7 +3,6 @@ import * as ActionTypes from '../actionTypes';
 import * as Actions from '../actions';
 import {signRequest, ajaxErrorToMessage} from '../../util';
 
-
 export const createExercise = action$ => action$
   .ofType(ActionTypes.CREATE_EXERCISE)
   .map(signRequest)
