@@ -11,7 +11,18 @@ export default class UpdateExerciseTable extends Component {
       const name = tableName.value;
       const newName = nName.value;
       const level = newLevel.value;
-      this.props.updateExerciseTable({name, newName, level})
+      this.props.updateExerciseTable({name, newName, level});
+      clearFields();
+      return false;
+    };
+
+    const clearFields = () => {
+      tableName.value = '';
+      tableName.placeholder="Nombre de la tabla...";
+      nName.value = '';
+      nName.placeholder="Nuevo nombre...";
+      newLevel.value = '';
+      newLevel.placeholder="Nuevo nivel...";
       return false;
     };
 
@@ -30,7 +41,6 @@ export default class UpdateExerciseTable extends Component {
               ref={(i) => { tableName = i; }}
             />
           </div>
-          <br/><br/><br/>
           <div className="col-sm-10">
             <input
               type="text"
@@ -40,7 +50,6 @@ export default class UpdateExerciseTable extends Component {
               ref={(i) => { nName = i; }}
             />
           </div>
-          <br/><br/><br/>
           <div className="col-sm-10">
             <input
               type="text"

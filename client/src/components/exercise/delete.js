@@ -9,9 +9,18 @@ export default class DeleteExercise extends Component {
       e.preventDefault();
       const tName = tableName.value;
       const name = exerciseName.value;
-      this.props.deleteExercise({tName, name})
+      this.props.deleteExercise({tName, name});
+      clearFields();
       return false;
     };
+
+    const clearFields = () => {
+      tableName.value = '';
+      tableName.placeholder="Nombre de la tabla...";
+      exerciseName.value = '';
+      exerciseName.placeholder="Nombre del ejercicio...";
+      return false;
+    }
 
     return (
       <div className="panel panel-default">

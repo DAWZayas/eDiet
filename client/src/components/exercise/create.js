@@ -11,14 +11,30 @@ export default class CreateExercise extends Component {
   render(){
     const handleCreate = (e) => {
       e.preventDefault();
-      const tName = tableName.value;
-      const name = exerciseName.value;
-      const calories = exerciseCalories.value;
-      const type = exerciseType.value;
-      const time = exerciseTime.value;
-      this.props.createExercise({tName, name, calories, type, time});
+      this.props.createExercise({
+        tName: tableName.value,
+        name: exerciseName.value,
+        calories: exerciseCalories.value,
+        type: exerciseType.value,
+        time: exerciseTime.value,
+      });
+      clearFields();
       return false;
     }
+
+    const clearFields = () => {
+      tableName.value = '';
+      tableName.placeholder="Nombre de la tabla...";
+      exerciseName.value = '';
+      exerciseName.placeholder="Nombre del ejercicio...";
+      exerciseCalories.value = '';
+      exerciseCalories.placeholder="Calorias quemadas...";
+      exerciseType.value = '';
+      exerciseType.placeholder="Tipo de ejercicio...";
+      exerciseTime.value = '';
+      exerciseTime.placeholder="Duración...";
+      return false;
+    };
 
     return (
       <div className="panel panel-default">

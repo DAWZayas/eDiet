@@ -18,6 +18,21 @@ export default class UpdateExercise extends Component {
       const type = newType.value;
       const time = newTime.value;
       this.props.updateExercise({tName, name, newName, calories, type, time});
+      clearFields();
+      return false;
+    };
+
+    const clearFields = () => {
+      tableName.value = '';
+      tableName.placeholder="Nombre de la tabla...";
+      exerciseName.value = '';
+      exerciseName.placeholder="Nombre del ejercicio...";
+      exerciseCalories.value = '';
+      exerciseCalories.placeholder="Calorias quemadas...";
+      exerciseType.value = '';
+      exerciseType.placeholder="Tipo de ejercicio...";
+      exerciseTime.value = '';
+      exerciseTime.placeholder="Duración...";
       return false;
     };
 
