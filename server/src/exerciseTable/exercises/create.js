@@ -2,40 +2,40 @@
 import {Exercise, r} from '../../db';
 import {asyncRequest} from '../../util';
 
-export const exerciseTaken = async (id, name) => {
+export const exerciseTaken = async (table, name) => {
   // check if exercise already taken
-  const exerciseName = await r.db('expertsdb').table('Exercise').filter({id})
-    .getField('exercises')
-    .filter(function(exercises) { // eslint-disable-line
-      return exercises('name')
-      .contains(name);
-    })
-    .run();
+  const exerciseName = table.exercises.filter(obj => obj.name === name);
   return exerciseName.length > 0;
 };
 
 export default (app) => {
-  app.post('/api/exercise/:id/add', asyncRequest(async (req, res) => {
-    // get Exercise input
+  app.post('/api/exercise/:name/add', asyncRequest(async (req, res) => {
     const {name, calories, type, time} = req.body;
-    // get row that contain exercises
-    const exerciseTable = await Exercise.get(req.params.id);
-    // check if exercise already taken
-    const exists = await exerciseTaken(req.params.id, name);
+    let table;
+    let tables;
+
+    try {
+      tables = await Exercise;
+      table = tables.filter(table => table.name === req.params.name).reduce((a, b) => a.concat(b));
+
+    } catch (e) {
+      res.status(400).send({error: 'No se ha encontrado la tabla'});
+    }
+
+    const exists = await exerciseTaken(table, name);
     if (exists) {
-      res.status(403).send({error: 'This exercise already exists!'});
+      res.status(403).send({error: 'El ejercicio ya existe'});
       return;
     }
-    // save the data into the array
-    exerciseTable.exercises.push({
+
+    table.exercises.push({
       name,
       calories,
       type,
       time,
     });
 
-    await exerciseTable.save();
-
+    await table.save();
     res.sendStatus(201);
   }));
 };

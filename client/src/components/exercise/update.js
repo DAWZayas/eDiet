@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-let tableId;
+let tableName;
 let oldName;
 let nextName;
 let newCalories;
@@ -9,15 +9,15 @@ let newTime;
 
 export default class UpdateExercise extends Component {
   render () {
-    const handleUpdateExercise = (e) => {
+    const handleUpdate = (e) => {
       e.preventDefault();
-      const id = tableId.value;
+      const tName = tableName.value;
       const name = oldName.value;
       const newName = nextName.value;
       const calories = newCalories.value;
       const type = newType.value;
       const time = newTime.value;
-      this.props.updateExercise({id, name, newName, calories, type, time})
+      this.props.updateExercise({tName, name, newName, calories, type, time});
       return false;
     };
 
@@ -31,9 +31,9 @@ export default class UpdateExercise extends Component {
             <input
               type="text"
               className="form-control"
-              id="tableId"
-              placeholder="ID de la tabla..."
-              ref={(i) => { tableId = i; }}
+              id="tableName"
+              placeholder="Nombre de la tabla..."
+              ref={(i) => { tableName = i; }}
             />
           </div>
           <div className="col-sm-10">
@@ -84,7 +84,7 @@ export default class UpdateExercise extends Component {
         </div>
         <div className="panel-footer">
           <form className="form-horizontal">
-            <button type="submit" className="btn btn-default" onClick={handleUpdateExercise}>
+            <button type="submit" className="btn btn-default" onClick={handleUpdate}>
               Actualizar
             </button>
           </form>

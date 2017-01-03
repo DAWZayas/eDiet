@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 
-let tableId;
+let tableName;
 let exerciseName;
 let exerciseCalories;
 let exerciseType;
@@ -9,14 +9,14 @@ let exerciseTime;
 export default class CreateExercise extends Component {
 
   render(){
-    const handleCreateExercise = (e) => {
+    const handleCreate = (e) => {
       e.preventDefault();
-      const id = tableId.value;
+      const tName = tableName.value;
       const name = exerciseName.value;
       const calories = exerciseCalories.value;
       const type = exerciseType.value;
       const time = exerciseTime.value;
-      this.props.createExercise({id, name, calories, type, time});
+      this.props.createExercise({tName, name, calories, type, time});
       return false;
     }
 
@@ -30,9 +30,9 @@ export default class CreateExercise extends Component {
             <input
               type="text"
               className="form-control"
-              id="tableId"
-              placeholder="Id de la tabla..."
-              ref={(i) => { tableId = i; }}
+              id="tableName"
+              placeholder="Nombre de la tabla..."
+              ref={(i) => { tableName = i; }}
             />
           </div>
           <div className="col-sm-10">
@@ -44,7 +44,6 @@ export default class CreateExercise extends Component {
               ref={(i) => { exerciseName = i; }}
             />
           </div>
-          <br/><br/><br/>
           <div className="col-sm-10">
             <input
               type="text"
@@ -75,7 +74,7 @@ export default class CreateExercise extends Component {
         </div>
         <div className="panel-footer">
           <form className="form-horizontal">
-            <button type="submit" className="btn btn-default" onClick={handleCreateExercise}>
+            <button type="submit" className="btn btn-default" onClick={handleCreate}>
               Crear
             </button>
           </form>

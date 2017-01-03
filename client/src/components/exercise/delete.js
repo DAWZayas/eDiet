@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 
-let tableId;
+let tableName;
 let exerciseName;
 
 export default class DeleteExercise extends Component {
   render () {
-    const handleDeleteExercise = (e) => {
+    const handleDelete= (e) => {
       e.preventDefault();
-      const id = tableId.value;
+      const tName = tableName.value;
       const name = exerciseName.value;
-      this.props.deleteExercise({id, name})
+      this.props.deleteExercise({tName, name})
       return false;
     };
 
@@ -23,9 +23,9 @@ export default class DeleteExercise extends Component {
             <input
               type="text"
               className="form-control"
-              id="tableId"
-              placeholder="ID de la tabla..."
-              ref={(i) => { tableId = i; }}
+              id="tableName"
+              placeholder="Nombre de la tabla..."
+              ref={(i) => { tableName = i; }}
             />
           </div>
           <div className="col-sm-10">
@@ -40,7 +40,7 @@ export default class DeleteExercise extends Component {
         </div>
         <div className="panel-footer">
           <form className="form-horizontal">
-            <button type="submit" className="btn btn-default" onClick={handleDeleteExercise}>
+            <button type="submit" className="btn btn-default" onClick={handleDelete}>
               Borrar
             </button>
           </form>
