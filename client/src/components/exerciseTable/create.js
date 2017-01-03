@@ -11,8 +11,17 @@ export default class CreateExerciseTable extends Component {
       const name = tableName.value;
       const level = tableLevel.value;
       this.props.createExerciseTable({name, level});
+      clearFields();
       return false;
-    }
+    };
+
+    const clearFields = () => {
+      tableName.value = '';
+      tableName.placeholder="Nombre de la tabla...";
+      tableLevel.value = '';
+      tableLevel.placeholder="Nivel de la tabla...";
+      return false;
+    };
 
     return (
       <div className="panel panel-default">
@@ -29,7 +38,6 @@ export default class CreateExerciseTable extends Component {
               ref={(i) => { tableName = i; }}
             />
           </div>
-          <br/><br/><br/>
           <div className="col-sm-10">
             <input
               type="text"

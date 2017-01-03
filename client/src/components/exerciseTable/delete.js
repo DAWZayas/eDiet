@@ -7,7 +7,14 @@ export default class DeleteExerciseTable extends Component {
     const handleDelete = (e) => {
       e.preventDefault();
       const name = tableName.value;
-      this.props.deleteExerciseTable({name})
+      this.props.deleteExerciseTable({name});
+      clearFields();
+      return false;
+    };
+
+    const clearFields = () => {
+      tableName.value = '';
+      tableName.placeholder="Nombre de la tabla...";
       return false;
     };
 
