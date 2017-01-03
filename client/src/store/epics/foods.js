@@ -33,6 +33,7 @@ export const createFood = action$ => action$
     .map(signRequest)
     .switchMap(({headers, payload}) => Observable
       .ajax.post(`http://localhost:8080/api/menu/${payload.nameMenu}/${payload.nameTimeFood}/food/delete`, payload, headers)
+      .delay(2000)
       .map(res => res.response)
       .map(foods => ({
         type: ActionTypes.DELETE_FOOD_SUCCESS,
@@ -52,6 +53,7 @@ export const createFood = action$ => action$
       .map(signRequest)
       .switchMap(({headers, payload}) => Observable
         .ajax.post(`http://localhost:8080/api/menu/${payload.nameMenu}/${payload.nameTimeFood}/food/update`, payload, headers)
+        .delay(2000)
         .map(res => res.response)
         .mergeMap( foods  => Observable.of ({
           type: ActionTypes.UPDATE_FOOD_SUCCESS,
@@ -71,6 +73,7 @@ export const createFood = action$ => action$
         .map(signRequest)
         .switchMap(({headers, payload}) => Observable
           .ajax.get(`http://localhost:8080/api/menu/${payload.nameMenu}/${payload.nameTimeFood}/food`, payload, headers)
+          .delay(2000)
           .map(res => res.response)
           .mergeMap( menu  => Observable.of ({
             type: ActionTypes.GET_FOOD_SUCCESS,

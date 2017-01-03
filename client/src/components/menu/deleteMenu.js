@@ -1,5 +1,6 @@
 import React, {Component}from 'react';
 import {drawMenu} from '../../util';
+import {Spinner} from '../spinner';
 
 export default class DeleteMenu extends Component {
 
@@ -41,7 +42,7 @@ export default class DeleteMenu extends Component {
         </div>
         <div className="panel-body">
         <div className="col-sm-10">
-          {this.props.menuDelete ? <strike> {drawMenu(this.props.menuDelete)} </strike> : null}
+          {this.props.status === 'loading_delete'? <Spinner /> : this.props.menuDelete ? <strike> {drawMenu(this.props.menuDelete)} </strike> : null}
 
         </div>
         </div>

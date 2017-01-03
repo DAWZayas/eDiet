@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {drawPageTimeFood} from '../../util';
+import {Spinner} from '../spinner';
 
 export default class DeleteTimeFood extends Component {
 
   constructor(props){
       super(props);
-      this.state = {timeFoods : null, desplegate:false};
+      this.state = {timeFoods : null, desplegate:true};
   }
 
   render () {
@@ -34,17 +35,17 @@ export default class DeleteTimeFood extends Component {
         <div className="panel panel-default">
           <div className="panel-heading">
             <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-plus" role="button"/>
-            Create Menu
+            Delete Time Food
           </div>
         </div> :
       <div className="panel panel-default">
         <div className="panel-heading">
           <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-minus" role="button"/>
-          Delete TimeFood
+          Delete Time Food
         </div>
         <div className="panel-body">
         <div className="col-sm-10">
-          {this.state.timeFoods ?<strike> {drawPageTimeFood(this.state.timeFoods)} </strike>:null}
+          { this.props.status === 'loading_delete' ? <Spinner /> : this.state.timeFoods ?<strike> {drawPageTimeFood(this.state.timeFoods)} </strike>:null}
         </div>
         </div>
         <div className="panel-footer">

@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import {drawAllFoods} from '../../util';
+import {Spinner} from '../spinner';
 
 export default class CreateFood extends Component {
   constructor(props){
       super(props);
-      this.state = {desplegate: false};
+      this.state = {desplegate: true};
   }
 
   render(){
@@ -45,7 +46,7 @@ export default class CreateFood extends Component {
         </div>
         <div className="panel-body">
         <div className="col-sm-10">
-          {this.props.createFood ? drawAllFoods([this.props.createFood]) : null }
+          {this.props.status === 'loading_get' ? <Spinner /> : this.props.createFood ? drawAllFoods([this.props.createFood]) : null }
         </div>
         </div>
         <div className="panel-footer">

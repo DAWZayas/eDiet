@@ -1,11 +1,12 @@
 import React, {Component}from 'react';
 import {drawMenu} from '../../util';
+import {Spinner} from '../spinner';
 
 export default class GetMenu extends Component {
 
   constructor(props){
       super(props);
-      this.state = {menu: null, desplegate: false };
+      this.state = {menu: null, desplegate: true };
   }
 
 render(){
@@ -44,7 +45,8 @@ render(){
           Get Menu
         </div>
         <div className="panel-body">
-          {this.state.menu ? drawMenu(this.state.menu) : drawMenu(this.props.menus)}
+          {/loading/.test(this.props.status) ? <Spinner /> :
+            this.state.menu ? drawMenu(this.state.menu) : drawMenu(this.props.menus)}
         </div>
         <div className="panel-footer">
           <form className="form-horizontal">

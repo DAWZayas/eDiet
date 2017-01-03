@@ -1,11 +1,12 @@
 import React, {Component}from 'react';
 import {drawMenu} from '../../util';
+import {Spinner} from '../spinner';
 
 export default class UpdateMenu extends Component {
 
   constructor(props){
       super(props);
-      this.state = {menu: null, desplegate: false};
+      this.state = {menu: null, desplegate: true};
   }
 
   render () {
@@ -33,7 +34,7 @@ export default class UpdateMenu extends Component {
       <div className="panel panel-default">
         <div className="panel-heading">
           <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-plus" role="button"/>
-          Create Menu
+          Update Menu
         </div>
       </div> :
       <div className="panel panel-default">
@@ -42,8 +43,8 @@ export default class UpdateMenu extends Component {
         Update Menu
         </div>
         <div className="panel-body">
-          {this.state.menu ? <strike>{drawMenu(this.state.menu)}</strike> : null}
-          {this.props.menuUpdate ? drawMenu(this.props.menuUpdate) : null}
+          {this.props.status==='loading_update' ? <Spinner /> : this.state.menu ? <strike>{drawMenu(this.state.menu)}</strike> : null}
+          {this.props.status==='loading_update' ? null : this.props.menuUpdate ? drawMenu(this.props.menuUpdate) : null}
         </div>
         <div className="panel-footer">
           <form className="form-horizontal">

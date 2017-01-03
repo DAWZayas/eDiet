@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {drawPageFood, drawPageTimeFood} from '../../util';
+import {Spinner} from '../spinner';
 
 export default class DeleteFood extends Component {
 
   constructor(props){
       super(props);
-      this.state = {timeFoods : null, timeFood:null, desplegate: false};
+      this.state = {timeFoods : null, timeFood:null, desplegate: true};
   }
 
   render () {
@@ -46,8 +47,8 @@ export default class DeleteFood extends Component {
         </div>
         <div className="panel-body">
         <div className="col-sm-10">
-          {this.state.timeFoods ? drawPageTimeFood([this.state.timeFood]) :null}
-          {this.state.timeFoods ? <strike> {drawPageFood(this.state.timeFoods)} </strike>:null}
+          {this.props.status === 'loading_delete' ? <Spinner /> :this.state.timeFoods ? drawPageTimeFood([this.state.timeFood]) :null}
+          {this.props.status === 'loading_delete' ? null :this.state.timeFoods ? <strike> {drawPageFood(this.state.timeFoods)} </strike>:null}
         </div>
         </div>
         <div className="panel-footer">

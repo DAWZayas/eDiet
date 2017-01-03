@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {drawPageTimeFood} from '../../util';
+import {Spinner} from '../spinner';
 
 let createTimeFood;
 let timeFoodId;
@@ -7,7 +8,7 @@ let timeFoodId;
 export default class CreateTimeFood extends Component {
   constructor(props){
       super(props);
-      this.state = {desplegate: false};
+      this.state = {desplegate: true};
   }
 
   render(){
@@ -30,7 +31,7 @@ export default class CreateTimeFood extends Component {
       <div className="panel panel-default">
         <div className="panel-heading">
           <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-plus" role="button"/>
-          Create Menu
+          Create Time Food
         </div>
       </div> :
       <div className="panel panel-default">
@@ -40,7 +41,8 @@ export default class CreateTimeFood extends Component {
         </div>
         <div className="panel-body">
         <div className="col-sm-10">
-          { this.props.createTimeFood ? drawPageTimeFood(this.props.createTimeFood) : null}
+
+          { this.props.status === 'loading_getTimeFood' ? <Spinner /> : this.props.createTimeFood ? drawPageTimeFood(this.props.createTimeFood) : null}
           <br/>
 
         </div>

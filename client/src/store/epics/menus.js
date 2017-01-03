@@ -51,6 +51,7 @@ export const createMenu = action$ => action$
       .map(signRequest)
       .switchMap(({headers, payload}) => Observable
         .ajax.post(`http://localhost:8080/api/menu/update/${payload.oldname}`,payload, headers)
+        .delay(2000)
         .map(res => res.response)
         .mergeMap( menu  => Observable.of ({
           type: ActionTypes.UPDATE_MENU_SUCCESS,
@@ -72,6 +73,7 @@ export const createMenu = action$ => action$
       .map(signRequest)
       .switchMap(({headers, payload}) => Observable
         .ajax.post(`http://localhost:8080/api/menu/delete/${payload.name}`, payload, headers)
+        .delay(2000)
         .map(res => res.response)
         .mergeMap( menu  => Observable.of ({
           type: ActionTypes.DELETE_MENU_SUCCESS,
@@ -93,6 +95,7 @@ export const createMenu = action$ => action$
         .map(signRequest)
         .switchMap(({headers, payload}) => Observable
           .ajax.get(`http://localhost:8080/api/menu/${payload.name}`,payload, headers)
+          .delay(2000)
           .map(res => res.response)
           .map(menu => ({
             type: ActionTypes.GET_MENU_NAME_SUCCESS,

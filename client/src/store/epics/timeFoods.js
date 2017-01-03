@@ -31,6 +31,7 @@ export const createTimeFood = action$ => action$
     .map(signRequest)
     .switchMap(({headers, payload}) => Observable
       .ajax.post(`http://localhost:8080/api/menu/${payload.name}/timeFood/delete`, payload, headers)
+      .delay(2000)
       .map(res => res.response)
       .map(menu => ({
         type: ActionTypes.DELETE_TIMEFOOD_SUCCESS,
@@ -50,6 +51,7 @@ export const createTimeFood = action$ => action$
       .map(signRequest)
       .switchMap(({headers, payload}) => Observable
         .ajax.post(`http://localhost:8080/api/menu/${payload.name}/timeFood/update`, payload, headers)
+        .delay(2000)
         .map(res => res.response)
         .mergeMap( menu  => Observable.of ({
           type: ActionTypes.UPDATE_TIMEFOOD_SUCCESS,
@@ -69,6 +71,7 @@ export const createTimeFood = action$ => action$
         .map(signRequest)
         .switchMap(({headers, payload}) => Observable
           .ajax.get(`http://localhost:8080/api/menu/${payload.name}/timeFood`, payload, headers)
+          .delay(2000)
           .map(res => res.response)
           .mergeMap( menu  => Observable.of ({
             type: ActionTypes.GET_TIMEFOOD_SUCCESS,

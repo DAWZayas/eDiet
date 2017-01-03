@@ -1,11 +1,12 @@
 import React, {Component}from 'react';
 import {drawPageFood, drawPageTimeFood, drawAllFoods} from '../../util';
+import {Spinner} from '../spinner';
 
 export default class UpdateFood extends Component {
 
   constructor(props){
       super(props);
-      this.state = { timeFoods: false, timeFood: false, desplegate: false};
+      this.state = { timeFoods: false, timeFood: false, desplegate: true};
   }
 
   render () {
@@ -41,18 +42,18 @@ export default class UpdateFood extends Component {
       <div className="panel panel-default">
         <div className="panel-heading">
           <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-plus" role="button"/>
-          Create Menu
+          Update Food
         </div>
       </div> :
       <div className="panel panel-default">
         <div className="panel-heading">
           <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-minus" role="button"/>
-          Update Foods
+          Update Food
         </div>
         <div className="panel-body">
         <div className="col-sm-10">
-          {this.props.updateFood ?  <div> {drawPageTimeFood([this.state.timeFood])} <strike> {drawPageFood(this.state.timeFoods)} </strike> </div>:null }
-          {this.props.updateFood ?  <div> {drawPageTimeFood([this.state.timeFood])} {drawPageFood(this.props.updateFood)} </div>: null}
+          {this.props.status === 'loading_update' ? <Spinner /> :this.props.updateFood ?  <div> {drawPageTimeFood([this.state.timeFood])} <strike> {drawPageFood(this.state.timeFoods)} </strike> </div>:null }
+          {this.props.status === 'loading_update' ? null :this.props.updateFood ?  <div> {drawPageTimeFood([this.state.timeFood])} {drawPageFood(this.props.updateFood)} </div>: null}
         </div>
         </div>
         <div className="panel-footer">

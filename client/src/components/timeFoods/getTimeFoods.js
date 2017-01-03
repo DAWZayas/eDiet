@@ -1,11 +1,12 @@
 import React, {Component}from 'react';
 import {drawPageTimeFood} from '../../util';
+import {Spinner} from '../spinner';
 
 export default class GetTimeFoods extends Component {
 
   constructor(props){
       super(props);
-      this.state = {check : false, timeFoods: false, desplegate: false};
+      this.state = {check : false, timeFoods: false, desplegate: true};
   }
 
 render(){
@@ -35,7 +36,7 @@ render(){
       <div className="panel panel-default">
         <div className="panel-heading">
           <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-plus" role="button"/>
-          Create Menu
+          Get Time Foods
         </div>
       </div> :
     <div className="panel panel-default">
@@ -44,7 +45,7 @@ render(){
         Get Time Foods
       </div>
       <div className="panel-body">
-        { this.state.check ? drawPageTimeFood(this.state.timeFoods) :drawPageTimeFood(this.props.menus)}
+        { /loading/.test(this.props.status) ? <Spinner /> : this.state.check ? drawPageTimeFood(this.state.timeFoods) :drawPageTimeFood(this.props.menus)}
       </div>
       <div className="panel-footer">
         <form className="form-horizontal">
