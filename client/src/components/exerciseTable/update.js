@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 
-let tableId;
-let newName;
+let tableName;
+let nName;
 let newLevel;
 
 export default class UpdateExerciseTable extends Component {
   render () {
-    const handleUpdateExerciseTable = (e) => {
+    const handleUpdate = (e) => {
       e.preventDefault();
-      const id = tableId.value;
-      const name = newName.value;
+      const name = tableName.value;
+      const newName = nName.value;
       const level = newLevel.value;
-      this.props.updateExerciseTable({id, name, level})
+      this.props.updateExerciseTable({name, newName, level})
       return false;
     };
 
@@ -25,9 +25,9 @@ export default class UpdateExerciseTable extends Component {
             <input
               type="text"
               className="form-control"
-              id="tableId"
-              placeholder="ID de la tabla..."
-              ref={(i) => { tableId = i; }}
+              id="tableName"
+              placeholder="Nombre de la tabla..."
+              ref={(i) => { tableName = i; }}
             />
           </div>
           <br/><br/><br/>
@@ -35,9 +35,9 @@ export default class UpdateExerciseTable extends Component {
             <input
               type="text"
               className="form-control"
-              id="newName"
+              id="nName"
               placeholder="Nuevo nombre..."
-              ref={(i) => { newName = i; }}
+              ref={(i) => { nName = i; }}
             />
           </div>
           <br/><br/><br/>
@@ -53,7 +53,7 @@ export default class UpdateExerciseTable extends Component {
         </div>
         <div className="panel-footer">
           <form className="form-horizontal">
-            <button type="submit" className="btn btn-default" onClick={handleUpdateExerciseTable}>
+            <button type="submit" className="btn btn-default" onClick={handleUpdate}>
               Actualizar tabla
             </button>
           </form>

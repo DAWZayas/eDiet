@@ -6,7 +6,7 @@ let tableLevel;
 export default class CreateExerciseTable extends Component {
 
   render(){
-    const handleCreateExerciseTable = (e) => {
+    const handleCreate = (e) => {
       e.preventDefault();
       const name = tableName.value;
       const level = tableLevel.value;
@@ -42,7 +42,7 @@ export default class CreateExerciseTable extends Component {
         </div>
         <div className="panel-footer">
           <form className="form-horizontal">
-            <button type="submit" className="btn btn-default" onClick={handleCreateExerciseTable}>
+            <button type="submit" className="btn btn-default" onClick={handleCreate}>
               Nueva tabla
             </button>
           </form>

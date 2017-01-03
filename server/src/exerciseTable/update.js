@@ -6,23 +6,20 @@ import {Exercise} from '../db';
 import {asyncRequest} from '../util';
 
 export default (app) => {
-  app.post('/api/exercise/update/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {  // eslint-disable-line max-len
-      const {id} = req.params;
-      const {name, level} = req.body;
+  app.post('/api/exercise/update/:name', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {  // eslint-disable-line max-len
+    const {newName, level} = req.body;
+    let table;
+    let tables;
 
-      const table = await Exercise.get(id);
-
-      if (!table) {
-        res.status(400).send({error: 'Tabla no encontrada'});
-        return;
-      }
-
+    try {
+      tables = await Exercise;
+      table = tables.filter(table => table.name === req.params.name).reduce((a,b) => a.concat(b));
       if (req.user.id !== table.owner) {
         res.status(403).send({error: 'No tienes permisos para modificar la tabla.'});
         return;
       }
 
-      if (!name && !level) {
+      if (!newName && !level) {
         res.send(table);
         return;
       }
@@ -31,11 +28,16 @@ export default (app) => {
         table.level = level;
       }
 
-      if (name) {
-        table.name = name;
+      if (newName) {
+        table.name = newName;
       }
 
       await table.save();
       res.send(table);
+
+    } catch (e) {
+      res.status(400).send({error: 'Tabla no encontrada'});
+
+    }
   }));
 };

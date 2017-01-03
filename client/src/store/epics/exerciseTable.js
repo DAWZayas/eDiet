@@ -32,7 +32,7 @@ export const deleteExerciseTable = action$ => action$
   .ofType(ActionTypes.DELETE_EXERCISE_TABLE)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.post(`http://localhost:8080/api/exercise/delete/${payload.id}`, payload, headers)
+    .ajax.post(`http://localhost:8080/api/exercise/delete/${payload.name}`, payload, headers)
     .map(res => res.response)
     .mergeMap(exerciseTable => Observable.of ({
       type: ActionTypes.DELETE_EXERCISE_TABLE_SUCCESS,
@@ -55,7 +55,7 @@ export const updateExerciseTable = action$ => action$
   .ofType(ActionTypes.UPDATE_EXERCISE_TABLE)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-  .ajax.post(`http://localhost:8080/api/exercise/update/${payload.id}`,payload, headers)
+  .ajax.post(`http://localhost:8080/api/exercise/update/${payload.name}`,payload, headers)
   .map(res => res.response)
   .mergeMap( exerciseTable  => Observable.of (
     {
