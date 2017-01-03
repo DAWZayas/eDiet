@@ -5,7 +5,7 @@ export default class DeleteFood extends Component {
 
   constructor(props){
       super(props);
-      this.state = {timeFoods : null, timeFood:null};
+      this.state = {timeFoods : null, timeFood:null, desplegate: false};
   }
 
   render () {
@@ -25,49 +25,66 @@ export default class DeleteFood extends Component {
       return false;
     };
 
+    const handleDesplegate = (e) => {
+      e.preventDefault();
+      this.setState({desplegate: !this.state.desplegate});
+    };
+
     return (
-    <div className="panel panel-default">
-      <div className="panel-heading">Delete Food</div>
-      <div className="panel-body">
-      <div className="col-sm-10">
-        {this.state.timeFoods ? drawPageTimeFood([this.state.timeFood]) :null}
-        {this.state.timeFoods ? <strike> {drawPageFood(this.state.timeFoods)} </strike>:null}
-      </div>
-      </div>
-      <div className="panel-footer">
-        <form className="form-horizontal">
-          <input
-            type="text"
-            className="form-control"
-            id="menuId"
-            placeholder="Enter your menu id..."
-            ref={(i) => { menuId = i; }}
-          />
-          <br/>
-          <input
-            type="text"
-            className="form-control"
-            id="timeFoodName"
-            placeholder="Enter your timeFood name id..."
-            ref={(i) => { timeFoodName = i; }}
-          />
-          <br/>
-          <div className="input-group">
-            <input className="input-group-addon"
+    <span>
+    { this.state.desplegate ?
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-plus" role="button"/>
+          Delete Food
+        </div>
+      </div> :
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-minus" role="button"/>
+          Delete Food
+        </div>
+        <div className="panel-body">
+        <div className="col-sm-10">
+          {this.state.timeFoods ? drawPageTimeFood([this.state.timeFood]) :null}
+          {this.state.timeFoods ? <strike> {drawPageFood(this.state.timeFoods)} </strike>:null}
+        </div>
+        </div>
+        <div className="panel-footer">
+          <form className="form-horizontal">
+            <input
               type="text"
               className="form-control"
-              id="foodName"
-              placeholder="Enter your Food name..."
-              ref={(i) => { foodName = i; }}
+              id="menuId"
+              placeholder="Enter your menu id..."
+              ref={(i) => { menuId = i; }}
             />
-            <span className="input-group-btn" >
-              <button type="submit" className="btn btn-default" onClick={handleDeleteTimeFood}>Delete time food</button>
-            </span>
+            <br/>
+            <input
+              type="text"
+              className="form-control"
+              id="timeFoodName"
+              placeholder="Enter your timeFood name id..."
+              ref={(i) => { timeFoodName = i; }}
+            />
+            <br/>
+            <div className="input-group">
+              <input className="input-group-addon"
+                type="text"
+                className="form-control"
+                id="foodName"
+                placeholder="Enter your Food name..."
+                ref={(i) => { foodName = i; }}
+              />
+              <span className="input-group-btn" >
+                <button type="submit" className="btn btn-default" onClick={handleDeleteTimeFood}>Delete time food</button>
+              </span>
 
-          </div>
-        </form>
-      </div>
-    </div>
+            </div>
+          </form>
+        </div>
+      </div>}
+    </span>
     );
   }
 }

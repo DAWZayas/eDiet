@@ -1,5 +1,6 @@
 // our packages
 import * as ActionTypes from '../actionTypes';
+import {push} from 'react-router-redux';
 
 const getUser = () => {
   const storedUser = localStorage.getItem('user.data');
@@ -21,10 +22,9 @@ const initialState = {
 export const auth = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.DO_LOGOUT:
-      localStorage.removeItem('user.token');
-      localStorage.removeItem('user.data');
       const init = {token: null, user: null},
       initialState = init;
+      push('/login');
       return initialState;
     case ActionTypes.REGISTER_SUCCESS:
       return {

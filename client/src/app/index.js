@@ -20,15 +20,15 @@ const mapDispatchToProps = (dispatch) => ({
 class App extends React.Component {
 
   render(){
-    const {children, token, doLogOut, user} = this.props;
+    const {children, token, doLogOut, user, navToLogin} = this.props;
 
     return(
     <div className="bg-main">
-      <div className="container-fluid">
+
         <NavBar {...this.props} />
-      </div>
         {children}
         <Aside />
+
     </div>
     );
   }

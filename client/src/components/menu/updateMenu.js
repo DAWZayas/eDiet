@@ -5,10 +5,13 @@ export default class UpdateMenu extends Component {
 
   constructor(props){
       super(props);
-      this.state = {menu: null};
+      this.state = {menu: null, desplegate: false};
   }
 
   render () {
+    let oldName;
+    let newName;
+
     const handleUpdateMenu = (e) => {
       e.preventDefault();
       const oldname = oldName.value;
@@ -19,42 +22,55 @@ export default class UpdateMenu extends Component {
       return false;
     };
 
-    let oldName;
-    let newName;
+    const handleDesplegate = (e) => {
+      e.preventDefault();
+      this.setState({desplegate: !this.state.desplegate});
+    };
+
     return (
-    <div className="panel panel-default">
-      <div className="panel-heading">Update Menu
-      </div>
-      <div className="panel-body">
-        {this.state.menu ? <strike>{drawMenu(this.state.menu)}</strike> : null}
-        {this.props.menuUpdate ? drawMenu(this.props.menuUpdate) : null}
-      </div>
-      <div className="panel-footer">
-        <form className="form-horizontal">
-          <input className="input-group-addon"
-            type="text"
-            className="form-control"
-            id="oldName"
-            placeholder="Enter your old menu name..."
-            ref={(i) => { oldName = i; }}
-          />
-          <br/>
-          <div className="input-group">
+    <span>
+    { this.state.desplegate ?
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-plus" role="button"/>
+          Create Menu
+        </div>
+      </div> :
+      <div className="panel panel-default">
+        <div className="panel-heading">
+        <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-minus" role="button"/>
+        Update Menu
+        </div>
+        <div className="panel-body">
+          {this.state.menu ? <strike>{drawMenu(this.state.menu)}</strike> : null}
+          {this.props.menuUpdate ? drawMenu(this.props.menuUpdate) : null}
+        </div>
+        <div className="panel-footer">
+          <form className="form-horizontal">
             <input className="input-group-addon"
               type="text"
               className="form-control"
-              id="newName"
-              placeholder="Enter your new menu Name..."
-              ref={(i) => { newName = i; }}
+              id="oldName"
+              placeholder="Enter your old menu name..."
+              ref={(i) => { oldName = i; }}
             />
-            <span className="input-group-btn">
-              <button type="submit" className="btn btn-default " onClick={handleUpdateMenu}>Update menu</button>
-            </span>
-          </div>
-        </form>
-      </div>
-
-    </div>
+            <br/>
+            <div className="input-group">
+              <input className="input-group-addon"
+                type="text"
+                className="form-control"
+                id="newName"
+                placeholder="Enter your new menu Name..."
+                ref={(i) => { newName = i; }}
+              />
+              <span className="input-group-btn">
+                <button type="submit" className="btn btn-default " onClick={handleUpdateMenu}>Update menu</button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>}
+    </span>
     );
   }
 

@@ -4,7 +4,7 @@ import {drawAllFoods} from '../../util';
 export default class CreateFood extends Component {
   constructor(props){
       super(props);
-      this.state = {time: false};
+      this.state = {desplegate: false};
   }
 
   render(){
@@ -24,55 +24,72 @@ export default class CreateFood extends Component {
       return false;
     };
 
+    const handleDesplegate = (e) => {
+      e.preventDefault();
+      this.setState({desplegate: !this.state.desplegate});
+    };
+
     return (
-    <div className="panel panel-default">
-      <div className="panel-heading">Create Food</div>
-      <div className="panel-body">
-      <div className="col-sm-10">
-        {this.props.createFood ? drawAllFoods([this.props.createFood]) : null }
-      </div>
-      </div>
-      <div className="panel-footer">
-        <form className="form-horizontal">
-          <input className="input-group-addon"
-            type="text"
-            className="form-control"
-            id="menu"
-            placeholder="Enter your Menu"
-            ref={(i) => { menu = i; }}
-          />
-        <br/>
-          <input className="input-group-addon"
-            type="text"
-            className="form-control"
-            id="timeFoods"
-            placeholder="Enter your time food"
-            ref={(i) => { timeFoods = i; }}
-          />
-          <br/>
-          <input className="input-group-addon"
-            type="text"
-            className="form-control"
-            id="foods"
-            placeholder="Enter your Food "
-            ref={(i) => { foods = i; }}
-          />
-          <br/>
-          <div className="input-group">
+    <span>
+    { this.state.desplegate ?
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-plus" role="button"/>
+          Create Food
+        </div>
+      </div> :
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-minus" role="button"/>
+          Create Food
+        </div>
+        <div className="panel-body">
+        <div className="col-sm-10">
+          {this.props.createFood ? drawAllFoods([this.props.createFood]) : null }
+        </div>
+        </div>
+        <div className="panel-footer">
+          <form className="form-horizontal">
             <input className="input-group-addon"
               type="text"
               className="form-control"
-              id="calorie"
-              placeholder="Enter your calories"
-              ref={(i) => { calorie = i; }}
+              id="menu"
+              placeholder="Enter your Menu"
+              ref={(i) => { menu = i; }}
             />
-            <span className="input-group-btn" >
-              <button type="submit" className="btn btn-default" onClick={handleCreateFoods}>New Food</button>
-            </span>
-          </div>
-        </form>
-      </div>
-    </div>
+          <br/>
+            <input className="input-group-addon"
+              type="text"
+              className="form-control"
+              id="timeFoods"
+              placeholder="Enter your time food"
+              ref={(i) => { timeFoods = i; }}
+            />
+            <br/>
+            <input className="input-group-addon"
+              type="text"
+              className="form-control"
+              id="foods"
+              placeholder="Enter your Food "
+              ref={(i) => { foods = i; }}
+            />
+            <br/>
+            <div className="input-group">
+              <input className="input-group-addon"
+                type="text"
+                className="form-control"
+                id="calorie"
+                placeholder="Enter your calories"
+                ref={(i) => { calorie = i; }}
+              />
+              <span className="input-group-btn" >
+                <button type="submit" className="btn btn-default" onClick={handleCreateFoods}>New Food</button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>}
+    </span>
     );
   }
 

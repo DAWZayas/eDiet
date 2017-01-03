@@ -5,7 +5,7 @@ export default class GetTimeFoods extends Component {
 
   constructor(props){
       super(props);
-      this.state = {check : false, timeFoods: false};
+      this.state = {check : false, timeFoods: false, desplegate: false};
   }
 
 render(){
@@ -24,9 +24,25 @@ render(){
       this.setState({check: false});
     };
 
+    const handleDesplegate = (e) => {
+      e.preventDefault();
+      this.setState({desplegate: !this.state.desplegate});
+    };
+
   return(
+    <span>
+    { this.state.desplegate ?
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-plus" role="button"/>
+          Create Menu
+        </div>
+      </div> :
     <div className="panel panel-default">
-      <div className="panel-heading">Get Time Foods</div>
+      <div className="panel-heading">
+        <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-minus" role="button"/>
+        Get Time Foods
+      </div>
       <div className="panel-body">
         { this.state.check ? drawPageTimeFood(this.state.timeFoods) :drawPageTimeFood(this.props.menus)}
       </div>
@@ -47,7 +63,8 @@ render(){
           </div>
         </form>
       </div>
-      </div>
+      </div>}
+    </span>
     );
   }
 }

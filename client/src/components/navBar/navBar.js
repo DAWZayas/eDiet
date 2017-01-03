@@ -8,7 +8,7 @@ import Administration from './administration';
 import ExerciseAdministration from './exerciseAdministration';
 
 const NavBar = ({user, doLogOut}) => (
-    <nav className="navbar navbar-default ">
+    <nav className="navbar  navbar-default ">
       <div className="container-fluid">
         <ButtonsCollapsed user={user}/>
         <div className="collapse navbar-collapse" id="collapse-1">
