@@ -9,6 +9,7 @@ import ExerciseTable from '../../components/exerciseTable';
 
 const mapStateToProps = (state) => ({
    exerciseTable: state.exerciseTable.exerciseTable,
+   status: state.exerciseTable.status,
  });
 
  const mapDispatchToProps = (dispatch) => ({
@@ -18,7 +19,7 @@ const mapStateToProps = (state) => ({
    updateExerciseTable: payload => dispatch(updateExerciseTableAction(payload)),
  });
 
-const ExerciseTableActions = ({exerciseTable, createExerciseTable, deleteExerciseTable, updateExerciseTable, getExerciseTable}) => {
+const ExerciseTableActions = ({exerciseTable, createExerciseTable, deleteExerciseTable, updateExerciseTable, getExerciseTable, status}) => {
   getExerciseTable();
   return (
     <div className="container">
@@ -28,6 +29,7 @@ const ExerciseTableActions = ({exerciseTable, createExerciseTable, deleteExercis
         deleteExerciseTable={deleteExerciseTable}
         updateExerciseTable={updateExerciseTable}
         getExerciseTable={getExerciseTable}
+        status={status}
       />
     </div>
   )

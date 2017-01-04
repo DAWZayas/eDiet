@@ -10,9 +10,7 @@ export default (app) => {
 
     try {
       tables = await Exercise;
-      console.log(tables);
       table = tables.filter(table => table.name === req.params.name).reduce((a, b) => a.concat(b));
-      console.log(table);
 
       if (req.user.id !== table.owner) {
         res.status(403).send({error: 'No tienes los permisos necesarios para borrar la tabla'});

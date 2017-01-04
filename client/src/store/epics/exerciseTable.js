@@ -81,6 +81,7 @@ export const getExerciseTable = action$ => action$
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
     .ajax.get('http://localhost:8080/api/exercise', payload, headers)
+    .delay(2000)
     .map(res => res.response)
     .mergeMap(exerciseTable  => Observable.of ({
       type: ActionTypes.GET_EXERCISE_TABLE_SUCCESS,
