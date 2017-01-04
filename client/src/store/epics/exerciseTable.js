@@ -75,3 +75,22 @@ export const updateExerciseTable = action$ => action$
       text: `error: ${ajaxErrorToMessage(error)}`, alertType: 'danger',
     })
   )));
+
+export const getExerciseTable = action$ => action$
+  .ofType(ActionTypes.GET_EXERCISE_TABLE)
+  .map(signRequest)
+  .switchMap(({headers, payload}) => Observable
+    .ajax.get('http://localhost:8080/api/exercise', payload, headers)
+    .map(res => res.response)
+    .mergeMap(exerciseTable  => Observable.of ({
+      type: ActionTypes.GET_EXERCISE_TABLE_SUCCESS,
+      payload: exerciseTable,
+    }))
+    .catch(error => Observable.of({
+      type: ActionTypes.GET_EXERCISE_TABLE_ERROR,
+      payload: error,
+    },
+      Actions.addNotificationAction({
+        text: `error: ${ajaxErrorToMessage(error)}`, alertType: 'danger',
+      })
+    )));
