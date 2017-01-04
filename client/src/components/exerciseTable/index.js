@@ -12,7 +12,7 @@ export default class ExerciseTable extends Component {
         <Create createExerciseTable={this.props.createExerciseTable} />
         <Delete deleteExerciseTable={this.props.deleteExerciseTable} />
         <Update updateExerciseTable={this.props.updateExerciseTable} />
-        <Get exerciseTable={exerciseTable}/>
+        <Get exerciseTable={this.props.exerciseTable}/>
       </div>
     );
   }

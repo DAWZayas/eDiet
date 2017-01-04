@@ -7,6 +7,7 @@ import _ from 'lodash';
 import NavBar from '../components/navBar';
 import Aside from '../components/aside';
 import {logoutAction} from '../store/actions';
+import Footer from '../components/footer';
 
 const mapStateToProps = (state) => ({
    user: state.auth.user,
@@ -28,6 +29,7 @@ class App extends React.Component {
         <NavBar {...this.props} />
         {children}
         <Aside />
+        <Footer />
 
     </div>
     );
