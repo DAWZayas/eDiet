@@ -2,29 +2,29 @@ import React, {Component}from 'react';
 
 export const drawMenu = (menus) => menus.map( (obj,index) =>
   <div key={index}>
-    <p> name:   {obj.name}    </p>{drawTimeFoods(obj)}
+    <p> Menu:   {obj.name}   {drawTimeFoods(obj)} </p>
   </div> );
 
 export const drawTimeFoods = (obj) => obj.timeFoods.map((object, index) =>
-  <div key={index}>
-    <p> timeFood:   {object.timeFood} </p> {drawFood(object)}
-  </div>);
+
+    <span key={index}> <br/> &emsp; Time Food:   {object.timeFood}  {drawFood(object)} </span>
+  );
 
 export const drawFood = (obj ) => obj.foods.map( (object, index) =>
-  <p key={index}> food:   {object.nameFood}  calories:   {object.calories} </p> );
+  <span key={index}>  <br/> &emsp; &emsp; Food:   {object.nameFood}  Calories:   {object.calories} </span> );
 
   export const drawPageTimeFood = (menus) => menus.map( (obj,index) =>
     <div key={index}>
-      <p> {obj.name}  {obj.timeFood} </p>
+      <p>Menu:  {obj.name} <br/> &emsp; Time Food: {obj.timeFood} </p>
     </div> );
 
   export const drawPageFood = (Foods) => Foods.map( (obj, index ) =>
   <div key={index}>
-    <p> {obj.nameFood} {obj.calories}   </p>
+    <p> Food: {obj.nameFood}  Calories: {obj.calories}   </p>
   </div> );
 
   export const drawAllFoods = (Foods) => Foods.map( (obj, index) =>
   <div key={index}>
-    <p> {obj.name} {obj.timeFood}   </p> {drawFood(obj)}
+    <p> Menu: {obj.name} <br/> &emsp; Time Food: {obj.timeFood} {drawFood(obj)}  </p>
   </div>
   )

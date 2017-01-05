@@ -4,6 +4,6 @@ import NavBar from './navBar';
 
 export default (props) => (
   <header>
-    <NavBar {...props}/>
+    <NavBar {...props}  />
   </header>
 );

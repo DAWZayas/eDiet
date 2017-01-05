@@ -8,7 +8,8 @@ export default class dropdownLoginXs extends Component {
     const handleLogin = (e) => {
       e.preventDefault();
       this.props.doLogOut();
-    }
+      this.props.navToLogin();
+    };
 
     const login = [
       {
@@ -30,7 +31,7 @@ export default class dropdownLoginXs extends Component {
       },
     ];
 
-      const log = logout.map((obj, index) => <li key={index}><a href="#" className={obj.class} onClick={handleLogin} > {obj.body} </a></li>);
+      const log = logout.map((obj, index) => <li key={index}><a className={obj.class} onClick={handleLogin} > {obj.body} </a></li>);
 
       const li = login.map((obj, index) => <li key={index}><Link to={obj.url} className={obj.class} > {obj.body} </Link></li>);
 

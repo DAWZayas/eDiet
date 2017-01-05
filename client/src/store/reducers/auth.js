@@ -22,6 +22,8 @@ const initialState = {
 export const auth = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.DO_LOGOUT:
+      localStorage.removeItem('user.token');
+      localStorage.removeItem('user.data');
       const init = {token: null, user: null},
       initialState = init;
       push('/login');

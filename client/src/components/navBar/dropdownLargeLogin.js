@@ -8,7 +8,8 @@ export default class dropdownLargeLogin extends Component {
     const handleLogin = (e) => {
       e.preventDefault();
       this.props.doLogOut();
-    }
+      this.props.navToLogin();
+    };
 
     const loginUser = [
       {

@@ -7,18 +7,19 @@ import DropdownLargeLogin from './dropdownLargeLogin';
 import Administration from './administration';
 import ExerciseAdministration from './exerciseAdministration';
 
-const NavBar = ({user, doLogOut}) => (
-    <nav className="navbar  navbar-default ">
+
+const NavBar = ({user, doLogOut, navToLogin}) => (
+    <nav className="navbar  navbar-default " >
       <div className="container-fluid">
         <ButtonsCollapsed user={user}/>
         <div className="collapse navbar-collapse" id="collapse-1">
           <DropdownHamburger  />
-          <DropdownLargeLogin user={user} doLogOut={doLogOut}/>
+          <DropdownLargeLogin user={user} doLogOut={doLogOut} navToLogin={navToLogin}/>
           <Administration user={user}/>
           <ExerciseAdministration user={user} />
         </div>
         <div className="collapse navbar-collapse navbar-right" id="collapse-2">
-          <DropdownLoginXs user={user} doLogOut={doLogOut}/>
+          <DropdownLoginXs user={user} doLogOut={doLogOut} navToLogin={navToLogin}/>
         </div>
       </div>
     </nav>
