@@ -60,7 +60,7 @@ export default class DeleteExerciseTable extends Component {
           <div className="panel panel-default">
             <div className="panel-heading">
               <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-plus" role="button"/>
-              Crear tabla de ejercicios
+              Borrar tabla de ejercicios
             </div>
           </div>
         }

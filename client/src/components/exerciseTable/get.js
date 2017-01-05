@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Spinner} from '../spinner';
-import {drawTable} from '../../util';
+import {drawTable, drawTableInfo} from '../../util';
 
 let tName;
 let filter;
@@ -15,8 +15,9 @@ export default class Get extends Component {
     const handleGet = e => {
       e.preventDefault();
       const name = tName.value;
-      const filter = this.props.exerciseTable.filter(obj => obj.name === name);
+      filter = this.props.exerciseTable.filter(obj => obj.name === name);
       this.setState({exerciseTable: filter});
+      console.log(filter);
     };
 
     const handleGetAll = e => {
@@ -24,7 +25,7 @@ export default class Get extends Component {
       this.setState({exerciseTable: null});
     };
 
-    const handleDesplegate = (e) => {
+    const handleDesplegate = e => {
       e.preventDefault();
       this.setState({desplegate: !this.state.desplegate});
     };
@@ -65,7 +66,7 @@ export default class Get extends Component {
               {
                 /loading/.test(this.props.status) ?
                 <Spinner /> :
-                this.state.exerciseTable ? drawTable(this.state.exerciseTable) : drawTable(this.props.exerciseTable)
+                this.state.exerciseTable !== null ? drawTableInfo(this.state.exerciseTable) : drawTable(this.props.exerciseTable)
               }
             </div>
           </div>
@@ -73,7 +74,7 @@ export default class Get extends Component {
           <div className="panel panel-default">
             <div className="panel-heading">
               <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-plus" role="button"/>
-              Crear tabla de ejercicios
+              Tablas
             </div>
           </div>
         }

@@ -4,7 +4,32 @@ export const drawTable = table =>
   table.map((obj,index) =>
     <div key = {index}>
       <p>
-        Name: {obj.name}
+        {obj.name}
       </p>
     </div>
-)
+  );
+
+export const drawTableInfo = table =>
+  table.map((obj,index) =>
+    <div key = {index}>
+      <p>
+        Nombre: {obj.name}
+      </p>
+      <p>
+        Nivel: {obj.level}
+      </p>
+      <p>
+        Ejercicios:
+      </p>
+      {drawExercises(obj.exercises)}
+    </div>
+  );
+
+export const drawExercises = exercises =>
+  exercises.map((obj,index) =>
+    <ul key = {index}>
+      <li>
+        {obj.name}
+      </li>
+    </ul>
+  );
