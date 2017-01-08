@@ -10,9 +10,9 @@ export default class ExerciseTable extends Component {
     return (
       <div>
         <Create createExerciseTable={this.props.createExerciseTable} />
-        <Delete deleteExerciseTable={this.props.deleteExerciseTable} />
-        <Update updateExerciseTable={this.props.updateExerciseTable} />
-        <Get exerciseTable={this.props.exerciseTable}/>
+        <Delete deleteExerciseTable={this.props.deleteExerciseTable} deletedExerciseTable={this.props.deletedExerciseTable} />
+        <Update updateExerciseTable={this.props.updateExerciseTable} updatedExerciseTable={this.props.updatedExerciseTable} />
+        <Get exerciseTable={this.props.exerciseTable} status={this.props.status} />
       </div>
     );
   }

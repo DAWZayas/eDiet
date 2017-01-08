@@ -1,22 +1,31 @@
 import React, {Component} from 'react';
+import {drawExercise} from '../../util';
+import {Spinner} from '../spinner';
 
 let tableName;
 let exerciseName;
 
-export default class DeleteExercise extends Component {
+export default class Get extends Component {
   constructor(props){
-      super(props);
-      this.state = {desplegate: true};
-  };
+    super(props);
+    this.state = {exercises: null, desplegate: true};
+  }
 
-  render () {
-    const handleDelete= (e) => {
+render(){
+
+    const handleGet = e => {
       e.preventDefault();
       const tName = tableName.value;
-      const name = exerciseName.value;
-      this.props.deleteExercise({tName, name});
+      const table = this.props.table.filter(obj => obj.name === tName);
+      const eName = exerciseName.value;
+      const exercise = table.exercises.filter(obj => obj.name === eName);
       clearFields();
-      return false;
+      this.setState({table: table, exercise: exercise});
+    };
+
+    const handleDesplegate = (e) => {
+      e.preventDefault();
+      this.setState({desplegate: !this.state.desplegate});
     };
 
     const clearFields = () => {
@@ -27,23 +36,18 @@ export default class DeleteExercise extends Component {
       return false;
     };
 
-    const handleDesplegate = (e) => {
-      e.preventDefault();
-      this.setState({desplegate: !this.state.desplegate});
-    };
-
-    return (
+    return(
       <span>
         {
           this.state.desplegate ?
           <div className="panel panel-default">
             <div className="panel-heading">
               <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-minus" role="button"/>
-              Borrar ejercicio
+              Ejercicios
             </div>
             <div className="panel-body">
-              <div className="col-sm-10">
-                <input
+              <div className="col-sm-12">
+                <input className="input-group-addon"
                   type="text"
                   className="form-control"
                   id="tableName"
@@ -51,8 +55,8 @@ export default class DeleteExercise extends Component {
                   ref={(i) => { tableName = i; }}
                 />
               </div>
-              <div className="col-sm-10">
-                <input
+              <div className="col-sm-12">
+                <input className="input-group-addon"
                   type="text"
                   className="form-control"
                   id="exerciseName"
@@ -62,18 +66,26 @@ export default class DeleteExercise extends Component {
               </div>
             </div>
             <div className="panel-footer">
-              <form className="form-horizontal">
-                <button type="submit" className="btn btn-default" onClick={handleDelete}>
-                  Borrar
-                </button>
-              </form>
+              <button type="submit" className="btn btn-default " onClick={handleGet}>
+                Ver
+              </button>
             </div>
+            <div className="panel-body">
+              {
+                /loading/.test(this.props.status) ?
+                <Spinner /> :
+                this.state.exercise === null ? <p>Seleccione un ejercicio</p> : drawExercise(this.state.exercise)
+              }
+            </div>
+
           </div>
+
           :
+
           <div className="panel panel-default">
             <div className="panel-heading">
               <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-plus" role="button"/>
-              Borrar ejercicio
+              Ejercicios
             </div>
           </div>
         }

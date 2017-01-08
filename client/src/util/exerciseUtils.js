@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 export const drawTable = table =>
-  table.map((obj,index) =>
+table.map((obj,index) =>
     <div key = {index}>
       <p>
         {obj.name}
@@ -33,3 +33,22 @@ export const drawExercises = exercises =>
       </li>
     </ul>
   );
+
+export const drawExercise = exercise =>
+  <div>
+    <p>
+      Nombre: {exercise.name}
+    </p>
+    <ul>
+      <li>
+        Calorias: {exercise.calories}
+      </li>
+      <li>
+        Tipo: {exercise.type}
+      </li>
+      <li>
+        Tiempo: {exercise.time}
+      </li>
+    </ul>
+  </div>
+;

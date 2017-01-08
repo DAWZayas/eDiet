@@ -9,7 +9,7 @@ export default class Get extends Component {
   constructor(props){
     super(props);
     this.state = {exerciseTable: null, desplegate: true}
-  }
+  };
 
   render(){
     const handleGet = e => {
@@ -17,7 +17,6 @@ export default class Get extends Component {
       const name = tName.value;
       filter = this.props.exerciseTable.filter(obj => obj.name === name);
       this.setState({exerciseTable: filter});
-      console.log(filter);
     };
 
     const handleGetAll = e => {
@@ -66,7 +65,7 @@ export default class Get extends Component {
               {
                 /loading/.test(this.props.status) ?
                 <Spinner /> :
-                this.state.exerciseTable !== null ? drawTableInfo(this.state.exerciseTable) : drawTable(this.props.exerciseTable)
+                this.state.exerciseTable === null ? drawTable(this.props.exerciseTable) : drawTableInfo(this.state.exerciseTable)
               }
             </div>
           </div>

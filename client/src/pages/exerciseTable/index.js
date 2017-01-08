@@ -19,15 +19,19 @@ const mapStateToProps = (state) => ({
    updateExerciseTable: payload => dispatch(updateExerciseTableAction(payload)),
  });
 
-const ExerciseTableActions = ({exerciseTable, createExerciseTable, deleteExerciseTable, updateExerciseTable, getExerciseTable, status}) => {
+const ExerciseTableActions = ({
+  exerciseTable, status,
+  createExerciseTable, deleteExerciseTable, updateExerciseTable, getExerciseTable,
+  deletedExerciseTable, updatedExerciseTable,
+}) => {
   getExerciseTable();
   return (
     <div className="container">
       <ExerciseTable
         exerciseTable={exerciseTable}
         createExerciseTable={createExerciseTable}
-        deleteExerciseTable={deleteExerciseTable}
-        updateExerciseTable={updateExerciseTable}
+        deleteExerciseTable={deleteExerciseTable} deletedExerciseTable={deletedExerciseTable}
+        updateExerciseTable={updateExerciseTable} updatedExerciseTable={updatedExerciseTable}
         getExerciseTable={getExerciseTable}
         status={status}
       />

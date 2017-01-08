@@ -5,7 +5,7 @@ import {createMenu, getMenu, deleteMenu, updateMenu, getMenuName} from './menus'
 import {createTimeFood, deleteTimeFood, updateTimeFood, getTimeFood, getTimeFoods} from './timeFoods';
 import {createFood, deleteFood, updateFood, getFood, getFoods} from './foods';
 import {createExerciseTable, deleteExerciseTable, updateExerciseTable, getExerciseTable} from './exerciseTable';
-import {createExercise, deleteExercise, updateExercise} from './exercise';
+import {createExercise, deleteExercise, updateExercise, getExercises} from './exercise';
 
 
 export default [
@@ -41,5 +41,5 @@ export default [
   createExercise,
   deleteExercise,
   updateExercise,
-
+  getExercises,
 ];

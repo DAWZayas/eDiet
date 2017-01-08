@@ -15,6 +15,7 @@ export const createExerciseTable = action$ => action$
       type: ActionTypes.CREATE_EXERCISE_TABLE_SUCCESS,
       payload: exerciseTable,
     },
+      Actions.getExerciseTableNameAction(payload),
       Actions.addNotificationAction({
         text: 'Se ha creado la tabla de ejercicios', alertType: 'info'
       })
@@ -36,7 +37,7 @@ export const deleteExerciseTable = action$ => action$
     .map(res => res.response)
     .mergeMap(exerciseTable => Observable.of ({
       type: ActionTypes.DELETE_EXERCISE_TABLE_SUCCESS,
-      payload: exerciseTable,
+      payload,
     },
       Actions.addNotificationAction({
         text: 'Se ha borrado la tabla de ejercicios', alertType: 'info'
@@ -57,7 +58,7 @@ export const updateExerciseTable = action$ => action$
   .switchMap(({headers, payload}) => Observable
   .ajax.post(`http://localhost:8080/api/exercise/update/${payload.name}`,payload, headers)
   .map(res => res.response)
-  .mergeMap( exerciseTable  => Observable.of (
+  .mergeMap(exerciseTable  => Observable.of (
     {
       type: ActionTypes.UPDATE_EXERCISE_TABLE_SUCCESS,
       payload: exerciseTable,

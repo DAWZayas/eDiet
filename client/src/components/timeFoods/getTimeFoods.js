@@ -13,6 +13,7 @@ render(){
     let menuName;
 
     const handleGetTimeFoods = (e) => {
+      console.log(this.props);
       e.preventDefault();
       const nameMenu = menuName.value;
       this.setState({check: true});

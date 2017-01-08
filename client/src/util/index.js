@@ -4,6 +4,6 @@ export {signRequest} from './signRequest';
 export {errorMenuMessage} from './errorMenu';
 export {drawMenu, drawTimeFoods, drawFood, drawPageTimeFood, drawPageTimeFoodGet, drawAllFoods, drawPageFood} from './functions';
 export {errorBack} from './errorBack';
-export {drawTable, drawTableInfo} from './exerciseUtils';
+export {drawTable, drawTableInfo, drawExercise} from './exerciseUtils';
 
 require('./rxjs');
