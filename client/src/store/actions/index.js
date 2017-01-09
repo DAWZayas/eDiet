@@ -129,7 +129,7 @@ export const getExerciseTableAction = payload => ({
 });
 
 export const getExerciseTableNameAction = payload => ({
-  type: ActionTypes.GET_EXERCISE_TABLE,
+  type: ActionTypes.GET_EXERCISE_TABLE_NAME,
   payload,
 });
 
@@ -149,7 +149,12 @@ export const updateExerciseAction = payload => ({
   payload,
 });
 
-export const getExerciseAction = payload => ({
+export const getExercisesAction = payload => ({
   type: ActionTypes.GET_EXERCISE,
+  payload,
+});
+
+export const getExerciseNameAction = payload => ({
+  type: ActionTypes.GET_EXERCISE_NAME,
   payload,
 });

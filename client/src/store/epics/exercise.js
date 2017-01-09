@@ -14,6 +14,7 @@ export const createExercise = action$ => action$
         type: ActionTypes.CREATE_EXERCISE_SUCCESS,
         payload,
       },
+      Actions.getExerciseNameAction(payload),
       Actions.addNotificationAction({
         text: 'Ejercicio creado', alertType: 'info'
       })
@@ -76,22 +77,39 @@ export const updateExercise = action$ => action$
     })
   )));
 
-export const getExercises = action$ => action$
-  .ofType(ActionTypes.GET_EXERCISES)
+export const getExercise = action$ => action$
+  .ofType(ActionTypes.GET_EXERCISE)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.get(`http://localhost:8080/api/exercises/${payload.tName}/get`, payload, headers)
+    .ajax.get('http://localhost:8080/api/exercise/exercises/get', payload, headers)
     .delay(2000)
     .map(res => res.response)
     .mergeMap(exercises  => Observable.of ({
-      type: ActionTypes.GET_EXERCISES_SUCCESS,
+      type: ActionTypes.GET_EXERCISE_SUCCESS,
       payload: exercises,
     }))
     .catch(error => Observable.of({
-      type: ActionTypes.GET_EXERCISES_ERROR,
+      type: ActionTypes.GET_EXERCISE_ERROR,
       payload: error,
     },
       Actions.addNotificationAction({
         text: `error: ${ajaxErrorToMessage(error)}`, alertType: 'danger',
       })
+    )));
+
+export const getExerciseName = action$ => action$
+  .ofType(ActionTypes.GET_EXERCISE_NAME)
+  .map(signRequest)
+  .switchMap(({headers, payload}) => Observable
+    .ajax.get('http://localhost:8080/api/exercise/exercises/get',payload, headers)
+    .delay(2000)
+    .map(res => res.response)
+    .map(exercises => ({
+      type: ActionTypes.GET_EXERCISE_NAME_SUCCESS,
+      payload: exercises,
+    }))
+    .catch(error => Observable.of({
+      type: ActionTypes.GET_EXERCISE_NAME_ERROR,
+      payload: error,
+    }
     )));

@@ -50,7 +50,7 @@ export const exerciseTable = (state = initialState, action) => {
       };
 
     case ActionTypes.GET_EXERCISE_TABLE_NAME_SUCCESS:
-        const add = state.exerciseTable.concat(action.payload.exerciseTable);
+        const add = state.exerciseTable.concat(action.payload);
         return {
           ...state,
           exerciseTable: add,

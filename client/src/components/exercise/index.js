@@ -12,7 +12,7 @@ export default class Exercise extends Component {
         <Create createExercise={this.props.createExercise} />
         <Delete deleteExercise={this.props.deleteExercise} deletedExercise={this.props.deletedExercise} />
         <Update updateExercise={this.props.updateExercise} updatedExercise={this.props.updatedExercise} />
-        <Get table={this.props.table} status={this.props.status} />
+        <Get exercises={this.props.exercises} status={this.props.status} />
       </div>
     );
   }

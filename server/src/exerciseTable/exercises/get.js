@@ -28,25 +28,17 @@ export default (app) => {
     res.send(exercise);
   }));
 
-  app.get('/api/exercises/:name/get', asyncRequest(async (req, res) => {
-    // Sacar todos los ejercicios de una tabla
+  app.get('/api/exercise/exercises/get', asyncRequest(async (req, res) => {
+    // Sacar todos los nombres de las tablas y sus ejercicios
     let tables;
-    let table;
     let exercises;
 
     try {
       tables = await Exercise;
-      table = tables.filter(table => table.name === req.params.name).reduce((a, b) => a.concat(b));
+      exercises = tables.map(({name, exercises}) => Object.assign({}, {name}, {exercises}));
 
     } catch (e) {
-      res.status(400).send({error: 'No se ha encontrado la tabla'});
-    }
-
-    try {
-      exercises = table.exercises;
-
-    } catch (e) {
-      res.status(400).send({error: 'No se han encontrado ejercicios'});
+      res.status(400).send({error: 'No se han encontrado tablas'});
     }
 
     res.send(exercises);

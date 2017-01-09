@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {drawExercise} from '../../util';
+import {drawExercise, drawExercises} from '../../util';
 import {Spinner} from '../spinner';
 
 let tableName;
@@ -12,71 +12,81 @@ export default class Get extends Component {
   }
 
 render(){
+  console.log('>>>PROPS', this.props);
 
-    const handleGet = e => {
-      e.preventDefault();
-      const tName = tableName.value;
-      const table = this.props.table.filter(obj => obj.name === tName);
-      const eName = exerciseName.value;
-      const exercise = table.exercises.filter(obj => obj.name === eName);
-      clearFields();
-      this.setState({table: table, exercise: exercise});
-    };
+  const handleGet = e => {
+    e.preventDefault();
+    const tName = tableName.value;
+    const eName = exerciseName.value;
+    const table = this.props.exercises.filter(table => table.name === tName).reduce((a, b) => a.concat(b));
+    const exercise = table.exercises.filter(exercise => exercise.name === eName).reduce((a, b) => a.concat(b));
+    clearFields();
+    this.setState({exercises: exercise});
+  };
 
-    const handleDesplegate = (e) => {
-      e.preventDefault();
-      this.setState({desplegate: !this.state.desplegate});
-    };
+  const handleGetAll = e => {
+    e.preventDefault();
+    this.setState({exercises: null});
+  };
 
-    const clearFields = () => {
-      tableName.value = '';
-      tableName.placeholder="Nombre de la tabla...";
-      exerciseName.value = '';
-      exerciseName.placeholder="Nombre del ejercicio...";
-      return false;
-    };
+  const handleDesplegate = (e) => {
+    e.preventDefault();
+    this.setState({desplegate: !this.state.desplegate});
+  };
 
-    return(
-      <span>
-        {
-          this.state.desplegate ?
-          <div className="panel panel-default">
+  const clearFields = () => {
+    tableName.value = '';
+    tableName.placeholder="Nombre de la tabla...";
+    exerciseName.value = '';
+    exerciseName.placeholder="Nombre del ejercicio...";
+    return false;
+  };
+
+  return(
+    <span>
+      {
+        this.state.desplegate ?
+        <div className="panel panel-default">
             <div className="panel-heading">
-              <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-minus" role="button"/>
-              Ejercicios
-            </div>
-            <div className="panel-body">
-              <div className="col-sm-12">
-                <input className="input-group-addon"
-                  type="text"
-                  className="form-control"
-                  id="tableName"
+            <a onClick={handleDesplegate} href="#" className=" glyphicon glyphicon-minus" role="button"/>
+            Ejercicios
+          </div>
+          <div className="panel-body">
+            <div className="col-sm-12">
+              <input className="input-group-addon"
+                type="text"
+                className="form-control"
+                id="tableName"
                   placeholder="Nombre de la tabla..."
-                  ref={(i) => { tableName = i; }}
-                />
-              </div>
-              <div className="col-sm-12">
-                <input className="input-group-addon"
-                  type="text"
-                  className="form-control"
-                  id="exerciseName"
-                  placeholder="Nombre del ejercicio..."
-                  ref={(i) => { exerciseName = i; }}
-                />
-              </div>
+                ref={(i) => { tableName = i; }}
+              />
             </div>
-            <div className="panel-footer">
-              <button type="submit" className="btn btn-default " onClick={handleGet}>
-                Ver
-              </button>
+            <div className="col-sm-12">
+              <input className="input-group-addon"
+                type="text"
+                className="form-control"
+                id="exerciseName"
+                placeholder="Nombre del ejercicio..."
+                ref={(i) => { exerciseName = i; }}
+              />
             </div>
-            <div className="panel-body">
-              {
-                /loading/.test(this.props.status) ?
-                <Spinner /> :
-                this.state.exercise === null ? <p>Seleccione un ejercicio</p> : drawExercise(this.state.exercise)
-              }
-            </div>
+          </div>
+          <div className="panel-footer">
+            <button type="submit" className="btn btn-default " onClick={handleGet}>
+              Ver
+            </button>
+            <button type="submit" className="btn btn-default " onClick={handleGetAll}>
+              Ver todos
+            </button>
+          </div>
+          <div className="panel-body">
+            {
+              /loading/.test(this.props.status) ?
+              <Spinner /> :
+              this.state.exercises === null ? drawExercises(this.props.exercises) :  drawExercise(this.state.exercises)
+              // drawExercises(this.props.exercises) : drawExercise(this.state.exercises)
+            }
+          </div>
 
           </div>
 

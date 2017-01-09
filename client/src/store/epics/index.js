@@ -4,8 +4,8 @@ import {helloWorld} from './helloworld';
 import {createMenu, getMenu, deleteMenu, updateMenu, getMenuName} from './menus';
 import {createTimeFood, deleteTimeFood, updateTimeFood, getTimeFood, getTimeFoods} from './timeFoods';
 import {createFood, deleteFood, updateFood, getFood, getFoods} from './foods';
-import {createExerciseTable, deleteExerciseTable, updateExerciseTable, getExerciseTable} from './exerciseTable';
-import {createExercise, deleteExercise, updateExercise, getExercises} from './exercise';
+import {createExerciseTable, deleteExerciseTable, updateExerciseTable, getExerciseTable, getExerciseTableName} from './exerciseTable';
+import {createExercise, deleteExercise, updateExercise, getExercise, getExerciseName} from './exercise';
 
 
 export default [
@@ -37,9 +37,11 @@ export default [
   deleteExerciseTable,
   updateExerciseTable,
   getExerciseTable,
+  getExerciseTableName,
   // exercises
   createExercise,
   deleteExercise,
   updateExercise,
-  getExercises,
+  getExercise,
+  getExerciseName,
 ];

@@ -4,35 +4,35 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import _ from 'lodash';
 
-import {createExerciseAction, deleteExerciseAction, updateExerciseAction, getExerciseTableAction} from '../../store/actions';
+import {createExerciseAction, deleteExerciseAction, updateExerciseAction, getExercisesAction} from '../../store/actions';
 import Exercise from '../../components/exercise';
 
 const mapStateToProps = state => ({
-   table: state.exercise.table,
+   exercises: state.exercise.exercises,
    status: state.exercise.status,
  });
 
  const mapDispatchToProps = (dispatch) => ({
-   getTable: _.once(() => dispatch(getExerciseTableAction())),
+   getExercises: _.once(() => dispatch(getExercisesAction())),
    createExercise: payload => dispatch(createExerciseAction(payload)),
    deleteExercise: payload => dispatch(deleteExerciseAction(payload)),
    updateExercise: payload => dispatch(updateExerciseAction(payload)),
  });
 
 const ExerciseActions = ({
-  table, status,
-  createExercise, deleteExercise, updateExercise, getTable,
+  exercises, status,
+  createExercise, deleteExercise, updateExercise, getExercises,
   deletedExercise, updatedExercise,
 }) => {
-  getTable();
+  getExercises();
   return (
     <div className="container">
       <Exercise
-        table={table}
+        exercises={exercises}
         createExercise={createExercise}
         deleteExercise={deleteExercise} deletedExercise={deletedExercise}
         updateExercise={updateExercise} updatedExercise={updatedExercise}
-        getTable={getTable}
+        getExercises={getExercises}
         status={status}
       />
     </div>

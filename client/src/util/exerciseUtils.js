@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 
+// TABLES
 export const drawTable = table =>
 table.map((obj,index) =>
     <div key = {index}>
-      <p>
-        {obj.name}
-      </p>
+      <ul>
+        <li>
+          {obj.name}
+        </li>
+      </ul>
     </div>
   );
 
@@ -15,24 +18,42 @@ export const drawTableInfo = table =>
       <p>
         Nombre: {obj.name}
       </p>
-      <p>
-        Nivel: {obj.level}
-      </p>
-      <p>
-        Ejercicios:
-      </p>
-      {drawExercises(obj.exercises)}
+      <ul>
+        <li>
+          Nivel: {obj.level}
+        </li>
+        <li>
+          Ejercicios: {drawExerciseName(obj.exercises)}
+        </li>
+      </ul>
     </div>
   );
 
+// exercises
+
 export const drawExercises = exercises =>
   exercises.map((obj,index) =>
-    <ul key = {index}>
-      <li>
-        {obj.name}
-      </li>
-    </ul>
+    <div key = {index}>
+      <p>Tabla: {obj.name}</p>
+      <ul>
+        {drawExerciseName(obj.exercises)}
+      </ul>
+    </div>
   );
+
+export const drawExerciseName = exercises =>
+  exercises.length === 0 ?
+    <p>Sin ejercicios</p>
+  :
+    exercises.map((obj,index) =>
+      <div key = {index}>
+        <ul>
+          <li>
+            {obj.name}
+          </li>
+        </ul>
+      </div>
+);
 
 export const drawExercise = exercise =>
   <div>

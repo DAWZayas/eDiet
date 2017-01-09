@@ -1,10 +1,10 @@
 import * as ActionTypes from '../actionTypes';
 
-const initialState = {exercise: [], table: [], status: 'inited'};
+const initialState = {exercises: [], status: 'inited'};
 
 export const exercise = (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.GET_TABLE:
+    case ActionTypes.GET_EXERCISE:
       return {
         ...state,
         status: 'loadingGet',
@@ -13,7 +13,8 @@ export const exercise = (state = initialState, action) => {
     case ActionTypes.CREATE_EXERCISE_ERROR:
     case ActionTypes.DELETE_EXERCISE_ERROR:
     case ActionTypes.UPDATE_EXERCISE_ERROR:
-    case ActionTypes.GET_TABLE_ERROR:
+    case ActionTypes.GET_EXERCISE_ERROR:
+    case ActionTypes.GET_EXERCISE_NAME_ERROR:
       return {
         ...state,
         status: 'error',
@@ -26,27 +27,37 @@ export const exercise = (state = initialState, action) => {
       };
 
     case ActionTypes.DELETE_EXERCISE_SUCCESS:
-      const deleted = state.exercise.filter(obj => obj.name === action.payload.name);
-      const filter = state.exercise.filter(obj => obj.name !== action.payload.name);
+      const table = state.exercises.filter(obj => obj.name === action.payload.tName).reduce((a, b) => a.concat(b));
+      const exercise = table.exercises.filter(obj => obj.name !== action.payload.name);
+      const deleted = table.exercises.filter(obj => obj.name === action.payload.name);
       return {
         ...state,
-        exercise: filter,
+        exercises: exercise,
         deleted: deleted,
       };
 
     case ActionTypes.UPDATE_EXERCISE_SUCCESS:
-      const exercises = state.exercise.map(obj => obj.name === action.payload.name ? obj = action.payload : obj);
+    console.log('>>>>PAY', action.payload);
+      const tables = state.exercises.filter(obj => obj.name === action.payload.tName).reduce((a, b) => a.concat(b));
+      const exercises = state.exercises.map(obj => obj.name === action.payload.name ? obj = action.payload : obj);
       return {
         ...state,
-        exercise: exercises,
+        exercises: exercises,
         updated: action.payload,
       };
 
-    case ActionTypes.GET_TABLE_SUCCESS:
+    case ActionTypes.GET_EXERCISE_SUCCESS:
       return {
         ...state,
-        table: action.payload,
+        exercises: action.payload,
         status: 'done',
+      };
+
+    case ActionTypes.GET_EXERCISE_NAME_SUCCESS:
+      return {
+        ...state,
+        exercises: action.payload,
+        status:'done',
       };
 
     default:
