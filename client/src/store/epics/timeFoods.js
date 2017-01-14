@@ -35,7 +35,7 @@ export const createTimeFood = action$ => action$
       .map(res => res.response)
       .map(menu => ({
         type: ActionTypes.DELETE_TIMEFOOD_SUCCESS,
-        payload,
+        payload: payload.timeFood,
       }
       ))
       .catch(error => Observable.of({
@@ -55,7 +55,7 @@ export const createTimeFood = action$ => action$
         .map(res => res.response)
         .mergeMap( menu  => Observable.of ({
           type: ActionTypes.UPDATE_TIMEFOOD_SUCCESS,
-            payload,
+          payload: {timeFoods: menu.timeFoods},
           }
         ))
         .catch(error => Observable.of({
@@ -75,7 +75,7 @@ export const createTimeFood = action$ => action$
           .map(res => res.response)
           .mergeMap( menu  => Observable.of ({
             type: ActionTypes.GET_TIMEFOOD_SUCCESS,
-            payload,
+            payload:{menu},
           }))
           .catch(error => Observable.of({
             type: ActionTypes.GET_TIMEFOOD_ERROR,
@@ -89,7 +89,7 @@ export const createTimeFood = action$ => action$
           .ofType(ActionTypes.GET_TIMEFOODS)
           .map(signRequest)
           .switchMap(({headers, payload}) => Observable
-            .ajax.get(`http://localhost:8080/api/timeFoods`, payload, headers)
+            .ajax.get(`http://localhost:8080/api/${payload.name}/timeFoods`, payload, headers)
             .delay(2000)
             .map(res => res.response)
             .mergeMap( menu  => Observable.of ({

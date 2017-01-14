@@ -1,29 +1,32 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
+import {push} from 'react-router-redux';
 import _ from 'lodash';
 
-import {getFoodsAction, createFoodAction, deleteFoodAction, updateFoodAction} from '../../store/actions';
-import Food from '../../components/foods';
+import {getFoodsAction} from '../../store/actions';
+import Food from '../../components/draw';
 
 const mapStateToProps = (state) => ({
-  menus: state.foods.foods,
-  createFood: state.foods.createFood,
-  updateFood: state.foods.foodsUpdate,
-  status: state.foods.status,
+   foods: state.foods.foods,
+   route: state.routing.locationBeforeTransitions.pathname
  });
 
 const mapDispatchToProps = (dispatch) => ({
-  doGetMenu: _.once(() => dispatch(getFoodsAction())),
-  doCreateFood: payload => dispatch(createFoodAction(payload)),
-  doDeleteFood: payload => dispatch(deleteFoodAction(payload)),
-  doUpdateFood: payload => dispatch(updateFoodAction(payload)),
+  doGetFoods: _.once((payload) => dispatch(getFoodsAction(payload))),
+
 });
 
-const TimeFoods = ({menus, doGetMenu, doCreateFood, doDeleteFood, doUpdateFood, createFood, updateFood, status}) => {
-  doGetMenu();
-  return (  <Food menus={menus} doGetMenu={doGetMenu} doCreateFood={doCreateFood} doDeleteFood={doDeleteFood}
-                  doUpdateFood={doUpdateFood} createFood={createFood} updateFood={updateFood} status={status}/>);
-};
+const TimeFoods = ({route, foods, doGetFoods }) => {
+  const rout = route.split('/');
+  const nameTimeFood = rout[rout.length-1];
+  const nameMenu = rout[rout.length-2];
+  doGetFoods({nameMenu, nameTimeFood });
+  console.log(foods);
+  return (
+    <div className="container">
+     {foods.map( (obj, index)=> < Food key={index} menuName={nameMenu} timeFood={nameTimeFood} route={route} menu={obj.nameFood} calories={obj.calories} />)}
+    </div>);
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeFoods);

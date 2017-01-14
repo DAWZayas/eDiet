@@ -2,32 +2,31 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
+import {push} from 'react-router-redux';
 import _ from 'lodash';
 
-import {createMenuAction, getMenuAction, deleteMenuAction, updateMenuAction, getMenuNameAction} from '../../store/actions';
-import Menu from '../../components/menu';
+import {getMenuAction} from '../../store/actions';
+import Menu from '../../components/draw';
 
 const mapStateToProps = (state) => ({
    menus: state.menus.menu,
-   menuDelete: state.menus.delete,
-   menuCreate: state.menus.men,
-   menuUpdate: state.menus.update,
-   status: state.menus.status,
- })
+   route: state.routing.locationBeforeTransitions.pathname,
+ });
 
 const mapDispatchToProps = (dispatch) => ({
   doGetMenu: _.once(() => dispatch(getMenuAction())),
-  doCreateMenu: payload => dispatch(createMenuAction(payload)),
-  doDeleteMenu: payload => dispatch(deleteMenuAction(payload)),
-  doUpdateMenu: payload => dispatch(updateMenuAction(payload)),
-
+  navTo: Menu => dispatch(push(Menu))
 });
 
-const Create = ({doCreateMenu, menus, doGetMenu, doDeleteMenu, doUpdateMenu, menuDelete, menuCreate, menuUpdate,status}) => {
+const Create = ({ menus, doGetMenu, route, navTo}) => {
   doGetMenu();
-  return (  <Menu menus={menus} doCreateMenu={doCreateMenu} doDeleteMenu={doDeleteMenu} status={status}
-            doUpdateMenu={doUpdateMenu}  menuDelete={menuDelete} doGetMenu={doGetMenu} menuCreate={menuCreate}
-            menuUpdate={menuUpdate}/>);
+
+  return (
+      <div className="container" >
+        {menus.map( (obj, index) =>   <Menu key={index} menu={obj.name} route={route} navTo={navTo} /> )}
+      </div>
+
+    );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Create);

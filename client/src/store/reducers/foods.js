@@ -20,9 +20,8 @@ export const foods = (state = initialState, action) => {
         return {...state, status: 'done', foods: foodsCreate, createFood};
 
       case ActionTypes.DELETE_FOOD_SUCCESS:
-        const foodsDelete = state.foods.map((obj)=> obj.name===action.payload.name &&
-                            obj.timeFood === action.payload.timeFood ? action.payload : obj );
-        return {...state, status: 'done', foods: foodsDelete};
+        const deleteFood = state.foods.filter( (obj) => obj.nameFood !== action.payload)
+        return {...state, status: 'done', foods: deleteFood};
 
       case ActionTypes.UPDATE_FOOD_ERROR:
         return {
@@ -32,19 +31,9 @@ export const foods = (state = initialState, action) => {
           foodsUpdate: null,}
 
       case ActionTypes.UPDATE_FOOD_SUCCESS:
-        const foodsUpdate = state.foods.map((obj)=> obj.name===action.payload.foods.name &&
-                          obj.timeFood === action.payload.foods.timeFood ? action.payload.foods : obj );
-        const filter = action.payload.foods.foods.filter( obj => obj.nameFood === action.payload.food.food );
-        return {...state, status: 'done', foods: foodsUpdate, foodsUpdate: filter}
+        const updateFood = state.foods.map( (obj) => obj.nameFood === action.payload.oldFood ? Object.assign({}, {nameFood:action.payload.food}, {calories: action.payload.calories}) : obj);
+        return {...state, status: 'done', foods:updateFood}
 
-      case ActionTypes.GET_FOOD:
-          return {...state, status: 'loading_get'};
-      case ActionTypes.GET_FOODS:
-          return {...state, status: 'loading_get'};
-      case ActionTypes.UPDATE_FOOD:
-          return {...state, status: 'loading_update'};
-      case ActionTypes.DELETE_FOOD:
-          return {...state, status: 'loading_delete'};
       case ActionTypes.GET_FOODS_SUCCESS:
         return {...state, foods: action.payload, status: 'done'};
       default:

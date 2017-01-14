@@ -1,30 +1,31 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
+import {push} from 'react-router-redux';
 import _ from 'lodash';
 
-import {getTimeFoodAction, createTimeFoodAction, deleteTimeFoodAction, updateTimeFoodAction, getTimeFoodsAction} from '../../store/actions';
-import TimeFood from '../../components/timeFoods';
+import {getTimeFoodsAction} from '../../store/actions';
+import TimeFood from '../../components/draw';
 
 const mapStateToProps = (state) => ({
-   menus: state.timeFoods.timeFoods,
-   createTimeFood: state.timeFoods.timeFoodCreate,
-   updateTimeFood: state.timeFoods.updateTimeFood,
-   status: state.timeFoods.status,
+   timeFoods: state.timeFoods.timeFoods,
+   route: state.routing.locationBeforeTransitions.pathname
  });
 
 const mapDispatchToProps = (dispatch) => ({
-  doGetMenu: _.once(() => dispatch(getTimeFoodsAction())),
-  doCreateTimeFood: payload => dispatch(createTimeFoodAction(payload)),
-  doDeleteTimeFood: payload => dispatch(deleteTimeFoodAction(payload)),
-  doUpdateTimeFood: payload => dispatch(updateTimeFoodAction(payload)),
+  doGetTimeFoods: _.once((payload) => dispatch(getTimeFoodsAction(payload))),
+  navTo: timeFood => dispatch(push(timeFood))
 });
 
-const TimeFoods = ({doCreateTimeFood, menus, doGetMenu, doDeleteTimeFood, doUpdateTimeFood, updateTimeFood, createTimeFood, status}) => {
-  doGetMenu();
-  return (  <TimeFood menus={menus} doCreateTimeFood={doCreateTimeFood} doGetMenu={doGetMenu} status={status}
-              doDeleteTimeFood={doDeleteTimeFood} doUpdateTimeFood={doUpdateTimeFood} updateTimeFood={updateTimeFood}
-              createTimeFood={createTimeFood} />);
-};
+const TimeFoods = ({route, timeFoods, doGetTimeFoods, navTo}) => {
+  const rout = route.split('/');
+  const name = rout[rout.length-1];
+  doGetTimeFoods({name });
+  console.log(timeFoods);
+  return (
+    <div className="container">
+     {timeFoods.map( (obj, index)=> < TimeFood key={index} route={route} menuName={name} menu={obj.timeFood} navTo={navTo}/>)}
+    </div>);
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeFoods);

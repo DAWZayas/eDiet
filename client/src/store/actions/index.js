@@ -79,12 +79,14 @@ export const getTimeFoodAction = (payload) =>({
   payload,
 });
 
-export const getTimeFoodsAction =() => ({
+export const getTimeFoodsAction =(payload) => ({
   type: ActionTypes.GET_TIMEFOODS,
+  payload,
 });
 //administration Food
-export const getFoodsAction = () => ({
+export const getFoodsAction = (payload) => ({
   type: ActionTypes.GET_FOODS,
+  payload,
 });
 
 export const getFoodAction = (payload) => ({

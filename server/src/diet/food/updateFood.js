@@ -9,6 +9,7 @@ export default (app) => {
     const {nameMenu, nameTimeFood} = req.params;
     // get user input
     const {food, oldFood, calories} = req.body;
+    console.log(nameMenu, nameTimeFood, food, oldFood, calories)
     // make sure text is not empty
     if (food !== undefined && !food.length && oldFood !== undefined && !oldFood.length) {
       res.status(400).send({error: 'Menu name should be not empty!'});
@@ -41,7 +42,7 @@ export default (app) => {
 
     // check if oldTimeFood don't exist
     const existOldFood = objectFood.foods.filter(obj => obj.nameFood === oldFood );
-
+    console.log(existOldFood)
     if (existOldFood.length == 0){
       res.status(404).send({error: 'The old food dont\'t exist!'});
       return;

@@ -12,33 +12,21 @@ export const timeFoods = (state = initialState, action) => {
 
       case ActionTypes.CREATE_TIMEFOOD_SUCCESS:
         return {...state};
-      case ActionTypes.DELETE_TIMEFOOD:
-        return {...state, status: 'loading_delete'}
-      case ActionTypes.UPDATE_TIMEFOOD:
-        return {...state, status: 'loading_update'}
-      case ActionTypes.GET_TIMEFOOD:
-        return {...state, status: 'loading_getTimeFood'}
-      case ActionTypes.GET_TIMEFOODS:
-        return {...state, status: 'loading_getTimeFoods'}
-
       case ActionTypes.DELETE_TIMEFOOD_SUCCESS:
-        const timeFoodDelete = state.timeFoods.filter( ({timeFood, name}) => name === action.payload.name &&
-                                timeFood === action.payload.timeFood ? false : true );
-        return {...state, status: 'done', timeFoods: timeFoodDelete};
+        console.log(action.payload)
+        const deleteTimeFood = state.timeFoods.filter( (obj) => obj.timeFood !== action.payload);
+        return {...state, status: 'done', timeFoods: deleteTimeFood};
 
       case ActionTypes.UPDATE_TIMEFOOD_ERROR:
         return {...state, status: 'error', error: action.payload.error, updateTimeFood: null};
 
       case ActionTypes.UPDATE_TIMEFOOD_SUCCESS:
-        const timeFood = { name: action.payload.name,  timeFood: action.payload.timeFood}
-        const updateTimeFood = state.timeFoods.map( obj  => obj.name === action.payload.name && obj.timeFood === action.payload.oldTimeFood
-                                ? timeFood : obj );
-        return {...state, status:'done', timeFoods: updateTimeFood, updateTimeFood: [timeFood]  };
+        const updateTimeFood = action.payload.timeFoods.map( (obj) => Object.assign({}, {timeFood: obj.timeFood}));
+        return {...state, status:'done'};
 
       case ActionTypes.GET_TIMEFOOD_SUCCESS:
-        const news = { name: action.payload.name, timeFood: action.payload.timeFood}
-        const newTimeFood = state.timeFoods.concat( news );
-        return {...state, status: 'done', timeFoods: newTimeFood, timeFoodCreate: [news] };
+        const newTimeFood = state.timeFoods.concat(action.payload.menu);
+        return {...state, status: 'done', timeFoods: newTimeFood};
 
       case ActionTypes.GET_TIMEFOODS_SUCCESS:
           return {...state, timeFoods: action.payload.menu, status: 'done'}
