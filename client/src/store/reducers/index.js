@@ -4,8 +4,8 @@ import {notifications} from './notifications';
 import {menus} from './menus';
 import {timeFoods} from './timeFoods';
 import {foods} from './foods';
-import {exerciseTable} from './exerciseTable';
-import {exercise} from './exercise';
+import {tables} from './tables';
+import {exercises} from './exercises';
 
 export default {
   menus,
@@ -14,6 +14,6 @@ export default {
   notifications,
   foods,
   timeFoods,
-  exerciseTable,
-  exercise,
+  tables,
+  exercises,
 };

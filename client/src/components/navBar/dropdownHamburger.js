@@ -17,17 +17,35 @@ export default class dropdownHamburger extends Component {
         body: 'Dietas',
       },
       {
-        body: "Administration",
+        body: "Admón. menús",
         url: "/addMenu",
+      },
+      {
+        body: "Admón. ejercicios",
+        url: "/tables",
       },
     ];
 
 
-    const list = messageList.map((obj, index) => obj.body == 'Administration' ?
-          this.props.user ?
-              this.props.user.role ?  <li key={index}><Link to={obj.url}>{obj.body}</Link></li> : null
-          : null
-    : <li key={index}><Link to={obj.url}>{obj.body}</Link></li>);
+    const list = messageList.map((obj, index) => obj.body == 'Admón. menús' || obj.body == 'Admón. ejercicios' ?
+      this.props.user ?
+        this.props.user.role ?
+          <li key={index}>
+            <Link to={obj.url}>
+              {obj.body}
+            </Link>
+          </li>
+        :
+          null
+      :
+        null
+    :
+      <li key={index}>
+        <Link to={obj.url}>
+          {obj.body}
+        </Link>
+      </li>
+    );
 
     return (
     <ul className="nav navbar-nav">

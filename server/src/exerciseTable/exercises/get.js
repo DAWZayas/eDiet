@@ -43,4 +43,28 @@ export default (app) => {
 
     res.send(exercises);
   }));
+
+  app.get('/api/exercise/:name/getAll', asyncRequest(async (req, res) => {
+    // Sacar todos los ejercicios de 1 tabla
+    let tables;
+    let table;
+    let exercises;
+
+    try {
+      tables = await Exercise;
+      table = tables.filter(table => table.name === req.params.name).reduce((a, b) => a.concat(b));
+
+    } catch (e) {
+      res.status(400).send({error: 'No se ha encontrado la tabla'});
+    }
+
+    try {
+      exercises = table.exercises;
+
+    } catch (e) {
+      res.status(400).send({error: 'No se han encontrado ejercicios'});
+    }
+
+    res.send(exercises);
+  }));
 };

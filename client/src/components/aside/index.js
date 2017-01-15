@@ -8,6 +8,8 @@ const style = {
     position: 'fixed',
     bottom: '0',
     width: '100%',
+    zIndex: '9999',
+    textAlign: 'center',
   },
 };
 

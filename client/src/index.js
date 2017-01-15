@@ -25,8 +25,14 @@ import NotFound from './pages/notfound';
 import CreateMenu from './pages/create';
 import TimeFood from './pages/timeFood';
 import Foods from './pages/foods';
-import ExerciseTable from './pages/exerciseTable';
-import Exercise from './pages/exercise';
+// Tables
+import Tables from './pages/tables';
+import AddTable from './pages/addTable';
+import UpdateTable from './pages/updateTable';
+// Exercises
+import Exercises from './pages/exercises';
+import AddExercise from './pages/addExercise';
+import UpdateExercise from './pages/updateExercise';
 
 
 // Create an enhanced history that syncs navigation events with the store
@@ -43,8 +49,14 @@ ReactDOM.render((
         <Route path="timeFood/:name" component={TimeFood} onEnter={requireAuth}/>
         <Route path="addMenu" component={CreateMenu} onEnter={requireAuth}/>
         <Route path="register" component={Register} />
-        <Route path="exerciseTableManagement" component={ExerciseTable} onEnter={requireAuth}/>
-        <Route path="exercisesManagement" component={Exercise} onEnter={requireAuth}/>
+          // Tablas
+          <Route path="tables" component={Tables} onEnter={requireAuth} />
+          <Route path="/tables/addTable" component={AddTable} onEnter={requireAuth} />
+          <Route path="/tables/update/:name" component={UpdateTable} onEnter={requireAuth}/>
+          // Ejercicios
+          <Route path="tables/:name" component={Exercises} onEnter={requireAuth} />
+          <Route path="/tables/:name/addExercise" component={AddExercise} onEnter={requireAuth} />
+          <Route path="/tables/:name/update/:exercise" component={UpdateExercise} onEnter={requireAuth} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>

@@ -1,0 +1,35 @@
+$a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
+
+body {
+  #{$a-tags} {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+  }
+}
+
+.header {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.body {
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: flex-start;
+
+    div {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;;
+      margin-right: 3%;
+    }
+  }
+}
