@@ -33,10 +33,12 @@ export const createTimeFood = action$ => action$
       .ajax.post(`http://localhost:8080/api/menu/${payload.name}/timeFood/delete`, payload, headers)
       .delay(2000)
       .map(res => res.response)
-      .map(menu => ({
+      .mergeMap(menu => Observable.of({
         type: ActionTypes.DELETE_TIMEFOOD_SUCCESS,
         payload: payload.timeFood,
-      }
+      },
+      Actions.addNotificationAction(
+        {text: 'Delete time Food Succes', alertType: 'info'}),
       ))
       .catch(error => Observable.of({
         type: ActionTypes.DELETE_TIMEFOOD_ERROR,
@@ -56,7 +58,9 @@ export const createTimeFood = action$ => action$
         .mergeMap( menu  => Observable.of ({
           type: ActionTypes.UPDATE_TIMEFOOD_SUCCESS,
           payload: {timeFoods: menu.timeFoods},
-          }
+        },
+        Actions.addNotificationAction(
+          {text: 'Update time Food Succes', alertType: 'info'}),
         ))
         .catch(error => Observable.of({
           type: ActionTypes.UPDATE_TIMEFOOD_ERROR,
@@ -70,7 +74,7 @@ export const createTimeFood = action$ => action$
         .ofType(ActionTypes.GET_TIMEFOOD)
         .map(signRequest)
         .switchMap(({headers, payload}) => Observable
-          .ajax.get(`http://localhost:8080/api/menu/${payload.name}/timeFood`, payload, headers)
+          .ajax.get(`http://localhost:8080/api/menu/${payload.name}/${payload.timeFood}`, payload, headers)
           .delay(2000)
           .map(res => res.response)
           .mergeMap( menu  => Observable.of ({

@@ -17,7 +17,7 @@ export default (app) => {
     const {nameFood, calories} = req.body;
 
     let menu;
-
+    console.log(req.params.nameMenu, req.params.nameTimeFood, nameFood, calories);
     try {
       menu = await Menu;
       menu = menu.filter( ({name}) => name === req.params.nameMenu).reduce((a,b) => a.concat(b));

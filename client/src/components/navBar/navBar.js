@@ -4,7 +4,6 @@ import ButtonsCollapsed from './buttonsCollapsed';
 import DropdownLoginXs from './dropdownLoginXs';
 import DropdownHamburger from './dropdownHamburger';
 import DropdownLargeLogin from './dropdownLargeLogin';
-import Administration from './administration';
 import ExerciseAdministration from './exerciseAdministration';
 
 
@@ -13,9 +12,8 @@ const NavBar = ({user, doLogOut, navToLogin}) => (
       <div className="container-fluid">
         <ButtonsCollapsed user={user}/>
         <div className="collapse navbar-collapse" id="collapse-1">
-          <DropdownHamburger  />
+          <DropdownHamburger user={user} />
           <DropdownLargeLogin user={user} doLogOut={doLogOut} navToLogin={navToLogin}/>
-          <Administration user={user}/>
           <ExerciseAdministration user={user} />
         </div>
         <div className="collapse navbar-collapse navbar-right" id="collapse-2">

@@ -16,12 +16,19 @@ export default class dropdownHamburger extends Component {
       {
         body: 'Dietas',
       },
+      {
+        body: "Administration",
+        url: "/addMenu",
+      },
     ];
 
 
-    const list = messageList.map((obj, index) =>
-      index === 0 ? <li key={index}><Link to={obj.url}>{obj.body}</Link></li>
-      : <li key={index}><a href="#">{obj.body}</a></li>);
+    const list = messageList.map((obj, index) => obj.body == 'Administration' ?
+          this.props.user ?
+              this.props.user.role ?  <li key={index}><Link to={obj.url}>{obj.body}</Link></li> : null
+          : null
+    : <li key={index}><Link to={obj.url}>{obj.body}</Link></li>);
+
     return (
     <ul className="nav navbar-nav">
       {list}

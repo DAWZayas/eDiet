@@ -59,7 +59,7 @@ export default class App extends React.Component {
 
     return (
       <span>
-        <button type="submit" style={{float: 'right'}} className="btn btn-default " onClick={this.openModal}> Update menu</button>
+        <button type="submit" style={{float: 'right'}} className=" glyphicon glyphicon-edit btn btn-default " onClick={this.openModal}> </button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}

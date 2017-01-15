@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 import _ from 'lodash';
 
-import {getTimeFoodsAction} from '../../store/actions';
+import {getTimeFoodsAction, createTimeFoodAction} from '../../store/actions';
 import TimeFood from '../../components/draw';
 
 const mapStateToProps = (state) => ({
@@ -14,16 +14,44 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   doGetTimeFoods: _.once((payload) => dispatch(getTimeFoodsAction(payload))),
-  navTo: timeFood => dispatch(push(timeFood))
+  navTo: timeFood => dispatch(push(timeFood)),
+  createTimeFood: payload=> dispatch(createTimeFoodAction(payload))
 });
 
-const TimeFoods = ({route, timeFoods, doGetTimeFoods, navTo}) => {
+const TimeFoods = ({route, timeFoods, doGetTimeFoods, navTo, createTimeFood}) => {
   const rout = route.split('/');
   const name = rout[rout.length-1];
   doGetTimeFoods({name });
-  console.log(timeFoods);
+
+  const handleCreateTimeFood = (e) => {
+    e.preventDefault();
+    const timeFood = timeFoodss.value;
+    createTimeFood({name, timeFood});
+  };
+
+  let timeFoodss;
+
   return (
     <div className="container">
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          Create Time Food
+        </div>
+        <div className="panel-footer ">
+        <div className="input-group">
+          <input
+            type="text"
+            className="form-control"
+            id="newName"
+            placeholder="Enter your new menu Name..."
+            ref={(i) => { timeFoodss = i; }}
+          />
+          <span type="submit" className=" input-group-addon  " >
+            <span className="glyphicon glyphicon-check" onClick={handleCreateTimeFood}> </span>
+          </span>
+          </div>
+          </div>
+        </div>
      {timeFoods.map( (obj, index)=> < TimeFood key={index} route={route} menuName={name} menu={obj.timeFood} navTo={navTo}/>)}
     </div>);
 }

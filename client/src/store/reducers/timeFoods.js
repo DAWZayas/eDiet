@@ -25,6 +25,7 @@ export const timeFoods = (state = initialState, action) => {
         return {...state, status:'done'};
 
       case ActionTypes.GET_TIMEFOOD_SUCCESS:
+        console.log(action);
         const newTimeFood = state.timeFoods.concat(action.payload.menu);
         return {...state, status: 'done', timeFoods: newTimeFood};
 

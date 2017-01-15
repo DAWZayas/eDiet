@@ -14,10 +14,8 @@ export const foods = (state = initialState, action) => {
         return {...state};
 
       case ActionTypes.GET_FOOD_SUCCESS:
-        const filterNameFood = action.payload.foods.filter( ({nameFood}) => action.payload.nameFood === nameFood );
-        const createFood = {name: action.payload.name, timeFood: action.payload.timeFood, foods: filterNameFood};
-        const foodsCreate = state.foods.map((obj)=> obj.name===action.payload.name && obj.timeFood === action.payload.timeFood ? action.payload : obj);
-        return {...state, status: 'done', foods: foodsCreate, createFood};
+        const foodCreate = state.foods.concat( action.payload.menu );
+        return {...state, status: 'done', foods: foodCreate};
 
       case ActionTypes.DELETE_FOOD_SUCCESS:
         const deleteFood = state.foods.filter( (obj) => obj.nameFood !== action.payload)
