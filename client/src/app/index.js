@@ -13,6 +13,7 @@ import Footer from '../components/footer';
 const mapStateToProps = (state) => ({
    user: state.auth.user,
    token: state.auth.token,
+   route: state.routing.locationBeforeTransitions.pathname,
  });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -23,7 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
 class App extends React.Component {
 
   render(){
-    const {children, token, doLogOut, user, navToLogin} = this.props;
+    const {children, token, doLogOut, user, navToLogin, route} = this.props;
 
     const appStyle = { overflow:'hidden',
                        backgroundImage: `url(${"https://subtlepatterns.com/patterns/paisley.png"})`,
