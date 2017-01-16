@@ -5,9 +5,17 @@ import DropdownLoginXs from './dropdownLoginXs';
 import DropdownHamburger from './dropdownHamburger';
 import DropdownLargeLogin from './dropdownLargeLogin';
 
+const navbar = {
+  backgroundColor: 'transparent',
+  padding: '10px',
+  background: 'rgba(0, 0, 0, 0.7)',
+  borderColor: 'red',
+  zIndex: '9999', 
+}
+
 
 const NavBar = ({user, doLogOut, navToLogin}) => (
-    <nav className="navbar  navbar-default " >
+    <nav className="navbar navbar-default navbar-highlight-aquamarine navbar-relative-top" style={navbar}>
       <div className="container-fluid">
         <ButtonsCollapsed user={user}/>
         <div className="collapse navbar-collapse" id="collapse-1">
