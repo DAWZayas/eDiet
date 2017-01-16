@@ -55,6 +55,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^3.0.0",
     "react-router-redux": "^4.0.6",
+    "redux-infinite-scroll": "^1.0.9",
     "react-slick": "^0.14.5",
     "redux": "^3.6.0",
     "redux-observable": "^0.12.1",

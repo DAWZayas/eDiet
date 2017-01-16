@@ -1,4 +1,4 @@
-import {Menu} from '../db';
+import {Menu, r} from '../db';
 import {asyncRequest} from '../util';
 
 export default (app) => {
@@ -13,8 +13,14 @@ export default (app) => {
   }));
   app.get('/api/menu', asyncRequest(async (req, res) => {
     try {
-      const menu = await Menu;
-      res.send(menu);
+      const skip = parseInt(req.query.skip, 10) || 0;
+      const limit = parseInt(req.query.limit, 10) || 10;
+      const menus = await r.table('Menu')
+                             .pluck('name')
+                             .orderBy(r.desc('name'))
+                             .skip(skip)
+                             .limit(limit);
+      res.send(menus);
     } catch (e) {
       res.status(400).send({error: 'Menu does not exist'});
     }

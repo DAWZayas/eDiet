@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes';
 
-const initialState = {menu: [], status: 'inited'};
+const initialState = {menu: [], status: 'inited', hasMore: true};
 
 export const menus = (state = initialState, action) => {
   switch (action.type) {
@@ -13,18 +13,13 @@ export const menus = (state = initialState, action) => {
           status: 'error',
           error: action.payload.error,
         };
-      case ActionTypes.GET_MENU:
-          return {...state,   status: 'loading_get'};
-      case ActionTypes.UPDATE_MENU:
-          return {...state,   status: 'loading_update'};
-      case ActionTypes.GET_MENU_NAME:
-          return {...state,   status: 'loading_getName'};
-      case ActionTypes.DELETE_MENU:
-          return {...state,   status: 'loading_delete'};
       case ActionTypes.CREATE_MENU_SUCCESS:
         return {...state, status:'done'};
+      case ActionTypes.GET_MENU:
+        return {...state, status: 'loading'};
       case ActionTypes.GET_MENU_SUCCESS:
-        return {...state,   menu: action.payload.menu, status: 'done'};
+        const hasMore = action.payload.menu.length === 10;
+        return {...state,   menu: state.menu.concat(action.payload.menu), status: 'done', hasMore};
       case ActionTypes.DELETE_MENU_SUCCESS:
         const del = state.menu.filter(obj => obj.name === action.payload.name);
         const filter = state.menu.filter(obj => obj.name !== action.payload.name);
