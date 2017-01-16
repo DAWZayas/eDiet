@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 const customStyles = {
   content : {
-    top                   : '25%',
+    top                   : '50%',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
@@ -62,7 +62,7 @@ export default class App extends React.Component {
         >
         <div className="container">
           <a className="glyphicon glyphicon-remove pull-right" role="button" onClick={this.closeModal} />
-          <h4> Update Menu </h4>
+          <h4> Delete  </h4>
           <span>
             {/Menu/.test(this.props.route) ?
               <span className="input-group-btn">

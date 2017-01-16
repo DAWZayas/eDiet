@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 const customStyles = {
   content : {
-    top                   : '25%',
+    top                   : '50%',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
@@ -52,7 +52,6 @@ export default class App extends React.Component {
       e.preventDefault();
       const food = newNameMenu.value;
       const calories = calorie.value;
-      console.log(food, calories)
       this.props.update({nameMenu:this.props.menu, nameTimeFood: this.props.timeFood, oldFood: this.props.food, food, calories});
       this.closeModal();
     };
@@ -71,7 +70,7 @@ export default class App extends React.Component {
           <h4> Update </h4>
               <span>
                 {/Menu/.test(this.props.route) ?
-                  <span className="input-group-btn">
+                  <span className="input-group">
                       <input className="input-group-addon"
                         type="text"
                         className="form-control"
@@ -79,10 +78,12 @@ export default class App extends React.Component {
                         placeholder="Enter your new menu Name..."
                         ref={(i) => { newNameMenu = i; }}
                       />
-                      <button type="submit" className="btn btn-default " onClick={handleUpdateMenu}>yes</button>
+                      <span className="input-group-btn">
+                        <button type="submit" className="btn btn-default " onClick={handleUpdateMenu}>yes</button>
+                      </span>
                   </span> : null}
                 {/timeFood/.test(this.props.route) ?
-                  <span className="input-group-btn">
+                  <span className="input-group">
                     <input className="input-group-addon"
                       type="text"
                       className="form-control"
@@ -90,17 +91,21 @@ export default class App extends React.Component {
                       placeholder="Enter your new menu Name..."
                       ref={(i) => { newNameMenu = i; }}
                     />
-                    <button type="submit" className="btn btn-default " onClick={handleUpdateTimeFood}>yes</button>
+                    <span className="input-group-btn">
+                      <button type="submit" className="btn btn-default " onClick={handleUpdateTimeFood}>yes</button>
+                    </span>
                   </span> : null}
                 {/food/.test(this.props.route) ?
-                  <span className="input-group-btn">
-                    <input className="input-group-addon"
+                  <span>
+                    <input className="input-group"
                       type="text"
                       className="form-control"
                       id="newName"
                       placeholder="Enter your new menu Name..."
                       ref={(i) => { newNameMenu = i; }}
                     />
+                    <br/>
+                    <span className="input-group">
                     <input className="input-group-addon"
                       type="text"
                       className="form-control"
@@ -108,7 +113,10 @@ export default class App extends React.Component {
                       placeholder="Enter your new menu Name..."
                       ref={(i) => { calorie = i; }}
                     />
-                    <button type="submit" className="btn btn-default " onClick={handleUpdateFood}>yes</button>
+                    <span className="input-group-btn">
+                      <button type="submit" className="btn btn-default " onClick={handleUpdateFood}>yes</button>
+                    </span>
+                  </span>
                   </span>: null }
               </span>
         </div>

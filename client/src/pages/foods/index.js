@@ -56,7 +56,7 @@ const TimeFoods = ({route, foods, doGetFoods, createFood }) => {
             placeholder="Enter your new menu Name..."
             ref={(i) => { calorie = i; }}
           />
-          <span type="submit" className=" input-group-addon  " >
+          <span  className=" input-group-addon  " >
             <span className="glyphicon glyphicon-check" onClick={handleCreateFood}> </span>
           </span>
           </div>

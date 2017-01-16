@@ -35,8 +35,9 @@ export const removeNotificationAction = notificationId => ({
 });
 
 //administration menu
-export const getMenuAction = () =>({
+export const getMenuAction = (payload) =>({
   type: ActionTypes.GET_MENU,
+  payload,
 });
 
 export const getMenuNameAction = (payload) => ({
