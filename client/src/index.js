@@ -37,13 +37,13 @@ import UpdateExercise from './pages/updateExercise';
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
-
+//onEnter={requireAuth}
 // render on page
 ReactDOM.render((
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={Home} onEnter={requireAuth} />
+        <IndexRoute component={Home}  />
         <Route path="login" component={Login} />
         <Route path="food/:nameMenu/:time" component={Foods} onEnter={requireAuth}/>
         <Route path="timeFood/:name" component={TimeFood} onEnter={requireAuth}/>

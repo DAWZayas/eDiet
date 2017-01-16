@@ -51,9 +51,10 @@
     "jsonwebtoken": "^7.1.8",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
     "passport-jwt": "^2.1.0",
     "passport-local": "^1.0.0",
-    "passport-facebook": "^2.1.1",
+    "rethinkdb-websocket-server": "^0.6.0",
     "thinky": "^2.3.4",
     "winston": "^2.2.0"
   }

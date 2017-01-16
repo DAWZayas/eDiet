@@ -9,15 +9,19 @@ export default class AutoPlay extends Component {
       fade:true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
+      autoplay: true,      
     };
+    const slider = {
+      margin:"-1% 0 8% 0",     
+      
+    }
     return (
-      <div className= "hidden-xs hidden-sm" style ={{margin:"0 0 5% 0"}} >
-        <Slider {...settings}>
-          <div><img  src="https://images.unsplash.com/photo-1421899528807-04d925f39555?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1000&amp;q=80&amp;cs=tinysrgb&amp;crop=" width='100%' height='800px'/></div>
-          <div><img src="https://images.unsplash.com/uploads/141150092992295b16435/00a01fcc?dpr=1&amp;auto=compress,format&amp;fit=crop&amp;w=1199&amp;h=674&amp;q=80&amp;cs=tinysrgb&amp;crop=&quot" width='100%' height='800px' /></div>
-          <div><img src="https://images.unsplash.com/photo-1474575981580-1ec7944df3b2?dpr=1&amp;auto=compress,format&amp;fit=crop&amp;w=1199&amp;h=747&amp;q=80&amp;cs=tinysrgb&amp;crop=&quot" width='100%' height='800px' /> </div>
-          <div><img src="https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?dpr=1&amp;auto=compress,format&amp;fit=crop&amp;w=1199&amp;h=796&amp;q=80&amp;cs=tinysrgb&amp;crop=&quot" width='100%' height='800px' /> </div>
+      <div className= "hidden-xs hidden-sm" style={slider} >
+        <Slider {...settings}>          
+          <div><img src="./src/components/slider/images/a.jpg" width='100%' height='800px' /> </div>
+          <div><img src="./src/components/slider/images/2.jpg" width='100%' height='800px' /> </div>
+          <div><img src="./src/components/slider/images/3.jpg" width='100%' height='800px' /> </div>
+          <div><img src="./src/components/slider/images/b.jpg" width='100%' height='800px' /> </div>
         </Slider>
       </div>
     );
