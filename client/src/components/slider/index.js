@@ -9,15 +9,16 @@ export default class AutoPlay extends Component {
       fade:true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,      
+      autoplay: true,
     };
     const slider = {
-      margin:"-1% 0 8% 0",     
-      
+      marginTop:"-9%",
+      marginBottom:"3%",
+      zIndex: '-1',
     }
     return (
       <div className= "hidden-xs hidden-sm" style={slider} >
-        <Slider {...settings}>          
+        <Slider {...settings}>
           <div><img src="./src/components/slider/images/a.jpg" width='100%' height='800px' /> </div>
           <div><img src="./src/components/slider/images/2.jpg" width='100%' height='800px' /> </div>
           <div><img src="./src/components/slider/images/3.jpg" width='100%' height='800px' /> </div>
