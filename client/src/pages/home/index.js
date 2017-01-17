@@ -6,12 +6,8 @@ import {} from '../../store/actions';
 import Slider from '../../components/slider';
 import CompHome from '../../components/bodyHome';
 
-
 const mapDispatchToProps = (dispatch) => ({
-
-
 });
-
 
 const Home = () => (
 <div className="bg-main">
@@ -24,13 +20,5 @@ const Home = () => (
   </div>
 </div>
 );
-
-
-
-
-
-
-  /*
-);*/
 
 export default connect(null, mapDispatchToProps)(Home);

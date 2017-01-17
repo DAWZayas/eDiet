@@ -10,6 +10,8 @@ import Aside from '../components/aside';
 import {logoutAction} from '../store/actions';
 import Footer from '../components/footer';
 
+const styles = require('./style.scss');
+
 const mapStateToProps = (state) => ({
    user: state.auth.user,
    token: state.auth.token,
@@ -26,18 +28,13 @@ class App extends React.Component {
   render(){
     const {children, token, doLogOut, user, navToLogin, route} = this.props;
 
-    const appStyle = { overflow:'hidden',
-                       backgroundImage: `url(${"https://subtlepatterns.com/patterns/paisley.png"})`,
-                     };
-
-
     return(
-    <div className="bg-main" style={appStyle}>
-        <NavBar {...this.props} />
-        {children}
-        <Aside />
-        <Footer />
-    </div>
+      <div className={`bg-main ${styles.body}`}>
+          <NavBar {...this.props} />
+          {children}
+          <Aside />
+          <Footer />
+      </div>
     );
   }
 }

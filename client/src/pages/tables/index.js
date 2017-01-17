@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import _ from 'lodash';
 
-import {getTablesAction, createTableAction, deleteTableAction, updateTableAction} from '../../store/actions';
+import {getTablesAction, createTableAction, deleteTableAction, updateTableAction, addObservable, removeObservable} from '../../store/actions';
 import Tables from '../../components/tables';
 
 const mapStateToProps = (state) => ({
@@ -19,9 +19,12 @@ const mapStateToProps = (state) => ({
    createTable: payload => dispatch(createTableAction(payload)),
    deleteTable: payload => dispatch(deleteTableAction(payload)),
    updateTable: payload => dispatch(updateTableAction(payload)),
+   getCreateTable: payload => dispatch(getCreateTable(payload)),
+   addObservable: observable => dispatch(addObservable(observable)),
+   removeObservable: observable => dispatch(removeObservable(observable)),
  });
 
-const tableActions = ({ tables, status, getTables, createTable, deleteTable, updateTable, hasMore, loadingMore }) => {
+const tableActions = ({ tables, status, getTables, createTable, deleteTable, updateTable, hasMore, loadingMore, getCreateTable, addObservable, removeObservable }) => {
   return (
     <div className="container">
       <Tables
@@ -33,6 +36,9 @@ const tableActions = ({ tables, status, getTables, createTable, deleteTable, upd
         status={status}
         hasMore={hasMore}
         loadingMore={loadingMore}
+        getCreateTable={getCreateTable}
+        addObservable={addObservable}
+        removeObservable={removeObservable}
       />
     </div>
   )
