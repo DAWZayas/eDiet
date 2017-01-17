@@ -39,7 +39,7 @@ export default class dropdownHamburger extends Component {
         this.props.user.role ?
         this.props.route === obj.url ?
           <li className="active" key={index} >
-            <Link to={obj.url} style={{color:'black'}}>
+            <Link to={obj.url} style={{color:'orangeRed', backgroundColor:'transparent'}}>
               {obj.body}
             </Link>
           </li> :

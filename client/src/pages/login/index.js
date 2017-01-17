@@ -39,7 +39,7 @@ const Login = ({onLoginClick, navToHome, token}) => {
   return (
     <div className="container" >
       <div className="jumbotron">
-        <h2>Experts portal:</h2>
+        <h2>eDiet portal:</h2>
         <p>Please log in. Or <Link to="/register">register</Link></p>
 
         <form>

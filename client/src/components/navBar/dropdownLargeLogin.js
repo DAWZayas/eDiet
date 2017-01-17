@@ -29,6 +29,10 @@ export default class dropdownLargeLogin extends Component {
         class: "glyphicon	glyphicon-off",
         body: "Logout",
       },
+      {
+        class: "glyphicon glyphicon-pencil",
+        body: "My area",        
+      }
     ];
 
       const log = logOutUser.map((obj, index) => <li key={index}><a href="#" className={obj.class} onClick={handleLogin} > {obj.body} </a></li>);

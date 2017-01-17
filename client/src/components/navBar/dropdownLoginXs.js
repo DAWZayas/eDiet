@@ -22,6 +22,7 @@ export default class dropdownLoginXs extends Component {
         body: "Sign up",
         url:'/register',
       }
+
     ];
 
     const logout = [
@@ -29,14 +30,19 @@ export default class dropdownLoginXs extends Component {
         class: "glyphicon	glyphicon-off",
         body: "Logout",
       },
+      {
+        class: "glyphicon glyphicon-pencil",
+        body: "My area",
+
+      }
     ];
 
       const log = logout.map((obj, index) => <li key={index}><a className={obj.class} onClick={handleLogin} > {obj.body} </a></li>);
 
-      const li = login.map((obj, index) => <li key={index}><Link to={obj.url} className={obj.class} > {obj.body} </Link></li>);
+      const li = login.map((obj, index) => <li key={index} style={{color:'white'}}><Link to={obj.url} className={obj.class} > {obj.body} </Link></li>);
 
     return (
-        <ul className="nav navbar-nav hidden-sm hidden-md hidden-lg" >
+        <ul className="nav navbar-nav hidden-sm hidden-md hidden-lg">
           { this.props.user ? log : li}
         </ul>
 
