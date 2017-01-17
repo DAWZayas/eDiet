@@ -8,7 +8,7 @@ export const getTables = action$ => action$
   .ofType(ActionTypes.GET_TABLES)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.get('http://localhost:8080/api/exercise', payload, headers)
+    .ajax.get(`http://localhost:8080/api/exercise?skip=${payload.skip || 0}&limit=${payload.limit || 10}`, payload, headers)
     .delay(2000)
     .map(res => res.response)
     .mergeMap(tables  => Observable.of ({

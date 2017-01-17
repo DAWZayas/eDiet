@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes';
 
-const initialState = {tables: [], status: 'inited'};
+const initialState = {tables: [], status: 'inited', hasMore: true};
 
 export const tables = (state = initialState, action) => {
   switch (action.type) {
@@ -22,10 +22,12 @@ export const tables = (state = initialState, action) => {
       };
 
     case ActionTypes.GET_TABLES_SUCCESS:
+      const hasMore = action.payload.length === 10;
       return {
         ...state,
-        tables: action.payload,
+        tables: state.tables.concat(action.payload),
         status: 'done',
+        hasMore,
       };
 
     case ActionTypes.CREATE_TABLE_SUCCESS:
