@@ -1,11 +1,12 @@
 import {login, register} from './auth';
 import {addNotification} from './notifications';
 import {helloWorld} from './helloworld';
-import {createMenu, getMenu, deleteMenu, updateMenu, getMenuName} from './menus';
+import {createMenu, getMenu, deleteMenu, updateMenu, getMenuName, getMenuNameReal} from './menus';
 import {createTimeFood, deleteTimeFood, updateTimeFood, getTimeFood, getTimeFoods} from './timeFoods';
 import {createFood, deleteFood, updateFood, getFood, getFoods} from './foods';
 import {getTables, createTable, getCreateTable, deleteTable, updateTable} from './tables';
 import {getExercises, createExercise, deleteExercise, updateExercise} from './exercises';
+import {addObservable} from './realTime';
 
 
 
@@ -20,6 +21,7 @@ export default [
   updateMenu,
   getMenuName,
   //administration timeFood
+  addObservable,
   createTimeFood,
   deleteTimeFood,
   updateTimeFood,

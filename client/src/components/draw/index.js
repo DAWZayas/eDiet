@@ -1,14 +1,29 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {push} from 'react-router-redux';
+import {connect} from 'react-redux';
 
 import Modals from '../modals/buttons';
+import {getMenuNameRealAction, addObservable, removeObservable} from '../../store/actions';
+import {registerQuestionObservable} from '../../store/realTime';
 
-export default class Menus extends React.Component{
+const mapDispatchToProps = dispatch => ({
+  addObservable: observable => dispatch(addObservable(observable)),
+  removeObservable: observable => dispatch(removeObservable(observable)),
+});
+
+class Menus extends React.Component{
 
     constructor(props){
         super(props);
+        const {payload: observable} = this.props.addObservable(registerQuestionObservable(this.props.menu));
+        this.state={observable};
     }
+    componentWillUnmount() {
+        const {removeObservable} = this.props;
+        const {observable} = this.state;
+        removeObservable(observable);
+  }
 
     render(){
 
@@ -42,3 +57,4 @@ export default class Menus extends React.Component{
         );
       }
   }
+export default connect(null, mapDispatchToProps)(Menus);

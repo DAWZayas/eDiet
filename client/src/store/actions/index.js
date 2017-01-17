@@ -40,6 +40,11 @@ export const getMenuAction = (payload) =>({
   payload,
 });
 
+export const getMenuNameRealAction = (payload) =>({
+  type: ActionTypes.GET_MENU_NAME_REAL,
+  payload,
+});
+
 export const getMenuNameAction = (payload) => ({
   type: ActionTypes.GET_MENU_NAME,
   payload,
@@ -159,4 +164,14 @@ export const deleteExerciseAction = payload => ({
 export const updateExerciseAction = payload => ({
   type: ActionTypes.UPDATE_EXERCISE,
   payload,
+});
+
+export const addObservable = observable => ({
+  type: ActionTypes.ADD_OBSERVABLE,
+  payload: observable,
+});
+
+export const removeObservable = observable => ({
+  type: ActionTypes.REMOVE_OBSERVABLE,
+  payload: observable,
 });

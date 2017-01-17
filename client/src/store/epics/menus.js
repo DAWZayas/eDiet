@@ -56,7 +56,7 @@ export const createMenu = action$ => action$
         .map(res => res.response)
         .mergeMap( menu  => Observable.of ({
           type: ActionTypes.UPDATE_MENU_SUCCESS,
-          payload: {menu},
+          payload: {menu, name: payload.oldname},
         },
         Actions.addNotificationAction(
           {text: 'Update menu success', alertType: 'info'}),
@@ -108,3 +108,21 @@ export const createMenu = action$ => action$
           }
           )),
         );
+
+        export const getMenuNameReal = action$ => action$
+          .ofType(ActionTypes.GET_MENU_NAME_REAL)
+          .map(signRequest)
+          .switchMap(({headers, payload}) => Observable
+            .ajax.get(`http://localhost:8080/api/menu/${payload.name}`,payload, headers)
+            .delay(2000)
+            .map(res => res.response)
+            .map(menu => ({
+              type: ActionTypes.GET_MENU_NAME_REAL_SUCCESS,
+              payload: {menu},
+            }))
+            .catch(error => Observable.of({
+              type: ActionTypes.GET_MENU_NAME_REAL_ERROR,
+              payload: {error},
+            }
+            )),
+          );

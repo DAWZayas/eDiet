@@ -22,7 +22,8 @@ export const timeFoods = (state = initialState, action) => {
 
       case ActionTypes.UPDATE_TIMEFOOD_SUCCESS:
         const updateTimeFood = action.payload.timeFoods.map( (obj) => Object.assign({}, {timeFood: obj.timeFood}));
-        return {...state, status:'done'};
+        console.log(updateTimeFood);
+        return {...state, status:'done', timeFoods: updateTimeFood};
 
       case ActionTypes.GET_TIMEFOOD_SUCCESS:
         console.log(action);

@@ -32,8 +32,11 @@ export const menus = (state = initialState, action) => {
           update: null,
         };
       case ActionTypes.UPDATE_MENU_SUCCESS:
-        const menu = state.menu.map( obj => obj.id === action.payload.menu.id ? obj = action.payload.menu : obj);
+        const menu = state.menu.map( obj => obj.name === action.payload.name ? Object.assign({}, {name: action.payload.menu.name}) : obj);
         return {...state, status: 'done', menu, update: [action.payload.menu]};
+        case ActionTypes.GET_MENU_NAME_REAL:
+          console.log(action);
+          return {...state, status: 'done' };
       case ActionTypes.GET_MENU_NAME_SUCCESS:
         const addMenu = state.menu.concat(action.payload.menu);
         return {...state, menu: addMenu,  men: action.payload.menu, status:'done'};

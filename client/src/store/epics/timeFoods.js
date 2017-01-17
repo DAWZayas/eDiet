@@ -57,7 +57,7 @@ export const createTimeFood = action$ => action$
         .map(res => res.response)
         .mergeMap( menu  => Observable.of ({
           type: ActionTypes.UPDATE_TIMEFOOD_SUCCESS,
-          payload: {timeFoods: menu.timeFoods},
+          payload: {timeFoods: menu.timeFoods, name: payload.name},
         },
         Actions.addNotificationAction(
           {text: 'Update time Food Succes', alertType: 'info'}),
