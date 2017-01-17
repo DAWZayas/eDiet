@@ -10,17 +10,18 @@ import Tables from '../../components/tables';
 const mapStateToProps = (state) => ({
    tables: state.tables.tables,
    status: state.tables.status,
+   hasMore: state.tables.hasMore,
+   loadingMore: state.tables.status === 'loading',
  });
 
  const mapDispatchToProps = (dispatch) => ({
-   getTables: _.once(() => dispatch(getTablesAction())),
+   getTables: payload => dispatch(getTablesAction(payload)),
    createTable: payload => dispatch(createTableAction(payload)),
    deleteTable: payload => dispatch(deleteTableAction(payload)),
    updateTable: payload => dispatch(updateTableAction(payload)),
  });
 
-const tableActions = ({ tables, status, getTables, createTable, deleteTable, updateTable }) => {
-  getTables();
+const tableActions = ({ tables, status, getTables, createTable, deleteTable, updateTable, hasMore, loadingMore }) => {
   return (
     <div className="container">
       <Tables
@@ -30,6 +31,8 @@ const tableActions = ({ tables, status, getTables, createTable, deleteTable, upd
         deleteTable={deleteTable}
         updateTable={updateTable}
         status={status}
+        hasMore={hasMore}
+        loadingMore={loadingMore}
       />
     </div>
   )

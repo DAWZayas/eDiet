@@ -1,5 +1,5 @@
 // our packages
-import {Exercise} from '../db';
+import {Exercise, r} from '../db';
 import {asyncRequest} from '../util';
 
 export default (app) => {
@@ -11,22 +11,26 @@ export default (app) => {
       tables = await Exercise;
       table = tables.filter(table => table.name === req.params.name);
 
+      res.send(table);
+
     } catch (e) {
       res.status(400).send({error: 'No se ha encontrado la tabla'});
     }
-
-    res.send(table);
   }));
 
   app.get('/api/exercise', asyncRequest(async (req, res) => {
-    let tables;
     try {
-      tables = await Exercise;
+      const skip = parseInt(req.query.skip, 10) || 0;
+      const limit = parseInt(req.query.limit, 10) || 10;
+      const tables = await r.table('Exercise')
+                      .pluck('name')
+                      .orderBy(r.desc('name'))
+                      .skip(skip)
+                      .limit(limit);
+      res.send(tables);
 
     } catch (e) {
       res.status(400).send({error: 'No se ha podido recuperar las tablas'});
     }
-
-    res.send(tables);
   }));
 };

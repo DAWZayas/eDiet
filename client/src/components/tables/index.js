@@ -12,6 +12,9 @@ export default class Tables extends Component {
           deleteTable={this.props.deleteTable}
           updateTable={this.props.updateTable}
           status={this.props.status}
+          hasMore={this.props.hasMore}
+          loadingMore={this.props.loadingMore}
+          getTables={this.props.getTables}
         />
       </div>
     );
