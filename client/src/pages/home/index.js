@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {} from '../../store/actions';
 import Slider from '../../components/slider';
 import CompHome from '../../components/bodyHome';
+import Footer from '../../components/footer';
 
 const mapDispatchToProps = (dispatch) => ({
 });
@@ -18,6 +19,7 @@ const Home = () => (
     <br/>
     <CompHome />
   </div>
+  <Footer />
 </div>
 );
 
