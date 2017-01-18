@@ -8,9 +8,8 @@ import {hash, asyncRequest} from '../util';
 
 export default (app) => {
   app.post('/api/user/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
-    const {login, password, passwordRepeat} = req.body;
+    const {login, password, email, height} = req.body;
 
-    // check if user is changing his own profile
     if (req.user.id !== req.params.id) {
       res.status(403).send({error: 'Not enough rights to change other user profile!'});
       return;
@@ -24,17 +23,13 @@ export default (app) => {
       return;
     }
 
-    // check if user exists
-    if (!user) {
-      res.status(400).send({error: 'User does not exist'});
-      return;
-    }
-
     // check if data is actually changed
     const loginChanged = login && user.login !== login;
     const passwordChanged = password && user.password !== hash(password);
+    const emailChanged = email && user.email !== email;
+    const heightChanged = height && user.height !== height;
     // if not - just send OK
-    if (!loginChanged && !passwordChanged) {
+    if (!loginChanged && !passwordChanged && !emailChanged && !heightChanged) {
       delete user.password;
       res.send(user);
       return;
@@ -59,6 +54,12 @@ export default (app) => {
     if (password) {
       user.password = hash(password);
     }
+    if (email) {
+      user.email = email;
+    }
+    if (height) {
+      user.height = height;
+    }
     // try to save
     try {
       await user.save();
@@ -71,4 +72,38 @@ export default (app) => {
     delete user.password;
     res.send(user);
   }));
+
+  app.post('/api/user/:id/addWeight', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+    const {weight} = req.body;
+
+    if (req.user.id !== req.params.id) {
+      res.status(403).send({error: 'Not enough rights to change other user profile!'});
+      return;
+    }
+
+    let user;
+    try {
+      user = await User.get(req.params.id);
+    } catch (e) {
+      res.status(400).send({error: 'User does not exist'});
+      return;
+    }
+    // update data
+    if (weight) {
+      user.weight.push(weight);
+    }
+
+    // try to save
+    try {
+      await user.save();
+    } catch (e) {
+      res.status(400).send({error: e.toString()});
+      return;
+    }
+
+    // send succcess
+    res.send(user);
+  }));
+
+
 };
