@@ -17,7 +17,6 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { modalIsOpen: false };
-    console.log(...this.props);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }

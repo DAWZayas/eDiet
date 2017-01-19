@@ -13,8 +13,9 @@ export default (app) => {
   app.post('/api/menu/add', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     // get Menu input
 
-    const {name} = req.body;
-    
+    const {name, level} = req.body;
+    console.log(level);
+
     if (name !== undefined && !name.length) {
        res.status(400).send({error: 'Menu name should be not empty!'});
        return;
@@ -29,6 +30,7 @@ export default (app) => {
     // save new Menu
     const menu = new Menu({
       name,
+      level,
       owner: req.user.id,
     });
     await menu.save();

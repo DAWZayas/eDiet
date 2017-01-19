@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
   doUpdateTimeFood: payload => dispatch(updateTimeFoodAction(payload)),
 
   doDeleteFood: payload => dispatch(deleteFoodAction(payload)),
-  doUpdateFood: payload => dispatch(updateFoodAction(payload))
+  doUpdateFood: payload => dispatch(updateFoodAction(payload)),
 });
 
 

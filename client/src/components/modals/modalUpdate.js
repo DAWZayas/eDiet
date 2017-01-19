@@ -13,7 +13,7 @@ const customStyles = {
 };
 
 
-export default class App extends React.Component {
+export default class Appu extends React.Component {
   constructor(props) {
     super(props);
     this.state = { modalIsOpen: false };
@@ -33,11 +33,13 @@ export default class App extends React.Component {
   render() {
     let newNameMenu;
     let calorie;
+    let menuLevel;
 
     const handleUpdateMenu = (e) => {
       e.preventDefault();
       const name = newNameMenu.value;
-      this.props.update({oldname:this.props.menu, name});
+      const level = menuLevel.value;
+      this.props.update({oldname:this.props.menu, name, level});
       this.closeModal();
     };
 
@@ -70,17 +72,27 @@ export default class App extends React.Component {
           <h4> Update </h4>
               <span>
                 {/Menu/.test(this.props.route) ?
-                  <span className="input-group">
+                <span>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="newName"
+                      placeholder="Enter your new menu Name..."
+                      ref={(i) => { newNameMenu = i; }}
+                    />
+                    <br/>
+                    <span className="input-group">
                       <input className="input-group-addon"
                         type="text"
                         className="form-control"
                         id="newName"
-                        placeholder="Enter your new menu Name..."
-                        ref={(i) => { newNameMenu = i; }}
+                        placeholder="level menu..."
+                        ref={(i) => { menuLevel = i; }}
                       />
                       <span className="input-group-btn">
                         <button type="submit" className="btn btn-default " onClick={handleUpdateMenu}>yes</button>
                       </span>
+                    </span>
                   </span> : null}
                 {/timeFood/.test(this.props.route) ?
                   <span className="input-group">

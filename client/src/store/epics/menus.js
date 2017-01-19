@@ -76,7 +76,7 @@ export const createMenu = action$ => action$
         .ajax.post(`http://localhost:8080/api/menu/delete/${payload.name}`, payload, headers)
         .delay(2000)
         .map(res => res.response)
-        .mergeMap( menu  => Observable.of ({
+        .map( menu  => Observable.of ({
           type: ActionTypes.DELETE_MENU_SUCCESS,
           payload,
           },

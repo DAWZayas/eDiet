@@ -2,6 +2,7 @@ import {thinky} from './thinky';
 
 export const Menu = thinky.createModel('Menu', {
   name: thinky.type.string().required(),
+  level: thinky.type.number(),
   timeFoods: thinky.type.array().schema(
     thinky.type.object().schema({
       timeFood: thinky.type.string().required(),

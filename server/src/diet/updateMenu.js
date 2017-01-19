@@ -8,7 +8,8 @@ import {asyncRequest} from '../util';
 export default (app) => {
   app.post('/api/menu/update/:name', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
 
-    const {name} = req.body;
+    const {name, level} = req.body;
+    console.log(level);
     // make sure text is not empty
    if (name !== undefined && !name.length) {
       res.status(400).send({error: 'Menu name should be not empty!'});
@@ -36,6 +37,7 @@ export default (app) => {
 
     if (req.params.name) {
       menu.name = name;
+      menu.level = level;
     }
 
     // try saving

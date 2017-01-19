@@ -4,8 +4,8 @@ import {push} from 'react-router-redux';
 import {connect} from 'react-redux';
 
 import Modals from '../modals/buttons';
-import {getMenuNameRealAction, addObservable, removeObservable} from '../../store/actions';
-import {registerQuestionObservable} from '../../store/realTime';
+import { addObservable, removeObservable} from '../../store/actions';
+import {registerMenuObservable} from '../../store/realTime';
 
 const mapDispatchToProps = dispatch => ({
   addObservable: observable => dispatch(addObservable(observable)),
@@ -16,7 +16,7 @@ class Menus extends React.Component{
 
     constructor(props){
         super(props);
-        const {payload: observable} = this.props.addObservable(registerQuestionObservable(this.props.menu));
+        const {payload: observable} = this.props.addObservable(registerMenuObservable(this.props.menu));
         this.state={observable};
     }
     componentWillUnmount() {

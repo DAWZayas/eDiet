@@ -4,7 +4,7 @@ import {connPromise, r} from '../../util';
 import * as ActionTypes from '../actionTypes';
 import * as Actions from '../actions';
 
-export const registerQuestionObservable = name =>
+export const registerMenuObservable = name =>
   Observable.fromPromise(connPromise)
   .concatMap(conn => Observable.fromPromise(r.table('Menu').changes().run(conn)))
   .switchMap(cursor => Observable.create((observer) => {

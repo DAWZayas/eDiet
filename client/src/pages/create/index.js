@@ -25,11 +25,13 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Create = ({ menus, doGetMenu, route, navTo, createMenu, hasMore, loadingMore}) => {
   let menuName;
+  let menuLevel;
 
   const handleCreateMenu = (e) => {
     e.preventDefault();
     const name = menuName.value;
-    createMenu({name});
+    const level = menuLevel.value;
+    createMenu({name, level});
   };
 
   const onLoadMore = () => doGetMenu({
@@ -44,13 +46,21 @@ const Create = ({ menus, doGetMenu, route, navTo, createMenu, hasMore, loadingMo
               Create menu
             </div>
             <div className="panel-footer ">
+            <input
+              type="text"
+              className="form-control"
+              id="newName"
+              placeholder="Enter your new menu Name..."
+              ref={(i) => { menuName = i; }}
+            />
+            <br/>
             <div className="input-group">
               <input
                 type="text"
                 className="form-control"
                 id="newName"
                 placeholder="Enter your new menu Name..."
-                ref={(i) => { menuName = i; }}
+                ref={(i) => { menuLevel = i; }}
               />
               <span type="submit" className=" input-group-addon  " >
                 <span className="glyphicon glyphicon-check" onClick={handleCreateMenu}> </span>
