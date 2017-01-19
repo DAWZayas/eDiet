@@ -6,6 +6,7 @@ import {push} from 'react-router-redux';
 
 // our packages
 import {registerAction} from '../../store/actions';
+const style = require('./style.scss');
 
 const mapStateToProps = state => ({
   redirectToLogin: state.auth.redirectToLogin,
@@ -37,44 +38,46 @@ const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
   }
 
   return (
-    <div className="container">
-      <div className="jumbotron" >
-        <h2>Experts portal:</h2>
-        <p>Please register. Or <Link to="/login">login</Link></p>
-
-        <form>
-          <div className="form-group">
-            <label htmlFor="inputUsername">Username:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputUsername"
-              placeholder="Username"
-              ref={(i) => { usernameInput = i; }}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="inputPassword">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="inputPassword"
-              placeholder="Password"
-              ref={(i) => { passwordInput = i; }}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="inputPasswordRepeat">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="inputPasswordRepeat"
-              placeholder="Repeat password"
-              ref={(i) => { passwordInputRepeat = i; }}
-            />
-          </div>
-          <button type="submit" className="btn btn-default" onClick={handleClick}>Register</button>
-        </form>
+    <div className={`container ${style.container}`}>
+      <div className="row">
+        <div className={`main ${style.main}`}>
+          <h3 className={`${style.h3}`}>Please Sign Up, or <Link to="/login">Log In</Link></h3>
+          <form role="form">
+            <div className="form-group">
+              <label htmlFor="inputUsername">Username:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="inputUsername"
+                placeholder="Username"
+                ref={(i) => { usernameInput = i; }}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputPassword">Password:</label>
+              <input
+                type="password"
+                className="form-control"
+                id="inputPassword"
+                placeholder="Password"
+                ref={(i) => { passwordInput = i; }}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputPassword">Password:</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="inputPasswordRepeat"
+                  placeholder="Repeat password"
+                  ref={(i) => { passwordInputRepeat = i; }}
+                />
+            </div>
+            <button type="submit" className={`btn ${style.registerButton}`} onClick={handleClick}>
+              Sign up
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import {push} from 'react-router-redux';
 
 // our packages
 import {loginAction} from '../../store/actions';
+const style = require('./style.scss');
 
 const mapStateToProps = state => ({
   token: state.auth.token,
@@ -37,43 +38,59 @@ const Login = ({onLoginClick, navToHome, token}) => {
   }
 
   return (
-    <div className="container" >
-      <div className="jumbotron">
-        <h2>eDiet portal:</h2>
-        <p>Please log in. Or <Link to="/register">register</Link></p>
+    <div className={`container ${style.container}`}>
+      <div className="row">
+        <div className={`main ${style.main}`}>
+          <h3 className={`${style.h3}`}>Please Log In, or <Link to="/register">Sign Up</Link></h3>
+          <div className="row">
+            <div className="col-xs-6 col-sm-6 col-md-6">
+              <a href="#" className="btn btn-lg btn-primary btn-block">Facebook</a>
+            </div>
+            <div className="col-xs-6 col-sm-6 col-md-6">
+              <a href="#" className="btn btn-lg btn-danger btn-block">Google</a>
+            </div>
+          </div>
+          <div className={`login-or ${style.login}`}>
+            <hr className={`hr-or ${style.hr}`} />
+            <span className={`span-or ${style.span}`}>or</span>
+          </div>
 
-        <form>
-          <div className="form-group">
-            <label htmlFor="inputUsername">Username:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputUsername"
-              placeholder="Username"
-              ref={(i) => { usernameInput = i; }}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="inputPassword">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="inputPassword"
-              placeholder="Password"
-              ref={(i) => { passwordInput = i; }}
-            />
-          </div>
-          <div className="checkbox">
-            <label htmlFor="inputRemember">
-              <input
-                type="checkbox"
-                id="inputRemember"
-                ref={(i) => { rememberInput = i; }}
-              /> Remember me
-            </label>
-          </div>
-          <button type="submit" className="btn btn-default" onClick={handleClick}>Login</button>
-        </form>
+          <form role="form">
+            <div className="form-group">
+              <label htmlFor="inputUsername">Username or email</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputUsername"
+                  placeholder="Username"
+                  ref={(i) => { usernameInput = i; }}
+                />
+            </div>
+            <div className="form-group">
+              <a className="pull-right" href="#">Forgot password?</a>
+              <label htmlFor="inputPassword">Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="inputPassword"
+                  placeholder="Password"
+                  ref={(i) => { passwordInput = i; }}
+                />
+            </div>
+            <div className="checkbox pull-right">
+              <label htmlFor="inputRemember">
+                <input
+                  type="checkbox"
+                  id="inputRemember"
+                  ref={(i) => { rememberInput = i; }}
+                /> Remember me
+               </label>
+            </div>
+            <button type="submit" className={`btn ${style.loginButton}`} onClick={handleClick}>
+              Log In
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

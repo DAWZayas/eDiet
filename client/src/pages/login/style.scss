@@ -1,0 +1,48 @@
+$a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
+
+.container {
+  #{$a-tags} {
+    text-decoration: none;
+  }
+}
+
+.main {
+  max-width: 320px;
+  margin: 0 auto;
+}
+.login {
+  position: relative;
+  font-size: 18px;
+  color: #aaa;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.span {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  margin-left: -25px;
+  background-color: #fff;
+  width: 50px;
+  text-align: center;
+}
+.hr {
+  background-color: #cdcdcd;
+  height: 1px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+.h3 {
+  text-align: center;
+  line-height: 300%;
+  #{$a-tags} {
+    color: rgb(232, 142, 58);
+  }
+}
+.loginButton {
+  background-color: rgb(232, 142, 58);
+  color: rgb(255, 255, 255);
+}
