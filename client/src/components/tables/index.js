@@ -15,6 +15,9 @@ export default class Tables extends Component {
           hasMore={this.props.hasMore}
           loadingMore={this.props.loadingMore}
           getTables={this.props.getTables}
+          getCreateTable={this.props.getCreateTable}
+          addObservable={this.props.addObservable}
+          removeObservable={this.props.removeObservable}
         />
       </div>
     );

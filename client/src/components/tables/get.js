@@ -5,6 +5,8 @@ import DeleteModal from '../modals/tableDeleteModal';
 import UpdateTable from '../updateTable';
 import {Link} from 'react-router';
 import InfiniteScroll from 'redux-infinite-scroll';
+import {registerTableObservable} from '../../store/realTime';
+import Table from '../draw/table';
 
 const styles = require('./style.scss');
 // ${styles. }
@@ -14,14 +16,25 @@ export default class Get extends Component {
     super(props);
   }
 
-  render(){
-    console.log('>>>Proops', this.props);
+  componentWillMount() {
+    const {payload: observable} = this.props.addObservable(registerTableObservable(this.props.tables));
+    this.state={observable};
+  }
 
-    const {getTables, hasMore, loadingMore, deleteTable, tables, status} = this.props;
+  componentWillUnmount() {
+    const {removeObservable} = this.props;
+    const {observable} = this.state;
+    removeObservable(observable);
+  }
+
+  render(){
+    const {getTables, hasMore, loadingMore, deleteTable, tables, status, addObservable, removeObservable} = this.props;
+
     const onLoadMore = () => getTables({
       skip: tables.length,
       limit: 10,
      });
+
     return(
       <div className="panel panel-default">
           <div className={`panel-heading ${styles.header}`}>
@@ -47,27 +60,15 @@ export default class Get extends Component {
                   loader={<Spinner />}
                 >
                 {tables.map((obj, index) =>
-                  <div key={index} className={`${styles.body}`}>
-                    <ul>
-                      <li>
-                        <div>
-                          <DeleteModal deleted={obj} deleteTable={deleteTable} />
-                          <button className="btn btn-default">
-                            <Link to={`/tables/update/${obj.name}`} >
-                              <i className="fa fa-pencil" aria-hidden="true"></i>
-                            </Link>
-                          </button>
-                        </div>
-                        <p>
-                          <Link to={`/tables/${obj.name}`}>
-                            {obj.name}
-                          </Link>
-                        </p>
-                      </li>
-                    </ul>
-                  </div>
+                  <Table
+                    key={index}
+                    obj={obj}
+                    deleteTable={deleteTable}
+                    addObservable={addObservable}
+                    removeObservable={removeObservable}/>
                 )}
-              </InfiniteScroll>}
+              </InfiniteScroll>
+              }
               </div>
       </div>
     );
