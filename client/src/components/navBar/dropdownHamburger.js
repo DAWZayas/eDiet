@@ -31,6 +31,9 @@ export default class dropdownHamburger extends Component {
         body: "Admón. ejercicios",
         url: "/tables",
       },
+      {
+        class: "divider",
+      }
     ];
 
 
