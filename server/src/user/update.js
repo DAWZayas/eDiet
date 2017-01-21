@@ -7,8 +7,8 @@ import {User} from '../db';
 import {hash, asyncRequest} from '../util';
 
 export default (app) => {
-  app.post('/api/user/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
-    const {login, password, email, height} = req.body;
+  app.post('/api/user/:id/update', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+    const {passwordRepeat, password, email, height} = req.body;
 
     if (req.user.id !== req.params.id) {
       res.status(403).send({error: 'Not enough rights to change other user profile!'});
@@ -24,12 +24,12 @@ export default (app) => {
     }
 
     // check if data is actually changed
-    const loginChanged = login && user.login !== login;
+
     const passwordChanged = password && user.password !== hash(password);
     const emailChanged = email && user.email !== email;
     const heightChanged = height && user.height !== height;
     // if not - just send OK
-    if (!loginChanged && !passwordChanged && !emailChanged && !heightChanged) {
+    if ( !passwordChanged && !emailChanged && !heightChanged) {
       delete user.password;
       res.send(user);
       return;
@@ -42,15 +42,9 @@ export default (app) => {
     }
 
     // check if new login is taken
-    if (loginChanged && await loginTaken(login)) {
-      res.status(400).send({error: 'Login already taken!'});
-      return;
-    }
 
     // update data
-    if (login) {
-      user.login = login;
-    }
+
     if (password) {
       user.password = hash(password);
     }

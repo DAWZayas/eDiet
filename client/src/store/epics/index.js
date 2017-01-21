@@ -1,4 +1,4 @@
-import {login, register} from './auth';
+import {login, register, registerAdmin} from './auth';
 import {addNotification} from './notifications';
 import {helloWorld} from './helloworld';
 import {createMenu, getMenu, deleteMenu, updateMenu, getMenuName, getMenuNameReal} from './menus';
@@ -7,7 +7,7 @@ import {createFood, deleteFood, updateFood, getFood, getFoods} from './foods';
 import {getTables, createTable, getCreateTable, deleteTable, updateTable} from './tables';
 import {getExercises, createExercise, deleteExercise, updateExercise} from './exercises';
 import {addObservable} from './realTime';
-
+import {updateUser, getUser} from './user';
 
 
 export default [
@@ -44,4 +44,8 @@ export default [
   createExercise,
   deleteExercise,
   updateExercise,
+  //user
+  updateUser,
+  getUser,
+  registerAdmin,
 ];

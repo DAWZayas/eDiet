@@ -13,3 +13,8 @@ export const registerAction = payload => ({
   type: ActionTypes.DO_REGISTER,
   payload,
 });
+
+export const registerAdminAction = payload =>({
+  type: ActionTypes.DO_REGISTER_ADMIN,
+  payload,
+})

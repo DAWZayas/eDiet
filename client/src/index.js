@@ -11,6 +11,7 @@ require('bootstrap/dist/css/bootstrap.min.css');
 global.jQuery = require('jquery/dist/jquery.min.js');
 require('bootstrap/dist/js/bootstrap.min.js');
 import './scss/main.scss';
+import rd3 from 'react-d3';
 
 // our packages
 import App from './app';
@@ -33,7 +34,9 @@ import UpdateTable from './pages/updateTable';
 import Exercises from './pages/exercises';
 import AddExercise from './pages/addExercise';
 import UpdateExercise from './pages/updateExercise';
-
+import User from './pages/user';
+import AdminUser from './pages/registerAdmin';
+import GraphUser from './pages/userGraphics';
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -57,6 +60,10 @@ ReactDOM.render((
           <Route path="tables/:name" component={Exercises} onEnter={requireAuth} />
           <Route path="/tables/:name/addExercise" component={AddExercise} onEnter={requireAuth} />
           <Route path="/tables/:name/update/:exercise" component={UpdateExercise} onEnter={requireAuth} />
+          //user
+          <Route path="/user" component={User} onEnter={requireAuth} />
+          <Route path="/user/addAdmin" component={AdminUser} onEnter={requireAuth} />
+          <Route path="/user/graphics" component={GraphUser} onEnter={requireAuth} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>

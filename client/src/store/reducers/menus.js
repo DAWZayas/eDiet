@@ -23,7 +23,7 @@ export const menus = (state = initialState, action) => {
       case ActionTypes.DELETE_MENU_SUCCESS:
         const del = state.menu.filter(obj => obj.name === action.payload.name);
         const filter = state.menu.filter(obj => obj.name !== action.payload.name);
-        return {...state, menu: filter, delete: del , status:'done'};
+        return {...state, menu: filter , status:'done'};
       case ActionTypes.UPDATE_MENU_ERROR:
         return {
           ...state,
@@ -33,7 +33,7 @@ export const menus = (state = initialState, action) => {
         };
       case ActionTypes.UPDATE_MENU_SUCCESS:
         const menu = state.menu.map( obj => obj.name === action.payload.name ? Object.assign({}, {name: action.payload.menu.name}) : obj);
-        return {...state, status: 'done', menu, update: [action.payload.menu]};
+        return {...state, status: 'done', menu};
         case ActionTypes.GET_MENU_NAME_REAL:
           console.log(action);
           return {...state, status: 'done' };

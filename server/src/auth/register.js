@@ -4,8 +4,9 @@ import {hash, asyncRequest} from '../util';
 
 export const loginTaken = async (login) => {
   // check if login already taken
-  const users = await User.filter({login}).run();
-  return users.length > 0;
+  const users = await User;
+  const user = users.filter(obj => obj.login === login);
+  return user.length > 0;
 };
 
 export default (app) => {
@@ -13,9 +14,9 @@ export default (app) => {
     // get user input
     const {login, password, passwordRepeat, role} = req.body;
 
-
+    console.log(login, password, passwordRepeat, role)
     let roles;
-    
+
     role ? roles = true :roles = false
 
 
@@ -28,10 +29,14 @@ export default (app) => {
 
     // check if login already taken
     const exists = await loginTaken(login);
+
+    console.log(exists)
     if (exists) {
       res.status(403).send({error: 'User already exists!'});
       return;
     }
+
+
     console.log(roles)
     // save new user
     const user = new User({

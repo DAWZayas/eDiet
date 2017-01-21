@@ -52,3 +52,28 @@ export const register = action$ => action$
       Actions.addNotificationAction({text: registerErrorToMessage(error), alertType: 'danger'}),
     )),
   );
+
+  export const registerAdmin = action$ => action$
+    .ofType(ActionTypes.DO_REGISTER_ADMIN)
+    .switchMap(({payload}) => Observable
+      .ajax.post('http://localhost:8080/api/register', payload)
+      .map(res => res.response)
+      .mergeMap(response => Observable.of(
+        {
+          type: ActionTypes.REGISTER_ADMIN_SUCCESS,
+          payload: response,
+        },
+        Actions.addNotificationAction(
+          {text: 'Register adminstrator success', alertType: 'info'},
+        ),
+      ))
+      .catch(error => Observable.of(
+        {
+          type: ActionTypes.REGISTER_AMIN_ERROR,
+          payload: {
+            error,
+          },
+        },
+        Actions.addNotificationAction({text: registerErrorToMessage(error), alertType: 'danger'}),
+      )),
+    );

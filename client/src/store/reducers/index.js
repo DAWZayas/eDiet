@@ -6,6 +6,7 @@ import {timeFoods} from './timeFoods';
 import {foods} from './foods';
 import {tables} from './tables';
 import {exercises} from './exercises';
+import {user} from './user';
 
 export default {
   menus,
@@ -16,4 +17,5 @@ export default {
   timeFoods,
   tables,
   exercises,
+  user,
 };

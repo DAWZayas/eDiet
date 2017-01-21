@@ -38,6 +38,10 @@ export const auth = (state = initialState, action) => {
       return {
         ...action.payload,
       };
+    case ActionTypes.REGISTER_ADMIN_SUCCESS:
+      return {
+        ...state
+      };
     case ActionTypes.LOGIN_ERROR:
     case ActionTypes.REGISTER_ERROR:
       // TODO: probably necessary in the future
