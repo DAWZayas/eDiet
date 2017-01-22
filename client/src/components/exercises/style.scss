@@ -33,3 +33,13 @@ body {
     }
   }
 }
+
+.container {
+  margin: 5% 0 0 0;
+}
+
+.updateButton, .container {
+  i {
+    color: rgb(232, 142, 58);
+  }
+}

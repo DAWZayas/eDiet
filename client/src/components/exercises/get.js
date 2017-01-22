@@ -20,15 +20,15 @@ export default class Get extends Component {
 
   render(){
     return (
-      <div className="panel panel-default">
+      <div className={`panel panel-default ${styles.container}`}>
         <div className={`panel-heading ${styles.header}`}>
             <p>
-              Ejercicios
+              Exercises
             </p>
             <button className="btn btn-default">
               <Link to={`/tables/${this.state.table}/addExercise`}>
                 <i className="fa fa-plus" aria-hidden="true"></i>
-                Ejercicio
+                Exercise
               </Link>
             </button>
           </div>
@@ -38,7 +38,7 @@ export default class Get extends Component {
             :
             <div className="panel-body">
               {this.props.exercises.length === 0 ?
-                <p>Sin ejercicios</p>
+                <p>Without exercises</p>
               :
                 this.props.exercises.map((obj, index) =>
                   <div key={index} className={`${styles.body}`}>
@@ -47,7 +47,7 @@ export default class Get extends Component {
                         <div>
                           <DeleteModal deleted={obj} deleteExercise={this.props.deleteExercise} route={this.props.route}/>
                           <button className="btn btn-default">
-                            <Link to={`/tables/${this.state.table}/update/${obj.name}`} >
+                            <Link to={`/tables/${this.state.table}/update/${obj.name}`} className={`${styles.updateButton}`}>
                               <i className="fa fa-pencil" aria-hidden="true"></i>
                             </Link>
                           </button>

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
 
+const styles = require('./style.scss');
+
 let customStyles = {
   overlay: {
     position          : 'fixed',
@@ -8,7 +10,7 @@ let customStyles = {
     left              : 0,
     right             : 0,
     bottom            : 0,
-    backgroundColor   : 'rgba(40, 39, 39, 0.25)',
+    backgroundColor   : 'rgba(40, 39, 39, 0.7)',
   },
   content: {
     top: '50%',
@@ -18,6 +20,16 @@ let customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
   }
+};
+
+let button = {
+  color: 'rgb(232, 142, 58)',
+};
+
+let closeButton = {
+  bottom: 'rgb(0, 0, 0)',
+  top: '0',
+  float: 'right',
 };
 
 export default class DeleteModal extends Component {
@@ -45,7 +57,7 @@ export default class DeleteModal extends Component {
 
     return (
       <div>
-        <button className="btn btn-default" onClick={openModal}>
+        <button className="btn btn-default" onClick={openModal} style={button}>
           <i className="fa fa-trash-o" aria-hidden="true"></i>
         </button>
         <Modal
@@ -55,14 +67,14 @@ export default class DeleteModal extends Component {
           contentLabel="Borrar tabla"
         >
           <p>
-            ¿Está seguro de que desea borrar la tabla?
+            Are you sure of do you want to delete the table?
           </p>
 
           <div className="input-group-btn">
             <button className="btn btn-default alert-danger" onClick={handleDelete}>
-              Borrar
+              Delete
             </button>
-            <button className="btn btn-default close" onClick={closeModal}>
+            <button className="btn btn-default close" onClick={closeModal} style={closeButton}>
               <i className="fa fa-times" aria-hidden="true"></i>
             </button>
           </div>

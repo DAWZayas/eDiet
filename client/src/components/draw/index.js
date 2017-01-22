@@ -7,6 +7,8 @@ import Modals from '../modals/buttons';
 import { addObservable, removeObservable} from '../../store/actions';
 import {registerMenuObservable} from '../../store/realTime';
 
+let styles = require('./style.scss');
+
 const mapDispatchToProps = dispatch => ({
   addObservable: observable => dispatch(addObservable(observable)),
   removeObservable: observable => dispatch(removeObservable(observable)),
@@ -42,7 +44,7 @@ class Menus extends React.Component{
       };
 
       return(
-        <div className="panel panel-default">
+        <div className={`panel panel-default ${styles.container}`}>
             <div className="panel-heading">
               {/Menu/.test(this.props.route) ? <p><a  onClick={handleMenu} href="#" className="glyphicon glyphicon-plus" role="button"></a>{this.props.menu}
                 <Modals menu={this.props.menu} route={this.props.route}/></p> : null}

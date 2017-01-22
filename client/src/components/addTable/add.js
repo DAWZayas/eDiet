@@ -3,6 +3,12 @@ import React, {Component} from 'react';
 let tableName;
 let tableLevel;
 
+let styles = require('./style.scss');
+let footer = {
+  borderTop: 'none',
+  backgroundColor: 'rgb(255, 255, 255)',
+};
+
 export default class AddTable extends Component {
   render(){
 
@@ -17,25 +23,25 @@ export default class AddTable extends Component {
 
     const clearFields = () => {
       tableName.value = '';
-      tableName.placeholder="Nombre de la tabla...";
+      tableName.placeholder="Table name...";
       tableLevel.value = '';
-      tableLevel.placeholder="Nivel de la tabla...";
+      tableLevel.placeholder="Table level...";
       return false;
     };
 
     return(
-      <div className="panel panel-default">
+      <div className={`panel panel-default ${styles.container}`}>
         <div className="panel-heading">
-          Añadir tablas
+          Add table
         </div>
-        <div className="panel-body">
+        <div className={`panel-body`}>
           <div>
             <div className="col-sm-10">
               <input
                 type="text"
                 className="form-control"
                 id="tableName"
-                placeholder="Nombre de la tabla..."
+                placeholder="Table name..."
                 ref={(i) => { tableName = i; }}
               />
             </div>
@@ -44,15 +50,15 @@ export default class AddTable extends Component {
                 type="text"
                 className="form-control"
                 id="tableLevel"
-                placeholder="Nivel de la tabla..."
+                placeholder="Table level..."
                 ref={(i) => { tableLevel = i; }}
               />
             </div>
           </div>
         </div>
-        <div className="panel-footer">
+        <div className={`panel-footer ${styles.footer}`} style={footer}>
           <button type="submit" className="btn btn-default" onClick={handleCreate}>
-            Crear
+            Create
           </button>
         </div>
       </div>

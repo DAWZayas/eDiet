@@ -36,7 +36,7 @@ class Table extends React.Component{
             <div>
               <DeleteModal deleted={obj} deleteTable={deleteTable} />
               <button className="btn btn-default">
-                <Link to={`/tables/update/${obj.name}`} >
+                <Link to={`/tables/update/${obj.name}`} className={`${styles.updateButton}`} >
                   <i className="fa fa-pencil" aria-hidden="true"></i>
                 </Link>
               </button>

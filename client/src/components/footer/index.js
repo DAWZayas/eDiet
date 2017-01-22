@@ -1,56 +1,38 @@
 import React from 'react';
+const styles = require('./style.scss');
 
 export default class Footer extends React.Component {
   render() {
-
-    const footerStyle = {
-      color: 'white',
-      backgroundColor: 'grey',
-	    bottom: '0',
-      position:'relative',
-      width:'100%',
-      margin: "2% 0 0 0",
-    };
-
     return (
-      <div className="footer" style={footerStyle}>
-      <div className="row">
-        <br/>
-          <div className="col-md-4">
-            <center>
-              <img src="http://i48.tinypic.com/2gwgj21.jpg" className="img" alt="the-brains"/>
-              <br/>
-              <br/>
-              <p className="footertext">E-mail: info@ediet.com<br/>
-            </p></center>
-          </div>
-          <div className="col-md-4">
-
-            <center>
-              <h4 className="footertext">Siguenos</h4>
-              <div className="row">
-              <center>
-                <a href="https://www.facebook.com/bootsnipp"><i className="fa fa-facebook-square fa-3x social"></i></a>
-                &emsp;
-                <a href="https://twitter.com/bootsnipp"><i className="fa fa-twitter-square fa-3x social"></i></a>
-                &emsp;
-                <a href="https://plus.google.com/+Bootsnipp-page"><i className="fa fa-google-plus-square fa-3x social"></i></a>
-                &emsp;
-                <a href="https://instagram.com/+Bootsnipp-page"><i className="fa fa-instagram fa-3x social"></i></a>
-
-              </center>
-        </div></center>
-          </div>
-          <div className="col-md-4">
-            <center>
-              <br/>
-                <p>Términos</p>
-                <p> Política Privacidad</p>
-                <p>FAQS</p>
-            </center>
-          </div>
+      <div className={`footer ${styles.footer}`}>
+        <div className={`row`}>
+          <center>
+            <div className={`col-xs-12 ${styles.social}`}>
+              <a href="https://www.facebook.com">
+                <i className="fa fa-facebook-square fa-3x"></i>
+              </a>
+              <a href="https://twitter.com">
+                <i className="fa fa-twitter-square fa-3x"></i>
+              </a>
+              <a href="https://instagram.com">
+                <i className="fa fa-instagram fa-3x"></i>
+              </a>
+            </div>
+            <div className={`${styles.links}`}>
+              <p className="footer-links">
+                <a href="#">Home</a>
+                ·
+                <a href="#">Legal & Privacy</a>
+                ·
+                <a href="#">About eDiet</a>
+                ·
+                <a href="#">Faq</a>
+                ·
+                <a href="#">Contact</a>
+              </p>
+            </div>
+          </center>
         </div>
-
       </div>
     );
   }

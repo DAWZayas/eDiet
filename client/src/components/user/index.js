@@ -11,8 +11,8 @@ const mapDispatchToProps = (dispatch) => ({
 class user extends React.Component {
   constructor (props) {
     super(props);
-
   };
+
   render(){
     const handleUpdateUser = (e) => {
       e.preventDefault();

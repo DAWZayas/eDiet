@@ -8,7 +8,7 @@ let customStyles = {
     left              : 0,
     right             : 0,
     bottom            : 0,
-    backgroundColor   : 'rgba(40, 39, 39, 0.25)',
+    backgroundColor   : 'rgba(40, 39, 39, 0.7)',
   },
   content: {
     top: '50%',
@@ -18,6 +18,10 @@ let customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
   }
+};
+
+let button = {
+  color: 'rgb(232, 142, 58)',
 };
 
 export default class DeleteModal extends Component {
@@ -47,7 +51,7 @@ export default class DeleteModal extends Component {
 
     return (
       <div>
-        <button className="btn btn-default" onClick={openModal}>
+        <button className="btn btn-default" onClick={openModal} style={button}>
           <i className="fa fa-trash-o" aria-hidden="true"></i>
         </button>
         <Modal

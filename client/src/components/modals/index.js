@@ -5,7 +5,7 @@ import InputMenu from './menu';
 import {Spinner} from '../spinner';
 import {drawMenu} from '../../util';
 
-
+const styles = require('./style.scss');
 
 export default class Admin extends React.Component {
 
@@ -15,7 +15,7 @@ export default class Admin extends React.Component {
 
   render() {
     return (
-      <div className="container" >
+      <div className={`container ${styles.dietContainer}`}>
         {this.props.menus.map( (obj, index )=>  <InputMenu menu={obj} key={index} /> )}
       </div>
     );

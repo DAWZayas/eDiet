@@ -2,16 +2,20 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
 
 body {
   #{$a-tags} {
-    text-decoration: none;
     color: rgb(0, 0, 0);
+    text-decoration: none;
   }
 }
 
 .header {
+  align-items: baseline;
   display: flex;
   flex-wrap: nowrap;
-  align-items: baseline;
   justify-content: space-between;
+
+  button {
+    color: rgb(232, 142, 58);
+  }
 }
 
 .body {
@@ -20,16 +24,26 @@ body {
   }
 
   li {
+    align-items: baseline;
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
     justify-content: flex-start;
 
     div {
-      display: flex;
       align-items: baseline;
-      justify-content: space-between;;
+      display: flex;
+      justify-content: space-between;
       margin-right: 3%;
     }
+  }
+}
+
+.container {
+  margin: 5% 0 0 0;
+}
+
+.prueba, .updateButton {
+  i {
+    color: rgb(232, 142, 58);
   }
 }

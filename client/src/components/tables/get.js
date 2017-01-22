@@ -36,21 +36,21 @@ export default class Get extends Component {
      });
 
     return(
-      <div className="panel panel-default">
+      <div className={`panel panel-default ${styles.container}`}>
           <div className={`panel-heading ${styles.header}`}>
             <p>
-              Tablas
+              Tables
             </p>
-            <button className={"btn btn-default"}>
-              <Link to="/tables/addTable">
-                <i className="fa fa-plus" aria-hidden="true"></i>
-                Tabla
+            <button className={`btn btn-default`}>
+              <Link to="/tables/addTable" className={`${styles.prueba}`}>
+                <i className={`fa fa-plus`} aria-hidden="true"></i>
+                Table
               </Link>
             </button>
           </div>
               <div className={"panel-body"}>
               {!hasMore && tables.length === 0 ?
-                <p>Sin tablas</p>
+                <p>Without tables</p>
               :
                 <InfiniteScroll
                   elementIsScrollable={false}

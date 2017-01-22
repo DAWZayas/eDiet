@@ -1,0 +1,33 @@
+$a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
+
+.footer {
+	box-sizing: border-box;
+	text-align: left;
+	width: 100%;
+  background-color: rgb(232, 142, 58);
+  color: rgb(255, 255, 255);
+  margin: 2% 0 0 0;
+  overflow-x: hidden;
+  padding: 5%;
+  position: relative;
+  #{$a-tags} {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+}
+
+.row {
+  display: flex;
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.social, .links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  #{$a-tags} {
+    margin: 0 1% 2% 1%;
+  }
+}

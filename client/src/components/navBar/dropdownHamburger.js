@@ -17,18 +17,18 @@ export default class dropdownHamburger extends Component {
         url:'/',
       },
       {
-        body: 'Ejercicios',
+        body: 'Exercises',
         //falta URL;
       },
       {
-        body: 'Dietas',
+        body: 'Diets',
       },
       {
-        body: "Admón. menús",
+        body: "Menus admin",
         url: "/addMenu",
       },
       {
-        body: "Admón. ejercicios",
+        body: "Exercises admin",
         url: "/tables",
       },
       {
@@ -37,7 +37,7 @@ export default class dropdownHamburger extends Component {
     ];
 
 
-    const list = messageList.map((obj, index) => obj.body == 'Admón. menús' || obj.body == 'Admón. ejercicios' ?
+    const list = messageList.map((obj, index) => obj.body == 'Menus admin' || obj.body == 'Exercises admin' ?
       this.props.user ?
         this.props.user.role ?
         this.props.route === obj.url ?
