@@ -12,13 +12,18 @@ export default (app) => {
   app.post('/api/exercise/add', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     const {name, level} = req.body;
 
+    if (req.user.role === false) {
+      res.status(403).send({error: 'Not enough rights to do this action!'});
+      return;
+    }
+
     if (!name || !level) {
-      res.status(400).send({error: 'Debes rellenar ambos campos.'});
+      res.status(400).send({error: 'Fields should be not empty!'});
     }
     // check if Exercise already taken
     const exists = await tableTaken(name);
     if (exists) {
-      res.status(403).send({error: 'La tabla ya existe'});
+      res.status(403).send({error: 'Table already taken!'});
       return;
     }
 

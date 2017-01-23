@@ -1,6 +1,8 @@
 // our packages
 import {Exercise, r} from '../../db';
 import {asyncRequest} from '../../util';
+import passport from 'passport';
+
 
 export const exerciseTaken = async (table, name) => {
   // check if exercise already taken
@@ -9,22 +11,28 @@ export const exerciseTaken = async (table, name) => {
 };
 
 export default (app) => {
-  app.post('/api/exercise/:name/add', asyncRequest(async (req, res) => {
+    app.post('/api/exercise/:name/add', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+
     const {name, calories, type, time} = req.body;
     let table;
     let tables;
+
+    if (req.user.role === false) {
+      res.status(403).send({error: 'Not enough rights to do this action!'});
+      return;
+    }
 
     try {
       tables = await Exercise;
       table = tables.filter(table => table.name === req.params.name).reduce((a, b) => a.concat(b));
 
     } catch (e) {
-      res.status(400).send({error: 'No se ha encontrado la tabla'});
+      res.status(400).send({error: 'Table not found!'});
     }
 
     const exists = await exerciseTaken(table, name);
     if (exists) {
-      res.status(403).send({error: 'El ejercicio ya existe'});
+      res.status(403).send({error: 'Exercise already taken!'});
       return;
     }
 

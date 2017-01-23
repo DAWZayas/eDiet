@@ -1,5 +1,6 @@
 import {Menu} from '../../db';
 import {asyncRequest} from '../../util';
+import passport from 'passport';
 
 export const timeFoodTaken = async (menu, foodName, timeFoodName) => {
   // check if login already taken
@@ -12,22 +13,27 @@ export const timeFoodTaken = async (menu, foodName, timeFoodName) => {
 };
 
 export default (app) => {
-  app.post('/api/menu/:nameMenu/:nameTimeFood/food/add', asyncRequest(async (req, res) => {
+  app.post('/api/menu/:nameMenu/:nameTimeFood/food/add', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+
     // get Menu input
     const {nameFood, calories} = req.body;
 
+    if (req.user.role === false) {
+      res.status(403).send({error: 'Not enough rights to do this action!'});
+      return;
+    }
+
     let menu;
-    console.log(req.params.nameMenu, req.params.nameTimeFood, nameFood, calories);
     try {
       menu = await Menu;
       menu = menu.filter( ({name}) => name === req.params.nameMenu).reduce((a,b) => a.concat(b));
     } catch (e) {
-      res.status(400).send({error: 'Menu or time food does not exist'});
+      res.status(400).send({error: 'Menu or time food not found!'});
     }
     // check if Menu already taken
     const exists = await timeFoodTaken(menu, nameFood, req.params.nameTimeFood);
     if (exists) {
-      res.status(403).send({error: 'Food already exists!'});
+      res.status(403).send({error: 'Food already taken!'});
       return;
     }
     // save nameFood Menu and Food

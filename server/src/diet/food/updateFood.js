@@ -9,7 +9,12 @@ export default (app) => {
     const {nameMenu, nameTimeFood} = req.params;
     // get user input
     const {food, oldFood, calories} = req.body;
-    console.log(nameMenu, nameTimeFood, food, oldFood, calories)
+
+    if (req.user.role === false) {
+      res.status(403).send({error: 'Not enough rights to do this action!'});
+      return;
+    }
+
     // make sure text is not empty
     if (food !== undefined && !food.length && oldFood !== undefined && !oldFood.length) {
       res.status(400).send({error: 'Menu name should be not empty!'});
@@ -36,15 +41,14 @@ export default (app) => {
     const existFood = objectFood.foods.filter(obj => obj.nameFood === food );
 
     if(existFood.length>0){
-      res.status(404).send({error: 'The food alredy exist!'});
+      res.status(404).send({error: 'Food alredy taken!'});
       return;
     }
 
     // check if oldTimeFood don't exist
     const existOldFood = objectFood.foods.filter(obj => obj.nameFood === oldFood );
-    console.log(existOldFood)
     if (existOldFood.length == 0){
-      res.status(404).send({error: 'The old food dont\'t exist!'});
+      res.status(404).send({error: 'Old food not found!'});
       return;
     }
 

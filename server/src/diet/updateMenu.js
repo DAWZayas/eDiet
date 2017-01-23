@@ -8,11 +8,15 @@ import {asyncRequest} from '../util';
 export default (app) => {
   app.post('/api/menu/update/:name', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
 
+    if (req.user.role === false) {
+      res.status(403).send({error: 'Not enough rights to do this action!'});
+      return;
+    }
+
     const {name, level} = req.body;
-    console.log(level);
     // make sure text is not empty
    if (name !== undefined && !name.length) {
-      res.status(400).send({error: 'Menu name should be not empty!'});
+      res.status(400).send({error: 'Fields should be not empty!'});
       return;
     }
     let menu;

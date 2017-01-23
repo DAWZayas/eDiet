@@ -8,6 +8,11 @@ export default (app) => {
   app.post('/api/menu/:name/timeFood/delete',  passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     const {timeFood} = req.body;
 
+    if (req.user.role === false) {
+      res.status(403).send({error: 'Not enough rights to do this action!'});
+      return;
+    }
+
     // make sure text is not empty
     if (timeFood !== undefined && !timeFood.length) {
       res.status(400).send({error: 'Menu name should be not empty!'});
@@ -19,7 +24,7 @@ export default (app) => {
       menu = await Menu;
       menu = menu.filter( ({name}) => name === req.params.name).reduce((a,b) => a.concat(b));
     } catch (e) {
-      res.status(400).send({error: 'Menu does not exist'});
+      res.status(400).send({error: 'Menu not found'});
       return;
     }
 
@@ -31,7 +36,7 @@ export default (app) => {
     const existTimeFood = menu.timeFoods.filter(obj => obj.timeFood == timeFood ? true : false);
 
     if(existTimeFood.length == 0){
-      res.status(403).send({error: 'The timeFood don\'t exist!'});
+      res.status(403).send({error: 'TimeFood not found!'});
       return;
     }
 

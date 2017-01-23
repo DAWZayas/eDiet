@@ -8,12 +8,17 @@ export default (app) => {
     let table;
     let tables;
 
+    if (req.user.role === false) {
+      res.status(403).send({error: 'Not enough rights to do this action!'});
+      return;
+    }
+
     try {
       tables = await Exercise;
       table = tables.filter(table => table.name === req.params.name).reduce((a, b) => a.concat(b));
 
       if (req.user.id !== table.owner) {
-        res.status(403).send({error: 'No tienes los permisos necesarios para borrar la tabla'});
+        res.status(403).send({error: 'Not enough rights to do this action!'});
         return;
       }
 
@@ -21,7 +26,7 @@ export default (app) => {
       res.sendStatus(204);
 
     } catch (e) {
-      res.status(400).send({error: 'Tabla no encontrada'});
+      res.status(400).send({error: 'Table not found!'});
 
     }
   }));

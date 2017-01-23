@@ -5,7 +5,6 @@ import passport from 'passport';
 export const timeFoodTaken = async (menu, name) => {
   // check if login already taken
   const timeFoodsName = menu.timeFoods.filter(obj => obj.timeFood === name ? true :false);
-  console.log(timeFoodsName);
   return timeFoodsName.length > 0;
 };
 
@@ -15,11 +14,17 @@ export default (app) => {
     const {timeFood} = req.body;
     let menu;
     // get row that contain nameFood
+
+    if (req.user.role === false) {
+      res.status(403).send({error: 'Not enough rights to do this action!'});
+      return;
+    }
+
     try {
       menu = await Menu;
       menu = menu.filter( ({name}) => name === req.params.name).reduce((a,b) => a.concat(b));
     } catch (e) {
-      res.status(400).send({error: 'Menu does not exist'});
+      res.status(400).send({error: 'Menu not found'});
       return;
     }
     if (req.user.id !== menu.owner) {
@@ -30,7 +35,7 @@ export default (app) => {
     // check if Menu already taken
     const exists = await timeFoodTaken(menu, timeFood);
     if (exists) {
-      res.status(403).send({error: 'Time food already exists!'});
+      res.status(403).send({error: 'Time food already taken!'});
       return;
     }
     // save nameFood Menu and Food

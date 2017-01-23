@@ -10,9 +10,14 @@ export default (app) => {
     // get user input
     const {timeFood, oldTimeFood} = req.body;
 
+    if (req.user.role === false) {
+      res.status(403).send({error: 'Not enough rights to do this action!'});
+      return;
+    }
+
     // make sure text is not empty
     if (timeFood !== undefined && !timeFood.length && oldTimeFood !== undefined && !oldTimeFood.length) {
-      res.status(400).send({error: 'Menu name should be not empty!'});
+      res.status(400).send({error: 'Fields should be not empty!'});
       return;
     }
 
@@ -22,7 +27,7 @@ export default (app) => {
       menu = await Menu;
       menu = menu.filter( ({name}) => name === req.params.name).reduce((a,b) => a.concat(b));
     } catch (e) {
-      res.status(400).send({error: 'Menu does not exist'});
+      res.status(400).send({error: 'Menu not found'});
       return;
     }
 
@@ -36,7 +41,7 @@ export default (app) => {
     });
 
     if(existTimeFood.length>0){
-      res.status(404).send({error: 'The timeFood alredy exist!'});
+      res.status(404).send({error: 'TimeFood alredy taken!'});
       return;
     }
 
@@ -46,7 +51,7 @@ export default (app) => {
     });
 
     if (existOldTimeFood.length === 0){
-      res.status(404).send({error: 'The old timeFood dont\'t exist!'});
+      res.status(404).send({error: 'Old timeFood not found!'});
       return;
     }
 
