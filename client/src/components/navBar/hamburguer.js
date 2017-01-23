@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 const styles = require('./style.scss');
 const style = {
   text: {
-    color: 'rgb(255, 255, 255)',
+    color: 'rgb(15, 15, 15)',
   }
 };
 
@@ -42,14 +42,14 @@ export default class Hamburger extends Component {
       this.props.user ?
         this.props.user.role ?
           this.props.route === obj.url ?
-            <li className="active" key={index} >
-              <Link to={obj.url} style={{color:'rgb(12, 145, 82)', backgroundColor:'transparent'}}>
+            <li className="active" key={index}  style={{color:'white'}}>
+              <Link to={obj.url} style={{color:'rgb(12, 145, 82)', backgroundColor:'transparent', fontSize:'150%'}}>
                 {obj.body}
               </Link>
             </li>
           :
             <li key={index}  >
-              <Link to={obj.url}>
+              <Link to={obj.url}style={{color:'white', fontSize:'150%'}}>
                 {obj.body}
               </Link>
             </li>
@@ -59,7 +59,7 @@ export default class Hamburger extends Component {
         null
     :
       <li key={index}>
-        <Link to={obj.url}>
+        <Link to={obj.url} style={{color:'white', fontSize:'150%'}}>
           {obj.body}
         </Link>
       </li>

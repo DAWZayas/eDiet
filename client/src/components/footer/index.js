@@ -31,6 +31,9 @@ export default class Footer extends React.Component {
                 <a href="#">Contact</a>
               </p>
             </div>
+            <div className={`${styles.links}`}>
+              <img src="../../../images/logo/logo.png" height="40" width="40" />
+            </div>
           </center>
         </div>
       </div>

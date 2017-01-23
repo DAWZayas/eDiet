@@ -40,14 +40,14 @@ export default class Logger extends Component {
 
       const logInPrint = logIn.map((obj, index) =>
         <li key={index}>
-          <Link to={obj.url} className={obj.class}>
+          <Link to={obj.url} className={obj.class} style={{color:'white', fontSize:'100%'}}>
             {obj.body}
           </Link>
         </li>
       );
 
     return (
-      <div className={`nav navbar-nav navbar-right`}>
+      <div className={`nav navbar-nav navbar-right`} style={{color:'white', fontSize:'150%'}}>
         {this.props.user ?
           logOutPrint
         :

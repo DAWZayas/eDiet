@@ -3,7 +3,7 @@ import React from 'react';
 import NavBar from './navBar';
 
 export default (props) => (
-  <header>
+  <header> 
     <NavBar {...props}  />
   </header>
 );
