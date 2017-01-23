@@ -14,6 +14,12 @@ const mapDispatchToProps = dispatch => ({
   removeObservable: observable => dispatch(removeObservable(observable)),
 });
 
+const style = {
+  panel: {
+    margin: '5% 0 0 0',
+  },
+}
+
 class Menus extends React.Component{
 
     constructor(props){
@@ -44,7 +50,7 @@ class Menus extends React.Component{
       };
 
       return(
-        <div className={`panel panel-default ${styles.container}`}>
+        <div className="panel panel-default" style={style.panel}>
             <div className="panel-heading">
               {/Menu/.test(this.props.route) ? <p><a  onClick={handleMenu} href="#" className="glyphicon glyphicon-plus" role="button"></a>{this.props.menu}
                 <Modals menu={this.props.menu} route={this.props.route}/></p> : null}

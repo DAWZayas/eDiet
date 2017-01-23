@@ -8,6 +8,7 @@ export default class AutoPlay extends Component {
     const settings = {
       dots: true,
       infinite: true,
+      speed: 5000,
       fade:true,
       slidesToShow: 1,
       slidesToScroll: 1,

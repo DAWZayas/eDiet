@@ -1,33 +1,40 @@
 $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
 
 .navBar {
-  background: rgba(0, 0, 0, 0.7);
   background-color: transparent;
+  background: rgba(0, 0, 0, 0.7);
   border-color: transparent;
+  margin: 0 0 0 0;
   padding: 10px;
   z-index: 9999;
-  margin: 0 0 0 0;
 }
 
 .log {
   font-family: sans-serif;
   #{$a-tags} {
-    text-decoration: none;
     color: rgb(255, 255, 255);
+    text-decoration: none;
   }
 }
 
 .logged {
   #{$a-tags} {
-    text-decoration: none;
     color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+  button {
+    border: none;
+    color: rgb(255, 255, 255);
+    #{$a-tags} {
+      background-color: rgb(232, 142, 58);
+    }
   }
 }
 
 .hamburguerUl {
   color: rgb(255, 255, 255);
   #{$a-tags} {
-    text-decoration: none;
     color: rgb(255, 255, 255);
+    text-decoration: none;
   }
 }

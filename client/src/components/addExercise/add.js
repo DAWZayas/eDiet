@@ -6,13 +6,14 @@ let exerciseType;
 let exerciseTime;
 
 let styles = require('./style.scss');
-let footer = {
-  borderTop: 'none',
-  backgroundColor: 'rgb(255, 255, 255)',
 
+let footer = {
+  backgroundColor: 'rgb(255, 255, 255)',
+  borderTop: 'none',
 };
-let button = {
-    color: 'rgb(232, 142, 58)',
+
+let header = {
+  backgroundColor: 'rgb(12, 145, 82)',
 };
 
 export default class AddExercise extends Component {
@@ -20,8 +21,6 @@ export default class AddExercise extends Component {
     super(props);
   }
   render(){
-    console.log('State', this.state);
-
     const getTableName = () => {
       const array = this.props.route.split('/');
       const name = array[array.length - 2];
@@ -43,12 +42,10 @@ export default class AddExercise extends Component {
     };
 
     const handleCreate = (e) => {
-      console.log('>>>StateCR', this.state);
       e.preventDefault();
       const table = this.state.table;
       const name = exerciseName.value;
-      const type = exerciseType.value;
-      {/*const type = this.state.select;*/}
+      const type = this.state.select;
       const time = exerciseTime.value;
       const calories = exerciseCalories.value;
       this.props.createExercise({table, name, type, time, calories});
@@ -109,8 +106,8 @@ export default class AddExercise extends Component {
             </div>
           </div>
         </div>
-        <div className="panel-footer" style={footer}>
-          <button type="submit" className="btn btn-default" onClick={handleCreate} style={button}>
+        <div className={`panel-footer ${styles.footer}`} style={footer}>
+          <button type="submit" className="btn btn-default" onClick={handleCreate} >
             Create
           </button>
         </div>

@@ -2,15 +2,15 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
 
 body {
   #{$a-tags} {
-    text-decoration: none;
     color: rgb(0, 0, 0);
+    text-decoration: none;
   }
 }
 
 .header {
+  align-items: baseline;
   display: flex;
   flex-wrap: nowrap;
-  align-items: baseline;
   justify-content: space-between;
 }
 
@@ -20,14 +20,14 @@ body {
   }
 
   li {
+    align-items: baseline;
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
     justify-content: flex-start;
 
     div {
-      display: flex;
       align-items: baseline;
+      display: flex;
       justify-content: space-between;;
       margin-right: 3%;
     }

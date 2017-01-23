@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import Logged from './logged';
+import Hamburguer from './hamburguer';
+import Log from './log';
 
-import ButtonsCollapsed from './buttonsCollapsed';
-import DropdownHamburger from './dropdownHamburger';
-import Login from './login';
 const styles = require('./style.scss');
 
 const navBar = {
@@ -16,10 +16,10 @@ const navBar = {
 const NavBar = ({user, doLogOut, navToLogin, route}) => (
     <nav className={`navbar navbar-default navbar-highlight-aquamarine navbar-relative-top navbar-inverse ${styles.navBar}`} style={navBar}>
       <div className="container-fluid">
-        <ButtonsCollapsed user={user}/>
+        <Logged user={user}/>
         <div className="collapse navbar-collapse" id="collapse-1">
-          <DropdownHamburger user={user} route={route} />
-          <Login user={user} doLogOut={doLogOut} navToLogin={navToLogin} route={route} />
+          <Hamburguer user={user} route={route} />
+          <Log user={user} doLogOut={doLogOut} navToLogin={navToLogin} route={route} />
         </div>
       </div>
     </nav>

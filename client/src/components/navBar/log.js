@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes} from 'react';
 import {Link} from 'react-router';
 const styles = require('./style.scss');
 
-export default class Login extends Component {
+export default class Logger extends Component {
   render() {
     const handleLogin = (e) => {
       e.preventDefault();
@@ -10,22 +10,20 @@ export default class Login extends Component {
       this.props.navToLogin();
     };
 
-    const loginUser = [
+    const logIn = [
       {
-        class: "",
         body: "Log in",
         url: "/login",
       },
     ];
 
-    const logOutUser = [
+    const logOut = [
       {
-        class: "glyphicon	glyphicon-off",
-        body: "",
+        body: "Log out",
       },
   ];
 
-    const log = logOutUser.map((obj, index) =>
+    const logOutPrint = logOut.map((obj, index) =>
       index === 0 ?
         <li key={index}>
           <a href="#" className={obj.class} onClick={handleLogin}>
@@ -40,7 +38,7 @@ export default class Login extends Component {
         </li>
       );
 
-      const li = loginUser.map((obj, index) =>
+      const logInPrint = logIn.map((obj, index) =>
         <li key={index}>
           <Link to={obj.url} className={obj.class}>
             {obj.body}
@@ -49,9 +47,13 @@ export default class Login extends Component {
       );
 
     return (
-    <div className={`nav navbar-nav navbar-right ${styles.log}`}>
-          {this.props.user ? log : li}
-    </div>
+      <div className={`nav navbar-nav navbar-right`}>
+        {this.props.user ?
+          logOutPrint
+        :
+          logInPrint
+        }
+      </div>
     );
   }
 }

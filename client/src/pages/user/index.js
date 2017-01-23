@@ -19,72 +19,7 @@ const mapStateToProps = (state) => ({
 const user = ({user, userAuth, getUser}) => {
     getUser({id: userAuth.id});
   return (
-{/*
-    <div className="container">
-      {user ?
-      <div>
-        <img alt="User image"></img>
-        <p>{user.login}</p>
-      </div>
-      <div>
-        <button>
-          Change info
-        </button>
-        <button>
-          Change password
-        </button>
-        <button>
-          Delete count
-        </button>
-      </div>
-      <div>
-        <p>
-          My info
-        </p>
-        <ul>
-        {user.email ?
-          <li>
-            Email: {user.email}
-          </li>
-        :
-          null
-        }
-        {user.height
-          <li>
-            Height: {user.height}
-          </li>
-        :
-          null
-        }
-        {user.weight
-          <li>
-            Weight: {user.weight}
-          </li>
-        :
-          null
-        }
-        </ul>
-      </div>
-      <div>
-        <p>
-          My evolution
-        </p>
-        * Graphic 1
-        * Graphic 2
-      </div>
-      <div>
-        <button>
-          See exercises I've done
-        </button>
-        <button>
-          See menus I've done
-        </button>
-      </div>
-      :
-        null
-      }
-    </div>
-*/}
+
 
       <div className="container" >
         <div className="container">
