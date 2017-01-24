@@ -15,8 +15,7 @@ const navBar = {
 
 const NavBar = ({user, doLogOut, navToLogin, route}) => (
     <nav className={`navbar navbar-default navbar-highlight-aquamarine navbar-relative-top navbar-inverse ${styles.navBar}`} style={navBar}>
-
-      <div className="container-fluid">               
+      <div className="container-fluid">
         <Logged user={user}/>
         <div className="collapse navbar-collapse" id="collapse-1">
           <Hamburguer user={user} route={route} />

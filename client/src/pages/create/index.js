@@ -39,9 +39,13 @@ const Create = ({ menus, doGetMenu, route, navTo, createMenu, hasMore, loadingMo
     limit: 10,
    });
 
+   const style = {
+     marginTop: '2%',
+   };
+
   return (
       <div className="container" >
-        <div className="panel panel-default">
+        <div className="panel panel-default" style={style}>
             <div className="panel-heading">
               Create menu
             </div>

@@ -6,4 +6,4 @@ export {getFoodsAction, getFoodAction, createFoodAction, deleteFoodAction, updat
 export {getTablesAction, getCreateTableAction, createTableAction, deleteTableAction, updateTableAction} from './table';
 export {getExercisesAction, createExerciseAction, getCreateExerciseAction, deleteExerciseAction, updateExerciseAction} from './exercise';
 export {addObservable, removeObservable} from './observable';
-export {deleteUserAction, getUserAction, updateUserAction} from './user';
+export {deleteUserAction,updateMailAction,getUserAction,updatePasswordAction,updateHeightAction} from './user';

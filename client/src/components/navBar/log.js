@@ -4,6 +4,10 @@ const styles = require('./style.scss');
 
 export default class Logger extends Component {
   render() {
+    const textColors = {
+        color: 'white',
+    };
+
     const handleLogin = (e) => {
       e.preventDefault();
       this.props.doLogOut();
@@ -25,18 +29,19 @@ export default class Logger extends Component {
 
     const logOutPrint = logOut.map((obj, index) =>
       index === 0 ?
-        <li key={index}>
-          <a href="#" className={obj.class} onClick={handleLogin}>
+        <li key={index} >
+          <a href="#" style={textColors} className={obj.class} onClick={handleLogin}>
             {obj.body}
           </a>
         </li>
       :
-        <li key={index}>
-          <Link to={obj.url} className={obj.class}>
+        <li key={index} >
+          <Link style={textColors} to={obj.url} className={obj.class}>
             {obj.body}
           </Link>
         </li>
       );
+
 
       const logInPrint = logIn.map((obj, index) =>
         <li key={index}>

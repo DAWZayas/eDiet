@@ -31,10 +31,14 @@ const TimeFoods = ({route, foods, doGetFoods, createFood }) => {
     createFood({nameMenu, nameTimeFood, nameFood, calories });
   };
 
+  const style = {
+    marginTop: '2%',
+  };
+
   let foodss, calorie;
 
   return (
-    <div className="container">
+    <div className="container" style={style}>
       <div className="panel panel-default">
         <div className="panel-heading">
           Create Time Food
