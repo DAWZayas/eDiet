@@ -2,12 +2,15 @@ import React, { Component, PropTypes} from 'react';
 import {Link} from 'react-router';
 const styles = require('./style.scss');
 
+const style = {
+  text: {
+    color: 'white',
+    size: '5em',
+  }
+};
+
 export default class Logger extends Component {
   render() {
-    const textColors = {
-        color: 'white',
-    };
-
     const handleLogin = (e) => {
       e.preventDefault();
       this.props.doLogOut();
@@ -30,13 +33,13 @@ export default class Logger extends Component {
     const logOutPrint = logOut.map((obj, index) =>
       index === 0 ?
         <li key={index} >
-          <a href="#" style={textColors} className={obj.class} onClick={handleLogin}>
+          <a href="#" style={style.text} className={obj.class} onClick={handleLogin}>
             {obj.body}
           </a>
         </li>
       :
         <li key={index} >
-          <Link style={textColors} to={obj.url} className={obj.class} data-toggle="collapse" data-target=".navbar-collapse">
+          <Link to={obj.url} className={obj.class} data-toggle="collapse" data-target=".navbar-collapse" style={style.text}>
             {obj.body}
           </Link>
         </li>
@@ -45,14 +48,14 @@ export default class Logger extends Component {
 
       const logInPrint = logIn.map((obj, index) =>
         <li key={index}>
-          <Link to={obj.url} className={obj.class} data-toggle="collapse" data-target=".navbar-collapse" style={{color:'white', fontSize:'100%'}}>
+          <Link to={obj.url} className={obj.class} data-toggle="collapse" data-target=".navbar-collapse" style={style.text}>
             {obj.body}
           </Link>
         </li>
       );
 
     return (
-      <div className={`nav navbar-nav navbar-right`} style={{color:'white', fontSize:'150%'}}>
+      <div className={`nav navbar-nav navbar-right`} style={style.text}>
         {this.props.user ?
           logOutPrint
         :

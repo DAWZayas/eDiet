@@ -15,12 +15,15 @@ let footer = {
 export default class UpdateExercise extends Component {
   constructor(props) {
     super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentWillMount() {
     const array = this.props.route.split('/');
     const table = array[array.length - 3];
     const exercise = array[array.length - 1];
     this.state = {table, exercise, select: undefined};
-
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange (e) {
@@ -54,7 +57,7 @@ export default class UpdateExercise extends Component {
     return(
       <div className={`panel panel-default ${styles.container}`}>
         <div className="panel-heading">
-          Actualizar ejercicio
+          Update exercise
         </div>
         <div className="panel-body">
           <div>
@@ -63,16 +66,16 @@ export default class UpdateExercise extends Component {
                 type="text"
                 className="form-control"
                 id="exerciseNewName"
-                placeholder="Nuevo nombre..."
+                placeholder="New name..."
                 ref={(i) => { exerciseNewName = i; }}
               />
             </div>
             <div className="col-sm-10">
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 id="exerciseTime"
-                placeholder="Nuevo tiempo..."
+                placeholder="New time..."
                 ref={(i) => { exerciseTime = i; }}
               />
             </div>
@@ -98,7 +101,7 @@ export default class UpdateExercise extends Component {
                 type="text"
                 className="form-control"
                 id="exerciseCalories"
-                placeholder="Nuevas calorías quemadas..."
+                placeholder="New burned calories..."
                 ref={(i) => { exerciseCalories = i; }}
               />
             </div>
@@ -106,7 +109,7 @@ export default class UpdateExercise extends Component {
         </div>
         <div className={`panel-footer ${styles.footer}`} style={footer}>
           <button type="submit" className="btn btn-default" onClick={handleUpdate}>
-            Actualizar
+            Update
           </button>
         </div>
       </div>

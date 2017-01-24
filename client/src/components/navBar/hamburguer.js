@@ -4,7 +4,8 @@ import {Link} from 'react-router';
 const styles = require('./style.scss');
 const style = {
   text: {
-    color: 'rgb(15, 15, 15)',
+    color: 'white',
+    size: '5em',
   }
 };
 
@@ -19,11 +20,8 @@ export default class Hamburger extends Component {
         url:'/',
       },
       {
-        body: 'Exercises',
+        body: 'Planning',
         //falta URL;
-      },
-      {
-        body: 'Diets',
       },
       {
         body: "Menus admin",
@@ -38,18 +36,18 @@ export default class Hamburger extends Component {
       }
     ];
 
-    const printList = list.map((obj, index) => obj.body == 'Menus admin' || obj.body == 'Exercises admin' ?
+    const printList = list.map((obj, index) => obj.body === 'Menus admin' || obj.body === 'Exercises admin' || obj.body === 'Planning' ?
       this.props.user ?
         this.props.user.role ?
           this.props.route === obj.url ?
-            <li className="active" key={index}  style={{color:'white'}}>
-              <Link to={obj.url} data-toggle="collapse" data-target=".navbar-collapse" style={{color:'rgb(12, 145, 82)', backgroundColor:'transparent', fontSize:'150%'}}>
+            <li className="active" key={index}  style={style.text}>
+              <Link to={obj.url} data-toggle="collapse" data-target=".navbar-collapse" style={style.text}>
                 {obj.body}
               </Link>
             </li>
           :
             <li key={index}  >
-              <Link to={obj.url} data-toggle="collapse" data-target=".navbar-collapse" style={{color:'white', fontSize:'150%'}}>
+              <Link to={obj.url} data-toggle="collapse" data-target=".navbar-collapse" style={style.text}>
                 {obj.body}
               </Link>
             </li>
@@ -59,7 +57,7 @@ export default class Hamburger extends Component {
         null
     :
       <li key={index}>
-        <Link to={obj.url} data-toggle="collapse" data-target=".navbar-collapse" style={{color:'white', fontSize:'150%'}}>
+        <Link to={obj.url} data-toggle="collapse" data-target=".navbar-collapse" style={style.text}>
           {obj.body}
         </Link>
       </li>

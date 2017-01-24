@@ -27,7 +27,7 @@ const exerciseActions = ({ route, status, exercises, getExercises, createExercis
   return (
     <div className="container">
       <Exercises
-        route={route}
+        route={name}
         exercises={exercises}
         getExercises={getExercises}
         status={status}

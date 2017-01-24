@@ -36,7 +36,7 @@ export const createTable = action$ => action$
     },
       Actions.getCreateTableAction(payload),
       Actions.addNotificationAction({
-        text: 'Se ha creado la tabla de ejercicios', alertType: 'info'
+        text: 'Table created', alertType: 'success'
       })
     ))
     .catch(error => Observable.of({
@@ -76,7 +76,7 @@ export const deleteTable = action$ => action$
       payload,
     },
       Actions.addNotificationAction({
-        text: 'Tabla borrado', alertType: 'info'
+        text: 'Table deleted', alertType: 'success'
       })
     ))
     .catch(error => Observable.of({
@@ -100,7 +100,7 @@ export const updateTable = action$ => action$
       payload: table,
     },
     Actions.addNotificationAction({
-      text: 'Tabla actualizada', alertType: 'info'
+      text: 'Table updated', alertType: 'success'
     })
   ))
   .catch(error => Observable.of(

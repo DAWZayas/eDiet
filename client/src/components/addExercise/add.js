@@ -19,14 +19,14 @@ let header = {
 export default class AddExercise extends Component {
   constructor(props) {
     super(props);
-    this.state = {table: null, select: undefined};
+
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillMount() {
-    const array = this.props.route.split('/');
-    const name = array[array.length - 2];
-    this.state.table = name;
+    const tableArray = this.props.route.split('/');
+    const table = tableArray[tableArray.length - 2];
+    this.state = {select: undefined, table: table};
   }
 
   handleChange (e) {
@@ -34,6 +34,7 @@ export default class AddExercise extends Component {
   }
 
   render(){
+    const {route, createExercise} = this.props;
     const clearFields = () => {
       exerciseName.value = '';
       exerciseName.placeholder="Name...";
@@ -51,7 +52,7 @@ export default class AddExercise extends Component {
       const type = this.state.select;
       const time = exerciseTime.value;
       const calories = exerciseCalories.value;
-      this.props.createExercise({table, name, type, time, calories});
+      createExercise({table, name, type, time, calories});
       clearFields();
       return false;
     };
@@ -74,9 +75,10 @@ export default class AddExercise extends Component {
             </div>
             <div className="col-sm-10">
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 id="exerciseTime"
+                placeholder="In minutes"
                 placeholder="Time..."
                 ref={(i) => { exerciseTime = i; }}
               />
@@ -99,10 +101,10 @@ export default class AddExercise extends Component {
             </div>
             <div className="col-sm-10">
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 id="exerciseCalories"
-                placeholder="Burned calories..."
+                placeholder="Burned calories (in kcal)..."
                 ref={(i) => { exerciseCalories = i; }}
               />
             </div>
