@@ -5,13 +5,27 @@ let exerciseCalories;
 let exerciseType;
 let exerciseTime;
 
+const styles = require('./style.scss');
+
+let footer = {
+  backgroundColor: 'rgb(255, 255, 255)',
+  borderTop: 'none',
+};
+
 export default class UpdateExercise extends Component {
-  componentWillMount = () => {
+  constructor(props) {
+    super(props);
     const array = this.props.route.split('/');
     const table = array[array.length - 3];
     const exercise = array[array.length - 1];
-    this.state = {table: table, exercise:exercise};
-  };
+    this.state = {table, exercise, select: undefined};
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange (e) {
+    this.state.select = e.target.value;
+  }
 
   render(){
     const handleUpdate = (e) => {
@@ -20,7 +34,7 @@ export default class UpdateExercise extends Component {
       const name = this.state.exercise;
       const newName = exerciseNewName.value;
       const calories = exerciseCalories.value;
-      const type = exerciseType.value;
+      const type = this.state.select;
       const time = exerciseTime.value;
       this.props.updateExercise({table, name, newName, calories, type, time});
       clearFields();
@@ -30,8 +44,6 @@ export default class UpdateExercise extends Component {
     const clearFields = () => {
       exerciseNewName.value = '';
       exerciseNewName.placeholder="Nuevo nombre...";
-      exerciseType.value = '';
-      exerciseType.placeholder="Nuevo tipo...";
       exerciseTime.value = '';
       exerciseTime.placeholder="Nuevo tiempo...";
       exerciseCalories.value = '';
@@ -40,7 +52,7 @@ export default class UpdateExercise extends Component {
     };
 
     return(
-      <div className="panel panel-default">
+      <div className={`panel panel-default ${styles.container}`}>
         <div className="panel-heading">
           Actualizar ejercicio
         </div>
@@ -64,15 +76,23 @@ export default class UpdateExercise extends Component {
                 ref={(i) => { exerciseTime = i; }}
               />
             </div>
+
             <div className="col-sm-10">
-              <input
-                type="text"
+              <select
                 className="form-control"
+                name="exerciseType"
                 id="exerciseType"
-                placeholder="Nuevo tipo..."
-                ref={(i) => { exerciseType = i; }}
-              />
+                value={this.state.select}
+                onChange={this.handleChange}
+              >
+                <option value=" ">Select an exercise type</option>
+                <option value="cardiovascular">Cardiovascular</option>
+                <option value="strength">Strength</option>
+                <option value="flexibility">Flexibility</option>
+                <option value="balance">Balance</option>
+              </select>
             </div>
+
             <div className="col-sm-10">
               <input
                 type="text"
@@ -84,7 +104,7 @@ export default class UpdateExercise extends Component {
             </div>
           </div>
         </div>
-        <div className="panel-footer">
+        <div className={`panel-footer ${styles.footer}`} style={footer}>
           <button type="submit" className="btn btn-default" onClick={handleUpdate}>
             Actualizar
           </button>

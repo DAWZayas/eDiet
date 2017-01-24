@@ -7,8 +7,8 @@ import DeleteModal from '../modals/exerciseDeleteModal';
 const styles = require('./style.scss');
 
 export default class Get extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {table: null}
   }
 

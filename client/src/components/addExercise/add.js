@@ -19,14 +19,21 @@ let header = {
 export default class AddExercise extends Component {
   constructor(props) {
     super(props);
+    this.state = {table: null, select: undefined};
+    this.handleChange = this.handleChange.bind(this);
   }
-  render(){
-    const getTableName = () => {
-      const array = this.props.route.split('/');
-      const name = array[array.length - 2];
-      this.state = {table: name};
-    };
 
+  componentWillMount() {
+    const array = this.props.route.split('/');
+    const name = array[array.length - 2];
+    this.state.table = name;
+  }
+
+  handleChange (e) {
+    this.state.select = e.target.value;
+  }
+
+  render(){
     const clearFields = () => {
       exerciseName.value = '';
       exerciseName.placeholder="Name...";
@@ -35,10 +42,6 @@ export default class AddExercise extends Component {
       exerciseCalories.value = '';
       exerciseCalories.placeholder="Burned calories...";
       return false;
-    };
-
-    const handleChange = e => {
-      this.setState({select: e.target.value});
     };
 
     const handleCreate = (e) => {
@@ -53,7 +56,6 @@ export default class AddExercise extends Component {
       return false;
     };
 
-    getTableName();
     return(
       <div className={`panel panel-default ${styles.container}`}>
         <div className="panel-heading">
@@ -85,7 +87,7 @@ export default class AddExercise extends Component {
                 name="exerciseType"
                 id="exerciseType"
                 value={this.state.select}
-                onChange={handleChange}
+                onChange={this.handleChange}
               >
                 <option value=" ">Select an exercise type</option>
                 <option value="cardiovascular">Cardiovascular</option>
