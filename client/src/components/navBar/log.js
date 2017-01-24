@@ -36,7 +36,7 @@ export default class Logger extends Component {
         </li>
       :
         <li key={index} >
-          <Link style={textColors} to={obj.url} className={obj.class}>
+          <Link style={textColors} to={obj.url} className={obj.class} data-toggle="collapse" data-target=".navbar-collapse">
             {obj.body}
           </Link>
         </li>
@@ -45,7 +45,7 @@ export default class Logger extends Component {
 
       const logInPrint = logIn.map((obj, index) =>
         <li key={index}>
-          <Link to={obj.url} className={obj.class} style={{color:'white', fontSize:'100%'}}>
+          <Link to={obj.url} className={obj.class} data-toggle="collapse" data-target=".navbar-collapse" style={{color:'white', fontSize:'100%'}}>
             {obj.body}
           </Link>
         </li>

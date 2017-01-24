@@ -42,8 +42,8 @@ const user = ({user, userAuth, getUser}) => {
             {user ?
               <center>
                 {user.role  ? <button className="btn btn-default" ><Link to='/user/addAdmin'> create user Admin </Link></button>: null}
-                {user.weight.length || user.imc.length !==0  ? <button className="btn btn-default" >  <Link to='/user/graphics'>go to stadistics of your weight </Link></button> : null}
-                {user.exercises.length && user.menus.length===0 ?  <p> select diet and exercise </p> : <button className="btn btn-default"> show diet and exercises </button>}
+                {user.weight || user.imc  ? <button className="btn btn-default" >  <Link to='/user/graphics'>go to stadistics of your weight </Link></button> : null}
+                {user.exercises && user.menus ?  <p> select diet and exercise </p> : <button className="btn btn-default"> show diet and exercises </button>}
                 <button className="btn btn-default"> <Link to='/user/updateProfile'>update your profile </Link></button>
               </center>
             :null}
