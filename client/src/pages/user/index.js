@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import _ from 'lodash';
 
 import {getUserAction} from '../../store/actions';
+const styles = require('./style.scss');
 
 const mapStateToProps = (state) => ({
    userAuth: state.auth.user,
@@ -16,40 +17,106 @@ const mapStateToProps = (state) => ({
  });
 
 const user = ({user, userAuth, getUser}) => {
-    getUser({id: userAuth.id});
-    const style = {
-      marginTop: '2%',
-    };
-  return (
+  getUser({id: userAuth.id});
+  {console.log(user)}
 
-      <div className="container" style={style}>
-        <div className="container">
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <p>Information user </p>
-            </div>
-            <div className="panel-body">
-              {user ?
-                <span>
-              {console.log(user)}
-              {user.login ?   <ul className="list-group"><li className="list-group-item"><p> username:  {user.login} </p></li></ul> : null}
-              {user.email ?   <ul className="list-group"><li className="list-group-item"><p>email: {user.email}</p></li></ul>  : null}
-              {user.height ?  <ul className="list-group"><li className="list-group-item"> <p> height:  {user.height}</p> </li></ul> : null}
-                </span>
-              : null}
-            </div>
+  return (
+    <div className={`container ${styles.container}`}>
+      <center>
+        <div className={`${styles.avatar}`}>
+          <img src='../../../images/logo/logo.png'/>
+            {
+              user ?
+                user.login ?
+                <p>
+                  {user.login}
+                </p>
+                : null
+              : null
+            }
+        </div>
+      </center>
+      <div className={`${styles.userButtons}`}>
+        <button className="btn btn-default">
+          <Link to='/user/updateProfile'>
+            Update profile
+          </Link>
+        </button>
+        <button className="btn btn-default">
+          <Link to='/user/graphics'>
+            Progress
+          </Link>
+        </button>
+        {
+          user ?
+            user.role ?
+              <button className="btn btn-default">
+                <Link to='/user/addAdmin'>
+                  <i className={`fa fa-plus`} aria-hidden="true"></i>
+                  Admin. user
+                </Link>
+              </button>
+            : null
+          : null
+        }
+      </div>
+      <div className={`panel panel-default ${styles.panel}`}>
+        <div className="panel-heading">
+          PROFILE
+        </div>
+        <div className="panel-body">
+          {user ?
+              <div>
+                <div className={`${styles.data}`}>
+                  <p>Email:</p>
+                  {user.email ?
+                    <p>{user.email}</p>
+                  :
+                    <p>Without email associated</p>
+                  }
+                </div>
+                <div className={`${styles.data}`}>
+                  <p>Register date:</p>
+                  {user.registrationDate ?
+                    <p>{user.registrationDate}</p>
+                  :
+                    <p>Without register date associated</p>
+                  }
+                </div>
+                {!user.role ?
+                  <div className={`${styles.data}`}>
+                    <p>Height:</p>
+                    {user.height ?
+                      <p>{user.height}</p>
+                    :
+                      <p>Without height associated</p>
+                    }
+                  </div>
+                : null}
+              </div>
+            : null}
           </div>
-            {user ?
-              <center>
-                {user.role  ? <button className="btn btn-default" ><Link to='/user/addAdmin'> create user Admin </Link></button>: null}
-                {user.weight || user.imc  ? <button className="btn btn-default" >  <Link to='/user/graphics'>go to stadistics of your weight </Link></button> : null}
-                {user.exercises && user.menus ?  <p> select diet and exercise </p> : <button className="btn btn-default"> show diet and exercises </button>}
-                <button className="btn btn-default"> <Link to='/user/updateProfile'>update your profile </Link></button>
-              </center>
-            :null}
+          {user ?
+            !user.role ?
+              <div className={`${styles.dietButtons}`}>
+                <button className="btn btn-default">
+                  <Link to='#'>
+                    See my menus
+                  </Link>
+                </button>
+                <button className="btn btn-default">
+                  <Link to='#'>
+                    See my exercises
+                  </Link>
+                </button>
+              </div>
+            : null
+          : null}
         </div>
       </div>
   )
  };
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(user);

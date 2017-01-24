@@ -1,0 +1,37 @@
+.container {
+  margin: 5% 0 0 0;
+}
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  img {
+    width: 25%;
+    margin: 0 0 2% 0;
+  }
+  p {
+    font-size: 4em;
+  }
+}
+
+.userButtons, .dietButtons {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  button {
+    margin: 0 1% 0 1%;
+  }
+}
+
+.panel {
+  margin: 5% 0 0 0;
+}
+
+.data {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
