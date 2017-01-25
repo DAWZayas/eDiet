@@ -3,6 +3,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import _ from 'lodash';
+import {push} from 'react-router-redux';
 
 import {getUserAction} from '../../store/actions';
 const styles = require('./style.scss');
@@ -13,13 +14,21 @@ const mapStateToProps = (state) => ({
  });
 
  const mapDispatchToProps = (dispatch) => ({
-   getUser:  _.once((payload) => dispatch(getUserAction(payload))),
+   getUser:  payload => dispatch(getUserAction(payload)),
+   navToUser: () => dispatch(push('/user/updateProfile')),
  });
 
-const user = ({user, userAuth, getUser}) => {
-  getUser({id: userAuth.id});
-  {console.log(user)}
+class user extends React.Component {
+  constructor(props){
+    super(props);
+  }
 
+  componentWillMount(){
+    const {userAuth, user, getUser} = this.props;
+    this.props.getUser({id: userAuth.id});
+  }
+
+  render(){
   return (
     <div className={`container ${styles.container}`}>
       <center>
@@ -114,7 +123,8 @@ const user = ({user, userAuth, getUser}) => {
           : null}
         </div>
       </div>
-  )
+    )
+  }
  };
 
 

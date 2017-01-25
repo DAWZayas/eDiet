@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import {Bar} from 'react-chartjs-2';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 
 const mapStateToProps = (state) => ({
    userAuth: state.auth.user,
@@ -97,6 +98,7 @@ const Graph = ({userAuth}) =>{
             options={options}
           />
         </div>
+        <Link to='/user'><button className="btn btn-default">Go back</button></Link>
       </div>
     );
   }

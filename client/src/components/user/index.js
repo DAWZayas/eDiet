@@ -22,7 +22,6 @@ class user extends React.Component {
       const height = heightUser.value;
       const id = this.props.user.id;
       this.props.updateUser({passwordRepeat, password, email, height, id});
-
     };
 
     let passwordRepeatUser;

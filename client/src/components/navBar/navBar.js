@@ -11,7 +11,7 @@ const navBar = {
   background: 'rgb(232, 142, 58)',
   borderColor: 'transparent',
   margin: '0 0 0 0',
-}
+};
 
 const NavBar = ({user, doLogOut, navToLogin, route}) => (
     <nav className={`navbar navbar-default navbar-highlight-aquamarine navbar-relative-top navbar-inverse ${styles.navBar}`} style={navBar}>

@@ -17,7 +17,11 @@ class updateProfile extends React.Component{
 
   constructor(props){
     super(props);
-    this.state= {id:this.props.getUser({id: this.props.userAuth.id}).payload.id};
+    this.state= {id: null};
+  }
+
+  componentWillMount(props){
+    this.setState({id: this.props.getUser({id: this.props.userAuth.id}).payload.id});
   }
 
   render(){

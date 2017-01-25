@@ -74,6 +74,7 @@ const Register = ({onRegisterClick}) => {
           </form>
         </div>
       </div>
+    <Link to='/user'><button className="btn btn-default">Go back</button></Link>
     </div>
   );
 };

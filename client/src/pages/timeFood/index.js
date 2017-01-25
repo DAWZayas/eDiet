@@ -13,25 +13,34 @@ const mapStateToProps = (state) => ({
  });
 
 const mapDispatchToProps = (dispatch) => ({
-  doGetTimeFoods: _.once((payload) => dispatch(getTimeFoodsAction(payload))),
+  doGetTimeFoods: payload => dispatch(getTimeFoodsAction(payload)),
   navTo: timeFood => dispatch(push(timeFood)),
   createTimeFood: payload=> dispatch(createTimeFoodAction(payload))
 });
 
-const TimeFoods = ({route, timeFoods, doGetTimeFoods, navTo, createTimeFood}) => {
-  const rout = route.split('/');
-  const name = rout[rout.length-1];
-  doGetTimeFoods({name });
+class TimeFoods extends React.Component  {
 
+  constructor(props){
+    super(props);
+    const rout = this.props.route.split('/');
+    const name = rout[rout.length-1];
+    this.state={name};
+  }
+
+  componentWillMount(){
+    this.props.doGetTimeFoods({name: this.state.name});
+  }
+
+  render(){
   const handleCreateTimeFood = (e) => {
     e.preventDefault();
     const timeFood = timeFoodss.value;
-    createTimeFood({name, timeFood});
+    this.props.createTimeFood({name: this.state.name, timeFood});
   };
 
   const style = {
     marginTop: '2%',
-  }
+  };
 
   let timeFoodss;
 
@@ -56,8 +65,9 @@ const TimeFoods = ({route, timeFoods, doGetTimeFoods, navTo, createTimeFood}) =>
           </div>
           </div>
         </div>
-     {timeFoods.map( (obj, index)=> < TimeFood key={index} route={route} menuName={name} menu={obj.timeFood} navTo={navTo}/>)}
+     {this.props.timeFoods.map( (obj, index)=> < TimeFood key={index} route={this.props.route} menuName={this.state.name} menu={obj.timeFood} navTo={this.props.navTo}/>)}
     </div>);
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeFoods);
