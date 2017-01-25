@@ -4,6 +4,7 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
   #{$a-tags} {
     text-decoration: none;
   }
+  margin: 5% 0 0 0;
 }
 
 .main {

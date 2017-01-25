@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
  });
 
  const mapDispatchToProps = (dispatch) => ({
-   getUser:  (payload) => dispatch(getUserAction(payload)),
+   getUser: (payload) => dispatch(getUserAction(payload)),
  });
 
 class updateProfile extends React.Component{
@@ -29,7 +29,6 @@ class updateProfile extends React.Component{
       <div>
         <InputUpdate id={this.state.id}/>
       </div>
-
     );
   }
 }

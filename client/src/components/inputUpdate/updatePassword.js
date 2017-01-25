@@ -3,53 +3,66 @@ import {connect} from 'react-redux';
 
 import {updatePasswordAction} from '../../store/actions';
 
+const styles = require('./style.scss');
+const style = {
+  header: {
+    borderBottom: 'none',
+    backgroundColor: 'rgba(232, 142, 58, 0.33)',
+  },
+  panel: {
+    margin: '5% 0 0 0',
+  },
+  input: {
+    margin: '2% 0 0 0',
+  }
+};
+
 const mapDispatchToProps = (dispatch) => ({
   updatesPassword: payload => dispatch(updatePasswordAction(payload)),
 });
 
 const updatePassword = ({updatesPassword, id}) => {
-  let newsPassword;
   let newPassword;
+  let newPasswordRepeat;
 
   const handleUpdatePassword = (e) => {
     e.preventDefault();
-    const password = newsPassword.value;
-    const passwordRepeat = newPassword.value;
+    const password = newPassword.value;
+    const passwordRepeat = newPasswordRepeat.value;
     updatesPassword({password, passwordRepeat, id});
   };
 
-  const style = {
-    marginTop: '2%',
-  };
-
   return (
-      <div className="panel panel-default" style={style}>
-        <div className="panel-heading">
-          <p> Update password </p>
-        </div>
-        <div className="panel-footer">
-          <input className="input-group"
-            type="text"
-            className="form-control"
-            id="newName"
-            placeholder="Enter your new password..."
-            ref={(i) => { newsPassword = i; }}
-          />
-          <br/>
-          <span className="input-group">
-            <input className="input-group-addon"
-              type="text"
-              className="form-control"
-              id="newName"
-              placeholder="Enter your new password..."
-              ref={(i) => {newPassword= i; }}
-            />
-            <span className="input-group-btn">
-              <button type="submit" className="btn btn-default " onClick={handleUpdatePassword}>yes</button>
-            </span>
-          </span>
-        </div>
+    <div className="panel panel-default" style={style.panel}>
+      <div className="panel-heading" style={style.header}>
+        <p>
+          Update Password
+        </p>
       </div>
+      <div className={`panel-body ${styles.body}`}>
+        <div className="col-sm-12">
+          <input
+            type="password"
+            className="form-control"
+            style={style.input}
+            id="newPassword"
+            placeholder="New password..."
+            ref={(i) => { newPassword = i; }}
+          />
+          <input
+            type="password"
+            className="form-control"
+            style={style.input}
+            id="newPassword"
+            placeholder="Repeat password..."
+            ref={(i) => { newPasswordRepeat = i; }}
+          />
+        </div>
+        <button type="submit" className="btn btn-default" onClick={handleUpdatePassword}>
+          Update
+        </button>
+      </div>
+    </div>
   );
 }
 

@@ -37,6 +37,7 @@ const Register = ({onRegisterClick}) => {
     <div className={`container ${style.container}`}>
       <div className="row">
         <div className={`main ${style.main}`}>
+          <p>Create a new administrator user:</p>
           <form role="form">
             <div className="form-group">
               <label htmlFor="inputUsername">Username:</label>
@@ -74,7 +75,6 @@ const Register = ({onRegisterClick}) => {
           </form>
         </div>
       </div>
-    <Link to='/user'><button className="btn btn-default">Go back</button></Link>
     </div>
   );
 };

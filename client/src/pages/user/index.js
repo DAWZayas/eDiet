@@ -36,7 +36,13 @@ class user extends React.Component {
         <center>
           <div className={`${styles.avatar}`}>
             <img src='../../../images/logo/logo.png'/>
-            { user ? user.login ? <p> {user.login} </p> : null :null }
+            {user ?
+                user.login ?
+                  <p>
+                    {user.login}
+                  </p>
+              : null
+            :null}
           </div>
         </center>
         <UserProfile user={user}/>
@@ -44,7 +50,5 @@ class user extends React.Component {
       )
   }
  };
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(user);
