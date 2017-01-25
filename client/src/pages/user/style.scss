@@ -1,5 +1,11 @@
+$a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
+
 .container {
   margin: 5% 0 0 0;
+  #{$a-tags} {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
 }
 
 .avatar {
@@ -16,17 +22,17 @@
 }
 
 .userButtons, .dietButtons {
-  width: 100%;
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
   button {
-    margin: 0 1% 0 1%;
+    background-color: rgba(232, 142, 58, 0.75);
   }
 }
 
 .panel {
-  margin: 5% 0 0 0;
+  margin: 6% 0 0 0;
 }
 
 .data {
@@ -34,4 +40,13 @@
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+}
+
+.tittle {
+  font-weight: bold;
+  margin: 0 2% 0 0;
+}
+
+.result {
+  color: rgb(60, 58, 58);
 }
