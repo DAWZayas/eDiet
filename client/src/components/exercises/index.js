@@ -13,6 +13,7 @@ export default class Exercises extends Component {
           createExercise={this.props.createExercise}
           deleteExercise={this.props.deleteExercise}
           updateExercise={this.props.updateExercise}
+          getExercises={this.props.getExercises}
         />
       </div>
     );

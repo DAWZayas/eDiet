@@ -6,6 +6,7 @@ const style = {
   text: {
     color: 'white',
     size: '5em',
+    backgroundColor: 'transparent',
   }
 };
 

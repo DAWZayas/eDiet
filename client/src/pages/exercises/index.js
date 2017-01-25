@@ -2,7 +2,6 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import _ from 'lodash';
 
 import {getExercisesAction, createExerciseAction, deleteExerciseAction, updateExerciseAction} from '../../store/actions';
 import Exercises from '../../components/exercises';
@@ -14,7 +13,7 @@ const mapStateToProps = (state) => ({
  });
 
  const mapDispatchToProps = (dispatch) => ({
-   getExercises: _.once(payload => dispatch(getExercisesAction(payload))),
+   getExercises: payload => dispatch(getExercisesAction(payload)),
    createExercise: payload => dispatch(createExerciseAction(payload)),
    deleteExercise: payload => dispatch(deleteExerciseAction(payload)),
    updateExercise: payload => dispatch(updateExerciseAction(payload)),
@@ -23,7 +22,6 @@ const mapStateToProps = (state) => ({
 const exerciseActions = ({ route, status, exercises, getExercises, createExercise, deleteExercise, updateExercise }) => {
   const rout = route.split('/');
   const name = rout[rout.length-1];
-  getExercises({name});
   return (
     <div className="container">
       <Exercises

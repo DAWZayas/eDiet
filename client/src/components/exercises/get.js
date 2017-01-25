@@ -11,6 +11,12 @@ export default class Get extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    const rout = this.props.route.split('/');
+    const name = rout[rout.length-1];
+    this.props.getExercises({name});
+  }
+
   render(){
     const {route, status, exercises, deleteExercise} = this.props;
     return (

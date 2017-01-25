@@ -2,7 +2,6 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import _ from 'lodash';
 
 import {getTablesAction, createTableAction, deleteTableAction, updateTableAction, addObservable, removeObservable} from '../../store/actions';
 import Tables from '../../components/tables';
