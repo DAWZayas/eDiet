@@ -1,0 +1,30 @@
+
+.userButtons, .dietButtons {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  button {
+    background-color: rgba(232, 142, 58, 0.75);
+  }
+}
+
+.panel {
+  margin: 2% 0 0 0;
+}
+
+.data {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.tittle {
+  font-weight: bold;
+  margin: 0 2% 0 0;
+}
+
+.result {
+  color: rgb(60, 58, 58);
+}

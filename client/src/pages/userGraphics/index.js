@@ -98,7 +98,6 @@ const Graph = ({userAuth}) =>{
             options={options}
           />
         </div>
-        <Link to='/user'><button className="btn btn-default">Go back</button></Link>
       </div>
     );
   }

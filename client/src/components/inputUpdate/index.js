@@ -15,7 +15,6 @@ export default class InputUpdate extends React.Component {
         <ChangePassword id={this.props.id}/>
         <ChangeMail id={this.props.id}/>
         <ChangeHeight id={this.props.id}/>
-        <Link to='/user'><button className="btn btn-default">Go back</button></Link>
       </div>
 
     );
