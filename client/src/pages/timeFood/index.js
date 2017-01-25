@@ -47,7 +47,7 @@ const TimeFoods = ({route, timeFoods, doGetTimeFoods, navTo, createTimeFood}) =>
             type="text"
             className="form-control"
             id="newName"
-            placeholder="Enter your new menu Name..."
+            placeholder="Time food name..."
             ref={(i) => { timeFoodss = i; }}
           />
           <span type="submit" className=" input-group-addon  " >

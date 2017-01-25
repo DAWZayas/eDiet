@@ -54,16 +54,16 @@ const Create = ({ menus, doGetMenu, route, navTo, createMenu, hasMore, loadingMo
               type="text"
               className="form-control"
               id="newName"
-              placeholder="Enter your new menu Name..."
+              placeholder="Menu name..."
               ref={(i) => { menuName = i; }}
             />
             <br/>
             <div className="input-group">
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 id="newName"
-                placeholder="Enter your new menu Name..."
+                placeholder="Menu level..."
                 ref={(i) => { menuLevel = i; }}
               />
               <span type="submit" className=" input-group-addon  " >
@@ -73,7 +73,7 @@ const Create = ({ menus, doGetMenu, route, navTo, createMenu, hasMore, loadingMo
             </div>
         </div>
         {!hasMore && menus.length === 0 ?
-          <div>No questions yet!</div> :
+          <div>No menus yet!</div> :
           <InfiniteScroll
           elementIsScrollable={false}
           loadMore={onLoadMore}

@@ -48,7 +48,7 @@ const TimeFoods = ({route, foods, doGetFoods, createFood }) => {
           type="text"
           className="form-control"
           id="newName"
-          placeholder="Enter your new menu Name..."
+          placeholder="Food name..."
           ref={(i) => { foodss = i; }}
         />
         <br/>
@@ -57,7 +57,7 @@ const TimeFoods = ({route, foods, doGetFoods, createFood }) => {
             type="text"
             className="form-control"
             id="newName"
-            placeholder="Enter your new menu Name..."
+            placeholder="ECalories..."
             ref={(i) => { calorie = i; }}
           />
           <span  className=" input-group-addon  " >
