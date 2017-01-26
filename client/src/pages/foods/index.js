@@ -49,7 +49,7 @@ class TimeFoods extends React.Component{
     <div className="container" style={style}>
       <div className="panel panel-default">
         <div className="panel-heading">
-          Create Time Food
+          Create Food
         </div>
         <div className="panel-footer ">
         <input

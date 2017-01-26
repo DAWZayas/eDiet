@@ -1,2 +1,3 @@
 node_modules/
 server/db/
+!client/dist/redirecting.html

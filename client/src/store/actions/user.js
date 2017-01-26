@@ -24,3 +24,8 @@ export const updateHeightAction = payload => ({
   type: ActionTypes.UPDATE_HEIGHT,
   payload,
 });
+
+export const facebookLoginAction = payload => ({
+  type: ActionTypes.FACEBOOK_LOGIN,
+  payload,
+});

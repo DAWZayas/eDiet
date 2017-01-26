@@ -6,6 +6,7 @@ import {push} from 'react-router-redux';
 
 // our packages
 import {loginAction} from '../../store/actions';
+import FacebookButton from '../../components/facebook';
 const style = require('./style.scss');
 
 const mapStateToProps = state => ({
@@ -44,7 +45,7 @@ const Login = ({onLoginClick, navToHome, token}) => {
           <h3 className={`${style.h3}`}>Please Log In, or <Link to="/register">Sign Up</Link></h3>
           <div className="row">
             <div className="col-xs-6 col-sm-6 col-md-6">
-              <a href="#" className="btn btn-lg btn-primary btn-block">Facebook</a>
+              <FacebookButton />
             </div>
             <div className="col-xs-6 col-sm-6 col-md-6">
               <a href="#" className="btn btn-lg btn-danger btn-block">Google</a>

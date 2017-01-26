@@ -13,6 +13,8 @@ export const User = thinky.createModel('User', {
     thinky.type.number()
   ).default([]),
   photo: thinky.type.buffer(),
+  imcMonth: thinky.type.number(),
+  weightMont: thinky.type.number(),
   exercises: thinky.type.array().schema(
     thinky.type.object().schema({
       name: thinky.type.string().required(),

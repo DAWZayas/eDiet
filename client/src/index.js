@@ -49,10 +49,11 @@ ReactDOM.render((
       <Route path="/" component={App}>
         <IndexRoute component={Home}  />
         <Route path="login" component={Login} />
-        <Route path="food/:nameMenu/:time" component={Foods} onEnter={requireAuth}/>
-        <Route path="timeFood/:name" component={TimeFood} onEnter={requireAuth}/>
-        <Route path="addMenu" component={CreateMenu} onEnter={requireAuth}/>
         <Route path="register" component={Register} />
+          //menus
+          <Route path="food/:nameMenu/:time" component={Foods} onEnter={requireAuth}/>
+          <Route path="timeFood/:name" component={TimeFood} onEnter={requireAuth}/>
+          <Route path="addMenu" component={CreateMenu} onEnter={requireAuth}/>
           // Tablas
           <Route path="tables" component={Tables} onEnter={requireAuth} />
           <Route path="/tables/addTable" component={AddTable} onEnter={requireAuth} />
@@ -66,6 +67,7 @@ ReactDOM.render((
           <Route path="/user/addAdmin" component={AdminUser} onEnter={requireAuth} />
           <Route path="/user/graphics" component={GraphUser} onEnter={requireAuth} />
           <Route path="/user/updateProfile" component={UpdateProfile} onEnter={requireAuth} />
+          <Route path="/user/imc" component={UpdateProfile} onEnter={requireAuth} />
 
         <Route path="*" component={NotFound} />
       </Route>

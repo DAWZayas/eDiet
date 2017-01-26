@@ -25,7 +25,7 @@ class user extends React.Component {
   }
 
   componentWillMount(){
-    const {userAuth, user, getUser} = this.props;
+    const {userAuth, getUser} = this.props;
     this.props.getUser({id: userAuth.id});
   }
 

@@ -2,10 +2,11 @@
 import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
 import {Strategy as JwtStrategy, ExtractJwt} from 'passport-jwt';
+import {Strategy as FacebookStrategy} from 'passport-facebook';
 
 // our packages
 import {User} from '../db';
-import {hash} from '../util';
+import {hash, logger} from '../util';
 import {auth as authConfig} from '../../config';
 
 // define serialize and deserialize functions
@@ -54,6 +55,10 @@ const jwtOpts = {
   secretOrKey: authConfig.jwtSecret,
 };
 passport.use(new JwtStrategy(jwtOpts, async (payload, done) => {
+  console.log(payload)
+  if (payload.provider) {
+    return done(null, payload); // TODO validate accessToken against provider
+  }
   let user;
   try {
     user = await User.get(payload.id)
@@ -68,4 +73,15 @@ passport.use(new JwtStrategy(jwtOpts, async (payload, done) => {
   }
   // return user if successful
   return done(null, user);
+}));
+
+passport.use(new FacebookStrategy({
+  clientID: authConfig.facebook.clientID,
+  clientSecret: authConfig.facebook.clientSecret,
+  callbackURL: authConfig.facebook.callbackURL,
+}, (accessToken, refreshToken, profile, done) => {
+  logger.info(
+    `New GitHub token [accessToken: ${accessToken}, refreshToken: ${refreshToken}, profile: ${JSON.stringify(profile)}]`
+  );
+  done(null, {accessToken, refreshToken, profile});
 }));

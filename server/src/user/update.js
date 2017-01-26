@@ -76,8 +76,57 @@ export default (app) => {
       return;
     }
     // update data
-    if (weight) {
+    const f = new Date();
+    const month = (f.getMonth() +1);
+
+    if(weight && user.weightMonth != month){
       user.weight.push(weight);
+      user.weightMonth= month;
+    }
+    else{
+      res.status(400).send({error: 'the weight control only pass one time of a month '});
+      return;
+    }
+
+    // try to save
+    try {
+      await user.save();
+    } catch (e) {
+      res.status(400).send({error: e.toString()});
+      return;
+    }
+
+    // send succcess
+    res.send(user);
+  }));
+  app.post('/api/user/:id/addImc', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+    const {imc} = req.body;
+
+    if (req.user.id !== req.params.id) {
+      res.status(403).send({error: 'Not enough rights to change other user profile!'});
+      return;
+    }
+
+    let user;
+    try {
+      user = await User.get(req.params.id);
+    } catch (e) {
+      res.status(400).send({error: 'User does not exist'});
+      return;
+    }
+
+
+    // update data
+    const f = new Date();
+    const month = (f.getMonth() +1);
+
+    if(imc && user.imcMonth != month){
+      user.weight.push(imc);
+      user.imcMonth= month;
+    }
+    else{
+      res.status(400).send({error: 'the imc control only pass one time of a month '});
+      return;
     }
 
     // try to save
