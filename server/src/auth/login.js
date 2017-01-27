@@ -41,4 +41,30 @@ app.get('/api/facebook/login',
         res.status(401).send({error: 'Error logging in!'});
       }
     });
+
+  app.get('/api/google/login',
+    passport.authenticate('google', {
+      scope: ['profile'],
+      accessType: 'offline',
+      session: false,
+    }));
+
+  app.get('/api/google/callback',
+    passport.authenticate('google', {failureRedirect: '/login', session: false}),
+    (req, res) => {
+      if (req.user) {
+        const googleUser = req.user.profile;
+        const user = {
+          id: `${googleUserprovider}-${googleUser.id}`,
+          login: googleUser.username,
+          registrationDate: googleUser._json.created_at, // eslint-disable-line no-underscore-dangle
+          provider: googleUser.provider,
+          accessToken: req.user.accessToken,
+        };
+        const token = jwt.sign(user, authConfig.jwtSecret);
+        res.redirect(`http://localhost:3000/dist/redirecting.html#token=${token}&user=${JSON.stringify(user)}`);
+      } else {
+        res.status(401).send({error: 'Error logging in!'});
+      }
+    });
 };

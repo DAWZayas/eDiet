@@ -3,6 +3,7 @@ import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
 import {Strategy as JwtStrategy, ExtractJwt} from 'passport-jwt';
 import {Strategy as FacebookStrategy} from 'passport-facebook';
+import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
 
 // our packages
 import {User} from '../db';
@@ -82,6 +83,19 @@ passport.use(new FacebookStrategy({
 }, (accessToken, refreshToken, profile, done) => {
   logger.info(
     `New GitHub token [accessToken: ${accessToken}, refreshToken: ${refreshToken}, profile: ${JSON.stringify(profile)}]`
+  );
+  done(null, {accessToken, refreshToken, profile});
+}));
+
+// use GoogleStrategy
+passport.use(new GoogleStrategy({
+  clientID: authConfig.google.clientID,
+  clientSecret: authConfig.google.clientSecret,
+  callbackURL: authConfig.google.callbackURL,
+  scope: authConfig.google.scope,
+}, (accessToken, refreshToken, profile, done) => {
+  logger.info(
+    `New Google token [accessToken: ${accessToken}, refreshToken: ${refreshToken}, profile: ${JSON.stringify(profile)}]`
   );
   done(null, {accessToken, refreshToken, profile});
 }));
