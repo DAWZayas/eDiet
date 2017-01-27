@@ -1,4 +1,4 @@
-import * as ActionTypes from '../actionTypes';
+import * as ActionTypes from '../actionTypes/';
 
 export const deleteUserAction = payload => ({
   type: ActionTypes.DELETE_USER,

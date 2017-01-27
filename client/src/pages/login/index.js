@@ -3,6 +3,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
+import Google from '../../components/google';
 
 // our packages
 import {loginAction} from '../../store/actions';
@@ -50,6 +51,7 @@ const Login = ({onLoginClick, navToHome, token}) => {
             <div className="col-xs-6 col-sm-6 col-md-6">
               <a href="#" className="btn btn-lg btn-danger btn-block">Google</a>
             </div>
+            <Google />
           </div>
           <div className={`login-or ${style.login}`}>
             <hr className={`hr-or ${style.hr}`} />

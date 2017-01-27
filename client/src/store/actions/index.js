@@ -1,4 +1,4 @@
-export {loginAction, logoutAction, registerAction, registerAdminAction} from './log';
+export {googleLoginAction, loginAction, logoutAction, registerAction, registerAdminAction} from './log';
 export {addNotificationAction, removeNotificationAction} from './notification';
 export {getMenuAction, getMenuNameRealAction, getMenuNameAction, deleteMenuAction, updateMenuAction, createMenuAction} from './menu';
 export {createTimeFoodAction, deleteTimeFoodAction, updateTimeFoodAction, getTimeFoodAction, getTimeFoodsAction} from './timeFood';

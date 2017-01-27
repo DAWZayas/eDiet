@@ -1,5 +1,5 @@
 // our packages
-import * as ActionTypes from '../actionTypes';
+import * as ActionTypes from '../actionTypes/';
 import {push} from 'react-router-redux';
 
 const getUser = () => {

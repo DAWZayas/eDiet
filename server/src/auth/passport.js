@@ -82,7 +82,7 @@ passport.use(new FacebookStrategy({
   callbackURL: authConfig.facebook.callbackURL,
 }, (accessToken, refreshToken, profile, done) => {
   logger.info(
-    `New GitHub token [accessToken: ${accessToken}, refreshToken: ${refreshToken}, profile: ${JSON.stringify(profile)}]`
+    `New Facebook token [accessToken: ${accessToken}, refreshToken: ${refreshToken}, profile: ${JSON.stringify(profile)}]`
   );
   done(null, {accessToken, refreshToken, profile});
 }));
@@ -92,7 +92,6 @@ passport.use(new GoogleStrategy({
   clientID: authConfig.google.clientID,
   clientSecret: authConfig.google.clientSecret,
   callbackURL: authConfig.google.callbackURL,
-  scope: authConfig.google.scope,
 }, (accessToken, refreshToken, profile, done) => {
   logger.info(
     `New Google token [accessToken: ${accessToken}, refreshToken: ${refreshToken}, profile: ${JSON.stringify(profile)}]`

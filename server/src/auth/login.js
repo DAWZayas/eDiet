@@ -55,12 +55,12 @@ app.get('/api/facebook/login',
       if (req.user) {
         const googleUser = req.user.profile;
         const user = {
-          id: `${googleUserprovider}-${googleUser.id}`,
-          login: googleUser.username,
-          registrationDate: googleUser._json.created_at, // eslint-disable-line no-underscore-dangle
+          id: `${googleUser.provider}-${googleUser.id}`,
+          login: googleUser.displayName,
           provider: googleUser.provider,
           accessToken: req.user.accessToken,
         };
+
         const token = jwt.sign(user, authConfig.jwtSecret);
         res.redirect(`http://localhost:3000/dist/redirecting.html#token=${token}&user=${JSON.stringify(user)}`);
       } else {

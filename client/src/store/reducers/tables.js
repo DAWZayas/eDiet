@@ -1,4 +1,4 @@
-import * as ActionTypes from '../actionTypes';
+import * as ActionTypes from '../actionTypes/';
 
 const initialState = {tables: [], status: 'inited', hasMore: true};
 

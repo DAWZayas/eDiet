@@ -17,4 +17,9 @@ export const registerAction = payload => ({
 export const registerAdminAction = payload =>({
   type: ActionTypes.DO_REGISTER_ADMIN,
   payload,
-})
+});
+
+export const googleLoginAction = payload => ({
+   type: ActionTypes.DO_GOOGLE_LOGIN,
+   payload,
+ });

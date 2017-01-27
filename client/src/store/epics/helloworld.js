@@ -1,5 +1,5 @@
 import {Observable} from 'rxjs/Observable';
-import * as ActionTypes from '../actionTypes';
+import * as ActionTypes from '../actionTypes/';
 
 export const helloWorld = action$ => action$
   .ofType(ActionTypes.HELLO_WORLD)

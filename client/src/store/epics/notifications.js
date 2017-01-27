@@ -1,5 +1,5 @@
 import {Observable} from 'rxjs/Observable';
-import * as ActionTypes from '../actionTypes';
+import * as ActionTypes from '../actionTypes/';
 import * as Actions from '../actions';
 
 export const addNotification = action$ => action$

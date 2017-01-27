@@ -1,6 +1,6 @@
 import {Observable} from 'rxjs/Observable';
 
-import * as ActionTypes from '../actionTypes';
+import * as ActionTypes from '../actionTypes/';
 import * as Actions from '../actions';
 import {signRequest, ajaxErrorToMessage} from '../../util';
 

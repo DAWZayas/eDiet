@@ -4,7 +4,8 @@
   "description": "Experts portal client",
   "main": "index.js",
   "scripts": {
-    "start": "node serve.js"
+    "start": "node serve.js",
+    "dist": "webpack -p --config webpack.production.config.js"
   },
   "repository": {
     "type": "git",
