@@ -109,3 +109,46 @@ export const updatePassword = action$ => action$
           );
         }
       });
+
+
+      export const addWeight = action$ => action$
+        .ofType(ActionTypes.ADD_WEIGHT)
+        .map(signRequest)
+        .switchMap(({headers, payload}) => Observable
+          .ajax.post(`http://localhost:8080/api/user/${payload.id}/addWeight`, payload, headers)
+          .map(res => res.response)
+          .mergeMap( response  => Observable.of ({
+            type: ActionTypes.ADD_WEIGHT_SUCCESS,
+            payload: response,
+          },
+            Actions.addImcAction({payload}),
+          ))
+          .catch(error => Observable.of({
+            type: ActionTypes.ADD_WEIGHT_ERROR,
+            payload: {error},
+          },
+            Actions.addNotificationAction({text: errorBack(error), alertType: 'danger'})
+          )),
+        );
+
+
+        export const addImc = action$ => action$
+          .ofType(ActionTypes.ADD_IMC)
+          .map(signRequest)
+          .switchMap(({headers, payload}) => Observable
+            .ajax.post(`http://localhost:8080/api/user/${payload.payload.id}/addImc`, payload.payload, headers)
+            .map(res => res.response)
+            .mergeMap( response  => Observable.of ({
+              type: ActionTypes.ADD_IMC_SUCCESS,
+              payload: response,
+            },
+              Actions.addNotificationAction(
+                {text: 'Imc and weight has been updated', alertType: 'info'}),
+            ))
+            .catch(error => Observable.of({
+              type: ActionTypes.ADD_IMC_ERROR,
+              payload: {error},
+            },
+              Actions.addNotificationAction({text: errorBack(error), alertType: 'danger'})
+            )),
+          );

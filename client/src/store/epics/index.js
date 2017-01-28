@@ -6,7 +6,7 @@ import {createFood, deleteFood, updateFood, getFood, getFoods} from './foods';
 import {getTables, createTable, getCreateTable, deleteTable, updateTable} from './tables';
 import {getExercises, createExercise, deleteExercise, updateExercise} from './exercises';
 import {addObservable} from './realTime';
-import {updatePassword, updateHeight, updateEmail, getUser, facebookLogin} from './user';
+import {updatePassword, updateHeight, updateEmail, getUser, facebookLogin, addWeight, addImc} from './user';
 
 
 export default [
@@ -52,4 +52,6 @@ export default [
   registerAdmin,
   facebookLogin,
   registerFacebook,
+  addWeight,
+  addImc,
 ];

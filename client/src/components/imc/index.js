@@ -5,35 +5,33 @@ import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
 // our packages
-import {registerAction} from '../../store/actions';
+import {addImcAction, addWeightAction} from '../../store/actions';
 const style = require('./style.scss');
 
 const mapStateToProps = (state) => ({
-   userAuth: state.auth.user,
-   user: state.user.user,
+
  });
 
  const mapDispatchToProps = (dispatch) => ({
-   getUser:  payload => dispatch(getUserAction(payload)),
+   addWeight: payload => dispatch(addWeightAction(payload)),
+   addImc: payload => dispatch(addImcAction(payload))
  });
 
 class Imc extends React.Component{
 
   constructor(props){
     super(props);
-    this.state = {show: null};
-  }
-
-  componentWillMount(){
-    const {userAuth, getUser} = this.props;
-    this.props.getUser({id: userAuth.id});
+    this.state = {imc: null};
   }
 
   render(){
-
     const handleImc = (e) =>{
       e.preventDefault();
-
+      const weight = weightUser.value;
+      const height = this.props.userHeight * this.props.userHeight;
+      const imc = weight / height;
+      this.setState({imc});
+      this.props.addWeight({id:this.props.userId, weight, imc: imc.toFixed(2)});
     };
 
     let weightUser;
@@ -42,10 +40,9 @@ class Imc extends React.Component{
       <div className={`container ${style.container}`}>
         <div className="row">
           <div className={`main ${style.main}`}>
-            <h3 className={`${style.h3}`}>Please Sign Up, or <Link to="/login">Log In</Link></h3>
             <form role="form">
               <div className="form-group">
-                <label htmlFor="inputUsername">Username:</label>
+                <label htmlFor="inputUsername">Your weight:</label>
                 <input
                   type="number"
                   className="form-control"
@@ -54,7 +51,7 @@ class Imc extends React.Component{
                   ref={(i) => { weightUser = i; }}
                 />
               </div>
-              <button type="submit" className={`btn ${style.registerButton}`} onClick={handleClick}>Calculate</button>
+              <button type="submit" className={`btn ${style.registerButton}`} onClick={handleImc}>Calculate</button>
             </form>
           </div>
         </div>

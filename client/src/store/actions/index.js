@@ -36,5 +36,6 @@ export {
 export {
   deleteUserAction, getUserAction,
   updateMailAction, updatePasswordAction, updateHeightAction,
-  facebookLoginAction
+  facebookLoginAction,
+  addWeightAction, addImcAction
 } from './user';

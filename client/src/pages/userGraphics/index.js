@@ -3,18 +3,39 @@ import {Bar} from 'react-chartjs-2';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
+import {getUserAction} from '../../store/actions';
+import Imc from '../../components/imc';
+
 const mapStateToProps = (state) => ({
    userAuth: state.auth.user,
+   user: state.user.user,
+ });
+
+ const mapDispatchToProps = (dispatch) => ({
+   getUser:  payload => dispatch(getUserAction(payload)),
  });
 
 
-const Graph = ({userAuth}) =>{
+class Graph extends Component {
+
+  constructor(props){
+    super(props);
+  }
+
+  componentWillMount(){
+    const {userAuth, getUser} = this.props;
+    console.log(userAuth)
+    this.props.getUser({id: userAuth.id});
+  }
+
+  render(){
+    const {user} =this.props;
     const data = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'October', 'November', 'December'],
       datasets: [{
           label: 'Weight',
           type:'line',
-          data: userAuth.weight,
+          data: user ? user.weight : [],
           fill: false,
           borderColor: '#EC932F',
           backgroundColor: '#EC932F',
@@ -26,7 +47,7 @@ const Graph = ({userAuth}) =>{
         },{
           type: 'bar',
           label: 'IMC',
-          data: [5, 10 , 15 , 20 , 50 , 65 ,78],
+          data: user ? user.imc : [],
           fill: false,
           backgroundColor: '#71B37C',
           borderColor: '#71B37C',
@@ -89,7 +110,7 @@ const Graph = ({userAuth}) =>{
 
     return (
       <div className="container">
-        <div className="container">
+        <div className="container" style={{marginBottom: '5%'}}>
           <h3>IMC and weight</h3>
           <Bar
             data={data}
@@ -98,8 +119,15 @@ const Graph = ({userAuth}) =>{
             options={options}
           />
         </div>
+        {this.props. user ?
+            this.props.user.height ?
+              <Imc  userId={this.props.user.id} userHeight={this.props.user.height}/>
+             : <h4> you must define your height </h4>
+        :null}
+
       </div>
     );
   }
+}
 
-export default connect (mapStateToProps, null)(Graph);
+export default connect (mapStateToProps, mapDispatchToProps)(Graph);

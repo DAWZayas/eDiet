@@ -121,7 +121,7 @@ export default (app) => {
     const month = (f.getMonth() +1);
 
     if(imc && user.imcMonth != month){
-      user.weight.push(imc);
+      user.imc.push(imc);
       user.imcMonth= month;
     }
     else{

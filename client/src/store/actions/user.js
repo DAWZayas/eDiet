@@ -29,3 +29,13 @@ export const facebookLoginAction = payload => ({
   type: ActionTypes.FACEBOOK_LOGIN,
   payload,
 });
+
+export const addWeightAction = payload => ({
+  type: ActionTypes.ADD_WEIGHT,
+  payload,
+});
+
+export const addImcAction = payload => ({
+  type: ActionTypes.ADD_IMC,
+  payload,
+});

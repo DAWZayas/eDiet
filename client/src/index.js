@@ -67,7 +67,6 @@ ReactDOM.render((
           <Route path="/user/addAdmin" component={AdminUser} onEnter={requireAuth} />
           <Route path="/user/graphics" component={GraphUser} onEnter={requireAuth} />
           <Route path="/user/updateProfile" component={UpdateProfile} onEnter={requireAuth} />
-          <Route path="/user/imc" component={UpdateProfile} onEnter={requireAuth} />
 
         <Route path="*" component={NotFound} />
       </Route>
