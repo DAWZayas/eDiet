@@ -61,12 +61,11 @@ const FacebookLogin = ({handleFacebookLogin}) => {
   };
 
   return (
-    <button
-      className="btn btn-default"
-      alt="facebook login"
-      style={{cursor: 'pointer'}}
-      onClick={handleClickEvent}
-    > facebookLogin </button>
+    <div className="col-xs-6 col-sm-6 col-md-6">
+      <button href="#" className="btn btn-lg btn-primary btn-block" onClick={handleClickEvent}>
+        Facebook
+      </button>
+    </div>
   );
 };
 

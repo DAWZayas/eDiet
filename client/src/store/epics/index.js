@@ -1,4 +1,4 @@
-import {login, register, registerAdmin, registerFacebook, googleLogin} from './auth';
+import {login, register, registerAdmin, registerFacebook, googleLogin, registerGoogle} from './auth';
 import {addNotification} from './notifications';
 import {createMenu, getMenu, deleteMenu, updateMenu, getMenuName, getMenuNameReal} from './menus';
 import {createTimeFood, deleteTimeFood, updateTimeFood, getTimeFood, getTimeFoods} from './timeFoods';
@@ -13,6 +13,7 @@ export default [
   login,
   register,
   googleLogin,
+  registerGoogle,
   addNotification,
   //administration Menu
   createMenu,

@@ -57,8 +57,6 @@ const jwtOpts = {
 };
 passport.use(new JwtStrategy(jwtOpts, async (payload, done) => {
   if (payload.provider) {
-    debugger;
-    console.log(payload);
     return done(null, payload); // TODO validate accessToken against provider
   }
   let user;
@@ -92,9 +90,5 @@ passport.use(new GoogleStrategy({
   callbackURL: authConfig.google.callbackURL,
   scope: authConfig.google.scope,
 }, (accessToken, refreshToken, profile, done) => {
-  logger.info(
-    `New Google token [accessToken: ${accessToken}, refreshToken: ${refreshToken}, profile: ${JSON.stringify(profile)}]`
-  );
-
   done(null, {accessToken, refreshToken, profile});
 }));

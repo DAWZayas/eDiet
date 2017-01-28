@@ -29,3 +29,8 @@ export const registerFacebookAction = payload =>({
   type: ActionTypes.REGISTER_FACEBOOK,
   payload,
 });
+
+export const registerGoogleAction = payload =>({
+  type: ActionTypes.REGISTER_GOOGLE,
+  payload,
+});

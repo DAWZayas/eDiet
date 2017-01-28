@@ -3,7 +3,8 @@ export {
   registerAction,
   registerAdminAction,
   registerFacebookAction,
-  googleLoginAction
+  googleLoginAction,
+  registerGoogleAction
 } from './log';
 export {
   addNotificationAction, removeNotificationAction

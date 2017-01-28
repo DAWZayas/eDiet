@@ -13,11 +13,8 @@ export default (app) => {
   app.post('/api/register', asyncRequest(async (req, res) => {
     // get user input
     const {login, password, passwordRepeat, role} = req.body;
-
       let roles;
-
       role ? roles = true :roles = false
-
 
       if (password !== passwordRepeat) {
         res.status(400).send({error: 'Passwords do not match!'});
@@ -45,25 +42,46 @@ export default (app) => {
       res.sendStatus(201);
   }));
 
-  app.post('/api/register/facebook', asyncRequest(async (req, res) => {
-    // get user input
-    const {id, userLogin} = req.body;
-    let users;
+app.post('/api/register/facebook', asyncRequest(async (req, res) => {
+  const {id, userLogin} = req.body;
 
-    try{
-      users = await User.get(id);
-      res.sendStatus(400).send({error: 'The user has been already register'});
-    }
-    catch(e){
+  try {
+    const bbddUser = await User.get(id);
+    if (bbddUser.length === 0) {
       const user = new User({
         login: userLogin,
         id: id,
         registrationDate: new Date(),
         password: hash(userLogin)
       });
+
       await user.save();
       res.sendStatus(201);
     }
-  }));
+  } catch (e) {
+    res.status(400).send({error: 'An error has been happened!'});
+  }
+}));
+
+app.post('/api/register/google', asyncRequest(async (req, res) => {
+  const {id, userLogin} = req.body;
+
+  try {
+    const bbddUser = await User.get(id);
+    if (bbddUser.length === 0) {
+      const user = new User({
+        login: userLogin,
+        id: id,
+        registrationDate: new Date(),
+        password: hash(userLogin)
+      });
+
+      await user.save();
+      res.sendStatus(201);
+    }
+  } catch (e) {
+    res.status(400).send({error: 'An error has been happened!'});
+  }
+}));
 
 };

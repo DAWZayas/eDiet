@@ -45,12 +45,7 @@ const Login = ({onLoginClick, navToHome, token}) => {
         <div className={`main ${style.main}`}>
           <h3 className={`${style.h3}`}>Please Log In, or <Link to="/register">Sign Up</Link></h3>
           <div className="row">
-            <div className="col-xs-6 col-sm-6 col-md-6">
-              <FacebookButton />
-            </div>
-            <div className="col-xs-6 col-sm-6 col-md-6">
-              <a href="#" className="btn btn-lg btn-danger btn-block">Google</a>
-            </div>
+            <FacebookButton />
             <Google />
           </div>
           <div className={`login-or ${style.login}`}>

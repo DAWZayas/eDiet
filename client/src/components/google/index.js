@@ -62,9 +62,11 @@
    };
 
    return (
-     <button onClick={handleClickEvent}>
-      Google
-     </button>
+     <div className="col-xs-6 col-sm-6 col-md-6">
+       <button href="#" className="btn btn-lg btn-danger btn-block" onClick={handleClickEvent}>
+         Google
+       </button>
+     </div>
    );
  };
 

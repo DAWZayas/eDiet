@@ -43,6 +43,7 @@ app.get('/api/facebook/login',
 
   app.get('/api/google/login',
     passport.authenticate('google', {
+      login: null,
       scope: authConfig.google.scope,
       accessType: 'offline',
       session: false,
