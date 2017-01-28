@@ -25,12 +25,9 @@
      const checkResponse = () => {
        const hash = window.location.hash;
        window.location.hash = '';
-       console.log(hash);
 
        const token = /[#?;,&]token=([^&]+)/.exec(hash);
-console.log('>>>', token)
        const user = /[#?;,&]user=([^&]+)/.exec(hash);
-console.log('>>>', user)
        const error = /[#?;,&]error=([^&]+)/.exec(hash);
 
 
