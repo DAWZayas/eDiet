@@ -19,7 +19,13 @@ export const registerAdminAction = payload =>({
   payload,
 });
 
+
 export const googleLoginAction = payload => ({
    type: ActionTypes.DO_GOOGLE_LOGIN,
    payload,
  });
+
+export const registerFacebookAction = payload =>({
+  type: ActionTypes.REGISTER_FACEBOOK,
+  payload,
+});

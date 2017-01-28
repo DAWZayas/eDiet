@@ -87,7 +87,7 @@ export const updatePassword = action$ => action$
 
     export const facebookLogin = action$ => action$
       .ofType(ActionTypes.FACEBOOK_LOGIN)
-      .switchMap(({payload}) => {
+      .mergeMap(({payload}) => {
         if (payload.error) {
           return Observable.of(
             {
@@ -96,7 +96,7 @@ export const updatePassword = action$ => action$
                 error: payload.error,
               },
             },
-            Actions.addNotificationAction({text: `GitHub Login error: ${payload.error}`, alertType: 'danger'}),
+            Actions.addNotificationAction({text: `Facebook Login error: ${payload.error}`, alertType: 'danger'}),
           );
         } else {
           return Observable.of(
@@ -104,8 +104,8 @@ export const updatePassword = action$ => action$
               type: ActionTypes.LOGIN_SUCCESS,
               payload,
             },
-            Actions.addNotificationAction(
-              {text: 'GitHub Login success', alertType: 'info'}),
+            Actions.registerFacebookAction(
+              {id: payload.user.id, userLogin: payload.user.login}),
           );
         }
       });

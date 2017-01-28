@@ -103,3 +103,27 @@ export const register = action$ => action$
            );
          }
        });
+
+    export const registerFacebook = action$ => action$
+      .ofType(ActionTypes.REGISTER_FACEBOOK)
+      .switchMap(({payload}) => Observable
+        .ajax.post('http://localhost:8080/api/register/facebook', payload)
+        .map(res => res.response)
+        .mergeMap(response => Observable.of(
+          {
+            type: ActionTypes.REGISTER_FACEBOOK_SUCCESS,
+            payload: response,
+          },
+          Actions.addNotificationAction(
+            {text: 'Register success', alertType: 'info'},
+          ),
+        ))
+        .catch(error => Observable.of(
+          {
+            type: ActionTypes.REGISTER_FACEBOOK_ERROR,
+            payload: {
+              error,
+            },
+          },
+        )),
+      );

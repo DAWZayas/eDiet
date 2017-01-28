@@ -18,6 +18,7 @@ export default (app) => {
 
 app.get('/api/facebook/login',
     passport.authenticate('facebook', {
+      login: null,
       accessType: 'offline',
       session: false,
     }));
@@ -27,11 +28,9 @@ app.get('/api/facebook/login',
     (req, res) => {
       if (req.user) {
         const facebookUser = req.user.profile;
-        console.log(facebookUser);
         const user = {
           id: facebookUser.id,
           login: facebookUser.displayName,
-          registrationDate: facebookUser._json.created_at,
           provider: facebookUser.provider,
           accessToken: req.user.accessToken,
         };

@@ -14,38 +14,56 @@ export default (app) => {
     // get user input
     const {login, password, passwordRepeat, role} = req.body;
 
-    console.log(login, password, passwordRepeat, role)
-    let roles;
+      let roles;
 
-    role ? roles = true :roles = false
-
-
-    if (password !== passwordRepeat) {
-      res.status(400).send({error: 'Passwords do not match!'});
-      return;
-    }
-    // hash password
-    const hashedPassword = hash(password);
-
-    // check if login already taken
-    const exists = await loginTaken(login);
-
-    console.log(exists)
-    if (exists) {
-      res.status(403).send({error: 'User already exists!'});
-      return;
-    }
+      role ? roles = true :roles = false
 
 
-    console.log(roles)
-    // save new user
-    const user = new User({
-      login,
-      password: hashedPassword,
-      role: roles ,
-    });
-    await user.save();
+      if (password !== passwordRepeat) {
+        res.status(400).send({error: 'Passwords do not match!'});
+        return;
+      }
+      // hash password
+      const hashedPassword = hash(password);
 
-    res.sendStatus(201);
+      // check if login already taken
+      const exists = await loginTaken(login);
+
+      if (exists) {
+        res.status(403).send({error: 'User already exists!'});
+        return;
+      }
+
+      // save new user
+      const user = new User({
+        login,
+        password: hashedPassword,
+        role: roles ,
+      });
+      await user.save();
+
+      res.sendStatus(201);
   }));
+
+  app.post('/api/register/facebook', asyncRequest(async (req, res) => {
+    // get user input
+    const {id, userLogin} = req.body;
+    let users;
+
+    try{
+      users = await User.get(id);
+      res.sendStatus(400).send({error: 'The user has been already register'});
+    }
+    catch(e){
+      const user = new User({
+        login: userLogin,
+        id: id,
+        registrationDate: new Date(),
+        password: hash(userLogin)
+      });
+      await user.save();
+      res.sendStatus(201);
+    }
+  }));
+
 };

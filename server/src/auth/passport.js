@@ -56,8 +56,9 @@ const jwtOpts = {
   secretOrKey: authConfig.jwtSecret,
 };
 passport.use(new JwtStrategy(jwtOpts, async (payload, done) => {
-  console.log(payload)
   if (payload.provider) {
+    debugger;
+    console.log(payload);
     return done(null, payload); // TODO validate accessToken against provider
   }
   let user;
@@ -81,9 +82,6 @@ passport.use(new FacebookStrategy({
   clientSecret: authConfig.facebook.clientSecret,
   callbackURL: authConfig.facebook.callbackURL,
 }, (accessToken, refreshToken, profile, done) => {
-  logger.info(
-    `New Facebook token [accessToken: ${accessToken}, refreshToken: ${refreshToken}, profile: ${JSON.stringify(profile)}]`
-  );
   done(null, {accessToken, refreshToken, profile});
 }));
 
@@ -96,5 +94,6 @@ passport.use(new GoogleStrategy({
   logger.info(
     `New Google token [accessToken: ${accessToken}, refreshToken: ${refreshToken}, profile: ${JSON.stringify(profile)}]`
   );
+
   done(null, {accessToken, refreshToken, profile});
 }));
