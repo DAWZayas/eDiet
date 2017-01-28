@@ -17,5 +17,6 @@ export const auth = {
      clientID: process.env.GOOGLE_CLIENT_ID || '1050466959102-dmkb07p4am5ch07ch58hrmvm3j6motng.apps.googleusercontent.com',
      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '1gsz_Yusfe833hnTv2WUiVn0',
      callbackURL: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:8080/api/google/callback',
+     scope: process.env.GOOGLE_CALLBACK_URL || ['profile'],
    },
 };

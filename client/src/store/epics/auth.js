@@ -78,31 +78,31 @@ export const register = action$ => action$
       )),
     );
 
-    export const googleLogin = action$ => action$
-       .ofType(ActionTypes.DO_GOOGLE_LOGIN)
-       .switchMap(({payload}) => {
-         if (payload.error) {
-           return Observable.of({
-             type: ActionTypes.LOGIN_ERROR,
-             payload: {
-               error: payload.error,
-             },
-            },
-             Actions.addNotificationAction(
-               {text: `Google Login error: ${payload.error}`, alertType: 'danger'}
-             )
-           );
-         } else {
-           return Observable.of({
-             type: ActionTypes.LOGIN_SUCCESS,
-             payload,
-           },
-             Actions.addNotificationAction(
-               {text: 'Google Login success', alertType: 'info'}
-             )
-           );
-         }
-       });
+export const googleLogin = action$ => action$
+ .ofType(ActionTypes.DO_GOOGLE_LOGIN)
+ .switchMap(({payload}) => {
+   if (payload.error) {
+     return Observable.of({
+       type: ActionTypes.LOGIN_ERROR,
+       payload: {
+         error: payload.error,
+       },
+      },
+       Actions.addNotificationAction(
+         {text: `Google Login error: ${payload.error}`, alertType: 'danger'}
+       )
+     );
+   } else {
+     return Observable.of({
+       type: ActionTypes.LOGIN_SUCCESS,
+       payload,
+     },
+       Actions.addNotificationAction(
+         {text: 'Google Login success', alertType: 'info'}
+       )
+     );
+   }
+ });
 
     export const registerFacebook = action$ => action$
       .ofType(ActionTypes.REGISTER_FACEBOOK)
