@@ -2,11 +2,15 @@ import {Observable} from 'rxjs/Observable';
 import * as ActionTypes from '../actionTypes/';
 import * as Actions from '../actions';
 import {loginErrorToMessage, registerErrorToMessage} from '../../util';
+import {server as serverConfig} from '../../../config';
+
+ const host = serverConfig.host;
+ const port = serverConfig.port;
 
 export const login = action$ => action$
   .ofType(ActionTypes.DO_LOGIN)
   .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/login', payload)
+    .ajax.post(`http://${host}:${port}/api/login`, payload)
     .map(res => res.response)
     .mergeMap(response => Observable.of({
       type: ActionTypes.LOGIN_SUCCESS,
@@ -30,7 +34,7 @@ export const login = action$ => action$
 export const register = action$ => action$
 .ofType(ActionTypes.DO_REGISTER)
 .switchMap(({payload}) => Observable
-  .ajax.post('http://localhost:8080/api/register', payload)
+  .ajax.post(`http://${host}:${port}/api/register`, payload)
   .map(res => res.response)
   .mergeMap(response => Observable.of({
     type: ActionTypes.REGISTER_SUCCESS,
@@ -54,7 +58,7 @@ export const register = action$ => action$
 export const registerAdmin = action$ => action$
 .ofType(ActionTypes.DO_REGISTER_ADMIN)
 .switchMap(({payload}) => Observable
-  .ajax.post('http://localhost:8080/api/register', payload)
+  .ajax.post(`http://${host}:${port}/api/register`, payload)
   .map(res => res.response)
   .mergeMap(response => Observable.of({
     type: ActionTypes.REGISTER_ADMIN_SUCCESS,
@@ -104,7 +108,7 @@ export const googleLogin = action$ => action$
 export const registerFacebook = action$ => action$
   .ofType(ActionTypes.REGISTER_FACEBOOK)
   .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/register/facebook', payload)
+    .ajax.post(`http://${host}:${port}/api/register/facebook`, payload)
     .map(res => res.response)
     .mergeMap(response => Observable.of({
       type: ActionTypes.REGISTER_FACEBOOK_SUCCESS,
@@ -125,7 +129,7 @@ export const registerFacebook = action$ => action$
 export const registerGoogle = action$ => action$
  .ofType(ActionTypes.REGISTER_GOOGLE)
  .switchMap(({payload}) => Observable
-   .ajax.post('http://localhost:8080/api/register/google', payload)
+   .ajax.post(`http://${host}:${port}/api/register/google`, payload)
    .map(res => res.response)
    .mergeMap(response => Observable.of({
      type: ActionTypes.REGISTER_GOOGLE_SUCCESS,

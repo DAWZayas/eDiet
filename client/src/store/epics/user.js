@@ -3,12 +3,16 @@ import * as ActionTypes from '../actionTypes/';
 import {signRequest} from '../../util';
 import * as Actions from '../actions';
 import {errorBack} from '../../util';
+import {server as serverConfig} from '../../../config';
+
+const host = serverConfig.host;
+const port = serverConfig.port;
 
 export const updatePassword = action$ => action$
   .ofType(ActionTypes.UPDATE_PASSWORD)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.post(`http://localhost:8080/api/user/${payload.id}/update/password`, payload, headers)
+    .ajax.post(`http://${host}:${port}/api/user/${payload.id}/update/password`, payload, headers)
     .map(res => res.response)
     .mergeMap( response  => Observable.of ({
       type: ActionTypes.UPDATE_PASSWORD_SUCCESS,
@@ -29,7 +33,7 @@ export const updateEmail = action$ => action$
   .ofType(ActionTypes.UPDATE_EMAIL)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.post(`http://localhost:8080/api/user/${payload.id}/update/email`, payload, headers)
+    .ajax.post(`http://${host}:${port}/api/user/${payload.id}/update/email`, payload, headers)
     .map(res => res.response)
     .mergeMap( response  => Observable.of ({
       type: ActionTypes.UPDATE_EMAIL_SUCCESS,
@@ -44,13 +48,13 @@ export const updateEmail = action$ => action$
       payload: {error},
     },
       Actions.addNotificationAction({text: errorBack(error), alertType: 'danger'})
-    )))
+    )));
 
 export const updateHeight = action$ => action$
   .ofType(ActionTypes.UPDATE_HEIGHT)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.post(`http://localhost:8080/api/user/${payload.id}/update/height`, payload, headers)
+    .ajax.post(`http://${host}:${port}/api/user/${payload.id}/update/height`, payload, headers)
     .map(res => res.response)
     .mergeMap( response  => Observable.of ({
       type: ActionTypes.UPDATE_HEIGHT_SUCCESS,
@@ -71,7 +75,7 @@ export const getUser = action$ => action$
   .ofType(ActionTypes.GET_USER)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.get(`http://localhost:8080/api/user/${payload.id}`, payload, headers)
+    .ajax.get(`http://${host}:${port}/api/user/${payload.id}`, payload, headers)
     .map(res => res.response)
     .mergeMap( user  => Observable.of ({
       type: ActionTypes.GET_USER_SUCCESS,
@@ -118,7 +122,7 @@ export const addWeight = action$ => action$
   .ofType(ActionTypes.ADD_WEIGHT)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.post(`http://localhost:8080/api/user/${payload.id}/addWeight`, payload, headers)
+    .ajax.post(`http://${host}:${port}/api/user/${payload.id}/addWeight`, payload, headers)
     .map(res => res.response)
     .mergeMap(response  => Observable.of ({
       type: ActionTypes.ADD_WEIGHT_SUCCESS,
@@ -142,7 +146,7 @@ export const addImc = action$ => action$
   .ofType(ActionTypes.ADD_IMC)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.post(`http://localhost:8080/api/user/${payload.payload.id}/addImc`, payload.payload, headers)
+    .ajax.post(`http://${host}:${port}/api/user/${payload.payload.id}/addImc`, payload.payload, headers)
     .map(res => res.response)
     .mergeMap( response  => Observable.of ({
       type: ActionTypes.ADD_IMC_SUCCESS,

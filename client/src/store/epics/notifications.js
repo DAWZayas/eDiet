@@ -9,6 +9,6 @@ export const addNotification = action$ => action$
     .delay(5000)
     .takeUntil(
       action$.ofType(ActionTypes.REMOVE_NOTIFICATION)
-      .filter(({payload: {notificationId}}) => notification.id === notificationId),
-    ),
+      .filter(({payload: {notificationId}}) => notification.id === notificationId)
+    )
   );

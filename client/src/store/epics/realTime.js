@@ -5,6 +5,6 @@ export const addObservable = action$ => action$
   .mergeMap(({payload: observable}) =>
       observable.takeUntil(
       action$.ofType(ActionTypes.REMOVE_OBSERVABLE)
-      .filter(action => action.payload === observable),
+      .filter(action => action.payload === observable)
     )
   );
