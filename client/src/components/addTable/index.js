@@ -9,6 +9,7 @@ export default class Add extends Component {
         <AddTable
           tables={this.props.tables}
           createTable={this.props.createTable}
+          image={this.props.image}
         />
       </div>
     );

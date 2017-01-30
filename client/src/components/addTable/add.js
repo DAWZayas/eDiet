@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Dropzone from 'react-dropzone';
 
 let tableName;
 let tableLevel;
@@ -10,13 +11,31 @@ let footer = {
 };
 
 export default class AddTable extends Component {
-  render(){
+  constructor() {
+    super();
+    this.onDrop = this.onDrop.bind(this);
+    this.onOpenClick = this.onOpenClick.bind(this);
+  }
 
+  componentWillMount() {
+    this.setState({files: []});
+  };
+
+  onDrop(acceptedFiles) {
+    this.setState({files: acceptedFiles});
+  };
+
+  onOpenClick() {
+    this.dropzone.open();
+  };
+
+  render(){
     const handleCreate = (e) => {
       e.preventDefault();
       const name = tableName.value;
       const level = tableLevel.value;
-      this.props.createTable({name, level});
+      const image = this.state.files[0];
+      this.props.createTable({name, level, image});
       clearFields();
       return false;
     };
@@ -55,6 +74,17 @@ export default class AddTable extends Component {
               />
             </div>
           </div>
+        </div>
+        <div>
+            <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop} >
+                <div>Drop here the image</div>
+            </Dropzone>
+            <button type="button" onClick={this.onOpenClick}>
+                Open Dropzone
+            </button>
+            {this.state.files.length > 0 ? <div>
+            <div>{this.state.files.map((file, index) => <img src={file.preview} key={index}/> )}</div>
+            </div> : null}
         </div>
         <div className={`panel-footer ${styles.footer}`} style={footer}>
           <button type="submit" className="btn btn-default" onClick={handleCreate}>

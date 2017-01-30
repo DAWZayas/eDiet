@@ -4,6 +4,7 @@ export const Exercise = thinky.createModel('Exercise', {
   owner: thinky.type.string().required(),
   name: thinky.type.string().required(),
   level: thinky.type.number(),
+  image: thinky.type.any(),
   exercises: thinky.type.array().schema(
     thinky.type.object().schema({
       name: thinky.type.string().required(),
