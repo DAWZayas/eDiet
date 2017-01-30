@@ -25,4 +25,14 @@ export default (app) => {
       res.status(400).send({error: 'Menu does not exist'});
     }
   }));
+
+  app.get('/api/menu/:level', asyncRequest(async (req, res) => {
+    try {
+      const menuLevel = await r.table('Menu').filter({level: req.params.level});
+
+      res.send(menuLevel);
+    } catch (e) {
+      res.status(400).send({error: 'Menu does not exist'});
+    }
+  }));
 };
