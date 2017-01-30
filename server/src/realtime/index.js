@@ -1,5 +1,12 @@
-import {listen} from 'rethinkdb-websocket-server';
-import {db as dbConfig} from '../../config';
+import {listen, r} from 'rethinkdb-websocket-server';
+
+import {db as dbConfig, auth as authConfig} from '../../config';
+
+const rethinkConn = r.connect({
+  host: dbConfig.host,
+  port: dbConfig.port,
+  db: dbConfig.db,
+});
 
 const options = {
   httpPath: '/realtime',

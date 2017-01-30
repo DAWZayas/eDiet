@@ -5,12 +5,16 @@ import {connect} from 'react-redux';
 // our packages
 import {facebookLoginAction} from '../../store/actions';
 import {popupwindow} from '../../util';
+import {server as serverConfig} from '../../../config';
+
+const host = serverConfig.host;
+const port = serverConfig.port;
 
 const mapDispatchToProps = dispatch => ({
   handleFacebookLogin: payload => dispatch(facebookLoginAction(payload)),
 });
 
-const authUrl = 'http://localhost:8080/api/facebook/login';
+const authUrl = `http://${host}:${port}/api/facebook/login`;
 
 let authWindow = null;
 

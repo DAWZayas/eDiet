@@ -5,12 +5,16 @@
  // our packages
  import {googleLoginAction} from '../../store/actions';
  import {popupwindow} from '../../util';
+ import {server as serverConfig} from '../../../config';
+
+ const host = serverConfig.host;
+ const port = serverConfig.port;
 
  const mapDispatchToProps = dispatch => ({
    handleGoogleLogin: payload => dispatch(googleLoginAction(payload)),
  });
 
- const authUrl = 'http://localhost:8080/api/google/login';
+ const authUrl = `http://${host}:${port}/api/google/login`;
 
  let authWindow = null;
 

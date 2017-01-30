@@ -3,6 +3,15 @@ export const db = {
   port: process.env.EXPERTS_DB_PORT || 28015,
   db: 'expertsdb',
 };
+exports.server = {
+  host: process.env.EXPERTS_SERVER_URL || 'localhost',
+  port: process.env.EXPERTS_SERVER_PORT || 8080,
+};
+
+exports.client = {
+  host: process.env.EXPERTS_CLIENT_URL || 'localhost',
+  port: process.env.EXPERTS_CLIENT_PORT || 3000,
+};
 
 export const auth = {
   passwordSalt: process.env.EXPERTS_AUTH_PASSALT || '3^V5.d%6GbjJe3998R6H2q~8sSdb.t7:|QW59U:gg;Hb%_tp-;!u--q*wN4.6!7A',
