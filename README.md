@@ -3,7 +3,7 @@
 ## Description:
 
 Our proyect is a web application that controls your diet and your exercice rythm.
-(http://client-ediet.44fs.preview.openshiftapps.com/ "Demo")
+[Demo](http://client-ediet.44fs.preview.openshiftapps.com/)
 
 ## Content:
 
