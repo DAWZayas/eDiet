@@ -39,7 +39,7 @@ import AdminUser from './pages/registerAdmin';
 import GraphUser from './pages/userGraphics';
 import UpdateProfile from './pages/updateProfile';
 //progress
-import Progress from './pages/progress';
+import Plannings from './pages/plannings';
 import ProgressMenu from './pages/progressMenu';
 
 
@@ -72,7 +72,7 @@ ReactDOM.render((
           <Route path="/user/graphics" component={GraphUser} onEnter={requireAuth} />
           <Route path="/user/updateProfile" component={UpdateProfile} onEnter={requireAuth} />
 
-          <Route path="/progress" component={Progress} onEnter={requireAuth} />
+          <Route path="/plannings" component={Plannings} onEnter={requireAuth} />
           <Route path="/progress/menu" component={ProgressMenu} onEnter={requireAuth} />
 
 

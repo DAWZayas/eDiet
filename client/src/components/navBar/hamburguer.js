@@ -22,7 +22,7 @@ export default class Hamburger extends Component {
       },
       {
         body: 'Planning',
-        //falta URL;
+        url: '/plannings'
       },
       {
         body: "Menus admin",
