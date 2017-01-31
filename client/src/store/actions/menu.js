@@ -5,8 +5,8 @@ export const getMenuAction = (payload) =>({
   payload,
 });
 
-export const getMenuNameRealAction = (payload) =>({
-  type: ActionTypes.GET_MENU_NAME_REAL,
+export const getMenuLevelAction = (payload) =>({
+  type: ActionTypes.GET_MENU_LEVEL,
   payload,
 });
 

@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes/';
 
-const initialState = {menu: [], status: 'inited', hasMore: true};
+const initialState = {menu: [], status: 'inited', hasMore: true, menuLevel:[]};
 
 export const menus = (state = initialState, action) => {
   switch (action.type) {
@@ -34,9 +34,9 @@ export const menus = (state = initialState, action) => {
       case ActionTypes.UPDATE_MENU_SUCCESS:
         const menu = state.menu.map( obj => obj.name === action.payload.name ? Object.assign({}, {name: action.payload.menu.name}) : obj);
         return {...state, status: 'done', menu};
-        case ActionTypes.GET_MENU_NAME_REAL:
+        case ActionTypes.GET_MENU_LEVEL_SUCCESS:
           console.log(action);
-          return {...state, status: 'done' };
+          return {...state, status: 'done', menuLevel: action.payload};
       case ActionTypes.GET_MENU_NAME_SUCCESS:
         const addMenu = state.menu.concat(action.payload.menu);
         return {...state, menu: addMenu,  men: action.payload.menu, status:'done'};

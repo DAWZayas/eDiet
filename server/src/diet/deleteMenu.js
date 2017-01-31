@@ -17,16 +17,16 @@ export default (app) => {
     }
 
     // check if user is the owner
-    if (req.user.id !== menu.owner) {
-      res.status(403).send({error: 'Not enough rights to do this action!!'});
-      return;
-    }
-
     try {
       menus = await Menu;
       menu = menus.filter( menu => menu.name === req.params.name ).reduce((a,b) => a.concat(b));
     } catch (e) {
       res.status(400).send({error: 'Menu not found'});
+    }
+
+    if (req.user.id !== menu.owner) {
+      res.status(403).send({error: 'Not enough rights to do this action!!'});
+      return;
     }
 
       // delete

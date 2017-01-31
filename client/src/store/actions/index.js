@@ -11,7 +11,7 @@ export {
 } from './notification';
 export {
   getMenuAction, deleteMenuAction, updateMenuAction,  createMenuAction,
-  getMenuNameRealAction, getMenuNameAction
+  getMenuLevelAction, getMenuNameAction
 } from './menu';
 export {
   createTimeFoodAction,

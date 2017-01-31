@@ -40,6 +40,7 @@ import GraphUser from './pages/userGraphics';
 import UpdateProfile from './pages/updateProfile';
 //progress
 import Progress from './pages/progress';
+import ProgressMenu from './pages/progressMenu';
 
 
 // Create an enhanced history that syncs navigation events with the store
@@ -72,6 +73,8 @@ ReactDOM.render((
           <Route path="/user/updateProfile" component={UpdateProfile} onEnter={requireAuth} />
 
           <Route path="/progress" component={Progress} onEnter={requireAuth} />
+          <Route path="/progress/menu" component={ProgressMenu} onEnter={requireAuth} />
+
 
         <Route path="*" component={NotFound} />
       </Route>
