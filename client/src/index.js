@@ -42,7 +42,7 @@ import UpdateProfile from './pages/updateProfile';
 import Plannings from './pages/plannings';
 import ProgressMenu from './pages/progressMenu';
 import ShowMenu from './pages/progressShow';
-
+import planningExercises from './pages/planningsExercises';
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -77,9 +77,9 @@ ReactDOM.render((
 
           // Planning /planning/menu falta el level
           <Route path="/plannings" component={Plannings} onEnter={requireAuth} />
+          <Route path="/plannings/:level/exercises" component={planningExercises} onEnter={requireAuth} />
           <Route path="/progress/menu" component={ProgressMenu} onEnter={requireAuth} />
           <Route path="/planning/menu/level/:nameMenu" component={ShowMenu} onEnter={requireAuth} />
-
 
         <Route path="*" component={NotFound} />
       </Route>

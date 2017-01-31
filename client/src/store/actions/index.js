@@ -40,3 +40,6 @@ export {
   facebookLoginAction,
   addWeightAction, addImcAction
 } from './user';
+export {
+  getPlanningExercisesAction
+} from './plannings';

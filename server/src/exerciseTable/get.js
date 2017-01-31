@@ -33,4 +33,25 @@ export default (app) => {
       res.status(400).send({error: 'No se ha podido recuperar las tablas'});
     }
   }));
+
+  app.get('/api/exercise/:level', asyncRequest(async (req, res) => {
+    let tables;
+    let table;
+
+    try {
+      const skip = parseInt(req.query.skip, 10) || 0;
+      const limit = parseInt(req.query.limit, 10) || 10;
+      const tables = await r.table('Exercise')
+                      .filter({level: req.params.level})
+                      .pluck('name')
+                      .orderBy(r.desc('name'))
+                      .skip(skip)
+                      .limit(limit);
+      res.send(tables);
+
+    } catch (e) {
+      res.status(400).send({error: 'No se han encontrado la tablas'});
+    }
+  }));
+
 };

@@ -6,6 +6,8 @@ import {foods} from './foods';
 import {tables} from './tables';
 import {exercises} from './exercises';
 import {user} from './user';
+import {plannings} from './plannings';
+
 
 export default {
   menus,
@@ -16,4 +18,5 @@ export default {
   tables,
   exercises,
   user,
+  plannings,
 };

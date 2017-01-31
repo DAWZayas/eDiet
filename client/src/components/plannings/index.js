@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 const styles = require('./style.scss');
-
-
 
 class Plannings extends Component{
   constructor(props) {
@@ -52,9 +51,11 @@ class Plannings extends Component{
             <div className={`${styles.commonElement} ${styles.menus}`}>
               <p>Menus</p>
             </div>
-            <div className={`${styles.commonElement} ${styles.exercises}`}>
-              <p>Exercises</p>
-            </div>
+            <Link to={`/plannings/${level}/exercises`}>
+              <div className={`${styles.commonElement} ${styles.exercises}`}>
+                <p>Exercises</p>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

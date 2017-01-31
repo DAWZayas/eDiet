@@ -7,6 +7,7 @@ import {getTables, createTable, getCreateTable, deleteTable, updateTable} from '
 import {getExercises, createExercise, deleteExercise, updateExercise} from './exercises';
 import {addObservable} from './realTime';
 import {updatePassword, updateHeight, updateEmail, getUser, facebookLogin, addWeight, addImc} from './user';
+import {getPlanningExercises} from './plannings';
 
 
 export default [
@@ -56,4 +57,6 @@ export default [
   registerFacebook,
   addWeight,
   addImc,
+  //
+  getPlanningExercises
 ];
