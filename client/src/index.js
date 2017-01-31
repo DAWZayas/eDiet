@@ -41,6 +41,7 @@ import UpdateProfile from './pages/updateProfile';
 //progress
 import Plannings from './pages/plannings';
 import ProgressMenu from './pages/progressMenu';
+import ShowMenu from './pages/progressShow';
 
 
 // Create an enhanced history that syncs navigation events with the store
@@ -66,14 +67,18 @@ ReactDOM.render((
           <Route path="tables/:name" component={Exercises} onEnter={requireAuth} />
           <Route path="/tables/:name/addExercise" component={AddExercise} onEnter={requireAuth} />
           <Route path="/tables/:name/update/:exercise" component={UpdateExercise} onEnter={requireAuth} />
-          //user
+          //User
           <Route path="/user" component={User} onEnter={requireAuth} />
           <Route path="/user/addAdmin" component={AdminUser} onEnter={requireAuth} />
           <Route path="/user/graphics" component={GraphUser} onEnter={requireAuth} />
           <Route path="/user/updateProfile" component={UpdateProfile} onEnter={requireAuth} />
 
+
+
+          // Planning /planning/menu falta el level
           <Route path="/plannings" component={Plannings} onEnter={requireAuth} />
           <Route path="/progress/menu" component={ProgressMenu} onEnter={requireAuth} />
+          <Route path="/planning/menu/level/:nameMenu" component={ShowMenu} onEnter={requireAuth} />
 
 
         <Route path="*" component={NotFound} />

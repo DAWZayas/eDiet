@@ -20,7 +20,7 @@ BigCalendar.momentLocalizer(moment);
 function Event({ event }) {
   return (
     <span>
-      <Link to="/user">
+      <Link to={`/planning/menu/level/${event.title}`}>
         {event.title}
         {event.desc && (':  ' + event.desc)}
       </Link>
@@ -32,6 +32,7 @@ class Calendar extends React.Component{
 
   constructor(props){
     super(props);
+    //hacer el get del level y pasarle al estado
   }
 
   componentWillMount(){
@@ -41,11 +42,11 @@ class Calendar extends React.Component{
 
     const f = new Date();
     let events = [];
-    for (let i=1, a=0; moment().daysInMonth(f.getMonth()+1)>=i; i++, a++){
-        if(a === this.props.menuLevel.length-1) a=0;
+    for (let i=1, j=0; moment().daysInMonth(f.getMonth()+1)>=i; i++, j++){
+        if(j === this.props.menuLevel.length-1) j=0;
         if(this.props.menuLevel.length-1 > 0){
           const obj = {
-            'title': this.props.menuLevel[a].name,
+            'title': this.props.menuLevel[j].name,
             'allDay': true,
             'start': new Date(f.getFullYear(), f.getMonth(), i),
             'end' : new Date(f.getFullYear(), f.getMonth(), i+1, 0,0,-i),

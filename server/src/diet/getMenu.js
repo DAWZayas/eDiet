@@ -27,7 +27,7 @@ export default (app) => {
   }));
 
   app.get('/api/menu/level/:level', asyncRequest(async (req, res) => {
-    console.log('>>>>>>>>>>>>>>>>>>>>',req.params.level);
+
     try {
       const menu = await Menu;
       const filter = menu.filter( obj => obj.level==req.params.level);

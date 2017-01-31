@@ -19,7 +19,7 @@ export default (app) => {
     try {
       const menu = await Menu;
       const filter = menu.filter( obj => obj.name===req.params.name).reduce((a,b) => a.concat(b));
-      const timeFoods = filter.timeFoods.map( (obj) => Object.assign({}, {timeFood: obj.timeFood}));
+      const timeFoods = filter.timeFoods.map( (obj) => Object.assign({}, {timeFood: obj.timeFood}, {foods: obj.foods}));
       res.send(timeFoods);
     } catch (e) {
       res.status(400).send({error: 'timeFood does not exist'});
