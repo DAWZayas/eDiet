@@ -1,8 +1,7 @@
 import React from 'react';
 const styles = require('./style.scss');
-import images from '../../../images/progressMenu';
 
-export default class Plannings extends React.Component{
+class Progress extends React.Component{
   constructor(props) {
    super(props);
    this.state = {collapse: false};
@@ -21,7 +20,7 @@ export default class Plannings extends React.Component{
         <div className="group">
           <img
             src={this.props.image}
-            className={`${styles.Img} col-xs-6`}
+            className={` col-xs-6`}
             alt="Menu image"
           />
         <div className="panel panel-default col-xs-6">
@@ -52,3 +51,5 @@ export default class Plannings extends React.Component{
     );
   }
 }
+
+export default Progress;
