@@ -50,7 +50,7 @@ class Plannings extends Component{
               <Link to={`planning/menu/${level}`}><button  className={`btn btn-default ${styles.button1}`}>Menu</button></Link>
             </div>
             <div className={`${styles.commonElement} ${styles.exercises}`}>
-              <Link to={`planning/exercises/${level}`}><button className={`btn btn-default ${styles.button2}`}>Exercises</button></Link>
+              <Link to={`/plannings/${level}/exercises`}><button className={`btn btn-default ${styles.button2}`}>Exercises</button></Link>
             </div>
           </div>
           <div className={`panel panel-footer ${styles.panel}`}>

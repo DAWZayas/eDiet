@@ -38,7 +38,7 @@ export default class Get extends Component {
     const Event = ({event}) => {
       return (
         <span>
-          <Link to={`plannings/1/exercises/${event.title}`}>
+          <Link to={`/plannings/1/exercises/${event.title}`}>
             {event.title}
             {event.desc && (':  ' + event.desc)}
           </Link>
