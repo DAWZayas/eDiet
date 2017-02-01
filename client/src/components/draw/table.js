@@ -44,6 +44,7 @@ class Table extends React.Component{
             <p>
               <Link to={`/tables/${obj.name}`}>
                 {obj.name}
+                &nbsp; Level: {obj.level}
               </Link>
             </p>
           </li>

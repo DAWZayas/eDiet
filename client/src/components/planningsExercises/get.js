@@ -1,73 +1,82 @@
 import React, {Component} from 'react';
-import {Route} from 'react-router';
-import {Spinner} from '../spinner';
 import {Link} from 'react-router';
+import BigCalendar from 'react-big-calendar';
+import moment from 'moment';
+import {connect} from 'react-redux';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+BigCalendar.momentLocalizer(moment);
 
 export default class Get extends Component {
   constructor(props) {
     super(props);
+
+    this.eventStyleGetter = this.eventStyleGetter.bind(this);
   }
 
   componentWillMount() {
-    const rout = this.props.route.split('/');
-    const level = rout[rout.length-1];
+    const level = this.props.route;
     this.props.getExercises({level});
-    console.log('>>>', level);
   }
 
+  eventStyleGetter(event, start, end, isSelected) {
+      var style = {
+          backgroundColor: '#6e2df7',
+          borderRadius: '0px',
+          opacity: 0.9,
+          color: 'black',
+          border: '0px',
+          display: 'block'
+      };
+      return {
+          style: style
+      };
+  };
+
   render(){
+    const {route, tables} = this.props;
+    const Event = ({event}) => {
+      return (
+        <span>
+          <Link to={`plannings/1/exercises/${event.title}`}>
+            {event.title}
+            {event.desc && (':  ' + event.desc)}
+          </Link>
+        </span>
+      );
+    };
+
+    const f = new Date();
+    let events = [];
+    for (let i=1, j=0; moment().daysInMonth(f.getMonth()+1)>=i; i++, j++){
+        if(j === tables.length) j=0;
+        if(tables.length-1 > 0){
+          const obj = {
+            'title': tables[j].name,
+            'allDay': true,
+            'start': new Date(f.getFullYear(), f.getMonth(), i),
+            'end' : new Date(f.getFullYear(), f.getMonth(), i+1, 0,0,-i),
+            'isSelected': true,
+          };
+          events.push(obj);
+      }
+    }
+    this.state = {events}
+
     return (
-      <div className={`panel panel-default ${styles.container}`}>
-        <div className={`panel-heading ${styles.header}`}>
-            <p>
-              Exercises
-            </p>
-            <button className="btn btn-default">
-              <Link to={`/tables/${route}/addExercise`}>
-                <i className="fa fa-plus" aria-hidden="true"></i>
-                Exercise
-              </Link>
-            </button>
-          </div>
-          {
-            status === 'loading' ?
-              <Spinner />
-            :
-            <div className="panel-body">
-              {exercises.length === 0 ?
-                <p>Without exercises</p>
-              :
-                exercises.map((obj, index) =>
-                  <div key={index} className={`${styles.body}`}>
-                    <ul>
-                      <li>
-                        <div>
-                          <button className="btn btn-default">
-                            <Link to={`/tables/${route}/update/${obj.name}`} className={`${styles.updateButton}`}>
-                              <i className="fa fa-pencil" aria-hidden="true"></i>
-                            </Link>
-                          </button>
-                        </div>
-                        {obj.name}
-                        <ul>
-                          <li>
-                            Calorías: {obj.calories}
-                          </li>
-                          <li>
-                            Tipo: {obj.type}
-                          </li>
-                          <li>
-                            Tiempo: {obj.time}
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                )
-              }
-            </div>
-          }
-        </div>
-      )
+      <div className="container" style={{marginTop: '5%'}}>
+        <BigCalendar
+          {...this.props}
+          events={this.state.events}
+          defaultDate={new Date()}
+          style={{height: 500}}
+          views={['month']}
+          eventPropGetter={(this.eventStyleGetter)}
+          components={{
+            event: Event,
+          }}
+        />
+     </div>
+    );
   }
 }

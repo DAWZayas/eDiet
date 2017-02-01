@@ -9,6 +9,8 @@ export default class planningsExercises extends Component {
         <Get
           route={this.props.route}
           getExercises={this.props.getExercises}
+          tables={this.props.tables}
+          status={this.props.status}
         />
       </div>
     );

@@ -16,7 +16,7 @@ export default (app) => {
       const skip = parseInt(req.query.skip, 10) || 0;
       const limit = parseInt(req.query.limit, 10) || 10;
       const menus = await r.table('Menu')
-                             .pluck('name')
+                             .pluck('name', 'level')
                              .orderBy(r.desc('name'))
                              .skip(skip)
                              .limit(limit);

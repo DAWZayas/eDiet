@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes/';
 
-const initialState = {tables: [], status: 'inited', hasMore: true};
+const initialState = {tables: [], status: 'inited', hasMore: true, planningExercises: []};
 
 export const tables = (state = initialState, action) => {
   switch (action.type) {
@@ -15,6 +15,7 @@ export const tables = (state = initialState, action) => {
     case ActionTypes.GET_CREATE_TABLE_ERROR:
     case ActionTypes.DELETE_TABLE_ERROR:
     case ActionTypes.UPDATE_TABLE_ERROR:
+    case ActionTypes.GET_PLANNING_EXERCISES_ERROR:
       return {
         ...state,
         status: 'error',
@@ -28,6 +29,12 @@ export const tables = (state = initialState, action) => {
         tables: state.tables.concat(action.payload),
         status: 'done',
         hasMore,
+      };
+
+    case ActionTypes.GET_PLANNING_EXERCISES_SUCCESS:
+      return {
+        ...state,
+        planningExercises: action.payload,
       };
 
     case ActionTypes.CREATE_TABLE_SUCCESS:

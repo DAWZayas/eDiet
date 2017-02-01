@@ -10,11 +10,25 @@ export default (app) => {
     try {
       tables = await Exercise;
       table = tables.filter(table => table.name === req.params.name);
-
       res.send(table);
 
     } catch (e) {
       res.status(400).send({error: 'No se ha encontrado la tabla'});
+    }
+  }));
+
+  app.get('/api/exercises/:level', asyncRequest(async (req, res) => {
+    let tables;
+    let table;
+
+    try {
+      tables = await Exercise;
+      table = tables.filter(table => table.level == req.params.level);
+
+      res.send(table);
+
+    } catch (e) {
+      res.status(400).send({error: 'No se han encontrado la tablas'});
     }
   }));
 
@@ -23,7 +37,7 @@ export default (app) => {
       const skip = parseInt(req.query.skip, 10) || 0;
       const limit = parseInt(req.query.limit, 10) || 10;
       const tables = await r.table('Exercise')
-                      .pluck('name')
+                      .pluck('name', 'level')
                       .orderBy(r.desc('name'))
                       .skip(skip)
                       .limit(limit);
@@ -31,26 +45,6 @@ export default (app) => {
 
     } catch (e) {
       res.status(400).send({error: 'No se ha podido recuperar las tablas'});
-    }
-  }));
-
-  app.get('/api/exercise/:level', asyncRequest(async (req, res) => {
-    let tables;
-    let table;
-
-    try {
-      const skip = parseInt(req.query.skip, 10) || 0;
-      const limit = parseInt(req.query.limit, 10) || 10;
-      const tables = await r.table('Exercise')
-                      .filter({level: req.params.level})
-                      .pluck('name')
-                      .orderBy(r.desc('name'))
-                      .skip(skip)
-                      .limit(limit);
-      res.send(tables);
-
-    } catch (e) {
-      res.status(400).send({error: 'No se han encontrado la tablas'});
     }
   }));
 

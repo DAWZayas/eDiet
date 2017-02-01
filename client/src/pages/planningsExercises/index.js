@@ -4,31 +4,29 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 
 import {getPlanningExercisesAction} from '../../store/actions';
-import Exercises from '../../components/exercises';
+import PlanningExercises from '../../components/planningsExercises';
 
 const mapStateToProps = (state) => ({
    route: state.routing.locationBeforeTransitions.pathname,
-   exercises: state.exercises.exercises,
-   status: state.exercises.status,
+   tables: state.tables.planningExercises
  });
 
  const mapDispatchToProps = (dispatch) => ({
    getExercises: payload => dispatch(getPlanningExercisesAction(payload)),
  });
 
-const exerciseActions = ({ route, exercises, getExercises, status }) => {
+const planningsExercisesActions = ({ route, tables, getExercises }) => {
   const rout = route.split('/');
-  const level = rout[rout.length-1];
+  const level = rout[rout.length-2];
   return (
     <div className="container">
-      <Exercises
+      <PlanningExercises
         route={level}
-        exercises={exercises}
+        tables={tables}
         getExercises={getExercises}
-        status={status}
       />
     </div>
   )
  };
 
-export default connect(mapStateToProps, mapDispatchToProps)(exerciseActions);
+export default connect(mapStateToProps, mapDispatchToProps)(planningsExercisesActions);
