@@ -12,7 +12,7 @@ export const exerciseExist = async (table, name) => {
 
 export default (app) => {
   app.post('/api/exercise/:name/update', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {  // eslint-disable-line max-len
-    const {name, newName, calories, type, time} = req.body;
+    const {name, newName, calories, type, time, series, repeats} = req.body;
 
     if (req.user.role === false) {
       res.status(403).send({error: 'Not enough rights to do this action!'});
@@ -63,6 +63,14 @@ export default (app) => {
 
     if (time) {
       table.exercises.filter(obj => obj.time !== time ? obj.time = time : false);
+    }
+
+    if (series) {
+      table.exercises.filter(obj => obj.series !== series ? obj.series = series : false);
+    }
+
+    if (repeats) {
+      table.exercises.filter(obj => obj.repeats !== repeats ? obj.repeats = repeats : false);
     }
 
     await table.save();

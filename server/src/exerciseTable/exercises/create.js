@@ -13,7 +13,7 @@ export const exerciseTaken = async (table, name) => {
 export default (app) => {
     app.post('/api/exercise/:name/add', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
 
-    const {name, calories, type, time} = req.body;
+    const {name, calories, type, time, series, repeats} = req.body;
     let table;
     let tables;
 
@@ -41,6 +41,8 @@ export default (app) => {
       calories,
       type,
       time,
+      series,
+      repeats
     });
 
     await table.save();

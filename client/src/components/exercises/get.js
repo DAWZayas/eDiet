@@ -55,13 +55,19 @@ export default class Get extends Component {
                         {obj.name}
                         <ul>
                           <li>
-                            Calorías: {obj.calories}
+                            Calories: {obj.calories} kcal
                           </li>
                           <li>
-                            Tipo: {obj.type}
+                            Type: {obj.type}
                           </li>
                           <li>
-                            Tiempo: {obj.time}
+                            Time: {obj.time} min
+                          </li>
+                          <li>
+                            Series: {obj.series}
+                          </li>
+                          <li>
+                            Repeats: {obj.repeats}
                           </li>
                         </ul>
                       </li>

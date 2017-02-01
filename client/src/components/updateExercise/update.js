@@ -4,6 +4,8 @@ let exerciseNewName;
 let exerciseCalories;
 let exerciseType;
 let exerciseTime;
+let exerciseSeries;
+let exerciseRepeats;
 
 const styles = require('./style.scss');
 
@@ -39,18 +41,24 @@ export default class UpdateExercise extends Component {
       const calories = exerciseCalories.value;
       const type = this.state.select;
       const time = exerciseTime.value;
-      this.props.updateExercise({table, name, newName, calories, type, time});
+      const series = exerciseSeries.value;
+      const repeats = exerciseRepeats.value;
+      this.props.updateExercise({table, name, newName, calories, type, time, series, repeats});
       clearFields();
       return false;
     };
 
     const clearFields = () => {
-      exerciseNewName.value = '';
-      exerciseNewName.placeholder="Nuevo nombre...";
+      exerciseName.value = '';
+      exerciseName.placeholder="New name...";
       exerciseTime.value = '';
-      exerciseTime.placeholder="Nuevo tiempo...";
+      exerciseTime.placeholder="New time (in minutes)...";
       exerciseCalories.value = '';
-      exerciseCalories.placeholder="Nuevas calorías quemadas...";
+      exerciseCalories.placeholder="New burned calories (in kcal)...";
+      exerciseSeries.value = '';
+      exerciseSeries.placeholder="New number of series...";
+      exerciseRepeats.value='';
+      exerciseRepeats.placeholder="New number of repeats...";
       return false;
     };
 
@@ -98,11 +106,29 @@ export default class UpdateExercise extends Component {
 
             <div className="col-sm-10">
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 id="exerciseCalories"
                 placeholder="New burned calories..."
                 ref={(i) => { exerciseCalories = i; }}
+              />
+            </div>
+            <div className="col-sm-10">
+              <input
+                type="number"
+                className="form-control"
+                id="exerciseSeries"
+                placeholder="Number of series..."
+                ref={(i) => { exerciseSeries = i; }}
+              />
+            </div>
+            <div className="col-sm-10">
+              <input
+                type="number"
+                className="form-control"
+                id="exerciseRepeats"
+                placeholder="Number of repeats..."
+                ref={(i) => { exerciseRepeats = i; }}
               />
             </div>
           </div>

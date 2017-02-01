@@ -10,6 +10,8 @@ export const Exercise = thinky.createModel('Exercise', {
       calories: thinky.type.number(),
       type: thinky.type.string(),
       time: thinky.type.number(),
+      series: thinky.type.number(),
+      repeats: thinky.type.number()
     })
   ).default([]),
 });
