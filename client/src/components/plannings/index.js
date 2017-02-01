@@ -8,6 +8,16 @@ class Plannings extends Component{
    this.state = {backgroundColor: 'rgb(255, 255, 255)'};
   }
 
+  componentWillMount(){
+
+    const {level}=this.props;
+     level === 1 ? this.setState({backgroundColor: 'rgba(37, 88, 200, 0.2)'}) :
+          level === 2 ? this.setState({backgroundColor: 'rgba(37, 88, 200, 0.4)'}) :
+           level === 3 ? this.setState({backgroundColor:'rgba(37, 88, 200, 0.6)'}):
+            level === 4 ? this.setState({backgroundColor:'rgba(37, 88, 200, 0.8)'}) :
+               level === 5 ? this.setState({backgroundColor:'rgba(37, 88, 200, 1.2)'}) : null
+  }
+
   render(){
     const {name, level, image} = this.props;
     const style = {
@@ -15,6 +25,7 @@ class Plannings extends Component{
         width: '100%',
         backgroundColor: `${this.state.backgroundColor}`
       }
+
     };
 
     return(
@@ -28,42 +39,28 @@ class Plannings extends Component{
               />
           </center>
           </div>
-        <div className={`panel panel-default col-xs-12 col-sm-6 ${styles.info}`}>
-
-          {
-            level === 1 ? this.state.backgroundColor = 'rgb(33, 107, 56)'
-            :
-              level === 2 ? this.state.backgroundColor = 'rgb(228, 214, 32)'
-              :
-                level === 3 ? this.state.backgroundColor = 'rgb(200, 115, 37)'
-                :
-                  level === 4 ? this.state.backgroundColor = 'rgb(187, 51, 0)'
-                  :
-                    level === 5 ? this.state.backgroundColor = 'rgb(164, 3, 3)'
-                    :
-                      this.state.backgroundColor = 'rgb(255, 255, 255)'
-          }
-          <div className={`panel panel-heading ${styles.heading}`} style={style.heading}>
+      <div className={`col-xs-12 col-sm-6 `} >
+        <div className={`panel panel-default ${styles.info}`}>
+          <div className={`panel panel-heading`} style={style.heading}>
             <p>{name}</p>
             <p>Level:{level}</p>
           </div>
-          <div className="panel panel-body">
+          <div className={`panel panel-body`} >
             <div className={`${styles.commonElement} ${styles.menus}`}>
-              <p>Menus</p>
+              <Link to={`planning/menu/${level}`}><button  className={`btn btn-default ${styles.button1}`}>Menu</button></Link>
             </div>
-            <Link to={`/plannings/${level}/exercises`}>
-              <div className={`${styles.commonElement} ${styles.exercises}`}>
-                <p>Exercises</p>
-              </div>
-            </Link>
+            <div className={`${styles.commonElement} ${styles.exercises}`}>
+              <Link to={`planning/exercises/${level}`}><button className={`btn btn-default ${styles.button2}`}>Exercises</button></Link>
+            </div>
+          </div>
+          <div className={`panel panel-footer ${styles.panel}`}>
+            <button className={`btn btn-default ${styles.button3}`}>
+              Follow menu!
+            </button>
           </div>
         </div>
+        </div>
       </div>
-        <center>
-          <button className="btn btn-default">
-            Follow!
-          </button>
-        </center>
       </div>
     );
   }
