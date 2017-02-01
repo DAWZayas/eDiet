@@ -29,3 +29,13 @@ export const createMenuAction = (payload) => ({
   type : ActionTypes.CREATE_MENU,
   payload,
 });
+
+export const updateMenuExerciseAction = (payload) => ({
+  type : ActionTypes.UPDATE_MENUEXERCISE,
+  payload,
+});
+
+export const updateMenuLevelAction = (payload) => ({
+  type : ActionTypes.UPDATE_MENU_LEVEL,
+  payload,
+});

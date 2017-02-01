@@ -109,21 +109,39 @@ export const createMenu = action$ => action$
           }
           )));
 
-      export const getMenuLevel = action$ => action$
-        .ofType(ActionTypes.GET_MENU_LEVEL)
-        .map(signRequest)
-        .switchMap(({headers, payload}) => Observable
-          .ajax.get(`http://${host}:${port}/api/menu/level/${payload.level}`, payload, headers)
-          .delay(2000)
-          .map(res => res.response)
-          .mergeMap( menus  => Observable.of ({
-            type: ActionTypes.GET_MENU_LEVEL_SUCCESS,
-            payload: menus,
-          }
-        ))
-          .catch(error => Observable.of({
-            type: ActionTypes.GET_MENU_LEVEL_ERROR,
-            payload: {error},
-          },
-            Actions.addNotificationAction({text: errorBack(error), alertType: 'danger'})
-          )));
+          export const getMenuLevel = action$ => action$
+            .ofType(ActionTypes.GET_MENU_LEVEL)
+            .map(signRequest)
+            .switchMap(({headers, payload}) => Observable
+              .ajax.get(`http://${host}:${port}/api/menu/level/${payload.level}`, payload, headers)
+              .map(res => res.response)
+              .mergeMap( menus  => Observable.of ({
+                type: ActionTypes.GET_MENU_LEVEL_SUCCESS,
+                payload: menus,
+              }
+            ))
+              .catch(error => Observable.of({
+                type: ActionTypes.GET_MENU_LEVEL_ERROR,
+                payload: {error},
+              },
+                Actions.addNotificationAction({text: errorBack(error), alertType: 'danger'})
+              )));
+
+              export const updateMenuLevel = action$ => action$
+                .ofType(ActionTypes.UPDATE_MENU_LEVEL)
+                .map(signRequest)
+                .switchMap(({headers, payload}) => Observable
+                  .ajax.get(`http://${host}:${port}/api/menu/level/${payload.level}`, payload, headers)
+                  .map(res => res.response)
+                  .mergeMap( menus  => Observable.of ({
+                    type: ActionTypes.UPDATE_MENU_LEVEL_SUCCESS,
+                    payload: menus,
+                  },
+                  Actions.updatePlanningExercisesAction(payload = {...payload, menus: JSON.stringify(menus)})
+                ))
+                  .catch(error => Observable.of({
+                    type: ActionTypes.UPDATE_MENU_LEVEL_ERROR,
+                    payload: {error},
+                  },
+                    Actions.addNotificationAction({text: errorBack(error), alertType: 'danger'})
+                  )));

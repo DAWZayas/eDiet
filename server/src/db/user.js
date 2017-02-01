@@ -12,18 +12,12 @@ export const User = thinky.createModel('User', {
   imc: thinky.type.array().schema(
     thinky.type.number()
   ).default([]),
+  menusExerises: thinky.type.object().schema({
+    menus: thinky.type.array().default([]),
+    exercises: thinky.type.array().default([]),
+  }).default({}),
   imcMonth: thinky.type.number(),
   weightMont: thinky.type.number(),
-  exercises: thinky.type.array().schema(
-    thinky.type.object().schema({
-      name: thinky.type.string().required(),
-    })
-  ).default([]),
-  menus: thinky.type.array().schema(
-    thinky.type.object().schema({
-      name: thinky.type.string().required(),
-    })
-  ).default([]),
   role: thinky.type.boolean(),
 
 });

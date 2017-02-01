@@ -80,7 +80,7 @@ ReactDOM.render((
           <Route path="/plannings" component={Plannings} onEnter={requireAuth} />
           <Route path="/plannings/:level/exercises/:name" component={exercisesDetail} onEnter={requireAuth} />
           <Route path="/plannings/:level/exercises" component={planningExercises} onEnter={requireAuth} />
-          <Route path="/progress/menu" component={ProgressMenu} onEnter={requireAuth} />
+          <Route path="/planning/menu/:level" component={ProgressMenu} onEnter={requireAuth} />
           <Route path="/planning/menu/level/:nameMenu" component={ShowMenu} onEnter={requireAuth} />
 
         <Route path="*" component={NotFound} />

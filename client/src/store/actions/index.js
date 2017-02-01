@@ -11,7 +11,7 @@ export {
 } from './notification';
 export {
   getMenuAction, deleteMenuAction, updateMenuAction,  createMenuAction,
-  getMenuLevelAction, getMenuNameAction
+  getMenuLevelAction, getMenuNameAction, updateMenuExerciseAction, updateMenuLevelAction
 } from './menu';
 export {
   createTimeFoodAction,
@@ -41,5 +41,5 @@ export {
   addWeightAction, addImcAction
 } from './user';
 export {
-  getPlanningExercisesAction
+  getPlanningExercisesAction, updatePlanningExercisesAction
 } from './plannings';

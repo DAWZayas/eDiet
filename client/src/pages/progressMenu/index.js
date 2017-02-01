@@ -9,6 +9,7 @@ import {getMenuLevelAction} from '../../store/actions';
 
 const mapStateToProps = (state) => ({
     menuLevel: state.menus.menuLevel,
+    route: state.routing.locationBeforeTransitions.pathname
  });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -32,11 +33,13 @@ class Calendar extends React.Component{
 
   constructor(props){
     super(props);
-    //hacer el get del level y pasarle al estado
+    const rout = this.props.route.split('/');
+    const level = rout[rout.length-1];
+    this.state = {level};
   }
 
   componentWillMount(){
-    this.props.getMenuLevel({level: 1});
+    this.props.getMenuLevel({level: this.state.level});
   }
   render(){
 
@@ -52,12 +55,13 @@ class Calendar extends React.Component{
             'end' : new Date(f.getFullYear(), f.getMonth(), i+1, 0,0,-i),
           };
           events.push(obj);
-      }
+       }
     }
     this.state = {events}
 
     return (
       <div className="container" style={{marginTop: '5%'}}>
+      {this.props.menuLevel.length-1 > 0 ?
         <BigCalendar
             {...this.props}
             events={this.state.events}
@@ -68,6 +72,7 @@ class Calendar extends React.Component{
               event: Event,
             }}
         />
+      : null}
      </div>
 
    );

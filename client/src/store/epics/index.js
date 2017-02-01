@@ -1,13 +1,14 @@
 import {login, register, registerAdmin, registerFacebook, googleLogin, registerGoogle} from './auth';
 import {addNotification} from './notifications';
-import {createMenu, getMenu, deleteMenu, updateMenu, getMenuName, getMenuLevel} from './menus';
+import {createMenu, getMenu, deleteMenu, updateMenu, getMenuName, getMenuLevel, updateMenuLevel} from './menus';
 import {createTimeFood, deleteTimeFood, updateTimeFood, getTimeFood, getTimeFoods} from './timeFoods';
 import {createFood, deleteFood, updateFood, getFood, getFoods} from './foods';
 import {getTables, createTable, getCreateTable, deleteTable, updateTable} from './tables';
 import {getExercises, createExercise, deleteExercise, updateExercise} from './exercises';
 import {addObservable} from './realTime';
 import {updatePassword, updateHeight, updateEmail, getUser, facebookLogin, addWeight, addImc} from './user';
-import {getPlanningExercises} from './plannings';
+import {getPlanningExercises, updatePlanningExercises} from './plannings';
+import {updateMenuExercise} from './menuExercise';
 
 
 export default [
@@ -58,5 +59,8 @@ export default [
   addWeight,
   addImc,
   //
-  getPlanningExercises
+  getPlanningExercises,
+  updatePlanningExercises,
+  updateMenuExercise,
+  updateMenuLevel
 ];

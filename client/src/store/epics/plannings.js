@@ -13,12 +13,12 @@ export const getPlanningExercises = action$ => action$
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
     .ajax.get(`http://${host}:${port}/api/exercises/${payload.level}`, payload, headers)
-    .delay(2000)
     .map(res => res.response)
     .mergeMap(tables  => Observable.of ({
       type: ActionTypes.GET_PLANNING_EXERCISES_SUCCESS,
       payload: tables,
-    }))
+    }
+    ))
     .catch(error => Observable.of({
       type: ActionTypes.GET_PLANNING_EXERCISES_ERROR,
       payload: error,
@@ -27,3 +27,24 @@ export const getPlanningExercises = action$ => action$
         text: `error: ${ajaxErrorToMessage(error)}`, alertType: 'danger',
       })
     )));
+
+    export const updatePlanningExercises = action$ => action$
+      .ofType(ActionTypes.UPDATE_PLANNING_EXERCISES)
+      .map(signRequest)
+      .switchMap(({headers, payload}) => Observable
+        .ajax.get(`http://${host}:${port}/api/exercises/${payload.level}`, payload, headers)
+        .map(res => res.response)
+        .mergeMap(tables  => Observable.of ({
+          type: ActionTypes.UPDATE_PLANNING_EXERCISES_SUCCESS,
+          payload: tables,
+        },
+        Actions.updateMenuExerciseAction(payload = {...payload, tables:JSON.stringify([{hola:'hola'}])} )
+        ))
+        .catch(error => Observable.of({
+          type: ActionTypes.UPDATE_PLANNING_EXERCISES_UPDATE_ERROR,
+          payload: error,
+        },
+          Actions.addNotificationAction({
+            text: `error: ${ajaxErrorToMessage(error)}`, alertType: 'danger',
+          })
+        )));

@@ -5,6 +5,7 @@ const styles = require('./style.scss');
 class Plannings extends Component{
   constructor(props) {
    super(props);
+   console.log(this.props)
    this.state = {backgroundColor: 'rgb(255, 255, 255)'};
   }
 
@@ -25,6 +26,11 @@ class Plannings extends Component{
         width: '100%',
         backgroundColor: `${this.state.backgroundColor}`
       }
+    };
+    const handleFollow = (e) =>{
+      const {level,userAuth} = this.props;
+      e.preventDefault();
+      this.props.updateMenus({level, id:userAuth.id})
 
     };
 
@@ -54,7 +60,7 @@ class Plannings extends Component{
             </div>
           </div>
           <div className={`panel panel-footer ${styles.panel}`}>
-            <button className={`btn btn-default ${styles.button3}`}>
+            <button className={`btn btn-default ${styles.button3}`} onClick={handleFollow}>
               Follow menu!
             </button>
           </div>

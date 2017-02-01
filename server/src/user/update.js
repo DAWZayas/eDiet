@@ -230,5 +230,45 @@ export default (app) => {
     res.send(user);
   }));
 
+  app.post('/api/user/menusExercises/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+    const {menus, tables} = req.body;
+
+    if (req.user.id !== req.params.id) {
+      res.status(403).send({error: 'Not enough rights to change other user profile!'});
+      return;
+    }
+
+    let user;
+    try {
+      user = await User.get(req.params.id);
+    } catch (e) {
+      res.status(400).send({error: 'User does not exist'});
+      return;
+    }
+    // update data
+    const menu = JSON.parse( menus );
+    if (menus) {
+      user.menusExercises.menus=menu;
+      /*user.menusExercises.menus.concat({
+        menu
+      });*/
+    }
+    const table=JSON.parse( tables );
+    if(tables){
+      user.menusExercises.exercises = table;
+    }
+    // try to save
+    try {
+      await user.save();
+    } catch (e) {
+      res.status(400).send({error: e.toString()});
+      return;
+    }
+
+    // send succcess
+    delete user.password;
+    res.send(user);
+  }));
+
 
 };
