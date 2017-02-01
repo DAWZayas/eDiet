@@ -13,13 +13,10 @@ export default class ButttonsUser extends React.Component {
     return (
     <span>
      {user ? !user.role ?
-        <div className="panel-footer">
+        <div className={`panel-footer ${styles.footer}`}>
           <div className={`${styles.dietButtons}`}>
-            <Link to='#'>
-              <button className="btn btn-default"> See my menus </button>
-            </Link>
-            <Link to='#'>
-              <button className="btn btn-default">See my exercise</button>
+            <Link to={`/user/myPlan/${user.id}`}>
+              <button className="btn btn-default"> See my plan </button>
             </Link>
           </div>
         </div>

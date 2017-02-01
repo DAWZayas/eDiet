@@ -10,9 +10,9 @@ export const Menu = thinky.createModel('Menu', {
           thinky.type.object().schema({
             nameFood: thinky.type.string().required(),
             calories: thinky.type.number().required(),
-          }),
+          })
     ).default([]),
-    }),
+    })
   ).default([]),
   owner: thinky.type.string().required(),
 });

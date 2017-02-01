@@ -14,10 +14,10 @@
 }
 
 .data {
-  width: 100%;
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  width: 100%;
 }
 
 .tittle {
@@ -27,4 +27,9 @@
 
 .result {
   color: rgb(60, 58, 58);
+}
+
+.footer {
+  background-color: rgb(255, 255, 255);
+  border: none;
 }

@@ -12,7 +12,6 @@ export const User = thinky.createModel('User', {
   imc: thinky.type.array().schema(
     thinky.type.number()
   ).default([]),
-  photo: thinky.type.buffer(),
   imcMonth: thinky.type.number(),
   weightMont: thinky.type.number(),
   exercises: thinky.type.array().schema(

@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes/';
 
-const initialState = { user: null};
+const initialState = { user: []};
 
 export const user = (state = initialState, action) => {
   switch (action.type) {

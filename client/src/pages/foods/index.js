@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-import _ from 'lodash';
 
 import {getFoodsAction, createFoodAction} from '../../store/actions';
 import Food from '../../components/draw';
