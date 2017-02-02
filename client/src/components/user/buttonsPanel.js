@@ -16,10 +16,10 @@ export default class ButttonsUser extends React.Component {
         <div className={`panel-footer ${styles.footer}`}>
           <div className={`${styles.dietButtons}`}>
             <Link to={`/user/myPlan/menu`}>
-              <button className="btn btn-default"> See my menu</button>
+              <button className="btn btn-default">Today menu</button>
             </Link>
             <Link to={`/user/myPlan/exercise`}>
-              <button className="btn btn-default"> See my exercise</button>
+              <button className="btn btn-default">Today exercises</button>
             </Link>
           </div>
         </div>

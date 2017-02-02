@@ -8,7 +8,7 @@ import DayPlanExercises from '../../components/dayPlanExercises';
 
 const mapStateToProps = (state) => ({
    user: state.user.user,
-   route: state.routing.locationBeforeTransitions.pathname
+   userAuth: state.auth.user,
  });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -21,27 +21,31 @@ class userArrays extends Component{
   }
 
   componentWillMount(){
-    const route = this.props.route.split('/');
-    const id = route[route.length-1];
+    const id = this.props.userAuth.id;
     this.props.doGetUser({id});
   }
 
   render(){
     const {user} = this.props;
     const day = moment().format('D');
-
+    const month = moment().format('M');
     return (
       <div className="container">
         <div className="panel panel-default">
           <div className="panel panel-heading">
-            Menu
+            Today's exercises
           </div>
-          {
-            <DayPlanExercise
-              table={user.menusExercises.exercises}
-              day={day}
-            />
-          }
+          {user ?
+            user.menusExercises ?
+              user.menusExercises.exercises ?
+                <DayPlanExercises
+                  tables={user.menusExercises.exercises}
+                  day={day}
+                  month={month}
+                />
+              : <p>Without exercises</p>
+            : null
+          : null}
         </div>
       </div>
     );
