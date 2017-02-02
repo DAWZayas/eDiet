@@ -9,6 +9,16 @@ const mapDispatchToProps = (dispatch) => ({
 class DayPlanExercises extends Component{
   constructor(props){
     super(props);
+
+    this.expandCalendar = this.expandCalendar.bind(this);
+  }
+
+  expandCalendar() {
+
+  }
+
+  componentWillMount() {
+    this.expandCalendar();
   }
 
   render(){

@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 
 import {getUserAction} from '../../store/actions';
-import DayPlanMenu from '../../components/dayPlanMenu';
 import DayPlanExercises from '../../components/dayPlanExercises';
 
 const mapStateToProps = (state) => ({
@@ -38,18 +37,11 @@ class userArrays extends Component{
             Menu
           </div>
           {
-            <DayPlanMenu
-              menu={user.menus[{day}]}
+            <DayPlanExercise
+              table={user.menusExercises.exercises}
+              day={day}
             />
           }
-        </div>
-        <div className="panel panel-default">
-          <div className="panel panel-heading">
-            Exercise table
-          </div>
-            <DayPlanExercises
-              exercises={user.exercises[{day}]}
-            />
         </div>
       </div>
     );
