@@ -37,7 +37,7 @@ export default class Hamburger extends Component {
       }
     ];
 
-    const printList = list.map((obj, index) => obj.body === 'Menus admin' || obj.body === 'Exercises admin' || obj.body === 'Planning' ?
+    const printList = list.map((obj, index) => obj.body === 'Menus admin' || obj.body === 'Exercises admin' ?
       this.props.user ?
         this.props.user.role ?
           this.props.route === obj.url ?

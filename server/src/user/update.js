@@ -245,6 +245,7 @@ export default (app) => {
       res.status(400).send({error: 'User does not exist'});
       return;
     }
+    console.log('>>>>>>>>>>>>>', menus)
     // update data
     const menu = JSON.parse( menus );
     if (menus) {

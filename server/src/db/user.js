@@ -12,7 +12,7 @@ export const User = thinky.createModel('User', {
   imc: thinky.type.array().schema(
     thinky.type.number()
   ).default([]),
-  menusExerises: thinky.type.object().schema({
+  menusExercises: thinky.type.object().schema({
     menus: thinky.type.array().default([]),
     exercises: thinky.type.array().default([]),
   }).default({}),

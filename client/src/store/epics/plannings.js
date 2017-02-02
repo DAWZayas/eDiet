@@ -38,7 +38,7 @@ export const getPlanningExercises = action$ => action$
           type: ActionTypes.UPDATE_PLANNING_EXERCISES_SUCCESS,
           payload: tables,
         },
-        Actions.updateMenuExerciseAction(payload = {...payload, tables:JSON.stringify([{hola:'hola'}])} )
+        Actions.updateMenuExerciseAction(payload = {...payload, tables:JSON.stringify(tables)})
         ))
         .catch(error => Observable.of({
           type: ActionTypes.UPDATE_PLANNING_EXERCISES_UPDATE_ERROR,

@@ -5,7 +5,6 @@ const styles = require('./style.scss');
 class Plannings extends Component{
   constructor(props) {
    super(props);
-   console.log(this.props)
    this.state = {backgroundColor: 'rgb(255, 255, 255)'};
   }
 
