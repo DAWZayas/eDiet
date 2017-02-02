@@ -28,8 +28,7 @@ export const user = (state = initialState, action) => {
     case ActionTypes.ADD_IMC_SUCCESS:
       const addImc = state.user.imc.concat(action.payload.imc);
       return {user: state.user = {...state.user, imc:addImc}};
-    case ActionTypes.UPDATE_MENUEXERCISE_SUCCESS:
-      console.log(action)
+    case ActionTypes.UPDATE_MENUEXERCISE_SUCCESS:      
       return {...state}
     default:
       return state;

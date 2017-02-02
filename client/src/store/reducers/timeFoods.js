@@ -13,7 +13,6 @@ export const timeFoods = (state = initialState, action) => {
       case ActionTypes.CREATE_TIMEFOOD_SUCCESS:
         return {...state};
       case ActionTypes.DELETE_TIMEFOOD_SUCCESS:
-        console.log(action.payload)
         const deleteTimeFood = state.timeFoods.filter( (obj) => obj.timeFood !== action.payload);
         return {...state, status: 'done', timeFoods: deleteTimeFood};
 
@@ -22,11 +21,9 @@ export const timeFoods = (state = initialState, action) => {
 
       case ActionTypes.UPDATE_TIMEFOOD_SUCCESS:
         const updateTimeFood = action.payload.timeFoods.map( (obj) => Object.assign({}, {timeFood: obj.timeFood}));
-        console.log(updateTimeFood);
         return {...state, status:'done', timeFoods: updateTimeFood};
 
-      case ActionTypes.GET_TIMEFOOD_SUCCESS:
-        console.log(action);
+      case ActionTypes.GET_TIMEFOOD_SUCCESS:        
         const newTimeFood = state.timeFoods.concat(action.payload.menu);
         return {...state, status: 'done', timeFoods: newTimeFood};
 

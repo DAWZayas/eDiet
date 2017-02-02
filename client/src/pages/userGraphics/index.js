@@ -23,8 +23,7 @@ class Graph extends Component {
   }
 
   componentWillMount(){
-    const {userAuth, getUser} = this.props;
-    console.log(userAuth)
+    const {userAuth, getUser} = this.props;    
     this.props.getUser({id: userAuth.id});
   }
 

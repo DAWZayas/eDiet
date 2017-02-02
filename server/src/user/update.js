@@ -186,8 +186,7 @@ export default (app) => {
   }));
 
   app.post('/api/user/:id/update/height', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
-    const {height} = req.body;
-    console.log(height)
+    const {height} = req.body;    
     if (req.user.id !== req.params.id) {
       res.status(403).send({error: 'Not enough rights to change other user profile!'});
       return;
