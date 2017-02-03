@@ -27,7 +27,7 @@ class updateProfile extends React.Component{
   render(){
     return(
       <div>
-        <InputUpdate id={this.state.id}/>
+        <InputUpdate id={this.state.id} />
       </div>
     );
   }

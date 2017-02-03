@@ -164,3 +164,26 @@ export const addImc = action$ => action$
         text: errorBack(error), alertType: 'danger'
       })
   )));
+
+  export const deleteUser = action$ => action$
+    .ofType(ActionTypes.DELETE_USER)
+    .map(signRequest)
+    .switchMap(({headers, payload}) => Observable
+      .ajax.post(`http://${host}:${port}/api/user/${payload.id}/delete`, payload, headers)
+      .map(res => res.response)
+      .mergeMap( response  => Observable.of ({
+        type: ActionTypes.DELETE_USER_SUCCESS,
+        payload: response,
+      },
+        Actions.addNotificationAction({
+          text: 'Deleted user successfully', alertType: 'success'
+        })
+      ))
+      .catch(error => Observable.of({
+        type: ActionTypes.DELETE_USER_ERROR,
+        payload: error,
+      },
+        Actions.addNotificationAction({
+          text: `error: ${ajaxErrorToMessage(error)}`, alertType: 'danger',
+        })
+    )));
