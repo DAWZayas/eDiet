@@ -16,7 +16,7 @@ export default class InputUpdate extends React.Component {
         <ChangePassword id={this.props.id}/>
         <ChangeMail id={this.props.id}/>
         <ChangeHeight id={this.props.id}/>
-        <DeleteUser id={this.props.id} redirectToLogin={this.props.navToLogin}/>
+        <DeleteUser id={this.props.id}/>
       </div>
 
     );
