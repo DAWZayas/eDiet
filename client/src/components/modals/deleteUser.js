@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
 
-const styles = require('./style.scss');
-
 let customStyles = {
   overlay: {
     position          : 'fixed',
@@ -23,13 +21,7 @@ let customStyles = {
 };
 
 let button = {
-  color: 'rgb(232, 142, 58)',
-};
-
-let closeButton = {
-  bottom: 'rgb(0, 0, 0)',
-  top: '0',
-  float: 'right',
+  color: 'rgb(255, 255, 255)',
 };
 
 export default class DeleteModal extends Component {
@@ -39,6 +31,8 @@ export default class DeleteModal extends Component {
   }
 
   render () {
+    const {logOut, deleteUser, id, navToLogin} = this.props;
+
     const openModal = () => {
       this.setState({modalIsOpen: true});
     };
@@ -49,32 +43,33 @@ export default class DeleteModal extends Component {
 
     const handleDelete = e => {
       e.preventDefault();
-      const name = this.props.deleted.name;
-      this.props.deleteTable({name});
+      deleteUser({id});
+      logOut();
+      navToLogin();
       closeModal();
       return false;
     };
 
     return (
       <div>
-        <button className="btn btn-default" onClick={openModal} style={button}>
-          <i className="fa fa-trash-o" aria-hidden="true"></i>
+        <button className="btn btn-danger" onClick={openModal} style={button}>
+          Delete user
         </button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={closeModal}
           style={customStyles}
-          contentLabel="Delete table"
+          contentLabel="Delete user"
         >
           <p>
-            Are you sure of do you want to delete the table?
+            Are you sure you want to delete your user?
           </p>
 
           <div className="input-group-btn">
             <button className="btn btn-default alert-danger" onClick={handleDelete}>
               Delete
             </button>
-            <button className="btn btn-default close" onClick={closeModal} style={closeButton}>
+            <button className="btn btn-default close" onClick={closeModal}>
               <i className="fa fa-times" aria-hidden="true"></i>
             </button>
           </div>

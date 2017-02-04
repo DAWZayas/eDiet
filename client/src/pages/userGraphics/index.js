@@ -119,7 +119,7 @@ class Graph extends React.Component{
         {this.props.user ?
             this.props.user.height ?
               <Imc  userId={this.props.user.id} userHeight={this.props.user.height}/>
-             : <h4> you must define your height </h4>
+             : <h3> (First you must define your height </h3>
         :null}
       </div>
     );

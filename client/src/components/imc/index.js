@@ -47,7 +47,7 @@ class Imc extends React.Component{
                   type="number"
                   className="form-control"
                   id="weightUser"
-                  placeholder="Weight..."
+                  placeholder="Weight (in kilograms)..."
                   ref={(i) => { weightUser = i; }}
                 />
               </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import Modal from '../modals/updateHeight';
 
 import {updateHeightAction} from '../../store/actions';
 const styles = require('./style.scss');
@@ -40,10 +41,15 @@ const updateHeight = ({updateHeight, id}) => {
             type="number"
             className="form-control"
             id="newHeight"
-            placeholder="New height..."
+            placeholder="New height (in metres)..."
             ref={(i) => { newHeight = i; }}
           />
         </div>
+        {/*<Modal
+          updateHeight={updateHeight}
+          id={id}
+          height={newHeight.value}
+        />*/}
         <button type="submit" className="btn btn-default" onClick={handleUpdateHeight}>
           Update
         </button>

@@ -58,15 +58,15 @@ export default class DeleteModal extends Component {
           isOpen={this.state.modalIsOpen}
           onRequestClose={closeModal}
           style={customStyles}
-          contentLabel="Borrar ejercicio"
+          contentLabel="Delete exercise"
         >
           <p>
-            ¿Está seguro de que desea borrar el ejercicio?
+            Are you sure you want to delete this exercise?
           </p>
 
           <div className="input-group-btn">
             <button className="btn btn-default alert-danger" onClick={handleDelete}>
-              Borrar
+              Delete
             </button>
             <button className="btn btn-default close" onClick={closeModal}>
               <i className="fa fa-times" aria-hidden="true"></i>

@@ -7,7 +7,7 @@ export default class Logged extends Component {
     const {user} = this.props;
     return (
         <div className={`navbar-header ${styles.logged}`}>
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1" aria-expanded="false">
+            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
               <i className="fa fa-bars" aria-hidden="true"></i>
             </button>
             {user ?

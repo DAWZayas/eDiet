@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
 
-const styles = require('./style.scss');
-
 let customStyles = {
   overlay: {
     position          : 'fixed',
@@ -23,22 +21,18 @@ let customStyles = {
 };
 
 let button = {
-  color: 'rgb(232, 142, 58)',
+  color: 'rgb(0, 0, 0)',
 };
 
-let closeButton = {
-  bottom: 'rgb(0, 0, 0)',
-  top: '0',
-  float: 'right',
-};
-
-export default class DeleteModal extends Component {
+export default class UpdateModal extends Component {
   constructor () {
     super();
     this.state = {modalIsOpen: false};
   }
 
   render () {
+    const {updateHeight, height, id} = this.props;
+
     const openModal = () => {
       this.setState({modalIsOpen: true});
     };
@@ -49,32 +43,31 @@ export default class DeleteModal extends Component {
 
     const handleDelete = e => {
       e.preventDefault();
-      const name = this.props.deleted.name;
-      this.props.deleteTable({name});
-      closeModal();
+      updateHeight({id, height});
       return false;
     };
 
     return (
       <div>
         <button className="btn btn-default" onClick={openModal} style={button}>
-          <i className="fa fa-trash-o" aria-hidden="true"></i>
+          Update
         </button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={closeModal}
           style={customStyles}
-          contentLabel="Delete table"
+          contentLabel="Update height"
         >
           <p>
-            Are you sure of do you want to delete the table?
+            Is correct your height ({height})?
+            (You can only update it once in a month)
           </p>
 
           <div className="input-group-btn">
-            <button className="btn btn-default alert-danger" onClick={handleDelete}>
-              Delete
+            <button className="btn btn-default alert-default" onClick={handleDelete}>
+              Update
             </button>
-            <button className="btn btn-default close" onClick={closeModal} style={closeButton}>
+            <button className="btn btn-default close" onClick={closeModal}>
               <i className="fa fa-times" aria-hidden="true"></i>
             </button>
           </div>
