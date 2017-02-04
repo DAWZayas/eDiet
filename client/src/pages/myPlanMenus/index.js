@@ -38,16 +38,21 @@ class userArrays extends Component{
           <div className="panel panel-heading">
             Menu
           </div>
+<<<<<<< HEAD
           {  console.log(user instanceof Array)}
           { !user instanceof Array ?
 
+=======
+          {
+            user instanceof Array ?
+              <p>Without menus</p>
+>>>>>>> 8afbcc226bda3b8558dde23971aa743e71195105
             :
-            <DayPlanMenu
-              menus={user.menusExercises.menus}
-              day={day}
-              month={month}
-            />
-
+              <DayPlanMenu
+                menus={user.menusExercises.menus}
+                day={day}
+                month={month}
+              />
           }
         </div>
       </div>

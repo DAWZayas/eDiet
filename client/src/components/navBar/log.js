@@ -33,7 +33,7 @@ export default class Logger extends Component {
     const logOutPrint = logOut.map((obj, index) =>
       index === 0 ?
         <li key={index} >
-          <a href="#" style={style.text} className={obj.class} onClick={handleLogin}>
+          <a href="#" style={style.text} className={obj.class} onClick={handleLogin} data-toggle="collapse" data-target=".navbar-collapse">
             {obj.body}
           </a>
         </li>
