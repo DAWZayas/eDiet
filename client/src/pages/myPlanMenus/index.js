@@ -39,8 +39,8 @@ class userArrays extends Component{
             Menu
           </div>
           {  console.log(user instanceof Array)}
-          { user instanceof Array ?
-              <p>Without menus</p>
+          { !user instanceof Array ?
+
             :
             <DayPlanMenu
               menus={user.menusExercises.menus}
