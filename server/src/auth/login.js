@@ -3,7 +3,7 @@ import passport from 'passport';
 import jwt from 'jsonwebtoken';
 
 // our packages
-import {auth as authConfig} from '../../config';
+import {auth as authConfig, client as clientConfig} from '../../config';
 
 export default (app) => {
   app.post('/api/login', passport.authenticate('local'), (req, res) => {
@@ -18,6 +18,7 @@ export default (app) => {
 
 app.get('/api/facebook/login',
     passport.authenticate('facebook', {
+      login: null,
       accessType: 'offline',
       session: false,
     }));
@@ -34,7 +35,7 @@ app.get('/api/facebook/login',
           accessToken: req.user.accessToken,
         };
         const token = jwt.sign(user, authConfig.jwtSecret);
-        res.redirect(`http://localhost:3000/dist/redirecting.html#token=${token}&user=${JSON.stringify(user)}`);
+        res.redirect(`http://${clientConfig.host}:${clientConfig.port}/dist/redirecting.html#token=${token}&user=${JSON.stringify(user)}`);
       } else {
         res.status(401).send({error: 'Error logging in!'});
       }
@@ -42,7 +43,8 @@ app.get('/api/facebook/login',
 
   app.get('/api/google/login',
     passport.authenticate('google', {
-      scope: ['profile'],
+      login: null,
+      scope: authConfig.google.scope,
       accessType: 'offline',
       session: false,
     }));
@@ -60,7 +62,7 @@ app.get('/api/facebook/login',
         };
 
         const token = jwt.sign(user, authConfig.jwtSecret);
-        res.redirect(`http://localhost:3000/dist/redirecting.html#token=${token}&user=${JSON.stringify(user)}`);
+        res.redirect(`http://${clientConfig.host}:${clientConfig.port}/dist/redirecting.html#token=${token}&user=${JSON.stringify(user)}`);
       } else {
         res.status(401).send({error: 'Error logging in!'});
       }
