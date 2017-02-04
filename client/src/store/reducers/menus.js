@@ -38,7 +38,9 @@ export const menus = (state = initialState, action) => {
           return {...state, status: 'done', menuLevel: action.payload};
       case ActionTypes.GET_MENU_NAME_SUCCESS:
          const addMenu = state.menu.concat(action.payload.menu);
-        return {...state, menu: addMenu  ,  men: action.payload.menu, status:'done'};
+        return {...state, menu: addMenu  ,  status:'done'};
+      case expression:
+
       default:
         return state;
     }
