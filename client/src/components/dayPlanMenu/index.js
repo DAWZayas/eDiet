@@ -27,22 +27,23 @@ class DayPlanMenu extends Component{
       if(j === menus.length) j=0;
       monthMenus.push(menus[j]);
     }
+
     return monthMenus[day - 1].name;
   }
 
   componentWillMount() {
     const {menus, day, month, doGetTimeFoods} = this.props;
-    const nameMenu = this.expandCalendar(menus, day, month);
-    doGetTimeFoods({name: nameMenu});
+    const name = this.expandCalendar(menus, day, month);
+    doGetTimeFoods({name});
   }
 
   render(){
     const {timeFoods} = this.props;
-    console.log('>timefoo', timeFoods)
+    console.log(timeFoods);
     return (
       <div className="panel panel-body">
       {timeFoods.length !== 0 ?
-          timeFoods.timeFoods.map((obj, index) =>
+          timeFoods.map((obj, index) =>
             <ul key={index}>
               <li>
                 {obj.timeFood}
@@ -64,4 +65,4 @@ class DayPlanMenu extends Component{
   }
 }
 
-export default connect(null, mapDispatchToProps)(DayPlanMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(DayPlanMenu);

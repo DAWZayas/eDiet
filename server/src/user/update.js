@@ -79,9 +79,17 @@ export default (app) => {
     const f = new Date();
     const month = (f.getMonth() +1);
 
+    let arrayMonth = user.weight.length === 0 ? [] : [...user.weight];
+    if(user.weight.length === 0){
+      for(let i=1; i<=12; i++){
+        if(i < month) {arrayMonth.push(0); console.log(arrayMonth);}
+      }
+    }
+
     if(weight && user.weightMonth != month){
-      user.weight.push(weight);
-      user.weightMonth= month;
+      arrayMonth.push(weight);
+      user.weight = arrayMonth;
+      user.weightMonth = month;
     }
     else{
       res.status(400).send({error: 'the weight control only pass one time of a month '});
@@ -120,8 +128,16 @@ export default (app) => {
     const f = new Date();
     const month = (f.getMonth() +1);
 
+    let arrayImc = user.weight.length === 0 ? [] : [...user.imc];
+    if(user.imc.length === 0){
+      for(let i=1; i<=12; i++){
+        if(i < month) arrayImc.push(0);
+      }
+    }
+
     if(imc && user.imcMonth != month){
-      user.imc.push(imc);
+      arrayImc.push(imc);
+      user.imc = arrayImc;
       user.imcMonth= month;
     }
     else{
@@ -186,7 +202,8 @@ export default (app) => {
   }));
 
   app.post('/api/user/:id/update/height', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
-    const {height} = req.body;    
+    const {height} = req.body;
+    console.log(height)
     if (req.user.id !== req.params.id) {
       res.status(403).send({error: 'Not enough rights to change other user profile!'});
       return;
@@ -244,18 +261,15 @@ export default (app) => {
       res.status(400).send({error: 'User does not exist'});
       return;
     }
-    console.log('>>>>>>>>>>>>>', menus)
     // update data
     const menu = JSON.parse( menus );
     if (menus) {
-      user.menusExercises.menus=menu;
-      /*user.menusExercises.menus.concat({
-        menu
-      });*/
+      user.menusExercises.menus=menu.map( obj => Object.assign({}, {name: obj.name}));
+
     }
     const table=JSON.parse( tables );
     if(tables){
-      user.menusExercises.exercises = table;
+      user.menusExercises.exercises = table.map( obj => Object.assign({}, {name: obj.name}));
     }
     // try to save
     try {

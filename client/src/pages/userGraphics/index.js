@@ -8,7 +8,7 @@ import Imc from '../../components/imc';
 
 const mapStateToProps = (state) => ({
    userAuth: state.auth.user,
-   user: state.user.user,
+    user: state.user.user,
  });
 
  const mapDispatchToProps = (dispatch) => ({
@@ -16,25 +16,23 @@ const mapStateToProps = (state) => ({
  });
 
 
-class Graph extends Component {
-
+class Graph extends React.Component{
   constructor(props){
     super(props);
   }
 
   componentWillMount(){
-    const {userAuth, getUser} = this.props;    
-    this.props.getUser({id: userAuth.id});
+    this.props.getUser({id: this.props.userAuth.id});
   }
 
   render(){
-    const {user} =this.props;
+    const {user} = this.props;
     const data = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'October', 'November', 'December'],
       datasets: [{
           label: 'Weight',
           type:'line',
-          data: user ? user.weight : [],
+          data:  user ? user.weight : [],
           fill: false,
           borderColor: '#EC932F',
           backgroundColor: '#EC932F',
@@ -109,7 +107,7 @@ class Graph extends Component {
 
     return (
       <div className="container">
-        <div className="container" style={{marginBottom: '5%'}}>
+        <div className="container">
           <h3>IMC and weight</h3>
           <Bar
             data={data}
@@ -118,12 +116,11 @@ class Graph extends Component {
             options={options}
           />
         </div>
-        {this.props. user ?
+        {this.props.user ?
             this.props.user.height ?
               <Imc  userId={this.props.user.id} userHeight={this.props.user.height}/>
              : <h4> you must define your height </h4>
         :null}
-
       </div>
     );
   }

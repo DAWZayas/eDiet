@@ -187,3 +187,21 @@ export const addImc = action$ => action$
           text: `error: ${ajaxErrorToMessage(error)}`, alertType: 'danger',
         })
     )));
+
+    export const updateMenuExercise = action$ => action$
+      .ofType(ActionTypes.UPDATE_MENUEXERCISE)
+      .map(signRequest)
+      .switchMap(({headers, payload}) => Observable
+        .ajax.post(`http://${host}:${port}/api/user/menusExercises/${payload.id}`, payload, headers)
+        .map(res => res.response)
+        .mergeMap( response  => Observable.of ({
+          type: ActionTypes.UPDATE_MENUEXERCISE_SUCCESS,
+          payload: response,
+        },
+        ))
+        .catch(error => Observable.of({
+          type: ActionTypes.UPDATE_MENUEXERCISE_ERROR,
+          payload: {error},
+        },
+          Actions.addNotificationAction({text: errorBack(error), alertType: 'danger'})
+        )));

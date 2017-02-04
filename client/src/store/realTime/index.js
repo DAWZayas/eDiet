@@ -6,7 +6,7 @@ import * as Actions from '../actions';
 
 export const registerMenuObservable = name =>
   Observable.fromPromise(connPromise)
-  .concatMap(conn => Observable.fromPromise(r.table('Menu').changes().run(conn)))
+  .concatMap(conn => Observable.fromPromise(r.table('Menu').without('timeFoods').changes().run(conn)))
   .switchMap(cursor => Observable.create((observer) => {
     cursor.each((err, row) => {
       if (err) throw err;
