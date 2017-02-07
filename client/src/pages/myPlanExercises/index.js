@@ -33,7 +33,7 @@ class userArrays extends Component{
       <div className="container">
         <div className="panel panel-default">
           <div className="panel panel-heading">
-            Today's exercises
+            Today exercises
           </div>
           {user ?
             user.menusExercises ?

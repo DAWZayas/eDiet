@@ -30,7 +30,6 @@ class Plannings extends Component{
       const {level,userAuth} = this.props;
       e.preventDefault();
       this.props.updateMenus({level, id:userAuth.id})
-
     };
 
     return(
@@ -44,28 +43,28 @@ class Plannings extends Component{
               />
           </center>
           </div>
-      <div className={`col-xs-12 col-sm-6 `} >
-        <div className={`panel panel-default ${styles.info}`}>
-          <div className={`panel panel-heading`} style={style.heading}>
-            <p>{name}</p>
-            <p>Level:{level}</p>
-          </div>
-          <div className={`panel panel-body`} >
-            <div className={`${styles.commonElement} ${styles.menus}`}>
-              <Link to={`planning/menu/${level}`}><button  className={`btn btn-default ${styles.button1}`}>Menu</button></Link>
+          <div className={`col-xs-12 col-sm-6 `} >
+            <div className={`panel panel-default ${styles.info}`}>
+              <div className={`panel panel-heading`} style={style.heading}>
+                <p>{name}</p>
+                <p>Level:{level}</p>
+              </div>
+              <div className={`panel panel-body ${styles.body}`} >
+                <div className={`${styles.commonElement} ${styles.menus}`}>
+                  <Link to={`planning/menu/${level}`}><button  className={`btn btn-default ${styles.button1}`}>Menu</button></Link>
+                </div>
+                <div className={`${styles.commonElement} ${styles.exercises}`}>
+                  <Link to={`/plannings/${level}/exercises`}><button className={`btn btn-default ${styles.button2}`}>Exercises</button></Link>
+                </div>
+              </div>
+              <div className={`panel panel-footer ${styles.panel}`}>
+                <button className={`${styles.followButton}`} onClick={handleFollow}>
+                  Follow diet!
+                </button>
+              </div>
             </div>
-            <div className={`${styles.commonElement} ${styles.exercises}`}>
-              <Link to={`/plannings/${level}/exercises`}><button className={`btn btn-default ${styles.button2}`}>Exercises</button></Link>
             </div>
           </div>
-          <div className={`panel panel-footer ${styles.panel}`}>
-            <button className={`btn btn-default ${styles.followButton}`} onClick={handleFollow}>
-              Follow diet!
-            </button>
-          </div>
-        </div>
-        </div>
-      </div>
       </div>
     );
   }
