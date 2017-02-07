@@ -12,10 +12,10 @@ class Plannings extends Component{
 
     const {level}=this.props;
      level === 1 ? this.setState({backgroundColor: 'rgba(37, 88, 200, 0.2)'}) :
-          level === 2 ? this.setState({backgroundColor: 'rgba(37, 88, 200, 0.4)'}) :
-           level === 3 ? this.setState({backgroundColor:'rgba(37, 88, 200, 0.6)'}):
-            level === 4 ? this.setState({backgroundColor:'rgba(37, 88, 200, 0.8)'}) :
-               level === 5 ? this.setState({backgroundColor:'rgba(37, 88, 200, 1.2)'}) : null
+      level === 2 ? this.setState({backgroundColor: 'rgba(37, 88, 200, 0.4)'}) :
+       level === 3 ? this.setState({backgroundColor:'rgba(37, 88, 200, 0.6)'}):
+        level === 4 ? this.setState({backgroundColor:'rgba(37, 88, 200, 0.8)'}) :
+         level === 5 ? this.setState({backgroundColor:'rgba(37, 88, 200, 1.2)'}) : null
   }
 
   render(){
@@ -59,8 +59,8 @@ class Plannings extends Component{
             </div>
           </div>
           <div className={`panel panel-footer ${styles.panel}`}>
-            <button className={`btn btn-default ${styles.button3}`} onClick={handleFollow}>
-              Follow menu!
+            <button className={`btn btn-default ${styles.followButton}`} onClick={handleFollow}>
+              Follow diet!
             </button>
           </div>
         </div>
