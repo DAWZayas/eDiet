@@ -11,11 +11,11 @@ class Plannings extends Component{
   componentWillMount(){
 
     const {level}=this.props;
-     level === 1 ? this.setState({backgroundColor: 'rgba(37, 88, 200, 0.2)'}) :
-      level === 2 ? this.setState({backgroundColor: 'rgba(37, 88, 200, 0.4)'}) :
-       level === 3 ? this.setState({backgroundColor:'rgba(37, 88, 200, 0.6)'}):
-        level === 4 ? this.setState({backgroundColor:'rgba(37, 88, 200, 0.8)'}) :
-         level === 5 ? this.setState({backgroundColor:'rgba(37, 88, 200, 1.2)'}) : null
+     level === 1 ? this.setState({backgroundColor: 'rgba(12, 145, 82, 0.2)'}) :
+      level === 2 ? this.setState({backgroundColor: 'rgba(12, 145, 82, 0.4)'}) :
+       level === 3 ? this.setState({backgroundColor:'rgba(12, 145, 82, 0.6)'}):
+        level === 4 ? this.setState({backgroundColor:'rgba(12, 145, 82, 0.8)'}) :
+         level === 5 ? this.setState({backgroundColor:'rgba(12, 145, 82, 1.2)'}) : null
   }
 
   render(){
