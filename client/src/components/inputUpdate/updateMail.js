@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {updateMailAction} from '../../store/actions';
+import ModalUpdateMail from '../modalUpdateUser/modalMail';
+
 const styles = require('./style.scss');
 const style = {
   header: {
@@ -20,10 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
 const updateMail = ({updateMails, id}) => {
   let newEmail;
 
-  const handleUpdateMail = (e) => {
-    e.preventDefault();
+  const mail = () =>{
     const email = newEmail.value;
-    updateMails({id, email});
+    return email;
   };
 
   return (
@@ -43,9 +44,7 @@ const updateMail = ({updateMails, id}) => {
             ref={(i) => { newEmail = i; }}
           />
         </div>
-        <button type="submit" className="btn btn-default" onClick={handleUpdateMail}>
-          Update
-        </button>
+        <ModalUpdateMail id={id} email={mail} update={updateMails} />
       </div>
     </div>
   );

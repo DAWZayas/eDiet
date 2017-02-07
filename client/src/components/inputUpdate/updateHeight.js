@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Modal from '../modals/updateHeight';
 
 import {updateHeightAction} from '../../store/actions';
+import ModalHeight from '../modalUpdateUser/modalHeight';
 const styles = require('./style.scss');
 
 const style = {
@@ -22,10 +23,10 @@ const mapDispatchToProps = (dispatch) => ({
 const updateHeight = ({updateHeight, id}) => {
   let newHeight;
 
-  const handleUpdateHeight = (e) => {
-    e.preventDefault();
-    const height = newHeight.value;
-    updateHeight({id:id, height});
+
+
+  const height = () => {
+    return newHeight.value;
   };
 
   return (
@@ -45,14 +46,7 @@ const updateHeight = ({updateHeight, id}) => {
             ref={(i) => { newHeight = i; }}
           />
         </div>
-        {/*<Modal
-          updateHeight={updateHeight}
-          id={id}
-          height={newHeight.value}
-        />*/}
-        <button type="submit" className="btn btn-default" onClick={handleUpdateHeight}>
-          Update
-        </button>
+        <ModalHeight id={id} height={height} update={updateHeight} />
       </div>
     </div>
   );

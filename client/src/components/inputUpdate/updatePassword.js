@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {updatePasswordAction} from '../../store/actions';
+import ModalUpdatePassword from '../modalUpdateUser/modalPassword';
 
 const styles = require('./style.scss');
 const style = {
@@ -25,12 +26,16 @@ const updatePassword = ({updatesPassword, id}) => {
   let newPassword;
   let newPasswordRepeat;
 
-  const handleUpdatePassword = (e) => {
-    e.preventDefault();
-    const password = newPassword.value;
-    const passwordRepeat = newPasswordRepeat.value;
-    updatesPassword({password, passwordRepeat, id});
+  const password = () => {
+     const  password = newPassword.value;
+     return password;
   };
+
+  const passwordRepeat = () => {
+    const passwordRepeat = newPasswordRepeat.value;
+    return passwordRepeat;
+  };
+
 
   return (
     <div className="panel panel-default" style={style.panel}>
@@ -58,9 +63,7 @@ const updatePassword = ({updatesPassword, id}) => {
             ref={(i) => { newPasswordRepeat = i; }}
           />
         </div>
-        <button type="submit" className="btn btn-default" onClick={handleUpdatePassword}>
-          Update
-        </button>
+        <ModalUpdatePassword update={updatesPassword} password={password} passwordRepeat={passwordRepeat} id = {id}/>
       </div>
     </div>
   );

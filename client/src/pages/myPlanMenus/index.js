@@ -38,7 +38,6 @@ class userArrays extends Component{
           <div className="panel panel-heading">
             Menu
           </div>
-          {  console.log(user instanceof Array)}
           { !user instanceof Array ?
             <p> WithoutMenus </p>
             :

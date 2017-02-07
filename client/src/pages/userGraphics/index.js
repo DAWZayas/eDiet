@@ -112,7 +112,7 @@ class Graph extends React.Component{
           <Bar
             data={data}
             width={100}
-            height={30}
+            height={60}
             options={options}
           />
         </div>

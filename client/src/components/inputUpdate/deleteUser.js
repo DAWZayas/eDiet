@@ -6,6 +6,7 @@ import Modal from '../modals/deleteUser';
 const styles = require('./style.scss');
 
 import {deleteUserAction, logoutAction} from '../../store/actions';
+import ModalDelete from '../modalUpdateUser/modalDelete';
 
 const mapDispatchToProps = (dispatch) => ({
   navToLogin: () => dispatch(push('/login')),
@@ -15,14 +16,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const deleteUser = ({deleteUser, id, logOut, navToLogin}) => {
   return (
-    <div className={`${styles.deleteButton}`}>
-      <p>Borrar cuenta de usuario: </p>
-      <Modal
-        deleteUser={deleteUser}
-        id={id}
-        logOut={logOut}
-        navToLogin={navToLogin}
-      />
+    <div>
+      <ModalDelete id={id} deleteUser={deleteUser} logOut={logOut} navToLogin={navToLogin} />
     </div>
 
   );
