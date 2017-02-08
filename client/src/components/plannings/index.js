@@ -36,12 +36,13 @@ class Plannings extends Component{
       <div className={`container ${styles.container}`}>
         <div className={`${styles.group}`}>
           <div className="col-xs-12 col-sm-6">
-            <center>
+            <div className={`${styles.efecto}`}>
               <img
                 src={image}
                 alt="Menu image"
-              />
-          </center>
+             />
+            </div>
+
           </div>
           <div className={`col-xs-12 col-sm-6 `} >
             <div className={`panel panel-default ${styles.info}`}>

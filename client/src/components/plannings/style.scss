@@ -77,3 +77,6 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
   border: none;
   margin-bottom: 0;
 }
+.efecto:hover {
+  transform: scale(1.15);
+}
