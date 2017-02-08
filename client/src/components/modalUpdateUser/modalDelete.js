@@ -41,9 +41,11 @@ export default class UpdateMail extends React.Component {
 
     return (
       <span>
-      <button type="submit" className="btn btn-default" onClick={this.openModal}>
-        Delete User
-      </button>
+      <center>
+        <button type="submit" className="btn btn-danger" onClick={this.openModal}>
+          Delete User
+        </button>
+      </center>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
@@ -55,8 +57,8 @@ export default class UpdateMail extends React.Component {
           <h4> Are you sure that you update your height ?   </h4>
           <span>
               <span className="input-group-btn">
-                <button type="submit" className="btn btn-default " onClick={this.closeModal}>no</button>
-                <button type="submit" className="btn btn-default " onClick={handleDeleteUser}>yes</button>
+                <button type="submit" className="btn" onClick={this.closeModal}>no</button>
+                <button type="submit" className="btn" onClick={handleDeleteUser}>yes</button>
               </span>
           </span>
         </div>

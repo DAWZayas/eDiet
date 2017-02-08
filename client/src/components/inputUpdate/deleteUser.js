@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-import Modal from '../modals/deleteUser';
 
 const styles = require('./style.scss');
 
@@ -16,10 +15,15 @@ const mapDispatchToProps = (dispatch) => ({
 
 const deleteUser = ({deleteUser, id, logOut, navToLogin}) => {
   return (
-    <div>
-      <center>
-        <ModalDelete id={id} deleteUser={deleteUser} logOut={logOut} navToLogin={navToLogin} />
-      </center>
+    <div className={`container ${styles.deleteDiv}`}>
+      <h4>
+        Do you want to delete your count?
+        <br/>
+        <small>
+          (It is not reversible)
+        </small>
+      </h4>
+      <ModalDelete id={id} deleteUser={deleteUser} logOut={logOut} navToLogin={navToLogin} />
     </div>
 
   );
