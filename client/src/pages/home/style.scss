@@ -7,19 +7,12 @@
 }
 
 @font-face {
-    font-family: 'caviar_dreamsregular';
-    src: url('../../../fonts/caviarDreams/caviardreams-webfont.woff2') format('woff2'),
-         url('../../../fonts/caviarDreams/caviardreams-webfont.woff') format('woff');
+    font-family: 'bellotaregular';
+    src: url('../../../fonts/bellota/bellota-bold-webfont.woff2') format('woff2'),
+         url('../../../fonts/bellota/bellota-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-}
 
-@font-face {
-    font-family: 'caviar_dreamsbold';
-    src: url('../../../fonts/caviarDreams/caviar_dreams_bold-webfont.woff2') format('woff2'),
-         url('../../../fonts/caviarDreams/caviar_dreams_bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
 }
 
 .container {
@@ -32,6 +25,7 @@
     font-family: rubikregular;
   }
   p {
-    font-family: caviar_dreamsbold;
+    font-family: bellotaregular;
+    font-size: 1.4em;
   }
 }
