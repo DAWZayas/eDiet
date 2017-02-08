@@ -10,6 +10,8 @@ export default (app) => {
   app.post('/api/user/:id/update/password', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     const {passwordRepeat, password} = req.body;
 
+    if (!password) res.status(403).send({error: 'the password musn\'t be empty'});
+
     if (req.user.id !== req.params.id) {
       res.status(403).send({error: 'Not enough rights to change other user profile!'});
       return;
@@ -62,6 +64,8 @@ export default (app) => {
 
   app.post('/api/user/:id/addWeight', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     const {weight} = req.body;
+
+    if (!weight) res.status(403).send({error: 'the password musn\'t be empty'});
 
     if (req.user.id !== req.params.id) {
       res.status(403).send({error: 'Not enough rights to change other user profile!'});
@@ -159,6 +163,8 @@ export default (app) => {
   app.post('/api/user/:id/update/email', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     const {email} = req.body;
 
+    if (!email) res.status(403).send({error: 'the email musn\'t be empty'});
+
     if (req.user.id !== req.params.id) {
       res.status(403).send({error: 'Not enough rights to change other user profile!'});
       return;
@@ -203,7 +209,9 @@ export default (app) => {
 
   app.post('/api/user/:id/update/height', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     const {height} = req.body;
-    console.log(height)
+
+    if (!height) res.status(403).send({error: 'the height musn\'t be empty'});
+
     if (req.user.id !== req.params.id) {
       res.status(403).send({error: 'Not enough rights to change other user profile!'});
       return;

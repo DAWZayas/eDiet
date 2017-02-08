@@ -37,7 +37,7 @@ const updateHeight = ({updateHeight, id}) => {
         </p>
       </div>
       <div className={`panel-body ${styles.body}`}>
-        <div className="col-sm-12">
+        <div className="col-sm-12 input-group">
           <input
             type="number"
             className="form-control"
@@ -46,7 +46,9 @@ const updateHeight = ({updateHeight, id}) => {
             ref={(i) => { newHeight = i; }}
           />
         </div>
+        <center>
         <ModalHeight id={id} height={height} update={updateHeight} />
+        </center>
       </div>
     </div>
   );

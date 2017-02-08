@@ -41,8 +41,8 @@ export default class UpdateMail extends React.Component {
 
     return (
       <span>
-      <button type="submit" style={{float: 'right'}} className="btn btn-default" onClick={this.openModal}>
-        Delete User 
+      <button type="submit" className="btn btn-default" onClick={this.openModal}>
+        Delete User
       </button>
         <Modal
           isOpen={this.state.modalIsOpen}

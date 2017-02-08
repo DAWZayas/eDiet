@@ -44,7 +44,9 @@ const updateMail = ({updateMails, id}) => {
             ref={(i) => { newEmail = i; }}
           />
         </div>
-        <ModalUpdateMail id={id} email={mail} update={updateMails} />
+        <center>
+          <ModalUpdateMail id={id} email={mail} update={updateMails} />
+        </center>
       </div>
     </div>
   );

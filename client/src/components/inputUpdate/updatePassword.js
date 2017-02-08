@@ -63,7 +63,9 @@ const updatePassword = ({updatesPassword, id}) => {
             ref={(i) => { newPasswordRepeat = i; }}
           />
         </div>
-        <ModalUpdatePassword update={updatesPassword} password={password} passwordRepeat={passwordRepeat} id = {id}/>
+        <center>
+          <ModalUpdatePassword update={updatesPassword} password={password} passwordRepeat={passwordRepeat} id = {id}/>
+        </center>
       </div>
     </div>
   );

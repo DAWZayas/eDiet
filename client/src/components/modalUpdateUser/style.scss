@@ -1,0 +1,36 @@
+.followButton {
+  background: rgb(232, 142, 58);
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 5px 0 rgba(180, 109, 43, 0.9);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 12px 20px;
+  transition: all .1s linear;
+}
+
+.followButton:active {
+  box-shadow: 0 2px 0 rgb(232, 142, 58);
+  transform: translateY(3px);
+}
+
+.followButton:hover, .followButton:visited, .followButton:focus {
+  background: rgb(232, 142, 58);
+  color: rgb(255, 255, 255);
+}
+
+.body {
+  border: none;
+}
+
+.panel {
+  background: rgb(255, 255, 255);
+  border: none;
+  margin-bottom: 0;
+}
+.efecto:hover {
+  transform: scale(1.15);
+}

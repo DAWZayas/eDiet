@@ -17,7 +17,9 @@ const mapDispatchToProps = (dispatch) => ({
 const deleteUser = ({deleteUser, id, logOut, navToLogin}) => {
   return (
     <div>
-      <ModalDelete id={id} deleteUser={deleteUser} logOut={logOut} navToLogin={navToLogin} />
+      <center>
+        <ModalDelete id={id} deleteUser={deleteUser} logOut={logOut} navToLogin={navToLogin} />
+      </center>
     </div>
 
   );

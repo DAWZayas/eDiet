@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 
-const styles = require('./style.scss')
+const styles = require('./style.scss');
 
 export default class AutoPlay extends Component {
   render() {
@@ -12,6 +12,8 @@ export default class AutoPlay extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
+      arrows: false,
+      adaptativeHeight:true,
     };
 
     return (
