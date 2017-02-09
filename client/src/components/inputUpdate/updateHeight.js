@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Modal from '../modals/updateHeight';
 
 import {updateHeightAction} from '../../store/actions';
 import ModalHeight from '../modalUpdateUser/modalHeight';

@@ -77,16 +77,22 @@ export default class App extends React.Component {
           <h4> Delete  </h4>
           <span>
             {/Menu/.test(this.props.route) ?
+              <div>
               <button type="submit" className="btn btn-danger" onClick={this.closeModal}>No</button>
               <button type="submit" className="btn btn-success" onClick={handleDeleteMenu}>Yes</button>
+              </div>
             : null}
             {/timeFood/.test(this.props.route) ?
-              <button type="submit" className="btn btn-danger" onClick={this.closeModal}>No</button>
-              <button type="submit" className="btn btn-success" onClick={handleDeleteTimeFood}>Yes</button>
+              <div>
+                <button type="submit" className="btn btn-danger" onClick={this.closeModal}>No</button>
+                <button type="submit" className="btn btn-success" onClick={handleDeleteTimeFood}>Yes</button>
+              </div>
             : null}
             {/food/.test(this.props.route) ?
-              <button type="submit" className="btn btn-danger" onClick={this.closeModal}>No</button>
-              <button type="submit" className="btn btn-success" onClick={handleDeleteFood}>Yes</button>
+              <div>
+                <button type="submit" className="btn btn-danger" onClick={this.closeModal}>No</button>
+                <button type="submit" className="btn btn-success" onClick={handleDeleteFood}>Yes</button>
+              </div>
             : null }
           </span>
         </div>
