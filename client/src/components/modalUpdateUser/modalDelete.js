@@ -2,6 +2,14 @@ import React from 'react';
 import Modal from 'react-modal';
 
 const customStyles = {
+  overlay: {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(40, 39, 39, 0.7)',
+  },
   content : {
     top                   : '50%',
     left                  : '50%',
@@ -56,10 +64,8 @@ export default class UpdateMail extends React.Component {
           <a className="glyphicon glyphicon-remove pull-right" role="button" onClick={this.closeModal} />
           <h4> Are you sure that you update your height ?   </h4>
           <span>
-              <span className="input-group-btn">
-                <button type="submit" className="btn" onClick={this.closeModal}>no</button>
-                <button type="submit" className="btn" onClick={handleDeleteUser}>yes</button>
-              </span>
+            <button type="submit" className="btn btn-danger" onClick={this.closeModal} style={{marginRight: '2%'}}>No</button>
+            <button type="submit" className="btn btn-success" onClick={handleDeleteUser}>Yes</button>
           </span>
         </div>
         </Modal>

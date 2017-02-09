@@ -3,6 +3,14 @@ import Modal from 'react-modal';
 const style = require('./style.scss');
 
 const customStyles = {
+  overlay: {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(40, 39, 39, 0.7)',
+  },
   content : {
     top                   : '50%',
     left                  : '50%',
@@ -54,8 +62,8 @@ export default class UpdatePassword extends React.Component {
           <h4> Are you sure that you update your password ?   </h4>
           <span>
               <span className="input-group-btn">
-                <button type="submit" className="btn btn-default " onClick={this.closeModal}>no</button>
-                <button type="submit" className="btn btn-default " onClick={handleUpdatePassword}>yes</button>
+                <button type="submit" className="btn btn-danger " onClick={this.closeModal} style={{marginRight: '2%'}}>No</button>
+                <button type="submit" className="btn btn-success " onClick={handleUpdatePassword}>Yes</button>
               </span>
           </span>
         </div>
