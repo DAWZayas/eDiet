@@ -13,14 +13,14 @@ export default class ButttonsUser extends React.Component {
     return (
       <div className={`${styles.userButtons}`}>
         <Link to='/user/updateProfile'>
-          <button className="btn btn-default">
+          <button className="btn">
             Update profile
           </button>
         </Link>
         {user ?
           !user.role ?
             <Link to='/user/graphics'>
-              <button className="btn btn-default">
+              <button className="btn">
                 Progress
               </button>
             </Link>
@@ -29,7 +29,7 @@ export default class ButttonsUser extends React.Component {
         {user ?
           user.role ?
             <Link to='/user/addAdmin'>
-              <button className="btn btn-default">
+              <button className="btn">
                   <i className={`fa fa-plus`} aria-hidden="true"></i>  Admin. user
               </button>
             </Link>

@@ -13,10 +13,10 @@ export default class ButttonsUser extends React.Component {
   render(){
     const {user} = this.props;
     return (
-      <span>
+      <div className={`container ${styles.container}`}>
         <ButtonsUser user={user}/>
         <PanelUser user={user}/>
-      </span>
+      </div>
     );
   }
 }
