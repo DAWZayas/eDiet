@@ -46,7 +46,7 @@ export default class PanelUser extends React.Component {
             {user ?
               user.registrationDate ?
                 <p className={`${styles.result}`}>
-                  {user.registrationDate}
+                  {user.registrationDate.substr(0, 10)}
                 </p>
               :
                 <p className={`${styles.result}`}>
@@ -62,11 +62,29 @@ export default class PanelUser extends React.Component {
                 </p>
                 {user.height ?
                   <p className={`${styles.result}`}>
-                    {user.height}
+                    {user.height} metres
                   </p>
                   :
                   <p className={`${styles.result}`}>
                     Without height associated
+                  </p>
+                }
+              </div>
+            : null
+          : null}
+          {user ?
+            !user.role ?
+              <div className={`${styles.data}`}>
+                <p className={`${styles.tittle}`}>
+                  Weight:
+                </p>
+                {user.weight ?
+                  <p className={`${styles.result}`}>
+                    {user.weight} kilograms
+                  </p>
+                  :
+                  <p className={`${styles.result}`}>
+                    Without weight associated
                   </p>
                 }
               </div>

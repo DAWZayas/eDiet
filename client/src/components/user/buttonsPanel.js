@@ -18,15 +18,19 @@ export default class ButttonsUser extends React.Component {
     <span>
      {user ? !user.role ?
         <div className={`panel-footer ${styles.footer}`} style={style}>
-          <div className={`${styles.dietButtons}`}>
-            <Link to={`/user/myPlan/menu`}>
-              <button className="btn">Today menu</button>
-            </Link>
-            <Link to={`/user/myPlan/exercise`}>
-              <button className="btn">Today exercises</button>
-            </Link>
-          </div>
-        </div>
+        {user.menusExercises ?
+          user.menusExercises.exercises.length !== 0 &&  user.menusExercises.menus.length !== 0 ?
+            <div className={`${styles.dietButtons}`}>
+              <Link to={`/user/myPlan/menu`}>
+                <button className="btn">Today menu</button>
+              </Link>
+              <Link to={`/user/myPlan/exercise`}>
+                <button className="btn">Today exercises</button>
+              </Link>
+            </div>
+          : null
+        : null}
+      </div>
      : null :null}
     </span>
     );
