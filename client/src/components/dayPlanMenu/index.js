@@ -35,32 +35,35 @@ class DayPlanMenu extends Component{
     const {menus, day, month, doGetTimeFoods} = this.props;
     const name = this.expandCalendar(menus, day, month);
     doGetTimeFoods({name});
+    this.state = {name};
   }
 
   render(){
     const {timeFoods} = this.props;
-    console.log(timeFoods);
     return (
-      <div className="panel panel-body">
+      <span>
+        <center style={{marginBottom: '5%'}}>
+          <h2>  Menu name : {this.state.name} </h2>
+        </center >
       {timeFoods.length !== 0 ?
           timeFoods.map((obj, index) =>
-            <ul key={index}>
-              <li>
-                {obj.timeFood}
-              </li>
-              <li>
-                {obj.foods.map((object, index2) =>
-                  <ul key={index2}>
-                    {object.nameFood}
-                  </ul>
-                )}
-              </li>
-            </ul>
+          <span key={index}>
+          <div className="panel panel-default">
+            <div className="panel-heading" style={{background: 'rgba(232, 142, 58, 0.329412'}}>
+               <p className="glyphicon glyphicon-cutlery"> &nbsp; {obj.timeFood} </p>
+            </div>
+            <div className="panel-body">
+              <ul className="list-group">
+                {obj.foods.map((object,index)=> <li key={index} className="list-group-item">food: {object.nameFood}</li>)}
+              </ul>
+            </div>
+          </div>
+          </span>
           )
       :
         <p>Without foods</p>
       }
-      </div>
+      </span>
     );
   }
 }

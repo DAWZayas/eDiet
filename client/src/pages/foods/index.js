@@ -59,7 +59,7 @@ class TimeFoods extends React.Component{
           ref={(i) => { foodss = i; }}
         />
         <br/>
-        <div className="input-group">
+        <div >
           <input
             type="text"
             className="form-control"
@@ -67,9 +67,10 @@ class TimeFoods extends React.Component{
             placeholder="ECalories..."
             ref={(i) => { calorie = i; }}
           />
-          <span  className=" input-group-addon  " >
-            <span className="glyphicon glyphicon-check" onClick={handleCreateFood}> </span>
-          </span>
+          <br/>
+          <center>
+            <button className="btn btn-default" onClick={handleCreateFood}> Create Food</button>
+          </center>
           </div>
           </div>
         </div>

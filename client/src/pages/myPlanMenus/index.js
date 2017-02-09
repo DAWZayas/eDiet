@@ -34,10 +34,6 @@ class userArrays extends Component{
 
     return (
       <div className="container">
-        <div className="panel panel-default">
-          <div className="panel panel-heading">
-            Menu
-          </div>
           { !user instanceof Array ?
             <p> WithoutMenus </p>
             :
@@ -48,7 +44,6 @@ class userArrays extends Component{
             />
 
           }
-        </div>
       </div>
     );
   }

@@ -16,9 +16,15 @@ const customStyles = {
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalIsOpen: false };
+    this.state = { modalIsOpen: false, color: null };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+  }
+
+  componentWillMount(){
+    /Menu/.test(this.props.route) ? this.setState({color : 'rgb(232,142,58)'}) : null;
+    /timeFood/.test(this.props.route) ? this.setState({color : 'rgb(12,145,82)'}) : null;
+    /food/.test(this.props.route) ? this.setState({color : 'rgb(0,0,0)'}) : null;
   }
 
   openModal() {
@@ -52,7 +58,7 @@ export default class App extends React.Component {
 
     return (
       <span>
-        <button type="submit" style={{float: 'right'}} className="glyphicon glyphicon-trash btn" onClick={this.openModal}> </button>
+        <button type="submit" style={{float: 'right', color: this.state.color}} className="glyphicon glyphicon-trash btn btn-default" onClick={this.openModal}> </button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
@@ -65,18 +71,18 @@ export default class App extends React.Component {
           <span>
             {/Menu/.test(this.props.route) ?
               <span className="input-group-btn">
-                <button type="submit" className="btn" onClick={this.closeModal}>no</button>
-                <button type="submit" className="btn" onClick={handleDeleteMenu}>yes</button>
+                <button type="submit" className="btn btn-default" onClick={this.closeModal}>no</button>
+                <button type="submit" className="btn btn-default" onClick={handleDeleteMenu}>yes</button>
               </span> : null}
             {/timeFood/.test(this.props.route) ?
               <span className="input-group-btn">
-              <button type="submit" className="btn " onClick={this.closeModal}>no</button>
-              <button type="submit" className="btn " onClick={handleDeleteTimeFood}>yes</button>
+              <button type="submit" className="btn btn-default" onClick={this.closeModal}>no</button>
+              <button type="submit" className="btn btn-default" onClick={handleDeleteTimeFood}>yes</button>
               </span> : null}
             {/food/.test(this.props.route) ?
               <span className="input-group-btn">
-                <button type="submit" className="btn" onClick={this.closeModal}>no</button>
-                <button type="submit" className="btn " onClick={handleDeleteFood}>yes</button>
+                <button type="submit" className="btn btn-default" onClick={this.closeModal}>no</button>
+                <button type="submit" className="btn btn-default" onClick={handleDeleteFood}>yes</button>
               </span>: null }
           </span>
         </div>

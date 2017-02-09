@@ -31,7 +31,7 @@ class ShowMenu extends React.Component{
     return(
         <div className="container">
            <center style={{marginBottom: '5%'}}><h2>Menu name: {this.state.name}</h2></center>
-           {this.props.timeFoods.map((obj, index)=> <Foods timeFood={obj.timeFood} foods={obj.foods}/>)}
+           {this.props.timeFoods.map((obj, index)=> <Foods key={index} timeFood={obj.timeFood} foods={obj.foods}/>)}
         </div>
     );
   }

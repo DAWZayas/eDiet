@@ -7,9 +7,10 @@ export default class ShowMenuBody extends React.Component{
 
   render(){
     return(
+      <span>
       <div className="panel panel-default">
-        <div className="panel-heading">
-           {this.props.timeFood}
+        <div className="panel-heading" style={{background: 'rgba(232, 142, 58, 0.329412'}}>
+           <p className="glyphicon glyphicon-cutlery"> &nbsp; {this.props.timeFood}  </p>
         </div>
         <div className="panel-body">
           <ul className="list-group">
@@ -17,6 +18,7 @@ export default class ShowMenuBody extends React.Component{
           </ul>
         </div>
     </div>
+    </span>
     );
   }
 }

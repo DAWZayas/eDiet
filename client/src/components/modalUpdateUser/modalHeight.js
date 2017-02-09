@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+const style = require('./style.scss');
 
 const customStyles = {
   content : {
@@ -40,7 +41,7 @@ export default class UpdateMail extends React.Component {
 
     return (
       <span>
-      <button type="submit"  className="btn btn-default" onClick={this.openModal}>
+      <button type="submit"  className={`btn btn-sm ${style.updateButton}`} onClick={this.openModal}>
         Update
       </button>
         <Modal

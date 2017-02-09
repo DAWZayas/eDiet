@@ -58,7 +58,7 @@ const Create = ({ menus, doGetMenu, route, navTo, createMenu, hasMore, loadingMo
               ref={(i) => { menuName = i; }}
             />
             <br/>
-            <div className="input-group">
+            <div >
               <input
                 type="number"
                 className="form-control"
@@ -66,9 +66,10 @@ const Create = ({ menus, doGetMenu, route, navTo, createMenu, hasMore, loadingMo
                 placeholder="Menu level..."
                 ref={(i) => { menuLevel = i; }}
               />
-              <span type="submit" className=" input-group-addon  " >
-                <span className="glyphicon glyphicon-check" onClick={handleCreateMenu}> </span>
-              </span>
+              <br/>
+              <center>
+                <button className="btn btn-default" onClick={handleCreateMenu}> Create Menu </button>
+              </center>
               </div>
             </div>
         </div>
