@@ -59,7 +59,7 @@ export default class UpdatePassword extends React.Component {
         >
         <div className="container">
           <a className="glyphicon glyphicon-remove pull-right" role="button" onClick={this.closeModal} />
-          <h4> Are you sure that you update your password ?   </h4>
+          <h4> Are you sure that you want to update your password ?   </h4>
           <span>
               <span className="input-group-btn">
                 <button type="submit" className="btn btn-danger " onClick={this.closeModal} style={{marginRight: '2%'}}>No</button>

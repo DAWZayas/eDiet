@@ -2,6 +2,14 @@ import React from 'react';
 import Modal from 'react-modal';
 
 const customStyles = {
+  overlay: {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(40, 39, 39, 0.7)',
+  },
   content : {
     top                   : '50%',
     left                  : '50%',
@@ -94,9 +102,7 @@ export default class Appu extends React.Component {
                         placeholder="level menu..."
                         ref={(i) => { menuLevel = i; }}
                       />
-                      <span className="input-group-btn">
-                        <button type="submit" className="btn btn-default " onClick={handleUpdateMenu}>yes</button>
-                      </span>
+                    <button type="submit" className="btn btn-success " onClick={handleUpdateMenu}>Yes</button>
                     </span>
                   </span> : null}
                 {/timeFood/.test(this.props.route) ?
@@ -108,9 +114,7 @@ export default class Appu extends React.Component {
                       placeholder="Enter your new menu Name..."
                       ref={(i) => { newNameMenu = i; }}
                     />
-                    <span className="input-group-btn">
-                      <button type="submit" className="btn btn-default " onClick={handleUpdateTimeFood}>yes</button>
-                    </span>
+                    <button type="submit" className="btn btn-success " onClick={handleUpdateTimeFood}>Yes</button>
                   </span> : null}
                 {/food/.test(this.props.route) ?
                   <span>
@@ -130,9 +134,7 @@ export default class Appu extends React.Component {
                       placeholder="Enter your new menu Name..."
                       ref={(i) => { calorie = i; }}
                     />
-                    <span className="input-group-btn">
-                      <button type="submit" className="btn btn-default " onClick={handleUpdateFood}>yes</button>
-                    </span>
+                    <button type="submit" className="btn btn-success " onClick={handleUpdateFood}>Yes</button>
                   </span>
                   </span>: null }
               </span>

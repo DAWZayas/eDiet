@@ -2,6 +2,14 @@ import React from 'react';
 import Modal from 'react-modal';
 
 const customStyles = {
+  overlay: {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(40, 39, 39, 0.7)',
+  },
   content : {
     top                   : '50%',
     left                  : '50%',
@@ -11,7 +19,6 @@ const customStyles = {
     transform             : 'translate(-50%, -50%)'
   }
 };
-
 
 export default class App extends React.Component {
   constructor(props) {
@@ -70,20 +77,17 @@ export default class App extends React.Component {
           <h4> Delete  </h4>
           <span>
             {/Menu/.test(this.props.route) ?
-              <span className="input-group-btn">
-                <button type="submit" className="btn btn-default" onClick={this.closeModal}>no</button>
-                <button type="submit" className="btn btn-default" onClick={handleDeleteMenu}>yes</button>
-              </span> : null}
+              <button type="submit" className="btn btn-danger" onClick={this.closeModal}>No</button>
+              <button type="submit" className="btn btn-success" onClick={handleDeleteMenu}>Yes</button>
+            : null}
             {/timeFood/.test(this.props.route) ?
-              <span className="input-group-btn">
-              <button type="submit" className="btn btn-default" onClick={this.closeModal}>no</button>
-              <button type="submit" className="btn btn-default" onClick={handleDeleteTimeFood}>yes</button>
-              </span> : null}
+              <button type="submit" className="btn btn-danger" onClick={this.closeModal}>No</button>
+              <button type="submit" className="btn btn-success" onClick={handleDeleteTimeFood}>Yes</button>
+            : null}
             {/food/.test(this.props.route) ?
-              <span className="input-group-btn">
-                <button type="submit" className="btn btn-default" onClick={this.closeModal}>no</button>
-                <button type="submit" className="btn btn-default" onClick={handleDeleteFood}>yes</button>
-              </span>: null }
+              <button type="submit" className="btn btn-danger" onClick={this.closeModal}>No</button>
+              <button type="submit" className="btn btn-success" onClick={handleDeleteFood}>Yes</button>
+            : null }
           </span>
         </div>
         </Modal>

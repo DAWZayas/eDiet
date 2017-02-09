@@ -62,22 +62,18 @@ export default class DeleteModal extends Component {
         </button>
         <Modal
           isOpen={this.state.modalIsOpen}
-          onRequestClose={closeModal}
+          onRequestClose={this.closeModal}
           style={customStyles}
           contentLabel="Delete table"
         >
-          <p>
-            Are you sure of do you want to delete the table?
-          </p>
-
-          <div className="input-group-btn">
-            <button className="btn btn-default alert-danger" onClick={handleDelete}>
-              Delete
-            </button>
-            <button className="btn btn-default close" onClick={closeModal} style={closeButton}>
-              <i className="fa fa-times" aria-hidden="true"></i>
-            </button>
-          </div>
+        <div className="container">
+          <a className="glyphicon glyphicon-remove pull-right" role="button" onClick={this.closeModal} />
+          <h4> Are you sure that you want to delete this table? </h4>
+          <span>
+            <button type="submit" className="btn btn-danger" onClick={this.closeModal} style={{marginRight: '2%'}}>No</button>
+            <button type="submit" className="btn btn-success" onClick={handleDelete}>Yes</button>
+          </span>
+        </div>
         </Modal>
       </div>
     );
