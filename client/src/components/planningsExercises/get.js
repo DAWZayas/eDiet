@@ -21,7 +21,7 @@ export default class Get extends Component {
 
   eventStyleGetter(event, start, end, isSelected) {
       var style = {
-          backgroundColor: '#6e2df7',
+          backgroundColor: 'rgba(232, 142, 58, 0.52)',
           borderRadius: '0px',
           opacity: 0.9,
           color: 'black',

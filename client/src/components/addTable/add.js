@@ -4,9 +4,11 @@ let tableName;
 let tableLevel;
 
 let styles = require('./style.scss');
-let footer = {
-  borderTop: 'none',
-  backgroundColor: 'rgb(255, 255, 255)',
+let style = {
+  footer: {
+      borderTop: 'none',
+      backgroundColor: 'rgb(255, 255, 255)',
+  }
 };
 
 export default class AddTable extends Component {
@@ -74,7 +76,7 @@ export default class AddTable extends Component {
             </div>
           </div>
         </div>
-        <div className={`panel-footer ${styles.footer}`} style={footer}>
+        <div className={`panel-footer ${styles.footer}`} style={style.footer}>
           <button type="submit" className="btn btn-default" onClick={handleCreate}>
             Create
           </button>
