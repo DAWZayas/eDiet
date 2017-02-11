@@ -1,3 +1,19 @@
 .container {
   margin: 5% 0 0 0;
 }
+
+.body {
+  ul {
+    list-style: none;
+    li {
+      i {
+        color: rgb(12, 145, 82);
+      }
+    }
+  }
+  table {
+    tr {
+    border: 1px solid;
+  }
+  }
+}

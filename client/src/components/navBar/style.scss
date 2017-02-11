@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
 
+body {
+  font-family: 'Lato', sans-serif;
+}
 .navBar {
   background-color: transparent;
   background: rgba(0, 0, 0, 0.7);

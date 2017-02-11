@@ -22,7 +22,7 @@ export default class Get extends Component {
               Exercises
             </p>
           </div>
-          <div className="panel-body">
+          <div className={`panel-body ${styles.body}`}>
             {exercises.length === 0 ?
               <p>Without exercises</p>
             :
@@ -30,16 +30,28 @@ export default class Get extends Component {
                 <div key={index}>
                   <ul>
                     <li>
-                      {obj.name}
+                      <i className="glyphicon glyphicon-play-circle" />
+                      &nbsp; {obj.name}
                       <ul>
                         <li>
-                          Calorías: {obj.calories}
+                          <i className="glyphicon glyphicon-fire" />
+                          &nbsp; Calories: {obj.calories}
                         </li>
                         <li>
-                          Tipo: {obj.type}
+                          <i className="glyphicon glyphicon-tags" />
+                          &nbsp; Type: {obj.type}
                         </li>
                         <li>
-                          Tiempo: {obj.time}
+                          <i className="fa fa-clock-o" aria-hidden="true" />
+                          &nbsp; Time: {obj.time}
+                        </li>
+                        <li>
+                          <i className="glyphicon glyphicon-option-horizontal" />
+                          &nbsp; Series: {obj.series}
+                        </li>
+                        <li>
+                          <i className="fa fa-refresh" aria-hidden="true" />
+                          &nbsp; Repeats: {obj.repeats}
                         </li>
                       </ul>
                     </li>
