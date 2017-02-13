@@ -28,7 +28,7 @@ export default class ButttonsUser extends React.Component {
                 <button className="btn">Today exercises</button>
               </Link>
             </div>
-          : null
+          : <p>Follow a diet to see your exercises and menus</p>
         : null}
       </div>
      : null :null}

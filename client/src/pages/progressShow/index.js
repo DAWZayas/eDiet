@@ -29,10 +29,18 @@ class ShowMenu extends React.Component{
   }
   render(){
     return(
-        <div className="container">
-           <center style={{marginBottom: '5%'}}><h2>Menu name: {this.state.name}</h2></center>
-           {this.props.timeFoods.map((obj, index)=> <Foods key={index} timeFood={obj.timeFood} foods={obj.foods}/>)}
-        </div>
+      <div className="container">
+       <center>
+        <h2>
+          Menu name: {this.state.name}
+        </h2>
+      </center>
+       <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', margin: '3% 0 0 0'}}>
+        {this.props.timeFoods.map((obj, index)=>
+          <Foods key={index} timeFood={obj.timeFood} foods={obj.foods}/>
+        )}
+       </div>
+      </div>
     );
   }
 }

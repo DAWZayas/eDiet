@@ -11,7 +11,7 @@ export default class bodyHome extends Component {
     return (
         <div className = "col-sm-12 col-md-6 ">
           <center>
-            <h3>Exercise</h3>
+            <h3 className={`${styles.title}`}>Exercise</h3>
             <img src="../../../images/home/exerciseImg.jpg" className={`${styles.exerciseImg}`} alt="..."/>
           </center>
           <br/>

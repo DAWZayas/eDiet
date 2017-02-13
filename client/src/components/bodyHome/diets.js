@@ -11,7 +11,7 @@ export default class Diets extends Component {
     return (
         <div className ="col-sm-12 col-md-6 ">
           <center>
-            <h3>Diet</h3>
+            <h3 className={`${styles.title}`}>Diet</h3>
             <img src="../../../images/home/dietImg.jpg" className={`${styles.dietImg}`} alt="..."/>
           </center>
           <br/>

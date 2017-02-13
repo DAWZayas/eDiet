@@ -20,18 +20,18 @@ export default class Get extends Component {
   }
 
   eventStyleGetter(event, start, end, isSelected) {
-      var style = {
-          backgroundColor: 'rgba(232, 142, 58, 0.52)',
-          borderRadius: '0px',
-          opacity: 0.9,
-          color: 'black',
-          border: '0px',
-          display: 'block'
-      };
-      return {
-          style: style
-      };
-  };
+    var style = {
+      backgroundColor: 'rgba(232, 142, 58, 0.6)',
+      borderRadius: '0px',
+      opacity: 0.9,
+      color: 'black',
+      border: '0px',
+      display: 'block'
+    };
+    return {
+        style: style
+    };
+  }
 
   render(){
     const {route, tables} = this.props;
