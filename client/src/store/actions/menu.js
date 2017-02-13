@@ -39,3 +39,13 @@ export const updateMenuLevelAction = (payload) => ({
   type : ActionTypes.UPDATE_MENU_LEVEL,
   payload,
 });
+
+export const getDeleteMenuAction = (payload) => ({
+  type : ActionTypes.GET_DELETE_MENU,
+  payload,
+});
+
+export const getUpdateMenuAction = (payload) => ({
+  type : ActionTypes.GET_UPDATE_MENU,
+  payload,
+});

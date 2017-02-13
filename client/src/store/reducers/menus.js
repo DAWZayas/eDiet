@@ -39,7 +39,12 @@ export const menus = (state = initialState, action) => {
       case ActionTypes.GET_MENU_NAME_SUCCESS:
          const addMenu = state.menu.concat(action.payload.menu);
         return {...state, menu: addMenu  ,  status:'done'};
-
+      case ActionTypes.GET_DELETE_MENU:
+        const removeReal = state.menu.filter(obj => obj.name !== action.payload.name);
+        return{...state, menu: removeReal}
+      case ActionTypes.GET_UPDATE_MENU:
+        const updateReal = state.menu.map(obj => obj.name === action.payload.name ? obj=action.payload.update : obj);
+        return {...state, menu: updateReal}
       default:
         return state;
     }

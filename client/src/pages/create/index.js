@@ -82,7 +82,7 @@ const Create = ({ menus, doGetMenu, route, navTo, createMenu, hasMore, loadingMo
           loadingMore={loadingMore}
           loader={<Spinner />}
           >
-            {menus.map( (obj, index) =>   <Menu key={index} menu={obj.name} route={route} navTo={navTo} /> )}
+            {menus.map( (obj, index) =>   <Menu key={index} menu={obj.name} level={obj.level} route={route} navTo={navTo} /> )}
 
           </InfiniteScroll>}
 

@@ -16,12 +16,24 @@ export const registerMenuObservable = name =>
       cursor.close();
     }
   }))
-  .map(row => row.new_val)
-  .filter(menu => !!menu)
-  .map(menu => ({
-    type: ActionTypes.GET_MENU_NAME,
-    payload: menu,
-  }))
+  .map(row => Object.assign({},{new: row.new_val}, {old: row.old_val}))
+  .map(menu => (
+    menu.new && !menu.old ?
+    {
+      type: ActionTypes.GET_MENU_NAME,
+      payload: menu.new,
+    }
+    : menu.old && !menu.new ?
+      {
+        type: ActionTypes.GET_DELETE_MENU,
+        payload: menu.old.name,
+      }
+      :
+      {
+        type: ActionTypes.GET_UPDATE_MENU,
+        payload: {name: menu.old.name, update: menu.new},
+      }
+))
   .catch(error => Observable.of(
     Actions.addNotificationAction({text: error.toString(), alertType: 'danger'})
   ));

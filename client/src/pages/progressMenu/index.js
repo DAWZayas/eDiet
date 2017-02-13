@@ -46,7 +46,7 @@ class Calendar extends React.Component{
     const f = new Date();
     let events = [];
     for (let i=1, j=0; moment().daysInMonth(f.getMonth()+1)>=i; i++, j++){
-        if(j === this.props.menuLevel.length-1) j=0;
+        if(j === this.props.menuLevel.length) j=0;
         if(this.props.menuLevel.length-1 > 0){
           const obj = {
             'title': this.props.menuLevel[j].name,
