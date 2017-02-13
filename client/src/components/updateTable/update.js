@@ -1,48 +1,48 @@
 import React, {Component} from 'react';
 
 let exerciseNewName;
-let exerciseCalories;
-let exerciseType;
-let exerciseTime;
+let exerciseNewLevel;
 
 export default class UpdateTable extends Component {
-  render(){
-    const getTableName = () => {
-      const array = this.props.route.split('/');
-      const table = array[array.length - 3];
-      const exercise = array[array.length - 1];
-      this.state = {table: table, exercise: exercise};
-    };
+  constructor(props) {
+    super(props);
+    this.state = {exercise: null, select: undefined};
 
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentWillMount() {
+    const array = this.props.route.split('/');
+    const table = array[array.length - 3];
+    const exercise = array[array.length - 1];
+    this.setState({exercise: exercise});
+  }
+
+  handleChange(e) {
+    this.setState({select: e.target.value});
+  }
+
+  render() {
     const handleUpdate = (e) => {
       e.preventDefault();
-      const table = this.state.table;
       const name = this.state.exercise;
       const newName = exerciseNewName.value;
-      const type = exerciseType.value;
-      const time = exerciseTime.value;
-      const calories = exerciseCalories.value;
-      this.props.updateTable({table, name, newName, calories, type, time});
+      const newLevel = this.state.select;
+      this.props.updateTable({name, newName, newLevel});
       clearFields();
       return false;
     };
 
     const clearFields = () => {
       exerciseNewName.value = '';
-      exerciseNewName.placeholder="Nuevo nombre...";
-      exerciseType.value = '';
-      exerciseType.placeholder="Nuevo tipo...";
-      exerciseTime.value = '';
-      exerciseTime.placeholder="Nuevo tiempo...";
-      exerciseCalories.value = '';
-      exerciseCalories.placeholder="Nuevas calorías quemadas...";
+      exerciseNewName.placeholder="New name...";
       return false;
     };
 
     return(
       <div className="panel panel-default">
         <div className="panel-heading">
-          Actualizar ejercicio
+          Update table
         </div>
         <div className="panel-body">
           <div>
@@ -51,36 +51,25 @@ export default class UpdateTable extends Component {
                 type="text"
                 className="form-control"
                 id="exerciseNewName"
-                placeholder="Nuevo nombre..."
+                placeholder="New name..."
                 ref={(i) => { exerciseNewName = i; }}
               />
             </div>
             <div className="col-sm-10">
-              <input
-                type="text"
+              <select
                 className="form-control"
-                id="exerciseTime"
-                placeholder="Nuevo tiempo..."
-                ref={(i) => { exerciseTime = i; }}
-              />
-            </div>
-            <div className="col-sm-10">
-              <input
-                type="text"
-                className="form-control"
-                id="exerciseType"
-                placeholder="Nuevo tipo..."
-                ref={(i) => { exerciseType = i; }}
-              />
-            </div>
-            <div className="col-sm-10">
-              <input
-                type="text"
-                className="form-control"
-                id="exerciseCalories"
-                placeholder="Nuevas calorías quemadas..."
-                ref={(i) => { exerciseCalories = i; }}
-              />
+                name="newLevel"
+                id="newLevel"
+                value={this.state.select}
+                onChange={this.handleChange}
+              >
+                <option value=" ">Select a table level</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
             </div>
           </div>
         <div className="panel-footer">
@@ -90,7 +79,7 @@ export default class UpdateTable extends Component {
         </div>
       </div>
     </div>
-      
+
     );
   }
 }

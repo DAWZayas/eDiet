@@ -64,6 +64,23 @@ export const tables = (state = initialState, action) => {
         tables: table,
       };
 
+    case ActionTypes.GET_DELETE_TABLE:
+      const tables = state.tables.filter(table => table.name !== action.payload);
+      return {
+        ...state,
+        tables
+      }
+
+    case ActionTypes.GET_UPDATE_TABLE:
+    console.log('>>', action);
+      const tableUpdate = state.tables.map(obj => obj.name === action.payload.old ? obj = action.payload.new : obj);
+
+      return {
+        ...state,
+        tables: tableUpdate
+      }
+
+
     default:
       return state;
   }

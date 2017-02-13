@@ -23,12 +23,12 @@ export const registerMenuObservable = name =>
     payload: menu,
   }))
   .catch(error => Observable.of(
-    Actions.addNotificationAction({text: error.toString(), alertType: 'danger'}),
+    Actions.addNotificationAction({text: error.toString(), alertType: 'danger'})
   ));
 
 export const registerTableObservable = name =>
   Observable.fromPromise(connPromise)
-  .concatMap(conn => Observable.fromPromise(r.table('Exercise').changes().run(conn)))
+  .concatMap(conn => Observable.fromPromise(r.table('Exercise').without('exercises').changes().run(conn)))
   .switchMap(cursor => Observable.create((observer) => {
     cursor.each((err, row) => {
       if (err) throw err;
@@ -38,12 +38,25 @@ export const registerTableObservable = name =>
       cursor.close();
     }
   }))
-  .map(row => row.new_val)
-  .filter(table => !!table)
-  .map(table => ({
-    type: ActionTypes.GET_CREATE_TABLE,
-    payload: table,
-  }))
+  .map(row => Object.assign({}, {new: row.new_val}, {old: row.old_val}))
+  .map(table => (
+    table.new && !table.old?
+      {
+        type: ActionTypes.GET_CREATE_TABLE,
+        payload: table.new,
+      }
+    :
+      !table.new && table.old ?
+        {
+          type: ActionTypes.GET_DELETE_TABLE,
+          payload: table.old.name,
+        }
+        :
+          {
+            type: ActionTypes.GET_UPDATE_TABLE,
+            payload: {old: table.old.name, new: table.new}
+          }
+  ))
   .catch(error => Observable.of(
-    Actions.addNotificationAction({text: error.toString(), alertType: 'danger'}),
+    Actions.addNotificationAction({text: error.toString(), alertType: 'danger'})
   ));

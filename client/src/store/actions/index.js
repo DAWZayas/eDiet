@@ -25,7 +25,8 @@ export {
 export {
   getTablesAction,
   getCreateTableAction,
-  createTableAction, deleteTableAction, updateTableAction
+  createTableAction, deleteTableAction, updateTableAction,
+  getDeleteTable, getUpdateTable
 } from './table';
 export {
   getExercisesAction,

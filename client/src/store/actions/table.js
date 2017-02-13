@@ -24,3 +24,13 @@ export const updateTableAction = payload => ({
   type: ActionTypes.UPDATE_TABLE,
   payload,
 });
+
+export const getDeleteTableAction = payload => ({
+  type: ActionTypes.GET_DELETE_TABLE,
+  payload,
+});
+
+export const getUpdateTableAction = payload => ({
+  type: ActionTypes.GET_UPDATE_TABLE,
+  payload,
+});
