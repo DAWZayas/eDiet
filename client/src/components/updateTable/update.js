@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 let exerciseNewName;
-let exerciseNewLevel;
 
 export default class UpdateTable extends Component {
   constructor(props) {
@@ -27,8 +26,8 @@ export default class UpdateTable extends Component {
       e.preventDefault();
       const name = this.state.exercise;
       const newName = exerciseNewName.value;
-      const newLevel = this.state.select;
-      this.props.updateTable({name, newName, newLevel});
+      const level = this.state.select;
+      this.props.updateTable({name, newName, level});
       clearFields();
       return false;
     };

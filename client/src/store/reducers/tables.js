@@ -58,7 +58,8 @@ export const tables = (state = initialState, action) => {
       };
 
     case ActionTypes.UPDATE_TABLE_SUCCESS:
-      const table = state.tables.map(obj => obj.id === action.payload.id ? obj = action.payload : obj);
+    console.log(action.payload)
+      const table = state.tables.map(obj => obj.name === action.payload.name ? obj = action.payload : obj);
       return {
         ...state,
         tables: table,
@@ -72,7 +73,6 @@ export const tables = (state = initialState, action) => {
       }
 
     case ActionTypes.GET_UPDATE_TABLE:
-    console.log('>>', action);
       const tableUpdate = state.tables.map(obj => obj.name === action.payload.old ? obj = action.payload.new : obj);
 
       return {
