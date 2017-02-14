@@ -3,7 +3,6 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
 .container {
   margin: 5% 0 0 0;
   img {
-    
     width: 100%;
     margin-bottom: 7%;
   }
@@ -32,13 +31,13 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
 .button1 {
   background-color: rgb(214, 237, 28);
   border-radius: 12px;
-  padding: 14px 40px;
+  //padding: 14px 40px;
 }
 
 .button2 {
   background-color: rgb(89, 221, 26);
   border-radius: 12px;
-  padding: 14px 29px;
+  //padding: 14px 29px;
 }
 
 .exercises {

@@ -5,17 +5,24 @@ const styles = require('./style.scss');
 class Plannings extends Component{
   constructor(props) {
    super(props);
-   this.state = {backgroundColor: 'rgb(255, 255, 255)'};
+   this.state = {backgroundColor: 'rgb(255, 255, 255)', apple:null};
   }
 
   componentWillMount(){
-
     const {level}=this.props;
-     level === 1 ? this.setState({backgroundColor: 'rgba(12, 145, 82, 0.2)'}) :
-      level === 2 ? this.setState({backgroundColor: 'rgba(12, 145, 82, 0.4)'}) :
-       level === 3 ? this.setState({backgroundColor:'rgba(12, 145, 82, 0.6)'}):
-        level === 4 ? this.setState({backgroundColor:'rgba(12, 145, 82, 0.8)'}) :
-         level === 5 ? this.setState({backgroundColor:'rgba(12, 145, 82, 1.2)'}) : null
+
+    let apple=[];
+    for (let i = 0; i < this.props.level; i++) {
+      apple.push(<span key={i} className='glyphicon glyphicon-apple' style={{color:'rgba(12, 145, 82, 0.6)'}}></span>);
+    }
+
+    this.setState({apple});
+
+     level === 1 ? this.setState({backgroundColor: 'rgba(240, 154, 54, 0.3)'}) :
+      level === 2 ? this.setState({backgroundColor: 'rgba(240, 154, 54, 0.4)'}) :
+       level === 3 ? this.setState({backgroundColor:'rgba(240, 154, 54, 0.6)'}):
+        level === 4 ? this.setState({backgroundColor:'rgba(240, 154, 54, 0.8)'}) :
+         level === 5 ? this.setState({backgroundColor:'rgba(240, 154, 54, 1.0)'}) : null;
   }
 
   render(){
@@ -33,23 +40,24 @@ class Plannings extends Component{
     };
 
     return(
-      <div className={`container ${styles.container}`}>
-        <div className={`${styles.group}`}>
-          <div className="col-xs-12 col-sm-5 col-lg-4">
-            <div className={`${styles.efecto}`}>
-              <img className="img-circle"
-                src={image}
-                alt="Menu image"
-             />
-            </div>
-
-          </div>
-          <div className={`col-xs-12 col-sm-6 col-lg-6 `} >
+          <div className={`col-xs-12 col-sm-6 col-lg-12 `} >
             <div className={`panel panel-default ${styles.info}`}>
               <div className={`panel panel-heading`} style={style.heading}>
+                {this.state.apple}
                 <p>{name}</p>
                 <p>Level:{level}</p>
               </div>
+              <div className={`container ${styles.container}`}>
+                <div className={`${styles.group}`}>
+                  <div className="col-xs-12 col-sm-5 col-lg-4">
+                    <div className={`${styles.efecto}`}>
+                      <img className="img-circle"
+                        src={image}
+                        alt="Menu image"
+                     />
+                    </div>
+
+                  </div>
               <div className={`panel panel-body ${styles.body}`} >
                 <div className={`${styles.commonElement} ${styles.menus}`}>
                   <Link to={`planning/menu/${level}`}><button  className={`btn btn-default ${styles.button1}`}>Menu</button></Link>
