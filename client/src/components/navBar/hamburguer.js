@@ -33,11 +33,15 @@ export default class Hamburger extends Component {
         url: "/tables",
       },
       {
+        body: "Upload files",
+        url: "/uploadFiles",
+      },
+      {
         class: "divider",
       }
     ];
 
-    const printList = list.map((obj, index) => obj.body === 'Menus admin' || obj.body === 'Exercises admin' ?
+    const printList = list.map((obj, index) => obj.body === 'Menus admin' || obj.body === 'Exercises admin' || obj.body === 'Upload files' ?
       this.props.user ?
         this.props.user.role ?
           this.props.route === obj.url ?
