@@ -1,48 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
 $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
-
-.container {
-  margin: 5% 0 0 0;
-  img {
-    width: 100%;
-    margin-bottom: 7%;
-  }
-}
-
-.group {
-  display: inline-flex;
-  flex-wrap: wrap;
-}
-
-.info {
-  text-align: center;
-}
-
-.heading {
-  border: none;
-  width: 100;
-}
-
-.commonElement {
-  border-radius: 2%;
-  margin: 0 auto;
-  padding: 1%;
-}
-
-.button1 {
-  background-color: rgb(214, 237, 28);
-  border-radius: 12px;
-  //padding: 14px 40px;
-}
-
-.button2 {
-  background-color: rgb(89, 221, 26);
-  border-radius: 12px;
-  //padding: 14px 29px;
-}
-
-.exercises {
-  margin: 2% 0 0 0;
-}
 
 .followButton {
   background: rgb(232, 142, 58);
@@ -68,15 +26,18 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
   color: rgb(255, 255, 255);
 }
 
-.body {
-  border: none;
+.efecto {
+  width: 40%;
+  margin: 0 0 3% 0;
+  img {
+    width: 100%;
+  }
 }
 
-.panel {
-  background: rgb(255, 255, 255);
-  border: none;
-  margin-bottom: 0;
-}
 .efecto:hover {
   transform: scale(1.15);
+}
+
+.button {
+  margin-left: 3%;
 }

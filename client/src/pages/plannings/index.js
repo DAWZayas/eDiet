@@ -2,9 +2,9 @@ import React from 'react';
 import dataArray from './dataArray';
 import {connect} from 'react-redux';
 import Planning from '../../components/plannings';
-
 import {updateMenuLevelAction} from '../../store/actions';
 
+const styles = require('./styles.scss');
 
 const mapStateToProps = (state) => ({
    userAuth: state.auth.user,
@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Plannigns =({updateMenus, userAuth}) =>{
   return(
-    <div className="container">
+    <div className={`container-fluid ${styles.panels}`}>
       {
         dataArray.map((obj, index) =>
           <Planning

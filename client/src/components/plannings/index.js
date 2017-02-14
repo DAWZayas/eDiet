@@ -1,6 +1,32 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
+
 const styles = require('./style.scss');
+const style = {
+  heading: {
+    backgroundColor: 'rgb(255, 255, 255)',
+    width: '100%',
+    padding: '0',
+    fontFamily: '\'Lobster\', cursive',
+    textAlign: 'center',
+    fontSize: '2em',
+    borderBottom: 'none'
+  },
+  panel: {
+    margin: '3% 2% 0 0',
+    padding: '3%',
+  },
+  body: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
+  footer: {
+    backgroundColor: 'rgb(255, 255, 255)',
+    boxShadow: 'none',
+    borderTop: 'none',
+  }
+};
 
 class Plannings extends Component{
   constructor(props) {
@@ -17,22 +43,11 @@ class Plannings extends Component{
     }
 
     this.setState({apple});
-
-     level === 1 ? this.setState({backgroundColor: 'rgba(240, 154, 54, 0.3)'}) :
-      level === 2 ? this.setState({backgroundColor: 'rgba(240, 154, 54, 0.4)'}) :
-       level === 3 ? this.setState({backgroundColor:'rgba(240, 154, 54, 0.6)'}):
-        level === 4 ? this.setState({backgroundColor:'rgba(240, 154, 54, 0.8)'}) :
-         level === 5 ? this.setState({backgroundColor:'rgba(240, 154, 54, 1.0)'}) : null;
   }
 
   render(){
     const {name, level, image} = this.props;
-    const style = {
-      heading: {
-        width: '100%',
-        backgroundColor: `${this.state.backgroundColor}`
-      }
-    };
+
     const handleFollow = (e) =>{
       const {level,userAuth} = this.props;
       e.preventDefault();
@@ -40,40 +55,34 @@ class Plannings extends Component{
     };
 
     return(
-          <div className={`col-xs-12 col-sm-6 col-lg-12 `} >
-            <div className={`panel panel-default ${styles.info}`}>
-              <div className={`panel panel-heading`} style={style.heading}>
-                {this.state.apple}
-                <p>{name}</p>
-                <p>Level:{level}</p>
-              </div>
-              <div className={`container ${styles.container}`}>
-                <div className={`${styles.group}`}>
-                  <div className="col-xs-12 col-sm-5 col-lg-4">
-                    <div className={`${styles.efecto}`}>
-                      <img className="img-circle"
-                        src={image}
-                        alt="Menu image"
-                     />
-                    </div>
+      <div className="panel panel-default col-xs-12 col-md-5 col-lg-4" style={style.panel}>
+        <div className="panel-heading" style={style.heading}>
+          <p>{name}</p>
+          <p>Level: {level}</p>
+          <hr style={{width:'40%'}}/>
 
-                  </div>
-              <div className={`panel panel-body ${styles.body}`} >
-                <div className={`${styles.commonElement} ${styles.menus}`}>
-                  <Link to={`planning/menu/${level}`}><button  className={`btn btn-default ${styles.button1}`}>Menu</button></Link>
-                </div>
-                <div className={`${styles.commonElement} ${styles.exercises}`}>
-                  <Link to={`/plannings/${level}/exercises`}><button className={`btn btn-default ${styles.button2}`}>Exercises</button></Link>
-                </div>
-              </div>
-              <div className={`panel panel-footer ${styles.panel}`}>
-                <button className={`${styles.followButton}`} onClick={handleFollow}>
-                  Follow diet!
-                </button>
-              </div>
-            </div>
-            </div>
+        </div>
+        <div className={`panel-body ${style.body}`} style={style.body}>
+          <div className={`${styles.efecto}`}>
+            <img className="img-circle col-xs-12"
+              src={image}
+              alt="Menu image"
+            />
           </div>
+          <div className="col-xs-12" style={{display: 'inline-flex', justifyContent: 'center'}}>
+            <center>
+                <Link to={`planning/menu/${level}`} style={{marginRight: '1%'}}><button  className={`btn btn-default`}>Menu</button></Link>
+                <Link to={`/plannings/${level}/exercises`}><button className={`btn btn-default`}>Exercises</button></Link>
+            </center>
+          </div>
+        </div>
+        <div className="panel-footer" style={style.footer}>
+          <center>
+          <button className={`${styles.followButton}`} onClick={handleFollow}>
+            Follow diet!
+          </button>
+          </center>
+        </div>
       </div>
     );
   }
