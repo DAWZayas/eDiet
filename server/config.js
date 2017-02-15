@@ -3,9 +3,11 @@ export const db = {
   port: process.env.EXPERTS_DB_PORT || 28015,
   db: 'expertsdb',
 };
+
 exports.server = {
   host: process.env.EXPERTS_SERVER_URL || 'localhost',
   port: process.env.EXPERTS_SERVER_PORT || 8080,
+  protocol: process.env.EXPERTS_SERVER_PROTOCOL || 'http'
 };
 
 exports.client = {

@@ -46,9 +46,6 @@ import planningExercises from './pages/planningsExercises';
 import exercisesDetail from './pages/exercisesDetail';
 import MyPlanMenus from './pages/myPlanMenus';
 import MyPlanExercises from './pages/myPlanExercises';
-// Upload files
-import UploadFiles from './pages/uploadFiles';
-
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -86,8 +83,6 @@ ReactDOM.render((
           <Route path="/plannings/:level/exercises" component={planningExercises} onEnter={requireAuth} />
           <Route path="/planning/menu/:level" component={ProgressMenu} onEnter={requireAuth} />
           <Route path="/planning/menu/level/:nameMenu" component={ShowMenu} onEnter={requireAuth} />
-          // Upload files
-          <Route path="/uploadFiles" component={UploadFiles} onEnter={requireAuth} />
 
         <Route path="*" component={NotFound} />
       </Route>

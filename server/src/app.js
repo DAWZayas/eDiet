@@ -15,6 +15,7 @@ import setupUserRoutes from './user';
 import setupMenuRoutes from './diet';
 import setupExerciseTableRoutes from './exerciseTable';
 import setupExercisesRoutes from './exerciseTable/exercises';
+import setupUploadsRoutes from './uploads';
 
 // init app
 const app = express();
@@ -44,6 +45,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use('/static', express.static('uploads'));
+
 // test method
 app.get('/', (req, res) => {
   res.send('Hello world!');
@@ -58,6 +61,8 @@ setupMenuRoutes(app);
 setupExerciseTableRoutes(app);
 // setup Exercises routes
 setupExercisesRoutes(app);
+// Uploads
+setupUploadsRoutes(app);
 
 // catch all unhandled errors
 app.use((err, req, res, next) => {

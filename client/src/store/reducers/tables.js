@@ -58,7 +58,6 @@ export const tables = (state = initialState, action) => {
       };
 
     case ActionTypes.UPDATE_TABLE_SUCCESS:
-    console.log(action.payload)
       const table = state.tables.map(obj => obj.name === action.payload.name ? obj = action.payload : obj);
       return {
         ...state,

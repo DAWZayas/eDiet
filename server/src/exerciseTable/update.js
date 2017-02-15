@@ -17,6 +17,7 @@ export default (app) => {
     }
 
     try {
+      console.log('>>>', level);
       tables = await Exercise;
       table = tables.filter(table => table.name === req.params.name).reduce((a,b) => a.concat(b));
       if (req.user.id !== table.owner) {

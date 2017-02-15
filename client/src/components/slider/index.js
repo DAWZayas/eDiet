@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
+import {connect} from 'react-redux';
+import InputImage from '../inputFile';
 
 const styles = require('./style.scss');
 
-export default class AutoPlay extends Component {
+const mapStateToProps = state => ({
+  user: state.auth.user
+});
+
+const mapDispatchToProps = dispatch => ({
+
+});
+
+class AutoPlay extends Component {
   render() {
     const settings = {
       dots: true,
@@ -17,14 +27,23 @@ export default class AutoPlay extends Component {
     };
 
     return (
-      <div className={`${styles.slider}`} >
-        <Slider {...settings}>
-            <img src="../../../images/slider/1.jpg" />
-            <img src="../../../images/slider/3.jpg" />
-            <img src="../../../images/slider/2.jpg" />
-            <img src="../../../images/slider/4.jpg" />
-        </Slider>
+      <div>
+        <div className={`${styles.slider}`} >
+          <Slider {...settings}>
+              <img src="../../../images/slider/1.jpg" />
+              <img src="../../../images/slider/3.jpg" />
+              <img src="../../../images/slider/2.jpg" />
+              <img src="../../../images/slider/4.jpg" />
+          </Slider>
+        </div>
+        {this.props.user ?
+          this.props.user.role ?
+            <InputImage route={'slider'} />
+          : null
+        : null}
       </div>
     );
   }
 }
+
+export default connect (mapStateToProps, null)(AutoPlay);
