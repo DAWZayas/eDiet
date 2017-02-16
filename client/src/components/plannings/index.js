@@ -10,7 +10,7 @@ const style = {
     fontFamily: '\'Lobster\', cursive',
     textAlign: 'center',
     fontSize: '2em',
-    borderBottom: 'none'
+    borderBottom: 'none',
   },
   panel: {
     margin: '3% 2% 0 0',
@@ -59,7 +59,7 @@ class Plannings extends Component{
         <div className="panel-heading" style={style.heading}>
           <p>{name}</p>
           <p>Level: {level}</p>
-          <hr style={{width:'40%'}}/>
+          <hr style={{width:'65%',border: '1px solid'}}/>
 
         </div>
         <div className={`panel-body ${style.body}`} style={style.body}>
