@@ -24,11 +24,11 @@ const app = express();
 app.use(morgan('combined', {stream: logger.stream}));
 
 // setup CORS
-app.use(cors())
+app.use(cors());
 
 // add body parsing
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.json({limit: '10mb'}));
+app.use(bodyParser.urlencoded({extended: true, limit: '10mb'})); // for parsing application/x-www-form-urlencoded
 
 // add cookie parsing
 app.use(cookieParser());

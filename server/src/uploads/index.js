@@ -5,23 +5,49 @@ import {asyncRequest} from '../util';
 import fs from 'fs';
 import {server as serverConfig} from '../../config';
 
+
+
 export default (app) => {
   app.post('/api/upload/picture', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
-    console.log(req.body)
-    const {image, route} =  req.body;
-    console.log('>>>>>', image, route)
+    const {image, name, route} =  req.body;
+    let base64Data;
 
     try {
-      const base64Data = decodeURIComponent(image).replace(/^data:image\/png;base64,/, '');
-      console.log('>>>>>>>>>>>>>', base64Data)
-      fs.writeFileSync(__dirname + `/../../uploads/images/${route}/` + '1' + '.png', base64Data, 'base64');
-      slider = `${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/static/uploads/images` + '1' + '.png';
+      if (/.png/.test(name))
+        base64Data = decodeURIComponent(image).replace(/^data:image\/png;base64,/, '');
 
-      res.send([slider]);
-      res.sendStatus(201);
+      if (/.jpeg/.test(name)) {
+        base64Data = decodeURIComponent(image).replace(/^data:image\/jpeg;base64,/, '');
+      }
+
+      if (/.jpg/.test(name)) {
+        base64Data = decodeURIComponent(image).replace(/^data:image\/jpeg;base64,/, '');
+      }
+
+      fs.writeFileSync(__dirname + `/../../uploads/images/${route}/` + name, base64Data, 'base64');
+      const slider = `${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/static/uploads/images/${route}/` + name;
+
+      res.status(201));
 
     } catch (e) {
       res.status(400).send({error: 'Imagen not found!'});
+    }
+
+  }));
+
+  app.post('/api/upload/text', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+    const {text, name} =  req.body;
+
+    try {
+      const data =  decodeURIComponent(text).replace(/^data:text\/plain;base64,/, '');
+
+      fs.writeFileSync(__dirname + `/../../uploads/texts/` + name, data, 'base64');
+      const texts = `${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/static/uploads/texts/` + name;
+
+      res.status(201));
+
+    } catch (e) {
+      res.status(400).send({error: 'Text not found!'});
     }
 
   }));

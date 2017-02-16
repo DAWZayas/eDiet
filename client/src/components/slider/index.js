@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 import {connect} from 'react-redux';
-import InputImage from '../inputFile';
+import Image from '../inputFile/image';
 
 const styles = require('./style.scss');
 
 const mapStateToProps = state => ({
   user: state.auth.user
-});
-
-const mapDispatchToProps = dispatch => ({
-
 });
 
 class AutoPlay extends Component {
@@ -38,7 +34,7 @@ class AutoPlay extends Component {
         </div>
         {this.props.user ?
           this.props.user.role ?
-            <InputImage route={'slider'} />
+            <Image route={'slider'} />
           : null
         : null}
       </div>

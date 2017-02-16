@@ -9,7 +9,7 @@ import {addObservable} from './realTime';
 import {updatePassword, updateHeight, updateEmail, getUser, facebookLogin, addWeight, addImc, deleteUser} from './user';
 import {getPlanningExercises, updatePlanningExercises} from './plannings';
 import {updateMenuExercise} from './menuExercise';
-import {uploadPicture} from './uploads';
+import {uploadPicture, uploadText} from './uploads';
 
 
 export default [
@@ -65,5 +65,6 @@ export default [
   updatePlanningExercises,
   updateMenuExercise,
   updateMenuLevel,
-  uploadPicture
+  uploadPicture,
+  uploadText
 ];
