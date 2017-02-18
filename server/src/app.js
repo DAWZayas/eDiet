@@ -45,7 +45,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/static', express.static('uploads'));
+app.use(express.static('public'));
 
 // test method
 app.get('/', (req, res) => {
