@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Sansita');
 
 .userButtons, .dietButtons {
   display: inline-flex;
   flex-wrap: wrap;
+  font-family: 'Sansita', sans-serif;
   justify-content: center;
   width: 100%;
   button {
@@ -37,4 +39,5 @@
 .footer {
   background-color: rgb(255, 255, 255);
   border: none;
+  font-family: 'Sansita', sans-serif;
 }

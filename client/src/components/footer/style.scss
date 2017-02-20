@@ -1,16 +1,10 @@
-@font-face {
-    font-family: 'rubikregular';
-    src: url('../../../fonts/rubik/rubik-regular-webfont.woff2') format('woff2'),
-         url('../../../fonts/rubik/rubik-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css?family=Sansita');
 
 $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
 
 .footer {
 	box-sizing: border-box;
-	font-family: rubikregular;
+	font-family: 'Sansita', sans-serif;
 	text-align: left;
 	width: 100%;
   background-color: rgb(232, 142, 58);
@@ -31,7 +25,7 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
   flex-wrap: wrap;
 }
 
-.social, .links {
+.social {
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;

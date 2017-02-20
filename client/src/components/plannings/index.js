@@ -13,8 +13,7 @@ const style = {
     borderBottom: 'none',
   },
   panel: {
-    margin: '3% 2% 0 0',
-    padding: '3%',
+    margin: '3% 5% 0 0'
   },
   body: {
     display: 'flex',
@@ -36,13 +35,6 @@ class Plannings extends Component{
 
   componentWillMount(){
     const {level}=this.props;
-
-    let apple=[];
-    for (let i = 0; i < this.props.level; i++) {
-      apple.push(<span key={i} className='glyphicon glyphicon-apple' style={{color:'rgba(12, 145, 82, 0.6)'}}></span>);
-    }
-
-    this.setState({apple});
   }
 
   render(){
@@ -55,7 +47,7 @@ class Plannings extends Component{
     };
 
     return(
-      <div className="panel panel-default col-xs-12 col-md-5 col-lg-4" style={style.panel}>
+      <div className="panel panel-default col-xs-12 col-md-5" style={style.panel}>
         <div className="panel-heading" style={style.heading}>
           <p>{name}</p>
           <p>Level: {level}</p>
@@ -70,10 +62,8 @@ class Plannings extends Component{
             />
           </div>
           <div className="col-xs-12" style={{display: 'inline-flex', justifyContent: 'center'}}>
-            <center>
-                <Link to={`planning/menu/${level}`} style={{marginRight: '1%'}}><button  className={`btn btn-default`}>Menu</button></Link>
-                <Link to={`/plannings/${level}/exercises`}><button className={`btn btn-default`}>Exercises</button></Link>
-            </center>
+            <Link to={`planning/menu/${level}`} style={{marginRight: '1%'}}><button  className={`btn btn-default`}>Menu</button></Link>
+            <Link to={`/plannings/${level}/exercises`}><button className={`btn btn-default`}>Exercises</button></Link>
           </div>
         </div>
         <div className="panel-footer" style={style.footer}>

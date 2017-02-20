@@ -17,16 +17,17 @@ class Image extends Component {
   }
 
   render() {
-    const {route} = this.props;
+    const {route, name} = this.props;
 
     const handleChange = event => {
       const reader = new FileReader();
       const file = event.target.files[0];
-      const name = event.target.files[0].name;
+      const extension = event.target.files[0].name.split('.');
+      const imageName = name + '.' + extension[1];
       document.getElementById('uploadFile').textContent = event.target.files[0].name;
       reader.onload = (e) => {
         image = e.target.result;
-        this.setState({image, name});
+        this.setState({image, name: imageName});
       };
       reader.readAsDataURL(file);
     }
@@ -34,17 +35,13 @@ class Image extends Component {
     const handleUpdate = e => {
       e.preventDefault();
       const image = encodeURIComponent(this.state.image);
-
       this.props.uploadPicture({image, name: this.state.name, route});
     }
 
     return (
       <div>
-        <p>
-          Change slider pictures
-        </p>
         <label className="btn btn-default">
-          <i className="fa fa-upload fa-2x" aria-hidden="true" /> Select file
+          <i className="fa fa-upload" aria-hidden="true" />
           <input
             type="file"
             accept="image/png, image/jpeg, image/jpg"
@@ -52,11 +49,11 @@ class Image extends Component {
             onChange = {handleChange}
           />
         </label>
-       <span id="uploadFile"></span>
-       <button className="btn btn-default" onClick={handleUpdate}>
-          Upload File
-       </button>
-      </div>
+        <button className="btn btn-default" onClick={handleUpdate}>
+          Upload
+        </button>
+        <div id="uploadFile"></div>
+     </div>
     );
   }
 }

@@ -5,8 +5,12 @@ import {Link} from 'react-router';
 const styles = require('./style.scss');
 const style = {
   heading: {
-    backgroundColor: 'rgba(232, 142, 58, 0.329412)',
-    width: '100%'
+    background: 'rgb(255, 255, 255)',
+    borderBottom: 'none',
+    width: '100%',
+    fontFamily: '\'Sansita\', sans-serif',
+    fontSize: '1.5em',
+    textAlign: 'center',
   },
   panel: {
     margin: '3% 2% 0 0',
@@ -29,9 +33,7 @@ export default class Get extends Component {
       <div className={`container ${styles.main}`}>
         <div>
           <h1>
-            <center>
-              Table: {route}
-            </center>
+            Table: {route}
           </h1>
         </div>
         <div className={`container ${styles.panels}`}>
@@ -39,8 +41,8 @@ export default class Get extends Component {
             exercises.map((obj, index) =>
               <div className="panel panel-default col-xs-12 col-md-5 col-lg-3" key={index} style={style.panel}>
                 <div className="panel-heading" style={style.heading}>
-                  <i className="glyphicon glyphicon-play-circle" />
-                  &nbsp;&nbsp;&nbsp; {obj.name}
+                 {obj.name}
+                 <hr className={`${styles.hr}`}/>
                 </div>
                 <div className="panel-body">
                   <ul className={`list-group ${styles.caracteristics}`}>

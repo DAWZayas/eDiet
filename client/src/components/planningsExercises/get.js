@@ -5,6 +5,8 @@ import moment from 'moment';
 import {connect} from 'react-redux';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
+const style = require('./style.scss');
+
 BigCalendar.momentLocalizer(moment);
 
 export default class Get extends Component {
@@ -64,7 +66,7 @@ export default class Get extends Component {
     this.state = {events}
 
     return (
-      <div className="container" style={{marginTop: '5%'}}>
+      <div className={`container ${style.calendar}`}>
         <BigCalendar
           {...this.props}
           events={this.state.events}

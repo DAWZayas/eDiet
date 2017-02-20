@@ -42,7 +42,6 @@ class DayPlanExercises extends Component{
 
     return (
       <div className="panel panel-body">
-
       {exercises.length !== 0 ?
           exercises.map((obj, index) =>
             <ul key={index}>

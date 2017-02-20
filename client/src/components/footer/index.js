@@ -7,9 +7,6 @@ export default class Footer extends React.Component {
       <div className={`footer ${styles.footer}`}>
         <div className={`row`}>
           <center>
-          <div className={`${styles.links}`}>
-            <img src="../../../images/logo/logo.png" height="40" width="40" />
-          </div>
             <div className={`col-xs-12 ${styles.social}`}>
               <a href="https://www.facebook.com">
                 <i className="fa fa-facebook-square fa-3x"></i>
@@ -23,14 +20,14 @@ export default class Footer extends React.Component {
             </div>
             <div className={`${styles.links}`}>
               <p className="footer-links">
-                <a href="#">Home</a>
-                ·
-                <a href="#">Legal & Privacy</a>
-                ·
-                <a href="#">About eDiet</a>
-                ·
-                <a href="#">Faq</a>
-                ·
+                <a href="#">Home </a>
+                · &nbsp;
+                <a href="#">Legal & Privacy </a>
+                · &nbsp;
+                <a href="#">About eDiet </a>
+                · &nbsp;
+                <a href="#">Faq </a>
+                · &nbsp;
                 <a href="#">Contact</a>
               </p>
             </div>

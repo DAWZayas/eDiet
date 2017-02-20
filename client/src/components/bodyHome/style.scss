@@ -1,11 +1,33 @@
-.dietImg {
-  border-radius: 2%;
-  width: 60%;
+@import url('https://fonts.googleapis.com/css?family=Sansita');
+
+.mainText {
+  font-family: 'Sansita', sans-serif;
+  h2 {
+    text-align: center;
+  }
 }
 
-.exerciseImg {
-  border-radius: 2%;
-  width: 60%;
+.exercise, .diet {
+  font-family: 'Sansita', sans-serif;
+  h2 {
+    text-align: center;
+  }
+  img {
+    border-radius: 2%;
+    width: 60%;
+    margin: 0 0 3% 0;
+  }
+}
+
+.logo {
+  font-family: 'Sansita', sans-serif;
+  h2 {
+    text-align: center;
+  }
+  img {
+    width: 30%;
+    margin: 0 0 3% 0;
+  }
 }
 
 .container {

@@ -1,19 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Sansita');
+
 .main {
   margin: 5% 0 0 0;
+  h1 {
+    text-align: center;
+    font-size: 3.2em;
+    font-family: 'Lobster', sans-serif;
+  }
 }
 
 .caracteristics {
   li {
-    margin: 2% 0 0 0;
+    margin: 3% 0 0 0;
     i {
       color: rgb(12, 145, 82);
     }
   }
 }
 
-
 .panels {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.hr {
+  width: 60%;
 }

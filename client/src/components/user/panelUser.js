@@ -8,6 +8,8 @@ const style = {
   header: {
     borderBottom: 'none',
     backgroundColor: 'rgba(232, 142, 58, 0.33)',
+    fontFamily: '\'Sansita\', sans-serif',
+    fontSize: '2em',
   }
 };
 

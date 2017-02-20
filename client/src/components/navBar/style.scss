@@ -1,10 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Sansita');
 
 $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
 
-body {
-  font-family: 'Lato', sans-serif;
-}
 .navBar {
   background-color: transparent;
   background: rgba(0, 0, 0, 0.7);
@@ -15,7 +12,6 @@ body {
 }
 
 .log {
-  font-family: sans-serif;
   #{$a-tags} {
     color: rgb(255, 255, 255);
     text-decoration: none;

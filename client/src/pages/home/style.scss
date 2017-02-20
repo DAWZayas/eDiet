@@ -1,29 +1,14 @@
-@font-face {
-    font-family: 'rubikregular';
-    src: url('../../../fonts/rubik/rubik-regular-webfont.woff2') format('woff2'),
-         url('../../../fonts/rubik/rubik-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'bellotaregular';
-    src: url('../../../fonts/bellota/bellota-bold-webfont.woff2') format('woff2'),
-         url('../../../fonts/bellota/bellota-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 @import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Sansita');
 
 .container {
   text-align: justify;
-  margin: 13% 0 10% 0;
+  margin: 4% 0 10% 0;
 }
 
 .container {
   h3, button {
-    font-family: rubikregular;
+    font-family: 'Sansita', sans-serif;
   }
   p {
     font-family: 'Lato', sans-serif;

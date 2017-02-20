@@ -1,35 +1,41 @@
 import React, {Component} from 'react';
-const styles = require('./style.scss');
-import Text from '../inputFile/text';
+import InputPicture from '../inputFile/image';
+import InputText from '../inputFile/text';
+import {server as serverConfig} from '../../../config';
 
-export default class Diets extends Component {
-  constructor(){
-    super();
-    this.state = {show : true };
+const styles = require('./style.scss');
+
+export default class DietPart extends Component {
+  constructor(props){
+    super(props);
   }
   render() {
-    const handleShow = () => this.setState({show: !this.state.show});
     return (
-        <div className ="col-sm-12 col-md-6 ">
-          <center>
-            <h3 className={`${styles.title}`}>Diet</h3>
-            <img src="../../../images/home/dietImg.jpg" className={`${styles.dietImg}`} alt="..."/>
-          </center>
-          <br/>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          {this.state.show ?
-            <button onClick={handleShow} type="button" className="btn btn-default">
-              More
-            </button>
-          :
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          }
-          <Text />
-        </div>
+      <div className ={`col-sm-12 col-md-6 ${styles.diet}`}>
+        {this.props.user?
+          this.props.user.role ?
+            <h2>Change diet part</h2>
+          : null
+        : null}
+        <center>
+          <h3 className={`${styles.title}`}>Diet</h3>
+          <img src={`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/images/home/diet.` + 'jpg' || 'png'} className={`${styles.exerciseImg}`} alt="..." />
+            {this.props.user?
+              this.props.user.role ?
+                <InputPicture name='diet' route='home'/>
+              : null
+            : null}
+        </center>
+        <br/>
+        <p>
+          {`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/texts/diet.txt`}
+        </p>
+        {this.props.user?
+          this.props.user.role ?
+            <InputText name='diet' route='home' />
+          : null
+        : null}
+      </div>
     );
   }
 }

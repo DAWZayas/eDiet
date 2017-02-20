@@ -22,7 +22,6 @@ const mapDispatchToProps = dispatch => ({
 const Login = ({onLoginClick, navToHome, token}) => {
   let usernameInput;
   let passwordInput;
-  let rememberInput;
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -30,7 +29,6 @@ const Login = ({onLoginClick, navToHome, token}) => {
     onLoginClick({
       login: usernameInput.value,
       password: passwordInput.value,
-      remember: rememberInput.checked,
     });
   };
 
@@ -65,7 +63,6 @@ const Login = ({onLoginClick, navToHome, token}) => {
                 />
             </div>
             <div className="form-group">
-              <a className="pull-right" href="#">Forgot password?</a>
               <label htmlFor="inputPassword">Password</label>
                 <input
                   type="password"
@@ -74,15 +71,6 @@ const Login = ({onLoginClick, navToHome, token}) => {
                   placeholder="Password"
                   ref={(i) => { passwordInput = i; }}
                 />
-            </div>
-            <div className="checkbox pull-right">
-              <label htmlFor="inputRemember">
-                <input
-                  type="checkbox"
-                  id="inputRemember"
-                  ref={(i) => { rememberInput = i; }}
-                /> Remember me
-               </label>
             </div>
             <button type="submit" className={`btn ${style.loginButton}`} onClick={handleClick}>
               Log In

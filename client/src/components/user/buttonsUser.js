@@ -30,7 +30,8 @@ export default class ButttonsUser extends React.Component {
           user.role ?
             <Link to='/user/addAdmin'>
               <button className="btn">
-                  <i className={`fa fa-plus`} aria-hidden="true"></i>  Admin. user
+                <i className={`fa fa-plus`} aria-hidden="true" />
+                &nbsp; Admin. user
               </button>
             </Link>
           : null
