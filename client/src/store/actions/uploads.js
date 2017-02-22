@@ -9,3 +9,8 @@ export const uploadTextAction = payload => ({
   type: ActionTypes.UPLOAD_TEXT,
   payload,
 });
+
+export const getImagesAction = payload => ({
+  type: ActionTypes.GET_IMAGES,
+  payload,
+});

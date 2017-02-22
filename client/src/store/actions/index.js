@@ -45,5 +45,6 @@ export {
   getPlanningExercisesAction, updatePlanningExercisesAction
 } from './plannings';
 export {
-  uploadPictureAction, uploadTextAction
+  uploadPictureAction, uploadTextAction,
+  getImagesAction
 } from './uploads';

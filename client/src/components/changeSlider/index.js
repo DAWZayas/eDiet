@@ -1,34 +1,59 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Slider from 'react-slick';
 import {connect} from 'react-redux';
-import InputFile from '../inputFile/image';
 import {server as serverConfig} from '../../../config';
+import Input from '../inputFile/image';
+const styles = require('./style.scss');
 
-const style = require('./style.scss');
+import {getImagesAction} from '../../store/actions';
 
-export default class ChangeSlider extends Component{
-  render(){
+const mapStateToProps = state => ({
+  user: state.auth.user,
+  images: state.uploads.images,
+  status: state.uploads.status
+});
+
+const mapDispatchToProps = dispatch => ({
+  getImages: payload => dispatch(getImagesAction(payload))
+});
+
+class AutoPlay extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
+    this.props.getImages({folder: 'slider'});
+  }
+
+  render() {
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 5000,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      arrows: false,
+      adaptativeHeight:true,
+    };
+
+    const {images, status} = this.props;
+    let cont = 1;
+
     return (
-      <div className={`container ${style.main}`}>
-        <h2>Change slider pictures</h2>
-        <div className={`container-fluid ${style.pictures}`}>
-          <div className={`${style.picture} col-xs-12 col-sm-6 col-md-3`}>
-            <img src={`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/images/slider/1.` + 'jpg' || 'png'}/>
-            <InputFile route="slider" name="1"/>
-          </div>
-          <div className={`${style.picture} col-xs-12 col-sm-6 col-md-3`}>
-            <img src={`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/images/slider/2.jpg`}/>
-            <InputFile route="slider" name="2"/>
-          </div>
-          <div className={`${style.picture} col-xs-12 col-sm-6 col-md-3`}>
-            <img src={`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/images/slider/3.jpg`}/>
-            <InputFile route="slider" name="3"/>
-          </div>
-          <div className={`${style.picture} col-xs-12 col-sm-6 col-md-3`}>
-            <img src={`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/images/slider/4.jpg`}/>
-            <InputFile route="slider" name="4"/>
-          </div>
-        </div>
+      <div className={`container ${styles.pictures}`}>
+        {status === 'done' ?
+          images.map((image,index) =>
+            <div key={index} className={`col-xs-12 col-sm-6 col-md-3 ${styles.picture}`}>
+              <img src={`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/images/slider/${image}`} />
+              <Input route='slider' name={cont++} />
+            </div>
+          )
+        : null}
       </div>
     );
   }
 }
+
+export default connect (mapStateToProps, mapDispatchToProps)(AutoPlay);

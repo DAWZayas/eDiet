@@ -19,7 +19,7 @@ export const uploadPicture = action$ => action$
       payload: images,
     },
       Actions.addNotificationAction({
-        text: `Se ha subido`, alertType: 'success',
+        text: `Upload correctly, refresh the page`, alertType: 'success',
       })
     ))
     .catch(error => Observable.of({
@@ -53,3 +53,21 @@ export const uploadPicture = action$ => action$
             text: `error: ${ajaxErrorToMessage(error)}`, alertType: 'danger',
           })
         )));
+
+export const getImages = action$ => action$
+  .ofType(ActionTypes.GET_IMAGES)
+  .switchMap(({headers, payload}) => Observable
+    .ajax.get(`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/api/images/${payload.folder}`, headers)
+    .map(res => res.response)
+    .map(images => ({
+      type: ActionTypes.GET_IMAGES_SUCCESS,
+      payload: images,
+    }))
+    .catch(error => Observable.of({
+      type: ActionTypes.GET_IMAGES_ERROR,
+      payload: {error}
+    },
+      Actions.addNotificationAction({
+        text: `error: ${ajaxErrorToMessage(error)}`, alertType: 'danger',
+      }))
+    ));

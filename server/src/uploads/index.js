@@ -25,7 +25,7 @@ export default (app) => {
       const files = fs.readdirSync(__dirname + `/../../public/images/${route}`);
       const filesName = files.map(file => file.split('.'));
       filesName.map(file => file[0] == name.split('.')[0] ? fs.unlinkSync(__dirname + `/../../public/images/${route}/` + file[0] + '.' + file[1]) : null);
-    
+
       fs.writeFileSync(__dirname + `/../../public/images/${route}/` + name, base64Data, 'base64');
       const slider = `${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/static/public/images/${route}/` + name;
 
@@ -53,4 +53,15 @@ export default (app) => {
     }
 
   }));
+
+  app.get('/api/images/:folder', asyncRequest(async (req, res) => {
+    try {
+      const images = fs.readdirSync(__dirname + `/../../public/images/${req.params.folder}/`);
+      res.send(images);
+
+    } catch (e) {
+      res.status(400).send({error: 'Error loading carousel images'});
+    }
+  }));
+
 };
