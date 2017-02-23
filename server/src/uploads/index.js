@@ -38,12 +38,11 @@ export default (app) => {
   }));
 
   app.post('/api/upload/text', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
-    const {text, name} =  req.body;
+    const {text, name} = req.body;
 
     try {
-      const data =  decodeURIComponent(text).replace(/^data:text\/plain;base64,/, '');
-
-      fs.writeFileSync(__dirname + `/../../uploads/texts/` + name, data, 'base64');
+      const data =  decodeURIComponent(text).replace(/^data:text\/plain;base64,/, 'base64');
+      fs.writeFileSync(__dirname + `/../../public/texts/` + name, data);
       const texts = `${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/static/public/texts/` + name;
 
       res.status(201);
