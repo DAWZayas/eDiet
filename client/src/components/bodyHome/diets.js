@@ -15,7 +15,7 @@ export default class DietPart extends Component {
     reader.open('GET', `${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/texts/exercise.txt`, true);
     reader.onload = function(e) {
       const arraybuffer = reader.response;
-      document.getElementById('text').innerHTML = arraybuffer;
+      document.getElementById('text3').innerHTML = arraybuffer;
     }
     reader.send();
   }
@@ -36,7 +36,7 @@ export default class DietPart extends Component {
                 <InputPicture name='diet' route='home'/>
               : null
             : null}
-            <div id="text"></div>
+            <div id="text3"></div>
         </center>
         <br/>
 

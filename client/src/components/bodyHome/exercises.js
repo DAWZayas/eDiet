@@ -15,7 +15,7 @@ export default class ExercisePart extends Component {
     reader.open('GET', `${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/texts/exercise.txt`, true);
     reader.onload = function(e) {
       const arraybuffer = reader.response;
-      document.getElementById('text').innerHTML = arraybuffer;
+      document.getElementById('text2').innerHTML = arraybuffer;
     }
     reader.send();
   }
@@ -36,7 +36,7 @@ export default class ExercisePart extends Component {
               <InputPicture name='exercise' route='home'/>
             : null
           : null}
-          <div id="text"></div>
+          <div id="text2"></div>
         </center>
         <br/>
 

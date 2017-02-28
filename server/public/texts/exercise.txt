@@ -1,1 +1,5 @@
-rfntjbrcnornribrv er nr reqhioq rhqiorvnvbrevubver 125212
+Pretty much, you can't - javascript very deliberately does not have file manipulation functions for security reasons. Imagine if you could: a rogue website could access your HDD and read (or write) and file it wanted to...
+
+If you have a very, very good reason for this, it may be possible under exceptional circumstances and with the clients active permission, but this is not going to occur in the vast majority of cases (and any site which asked me would get told "No" and never visited again).
+
+Why do you want to do that?
