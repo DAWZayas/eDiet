@@ -17,6 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
 const Plannigns =({updateMenus, userAuth}) =>{
   return(
     <div className={`container ${styles.panels}`}>
+      <h1 className={`${styles.title}`}>Lost weight and keep in shape with our plans</h1>
       {
         dataArray.map((obj, index) =>
             <Planning

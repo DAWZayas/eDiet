@@ -29,8 +29,8 @@ export default class mainText extends Component {
           : null
         : null}
 
-        <div id="text"></div>
-        
+        <div id="text" className={`${styles.text}`}></div>
+
         {this.props.user?
           this.props.user.role ?
             <InputText name='main' route='text' />

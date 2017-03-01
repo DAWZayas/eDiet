@@ -13,7 +13,8 @@ const style = {
     borderBottom: 'none',
   },
   panel: {
-    margin: '3% 5% 0 0'
+    margin: '3% 5% 0 0',
+    padding: '3% 0 3% 0'
   },
   body: {
     display: 'flex',

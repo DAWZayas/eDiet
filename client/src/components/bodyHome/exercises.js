@@ -36,7 +36,7 @@ export default class ExercisePart extends Component {
               <InputPicture name='exercise' route='home'/>
             : null
           : null}
-          <div id="text2"></div>
+          <div id="text2" className={`${styles.text}`}></div>
         </center>
         <br/>
 

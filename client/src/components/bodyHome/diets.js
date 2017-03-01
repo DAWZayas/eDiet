@@ -12,7 +12,7 @@ export default class DietPart extends Component {
 
   componentWillMount () {
     const reader = new XMLHttpRequest();
-    reader.open('GET', `${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/texts/exercise.txt`, true);
+    reader.open('GET', `${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/texts/diet.txt`, true);
     reader.onload = function(e) {
       const arraybuffer = reader.response;
       document.getElementById('text3').innerHTML = arraybuffer;
@@ -36,7 +36,7 @@ export default class DietPart extends Component {
                 <InputPicture name='diet' route='home'/>
               : null
             : null}
-            <div id="text3"></div>
+            <div id="text3" className={`${styles.text}`}></div>
         </center>
         <br/>
 
