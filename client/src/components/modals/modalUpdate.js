@@ -30,7 +30,7 @@ export default class Appu extends React.Component {
   }
 
   componentWillMount(){
-    /Menu/.test(this.props.route) ? this.setState({color : 'rgb(232,142,58)'}) : null;
+    /Menu/.test(this.props.route) ? this.setState({color : 'rgb(57, 144, 128)'}) : null;
     /timeFood/.test(this.props.route) ? this.setState({color : 'rgb(12,145,82)'}) : null;
     /food/.test(this.props.route) ? this.setState({color : 'rgb(0,0,0)'}) : null;
   }

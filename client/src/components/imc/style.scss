@@ -25,11 +25,11 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
   text-align: center;
   line-height: 300%;
   #{$a-tags} {
-    color: rgb(232, 142, 58);
+    color: rgb(57, 144, 128);
   }
 }
 .registerButton {
-  background-color: rgb(232, 142, 58);
+  background-color: rgb(57, 144, 128);
   color: rgb(255, 255, 255);
 }
 

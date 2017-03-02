@@ -39,9 +39,9 @@ const Login = ({onLoginClick, navToHome, token}) => {
 
   return (
     <div className={`container ${style.container}`}>
+      <h3 className={`${style.h3} ${style.title}`}>Please Log In, or <Link to="/register">Sign Up</Link></h3>
       <div className="row">
         <div className={`main ${style.main}`}>
-          <h3 className={`${style.h3}`}>Please Log In, or <Link to="/register">Sign Up</Link></h3>
           <div className="row">
             <FacebookButton />
             <Google />
@@ -53,7 +53,7 @@ const Login = ({onLoginClick, navToHome, token}) => {
 
           <form role="form">
             <div className="form-group">
-              <label htmlFor="inputUsername">Username or email</label>
+              <label htmlFor="inputUsername" className={`${style.label}`}>Username</label>
                 <input
                   type="text"
                   className="form-control"
@@ -63,7 +63,7 @@ const Login = ({onLoginClick, navToHome, token}) => {
                 />
             </div>
             <div className="form-group">
-              <label htmlFor="inputPassword">Password</label>
+              <label htmlFor="inputPassword" className={`${style.label}`}>Password</label>
                 <input
                   type="password"
                   className="form-control"

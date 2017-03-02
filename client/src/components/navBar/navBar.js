@@ -8,7 +8,7 @@ const styles = require('./style.scss');
 const navBar = {
   backgroundColor: 'transparent',
   padding: '10px',
-  background: 'rgb(232, 142, 58)',
+  background: 'rgb(57, 144, 128)',
   borderColor: 'transparent',
   margin: '0 0 0 0',
 };

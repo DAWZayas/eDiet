@@ -43,7 +43,7 @@ class AutoPlay extends Component {
 
     return (
       <div className="container">
-        <h1 className={`${styles.title}`}>Change the images of the slider</h1>
+        <h1 className={`${styles.title}`}>Change the slider pictures</h1>
         <div className={`container ${styles.pictures}`}>
           {status === 'done' ?
             images.map((image,index) =>

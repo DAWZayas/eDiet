@@ -4,7 +4,7 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
 
 .navBar {
   background-color: transparent;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgb(57, 144, 128);
   border-color: transparent;
   margin: 0 0 0 0;
   padding: 10px;
@@ -27,7 +27,7 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
     border: none;
     color: rgb(255, 255, 255);
     #{$a-tags} {
-      background-color: rgb(232, 142, 58);
+      background-color: rgb(57, 144, 128);
     }
   }
 }

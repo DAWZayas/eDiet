@@ -21,7 +21,7 @@ let customStyles = {
 };
 
 let button = {
-  color: 'rgb(232, 142, 58)',
+  color: 'rgb(57, 144, 128)',
 };
 
 export default class DeleteModal extends Component {
