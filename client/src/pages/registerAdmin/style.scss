@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
 $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
 
 .container {
   #{$a-tags} {
     text-decoration: none;
   }
-  margin: 5% 0 0 0;
+  margin: 3% 0 0 0;
 }
 
 .main {
@@ -30,4 +32,11 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
 .registerButton {
   background-color: rgb(232, 142, 58);
   color: rgb(255, 255, 255);
+}
+
+.title {
+  font-family: 'Lobster', sans-serif;
+  text-align: center;
+  font-size: 4em;
+  margin-bottom: 3%;
 }

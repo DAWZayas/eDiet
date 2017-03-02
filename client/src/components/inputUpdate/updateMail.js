@@ -34,7 +34,7 @@ class updateMail extends Component {
               className="form-control"
               id="newEmail"
               placeholder="New email..."
-              value={user.email ? user.email : 'No email'}
+              defaultValue={user.email ? user.email : 'No email'}
               ref={(i) => { newEmail = i; }}
             />
           </div>

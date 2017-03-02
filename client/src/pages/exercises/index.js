@@ -26,7 +26,7 @@ const exerciseActions = ({ route, status, exercises, getExercises, createExercis
   const name = rout[rout.length-1];
   return (
     <div className="container">
-      <h1 className={`${styles.title}`}>Exercise tables management </h1>
+      <h1 className={`${styles.title}`}>Exercises management </h1>
       <Exercises
         route={name}
         exercises={exercises}

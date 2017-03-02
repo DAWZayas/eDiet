@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import {createExerciseAction} from '../../store/actions';
 import AddExercise from '../../components/addExercise';
 
+const styles = require('./styles.scss');
+
 const mapStateToProps = (state) => ({
   route: state.routing.locationBeforeTransitions.pathname,
   exercises: state.exercises.exercises,
@@ -18,7 +20,8 @@ const mapStateToProps = (state) => ({
 
 const create = ({ route, exercises, createExercise, table}) => {
   return (
-    <div className="container">
+    <div className="container" style={{marginBottom: '5%'}}>
+      <h1 className={`${styles.title}`}>Create an exercise</h1>
       <AddExercise
         route={route}
         exercises={exercises}

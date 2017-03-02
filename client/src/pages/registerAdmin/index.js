@@ -32,12 +32,12 @@ const Register = ({onRegisterClick}) => {
     });
   };
 
-
   return (
     <div className={`container ${style.container}`}>
+      <h1 className={`${style.title}`}>Create a new administrator user</h1>
+      
       <div className="row">
         <div className={`main ${style.main}`}>
-          <p>Create a new administrator user:</p>
           <form role="form">
             <div className="form-group">
               <label htmlFor="inputUsername">Username:</label>

@@ -44,12 +44,9 @@ export default class AddTable extends Component {
 
     return(
       <div className={`panel panel-default ${styles.container}`}>
-        <div className="panel-heading">
-          Add table
-        </div>
         <div className={`panel-body`}>
-          <div>
-            <div className="col-sm-10">
+          <center>
+            <div className="col-xm-10" style={{marginBottom: '2%'}}>
               <input
                 type="text"
                 className="form-control"
@@ -58,7 +55,7 @@ export default class AddTable extends Component {
                 ref={(i) => { tableName = i; }}
               />
             </div>
-            <div className="col-sm-10">
+            <div className="col-xm-10">
               <select
                 className="form-control"
                 name="tableLevel"
@@ -66,7 +63,7 @@ export default class AddTable extends Component {
                 value={this.state.select}
                 onChange={this.handleChange}
               >
-                <option value=" ">Select an exercise level</option>
+                <option value=" ">Select a table level</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -74,7 +71,7 @@ export default class AddTable extends Component {
                 <option value="5">5</option>
               </select>
             </div>
-          </div>
+        </center>
         </div>
         <div className={`panel-footer ${styles.footer}`} style={style.footer}>
           <button type="submit" className="btn btn-default" onClick={handleCreate}>

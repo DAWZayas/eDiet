@@ -20,6 +20,7 @@ const mapStateToProps = (state) => ({
 const create = ({ tables, createTable }) => {
   return (
     <div className="container">
+      <h1 className={`${styles.title}`}>Create a table</h1>
       <AddTable
         tables={tables}
         createTable={createTable}

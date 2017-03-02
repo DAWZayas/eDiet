@@ -67,12 +67,8 @@ export default class AddExercise extends Component {
 
     return(
       <div className={`panel panel-default ${styles.container}`}>
-        <div className="panel-heading">
-          Add exercise
-        </div>
         <div className="panel-body">
-          <div>
-            <div className="col-sm-10">
+            <div className="col-sm-12">
               <input
                 type="text"
                 className="form-control"
@@ -81,7 +77,7 @@ export default class AddExercise extends Component {
                 ref={(i) => { exerciseName = i; }}
               />
             </div>
-            <div className="col-sm-10">
+            <div className="col-sm-12">
               <input
                 type="number"
                 className="form-control"
@@ -90,7 +86,7 @@ export default class AddExercise extends Component {
                 ref={(i) => { exerciseTime = i; }}
               />
             </div>
-            <div className="col-sm-10">
+            <div className="col-sm-12">
               <select
                 className="form-control"
                 name="exerciseType"
@@ -106,7 +102,7 @@ export default class AddExercise extends Component {
               </select>
 
             </div>
-            <div className="col-sm-10">
+            <div className="col-sm-12">
               <input
                 type="number"
                 className="form-control"
@@ -115,7 +111,7 @@ export default class AddExercise extends Component {
                 ref={(i) => { exerciseCalories = i; }}
               />
             </div>
-            <div className="col-sm-10">
+            <div className="col-sm-12">
               <input
                 type="number"
                 className="form-control"
@@ -124,7 +120,7 @@ export default class AddExercise extends Component {
                 ref={(i) => { exerciseSeries = i; }}
               />
             </div>
-            <div className="col-sm-10">
+            <div className="col-sm-12">
               <input
                 type="number"
                 className="form-control"
@@ -133,7 +129,6 @@ export default class AddExercise extends Component {
                 ref={(i) => { exerciseRepeats = i; }}
               />
             </div>
-          </div>
         </div>
         <div className={`panel-footer ${styles.footer}`} style={footer}>
           <button type="submit" className="btn btn-default" onClick={handleCreate} >
