@@ -6,15 +6,16 @@ import {Link} from 'react-router';
 import {getUserAction} from '../../store/actions';
 import Imc from '../../components/imc';
 
+const styles = require('./style.scss');
+
 const mapStateToProps = (state) => ({
    userAuth: state.auth.user,
-    user: state.user.user,
+   user: state.user.user,
  });
 
  const mapDispatchToProps = (dispatch) => ({
    getUser:  payload => dispatch(getUserAction(payload)),
  });
-
 
 class Graph extends React.Component{
   constructor(props){
@@ -106,9 +107,9 @@ class Graph extends React.Component{
     };
 
     return (
-      <div className="container">
-        <div className="container">
-          <h3>IMC and weight</h3>
+      <div className="container" style={{marginBottom: '5%'}}>
+        <h1 className={`${styles.title}`}>My progress</h1>
+        <div className={`char`}>
           <Bar
             data={data}
             width={100}
@@ -118,8 +119,9 @@ class Graph extends React.Component{
         </div>
         {this.props.user ?
             this.props.user.height ?
-              <Imc  userId={this.props.user.id} userHeight={this.props.user.height}/>
-             : <h3> (First you must define your height </h3>
+              <Imc user={this.props.user} />
+            :
+              <h3> (First you must define your height) </h3>
         :null}
       </div>
     );

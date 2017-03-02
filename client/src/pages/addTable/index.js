@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import {createTableAction} from '../../store/actions';
 import AddTable from '../../components/addTable';
 
+const styles = require('./styles.scss');
+
 const mapStateToProps = (state) => ({
    tables: state.tables.tables,
    route: state.routing.locationBeforeTransitions.pathname,

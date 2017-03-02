@@ -37,9 +37,9 @@ class user extends React.Component {
             <img src='../../../images/logo/logo.png'/>
             {user ?
                 user.login ?
-                  <p>
+                  <h1>
                     {user.login}
-                  </p>
+                  </h1>
               : null
             :null}
           </div>

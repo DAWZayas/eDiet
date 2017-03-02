@@ -7,9 +7,10 @@ const styles = require('./style.scss');
 const style = {
   header: {
     borderBottom: 'none',
-    backgroundColor: 'rgba(232, 142, 58, 0.33)',
-    fontFamily: '\'Sansita\', sans-serif',
-    fontSize: '2em',
+    backgroundColor: 'rgb(255, 255, 255)',
+    fontFamily: '\'Lobster\', sans-serif',
+    fontSize: '3em',
+    textAlign: 'center'
   }
 };
 
@@ -23,22 +24,23 @@ export default class PanelUser extends React.Component {
   return (
     <div className={`panel panel-default ${styles.panel}`}>
       <div className="panel-heading" style={style.header}>
-        PROFILE
+        My data
       </div>
-        <div className="panel-body">
+      <hr style={{width:'65%',border: '1px solid'}} />
+        <div className={`panel-body`}>
           <div className={`${styles.data}`}>
             <p className={`${styles.tittle}`}>
               Email:
             </p>
             {user ?
               user.email ?
-                <p className={`${styles.result}`}>
+                <span className={`${styles.result}`}>
                   {user.email}
-                </p>
+                </span>
               :
-                <p className={`${styles.result}`}>
+                <span className={`${styles.result}`}>
                   Without email associated
-                </p>
+                </span>
             : null}
           </div>
           <div className={`${styles.data}`}>
@@ -47,13 +49,13 @@ export default class PanelUser extends React.Component {
             </p>
             {user ?
               user.registrationDate ?
-                <p className={`${styles.result}`}>
+                <span className={`${styles.result}`}>
                   {user.registrationDate.substr(0, 10)}
-                </p>
+                </span>
               :
-                <p className={`${styles.result}`}>
+                <span className={`${styles.result}`}>
                   Without register date associated
-                </p>
+                </span>
             : null}
           </div>
           {user ?
@@ -63,13 +65,13 @@ export default class PanelUser extends React.Component {
                   Height:
                 </p>
                 {user.height ?
-                  <p className={`${styles.result}`}>
+                  <span className={`${styles.result}`}>
                     {user.height} metres
-                  </p>
+                  </span>
                   :
-                  <p className={`${styles.result}`}>
+                  <span className={`${styles.result}`}>
                     Without height associated
-                  </p>
+                  </span>
                 }
               </div>
             : null
@@ -81,13 +83,13 @@ export default class PanelUser extends React.Component {
                   Weight:
                 </p>
                 {user.weight ?
-                  <p className={`${styles.result}`}>
+                  <span className={`${styles.result}`}>
                     {user.weight} kilograms
-                  </p>
+                  </span>
                   :
-                  <p className={`${styles.result}`}>
+                  <span className={`${styles.result}`}>
                     Without weight associated
-                  </p>
+                  </span>
                 }
               </div>
             : null

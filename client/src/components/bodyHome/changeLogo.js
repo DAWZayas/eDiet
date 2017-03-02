@@ -9,7 +9,7 @@ export default class ChangeLogo extends Component {
   render() {
     return (
       <div className ={`col-sm-12 ${styles.logo}`}>
-        <h2>Change company picture</h2>
+        <h1>Change the logo</h1>
         <center>
           <img src={`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/images/company/logo.png`}/>
           <InputPicture name='diet' route='home'/>

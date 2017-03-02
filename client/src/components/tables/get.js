@@ -37,10 +37,7 @@ export default class Get extends Component {
 
     return(
       <div className={`panel panel-default ${styles.container}`}>
-          <div className={`panel-heading ${styles.header}`}>
-            <p>
-              Tables
-            </p>
+          <div className={`panel-heading ${styles.header}`} style={{backgroundColor: 'rgb(255, 255, 255)', border: 'none'}}>
             <button className={`btn btn-default`}>
               <Link to="/tables/addTable" className={`${styles.prueba}`}>
                 <i className={`fa fa-plus`} aria-hidden="true"></i>

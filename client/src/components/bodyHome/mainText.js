@@ -25,7 +25,7 @@ export default class mainText extends Component {
       <div className = {`col-sm-12 ${styles.mainText}`}>
         {this.props.user?
           this.props.user.role ?
-            <h2>Change main text</h2>
+            <h1>Change the main text</h1>
           : null
         : null}
 

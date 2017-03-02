@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
 $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
 
 body {
@@ -11,7 +13,8 @@ body {
   align-items: baseline;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: flex-end;
+  background-color: rgb(255,255,255);
 
   button {
     color: rgb(232, 142, 58);

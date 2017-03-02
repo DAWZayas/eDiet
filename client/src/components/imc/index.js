@@ -18,20 +18,21 @@ const mapStateToProps = (state) => ({
  });
 
 class Imc extends React.Component{
-
   constructor(props){
     super(props);
     this.state = {imc: null};
   }
 
   render(){
+    const {user} = this.props;
+
     const handleImc = (e) =>{
       e.preventDefault();
       const weight = weightUser.value;
-      const height = this.props.userHeight * this.props.userHeight;
+      const height = Math.pow(user.height, 2);
       const imc = weight / height;
       this.setState({imc});
-      this.props.addWeight({id:this.props.userId, weight, imc: imc.toFixed(2)});
+      this.props.addWeight({id: user.id, weight, imc: imc.toFixed(2)});
     };
 
     let weightUser;
@@ -42,13 +43,14 @@ class Imc extends React.Component{
           <div className={`main ${style.main}`}>
             <form role="form">
               <div className="form-group">
-                <label htmlFor="inputUsername">Your weight:</label>
+                <label htmlFor="inputUsername" className={`${style.miniTitle}`}>Your weight: </label>
                 <input
                   type="number"
                   className="form-control"
                   id="weightUser"
                   placeholder="Weight (in kilograms)..."
                   ref={(i) => { weightUser = i; }}
+                  value={user.weight ? user.weight[user.weight - 1] : 0}
                 />
               </div>
               <button type="submit" className={`btn ${style.registerButton}`} onClick={handleImc}>Calculate</button>

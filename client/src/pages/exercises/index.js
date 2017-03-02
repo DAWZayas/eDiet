@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import {getExercisesAction, createExerciseAction, deleteExerciseAction, updateExerciseAction} from '../../store/actions';
 import Exercises from '../../components/exercises';
 
+const styles = require('./style.scss');
+
 const mapStateToProps = (state) => ({
    route: state.routing.locationBeforeTransitions.pathname,
    exercises: state.exercises.exercises,
@@ -24,6 +26,7 @@ const exerciseActions = ({ route, status, exercises, getExercises, createExercis
   const name = rout[rout.length-1];
   return (
     <div className="container">
+      <h1 className={`${styles.title}`}>Exercise tables management </h1>
       <Exercises
         route={name}
         exercises={exercises}

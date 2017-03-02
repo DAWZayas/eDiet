@@ -41,7 +41,7 @@ export default class Get extends Component {
             exercises.map((obj, index) =>
               <div className="panel panel-default col-xs-12 col-md-5 col-lg-3" key={index} style={style.panel}>
                 <div className="panel-heading" style={style.heading}>
-                 {obj.name}
+                 <h1>{obj.name}</h1>
                  <hr className={`${styles.hr}`}/>
                 </div>
                 <div className="panel-body">

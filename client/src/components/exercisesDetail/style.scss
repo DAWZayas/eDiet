@@ -23,8 +23,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  h1 {
+    text-align: center;
+    font-size: 1.4em;
+    font-family: 'Lobster', sans-serif;
+  }
 }
 
 .hr {
   width: 60%;
+  border: 1px solid ;
 }

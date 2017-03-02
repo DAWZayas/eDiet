@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import {getPlanningExercisesAction} from '../../store/actions';
 import PlanningExercises from '../../components/planningsExercises';
 
+const styles = require('./styles.scss');
+
 const mapStateToProps = (state) => ({
    route: state.routing.locationBeforeTransitions.pathname,
    tables: state.tables.planningExercises
@@ -20,6 +22,7 @@ const planningsExercisesActions = ({ route, tables, getExercises }) => {
   const level = rout[rout.length-2];
   return (
     <div className="container">
+      <h1 className={`${styles.title}`}>Exercises of this plan</h1>
       <PlanningExercises
         route={level}
         tables={tables}

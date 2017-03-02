@@ -42,15 +42,18 @@ class AutoPlay extends Component {
     let cont = 1;
 
     return (
-      <div className={`container ${styles.pictures}`}>
-        {status === 'done' ?
-          images.map((image,index) =>
-            <div key={index} className={`col-xs-12 col-sm-6 col-md-3 ${styles.picture}`}>
-              <img src={`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/images/slider/${image}`} />
-              <Input route='slider' name={cont++} />
-            </div>
-          )
-        : null}
+      <div className="container">
+        <h1 className={`${styles.title}`}>Change the images of the slider</h1>
+        <div className={`container ${styles.pictures}`}>
+          {status === 'done' ?
+            images.map((image,index) =>
+              <div key={index} className={`col-xs-12 col-sm-6 col-md-3 ${styles.picture}`}>
+                <img src={`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/images/slider/${image}`} />
+                <Input route='slider' name={cont++} />
+              </div>
+            )
+          : null}
+        </div>
       </div>
     );
   }

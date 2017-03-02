@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import {getTablesAction, createTableAction, deleteTableAction, updateTableAction, addObservable, removeObservable} from '../../store/actions';
 import Tables from '../../components/tables';
 
+const styles = require('./styles.scss');
+
 const mapStateToProps = (state) => ({
    tables: state.tables.tables,
    status: state.tables.status,
@@ -26,6 +28,7 @@ const mapStateToProps = (state) => ({
 const tableActions = ({ tables, status, getTables, createTable, deleteTable, updateTable, hasMore, loadingMore, getCreateTable, addObservable, removeObservable }) => {
   return (
     <div className="container">
+      <h1 className={`${styles.title}`}>Exercise tables management </h1>
       <Tables
         tables={tables}
         getTables={getTables}

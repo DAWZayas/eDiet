@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import InputUpdate from '../../components/inputUpdate';
 import {getUserAction} from '../../store/actions';
 
+const styles = require('./style.scss');
+
 const mapStateToProps = (state) => ({
    userAuth: state.auth.user,
    user: state.user.user,
@@ -14,20 +16,19 @@ const mapStateToProps = (state) => ({
  });
 
 class updateProfile extends React.Component{
-
   constructor(props){
     super(props);
-    this.state= {id: null};
   }
 
   componentWillMount(props){
-    this.setState({id: this.props.getUser({id: this.props.userAuth.id}).payload.id});
+    this.props.getUser({id: this.props.userAuth.id});
   }
 
   render(){
     return(
-      <div>
-        <InputUpdate id={this.state.id} />
+      <div className="container">
+        <h1 className={`${styles.title}`}>Update your profile</h1>
+        <InputUpdate user={this.props.user} />
       </div>
     );
   }

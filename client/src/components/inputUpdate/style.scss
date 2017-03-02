@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
 $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
 
 .body {
@@ -23,4 +25,19 @@ $a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hov
 
 .deleteDiv {
   margin: 5% 0 6% 0;
+  h4 {
+    font-family: 'Lobster', 'sans-serif';
+    font-size: 1.5em;
+  }
+}
+
+.element {
+  h2 {
+    font-family: 'Lobster', 'sans-serif';
+    margin-left: 3%;
+    font-size: 2.5em;
+  }
+  input {
+    margin-bottom: 3%;
+  }
 }

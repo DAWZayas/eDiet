@@ -25,7 +25,7 @@ export default class DietPart extends Component {
       <div className ={`col-sm-12 col-md-6 ${styles.diet}`}>
         {this.props.user?
           this.props.user.role ?
-            <h2>Change diet part</h2>
+            <h1>Change the diet part</h1>
           : null
         : null}
         <center>
