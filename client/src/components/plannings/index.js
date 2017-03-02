@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
+import {connect} from 'react-redux';
+import Input from '../inputFile/image';
+import {server as serverConfig} from '../../../config';
 
 const styles = require('./style.scss');
 const style = {
@@ -39,13 +42,15 @@ class Plannings extends Component{
   }
 
   render(){
-    const {name, level, image} = this.props;
+    const {name, level, image, userAuth} = this.props;
 
     const handleFollow = (e) =>{
       const {level,userAuth} = this.props;
       e.preventDefault();
-      this.props.updateMenus({level, id:userAuth.id})
+      this.props.updateMenus({level, id: userAuth.id})
     };
+
+    let cont = 1;
 
     return(
       <div className="panel panel-default col-xs-12 col-md-5" style={style.panel}>
@@ -58,21 +63,32 @@ class Plannings extends Component{
         <div className={`panel-body ${style.body}`} style={style.body}>
           <div className={`${styles.efecto}`}>
             <img className="img-circle col-xs-12"
-              src={image}
+              src={`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/images/plannings/${image}`}
               alt="Menu image"
             />
           </div>
           <div className="col-xs-12" style={{display: 'inline-flex', justifyContent: 'center'}}>
-            <Link to={`planning/menu/${level}`} style={{marginRight: '1%'}}><button  className={`btn btn-default`}>Menu</button></Link>
-            <Link to={`/plannings/${level}/exercises`}><button className={`btn btn-default`}>Exercises</button></Link>
+            {!userAuth.role ?
+              <div>
+                <Link to={`planning/menu/${level}`} style={{marginRight: '1%'}}><button  className={`btn btn-default`}>Menu</button></Link>
+                <Link to={`/plannings/${level}/exercises`}><button className={`btn btn-default`}>Exercises</button></Link>
+              </div>
+            :
+              <Input route='plannings' name={cont++}/>
+            }
+
           </div>
         </div>
         <div className="panel-footer" style={style.footer}>
-          <center>
-          <button className={`${styles.followButton}`} onClick={handleFollow}>
-            Follow diet!
-          </button>
-          </center>
+          {!userAuth.role ?
+            <center>
+            <button className={`${styles.followButton}`} onClick={handleFollow}>
+              Follow diet!
+            </button>
+            </center>
+          :
+            null
+          }
         </div>
       </div>
     );
