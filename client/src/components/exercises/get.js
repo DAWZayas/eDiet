@@ -39,7 +39,7 @@ export default class Get extends Component {
               :
                 exercises.map((obj, index) =>
                   <div key={index} className={`${styles.body}`}>
-                    <ul>
+                    <ul style={{marginTop: '5%'}}>
                       <li>
                         <div>
                           <DeleteModal deleted={obj} deleteExercise={deleteExercise} route={route}/>
@@ -50,25 +50,25 @@ export default class Get extends Component {
                           </button>
                         </div>
                         {obj.name}
-                        <ul>
-                          <li>
-                            Calories: {obj.calories} kcal
-                          </li>
-                          <li>
-                            Type: {obj.type}
-                          </li>
-                          <li>
-                            Time: {obj.time} min
-                          </li>
-                          <li>
-                            Series: {obj.series}
-                          </li>
-                          <li>
-                            Repeats: {obj.repeats}
-                          </li>
-                        </ul>
                       </li>
                     </ul>
+                    <ul style={{marginLeft: '15%', marginTop: '5%'}}>
+                      <li>
+                        Calories: {obj.calories} kcal
+                      </li>
+                      <li>
+                        Type: {obj.type}
+                      </li>
+                      <li>
+                        Time: {obj.time} min
+                      </li>
+                      <li>
+                        Series: {obj.series}
+                      </li>
+                      <li>
+                        Repeats: {obj.repeats}
+                      </li>
+                      </ul>
                   </div>
                 )
               }

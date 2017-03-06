@@ -59,7 +59,7 @@ export default (app) => {
       res.send(images);
 
     } catch (e) {
-      res.status(400).send({error: 'Error loading carousel images'});
+      res.status(400).send({error: 'Error loading images'});
     }
   }));
 

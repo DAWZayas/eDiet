@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import {updateTableAction} from '../../store/actions';
 import UpdateTable from '../../components/updateTable';
 
+const styles = require('./styles.scss');
+
 const mapStateToProps = (state) => ({
    tables: state.tables.tables,
    route: state.routing.locationBeforeTransitions.pathname,
@@ -18,6 +20,7 @@ const mapStateToProps = (state) => ({
 const update = ({ tables, updateTable, route }) => {
   return (
     <div className="container">
+      <h1 className={`${styles.title}`}>Update the table</h1>
       <UpdateTable
         tables={tables}
         updateTable={updateTable}

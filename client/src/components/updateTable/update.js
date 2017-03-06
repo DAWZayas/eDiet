@@ -2,6 +2,14 @@ import React, {Component} from 'react';
 
 let exerciseNewName;
 
+let styles = require('./style.scss');
+let style = {
+  footer: {
+      borderTop: 'none',
+      backgroundColor: 'rgb(255, 255, 255)',
+  }
+};
+
 export default class UpdateTable extends Component {
   constructor(props) {
     super(props);
@@ -39,13 +47,10 @@ export default class UpdateTable extends Component {
     };
 
     return(
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          Update table
-        </div>
-        <div className="panel-body">
-          <div>
-            <div className="col-sm-10">
+      <div className={`panel panel-default ${styles.container}`}>
+        <div className={`panel-body`}>
+          <center>
+            <div className="col-xm-10" style={{marginBottom: '2%'}}>
               <input
                 type="text"
                 className="form-control"
@@ -54,7 +59,7 @@ export default class UpdateTable extends Component {
                 ref={(i) => { exerciseNewName = i; }}
               />
             </div>
-            <div className="col-sm-10">
+            <div className="col-xm-10" style={{marginBottom: '2%'}}>
               <select
                 className="form-control"
                 name="newLevel"
@@ -70,15 +75,14 @@ export default class UpdateTable extends Component {
                 <option value="5">5</option>
               </select>
             </div>
-          </div>
-        <div className="panel-footer">
+          </center>
+        </div>
+        <div className={`panel-footer ${styles.footer}`} style={style.footer}>
           <button type="submit" className="btn btn-default" onClick={handleUpdate}>
-            Actualizar
+            Update
           </button>
         </div>
       </div>
-    </div>
-
     );
   }
 }

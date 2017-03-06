@@ -14,6 +14,10 @@ let footer = {
   borderTop: 'none',
 };
 
+let header = {
+  backgroundColor: 'rgb(12, 145, 82)',
+};
+
 export default class UpdateExercise extends Component {
   constructor(props) {
     super(props);
@@ -64,46 +68,40 @@ export default class UpdateExercise extends Component {
 
     return(
       <div className={`panel panel-default ${styles.container}`}>
-        <div className="panel-heading">
-          Update exercise
-        </div>
         <div className="panel-body">
-          <div>
-            <div className="col-sm-10">
-              <input
-                type="text"
-                className="form-control"
-                id="exerciseNewName"
-                placeholder="New name..."
-                ref={(i) => { exerciseNewName = i; }}
-              />
-            </div>
-            <div className="col-sm-10">
-              <input
-                type="number"
-                className="form-control"
-                id="exerciseTime"
-                placeholder="New time..."
-                ref={(i) => { exerciseTime = i; }}
-              />
-            </div>
-
-            <div className="col-sm-10">
-              <select
-                className="form-control"
-                name="exerciseType"
-                id="exerciseType"
-                value={this.state.select}
-                onChange={this.handleChange}
-              >
-                <option value=" ">Select an exercise type</option>
-                <option value="cardiovascular">Cardiovascular</option>
-                <option value="strength">Strength</option>
-                <option value="flexibility">Flexibility</option>
-                <option value="balance">Balance</option>
-              </select>
-            </div>
-
+          <div className="col-sm-10">
+            <input
+              type="text"
+              className="form-control"
+              id="exerciseNewName"
+              placeholder="New name..."
+              ref={(i) => { exerciseNewName = i; }}
+            />
+          </div>
+          <div className="col-sm-10">
+            <input
+              type="number"
+              className="form-control"
+              id="exerciseTime"
+              placeholder="New time..."
+              ref={(i) => { exerciseTime = i; }}
+            />
+          </div>
+          <div className="col-sm-10">
+            <select
+              className="form-control"
+              name="exerciseType"
+              id="exerciseType"
+              value={this.state.select}
+              onChange={this.handleChange}
+            >
+              <option value=" ">Select an exercise type</option>
+              <option value="cardiovascular">Cardiovascular</option>
+              <option value="strength">Strength</option>
+              <option value="flexibility">Flexibility</option>
+              <option value="balance">Balance</option>
+            </select>
+          </div>
             <div className="col-sm-10">
               <input
                 type="number"
@@ -131,7 +129,6 @@ export default class UpdateExercise extends Component {
                 ref={(i) => { exerciseRepeats = i; }}
               />
             </div>
-          </div>
         </div>
         <div className={`panel-footer ${styles.footer}`} style={footer}>
           <button type="submit" className="btn btn-default" onClick={handleUpdate}>

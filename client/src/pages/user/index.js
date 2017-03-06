@@ -3,19 +3,23 @@ import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
+import {server as serverConfig} from '../../../config';
 
-import {getUserAction} from '../../store/actions';
+import {getUserAction, getImagesAction} from '../../store/actions';
+
 const styles = require('./style.scss');
 import UserProfile from '../../components/user';
 
 const mapStateToProps = (state) => ({
    userAuth: state.auth.user,
    user: state.user.user,
+   images: state.uploads.images,
  });
 
  const mapDispatchToProps = (dispatch) => ({
    getUser:  payload => dispatch(getUserAction(payload)),
    navToUser: () => dispatch(push('/user/updateProfile')),
+   getImages: payload => dispatch(getImagesAction(payload))
  });
 
 class user extends React.Component {
@@ -26,15 +30,17 @@ class user extends React.Component {
   componentWillMount(){
     const {userAuth, getUser} = this.props;
     this.props.getUser({id: userAuth.id});
+    this.props.getImages({folder: 'company'});
   }
 
   render(){
-    const {user} = this.props;
+    const {user, image} = this.props;
+
     return (
       <div className={`container ${styles.container}`}>
         <center>
           <div className={`${styles.avatar}`}>
-            <img src='../../../images/logo/logo.png'/>
+            <img src={`${serverConfig.protocol}://${serverConfig.host}:${serverConfig.port}/images/company/logo.png`} />
             {user ?
                 user.login ?
                   <h1>

@@ -39,9 +39,9 @@ const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
 
   return (
     <div className={`container ${style.container}`}>
+      <h3 className={`${style.h3} ${style.title}`}>Please Sign Up, or <Link to="/login">Log In</Link></h3>
       <div className="row">
         <div className={`main ${style.main}`}>
-          <h3 className={`${style.h3}`}>Please Sign Up, or <Link to="/login">Log In</Link></h3>
           <form role="form">
             <div className="form-group">
               <label htmlFor="inputUsername">Username:</label>
