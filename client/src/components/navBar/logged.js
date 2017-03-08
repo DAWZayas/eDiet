@@ -11,7 +11,7 @@ export default class Logged extends Component {
               <i className="fa fa-bars" aria-hidden="true"></i>
             </button>
             {user ?
-                <Link to='/user' className=" navbar-brand" data-toggle="collapse" data-target=".navbar-collapse">
+                <Link to='/user' className=" navbar-brand">
                   Logged as {user.login}{user.provider ? ` (${user.provider})` : null}
                 </Link>
             :

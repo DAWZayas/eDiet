@@ -33,7 +33,7 @@ class updateHeight extends Component {
               id="newHeight"
               placeholder="New height (in metres)..."
               ref={(i) => { newHeight = i; }}
-              value={user.height ? user.height : 0}
+              defaultValue={user.height ? user.height : 0}
               min='0'
             />
           </div>

@@ -82,16 +82,7 @@ export default class PanelUser extends React.Component {
                 <p className={`${styles.tittle}`}>
                   Weight:
                 </p>
-                user.weight ?
-                  user.weight[user.weight.length - 1] ?
-                  <span className={`${styles.result}`}>
-                    {user.weight} kilograms
-                  </span>
-                  :
-                  <span className={`${styles.result}`}>
-                    Without weight associated
-                  </span>
-                : null
+                  {user.weight} kilograms
               </div>
             : null
           : null}

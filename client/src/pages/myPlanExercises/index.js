@@ -31,22 +31,17 @@ class userArrays extends Component{
     const month = moment().format('M');
     return (
       <div className="container">
-        <div className="panel panel-default">
-          <div className="panel panel-heading">
-            Today exercises
-          </div>
-          {user ?
-            user.menusExercises ?
-              user.menusExercises.exercises ?
-                <DayPlanExercises
-                  tables={user.menusExercises.exercises}
-                  day={day}
-                  month={month}
-                />
-              : <p>Without exercises</p>
-            : null
-          : null}
-        </div>
+        {user ?
+          user.menusExercises ?
+            user.menusExercises.exercises ?
+              <DayPlanExercises
+                tables={user.menusExercises.exercises}
+                day={day}
+                month={month}
+              />
+            : <p>Without exercises</p>
+          : null
+        : null}
       </div>
     );
   }

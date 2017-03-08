@@ -6,6 +6,22 @@ import moment from 'moment';
 
 import {getExercisesAction} from '../../store/actions';
 
+const styles = require('./style.scss');
+const style = {
+  heading: {
+    background: 'rgb(255, 255, 255)',
+    borderBottom: 'none',
+    width: '100%',
+    fontFamily: '\'Sansita\', sans-serif',
+    fontSize: '1.5em',
+    textAlign: 'center',
+  },
+  panel: {
+    margin: '3% 2% 0 0',
+    padding: '0',
+  }
+};
+
 const mapDispatchToProps = dispatch => ({
   getExercises: payload => dispatch(getExercisesAction(payload))
 });
@@ -41,28 +57,40 @@ class DayPlanExercises extends Component{
     const {exercises, day, month, doGetTimeFoods} = this.props;
 
     return (
-      <div className="panel panel-body">
-      {exercises.length !== 0 ?
-          exercises.map((obj, index) =>
-            <ul key={index}>
-              <li>
-                Name of the exercise: {obj.name}
-              </li>
-              <li>
-                <ul>
-                  <li>
-                    Series: {obj.series}
-                  </li>
-                  <li>
-                    Repeats: {obj.repeats}
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          )
-      :
-        <p>Without exercises</p>
-      }
+      <div className={`container ${styles.main}`}>
+        <h1>Today's exercises</h1>
+        <div className={`container ${styles.panels}`}>
+          {exercises.length !== 0 ?
+            exercises.map((obj, index) =>
+              <div className="panel panel-default col-xs-12 col-md-5 col-lg-3" key={index} style={style.panel}>
+                <div className="panel-heading" style={style.heading}>
+                 <h1>{obj.name}</h1>
+                 <hr className={`${styles.hr}`}/>
+                </div>
+                <div className="panel-body">
+                  <ul className={`list-group ${styles.caracteristics}`}>
+                    <li className="list-group-item">
+                      <i className="fa fa-clock-o" aria-hidden="true" />
+                      &nbsp; Time: {obj.time}
+                    </li>
+                    <li className="list-group-item">
+                      <i className="glyphicon glyphicon-option-horizontal" />
+                      &nbsp; Series: {obj.series}
+                    </li>
+                    <li className="list-group-item">
+                      <i className="fa fa-refresh" aria-hidden="true" />
+                      &nbsp; Repeats: {obj.repeats}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            )
+          :
+            <p>
+              Without exercises
+              </p>
+          }
+        </div>
       </div>
     );
   }

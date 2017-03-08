@@ -32,7 +32,7 @@ class updatePassword extends Component {
 
     return (
       <div className={`${styles.element}`}>
-        <h2>Height</h2>
+        <h2>Password</h2>
         <div>
           <div className="col-xs-12">
             <input

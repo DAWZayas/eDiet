@@ -1,6 +1,7 @@
 // our packages
 import {User} from '../db';
 import {hash, asyncRequest} from '../util';
+import uuidV1 from 'uuid';
 
 export const loginTaken = async (login) => {
   // check if login already taken
@@ -71,7 +72,7 @@ app.post('/api/register/google', asyncRequest(async (req, res) => {
     if (bbddUser.length === 0) {
       const user = new User({
         login: userLogin,
-        id: id,
+        id: uuidV1(),
         registrationDate: new Date(),
         password: hash(userLogin)
       });
