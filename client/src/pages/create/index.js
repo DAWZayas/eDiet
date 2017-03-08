@@ -69,7 +69,7 @@ const Create = ({ menus, doGetMenu, route, navTo, createMenu, hasMore, loadingMo
               />
               <br/>
               <center>
-                <button className="btn btn-default" onClick={handleCreateMenu}> Create Menu </button>
+                <button className="btn" onClick={handleCreateMenu} style={{backgroundColor: 'rgba(169, 198, 145, 0.9)'}}> Create Menu </button>
               </center>
               </div>
             </div>

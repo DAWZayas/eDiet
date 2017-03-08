@@ -70,7 +70,7 @@ class TimeFoods extends React.Component{
           />
           <br/>
           <center>
-            <button className="btn btn-default" onClick={handleCreateFood}> Create Food</button>
+            <button className="btn btn-default" onClick={handleCreateFood} style={{backgroundColor: 'rgba(169, 198, 145, 0.9)'}}> Create Food</button>
           </center>
           </div>
           </div>

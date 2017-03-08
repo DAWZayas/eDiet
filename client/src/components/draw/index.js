@@ -18,14 +18,20 @@ const style = {
   panel: {
     margin: '5% 0 0 0',
   },
-}
+};
 
 class Menus extends React.Component{
 
     constructor(props){
         super(props);
         const {payload: observable} = this.props.addObservable(registerMenuObservable(this.props.menu));
-        this.state={observable};
+        this.state={observable, background: null};
+    }
+
+    componentWillMount(){
+      /Menu/.test(this.props.route) ? this.setState({background : 'rgba(169, 198, 145, 0.9)' }) :
+        /timeFood/.test(this.props.route) ? this.setState({background : 'rgba(184, 128, 104, 0.7)' }) :
+        this.setState({background : 'rgba(150, 113, 110, 0.7)' });
     }
     componentWillUnmount() {
         const {removeObservable} = this.props;
@@ -48,6 +54,10 @@ class Menus extends React.Component{
         route =`/food/${ this.props.menuName}/${this.props.menu}`;
         this.props.navTo(route);
       };
+
+      const colorHeading = {
+        background: this.state.background,
+      }
 
       return(
         <div className="panel panel-default" style={style.panel}>

@@ -94,8 +94,8 @@ export default class Appu extends React.Component {
                       ref={(i) => { newNameMenu = i; }}
                     />
                     <br/>
-                    <span className="input-group">
-                      <input className="input-group-addon"
+                    <span >
+                      <input
                         type="text"
                         className="form-control"
                         id="newName"
@@ -106,8 +106,8 @@ export default class Appu extends React.Component {
                     </span>
                   </span> : null}
                 {/timeFood/.test(this.props.route) ?
-                  <span className="input-group">
-                    <input className="input-group-addon"
+                  <span >
+                    <input
                       type="text"
                       className="form-control"
                       id="newName"
@@ -126,8 +126,8 @@ export default class Appu extends React.Component {
                       ref={(i) => { newNameMenu = i; }}
                     />
                     <br/>
-                    <span className="input-group">
-                    <input className="input-group-addon"
+                    <span >
+                    <input
                       type="text"
                       className="form-control"
                       id="newName"
