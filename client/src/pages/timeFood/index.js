@@ -6,6 +6,7 @@ import _ from 'lodash';
 
 import {getTimeFoodsAction, createTimeFoodAction} from '../../store/actions';
 import TimeFood from '../../components/draw';
+const styles = require('./style.scss');
 
 const mapStateToProps = (state) => ({
    timeFoods: state.timeFoods.timeFoods,
@@ -46,11 +47,9 @@ class TimeFoods extends React.Component  {
 
   return (
     <div className="container" style={style}>
+      <h1 className={`${styles.title}`}>Time food management </h1>
       <div className="panel panel-default">
-        <div className="panel-heading">
-          Create Time Food
-        </div>
-        <div className="panel-footer ">
+        <div className="panel-footer " style={{backgroundColor: 'rgb(255, 255, 255)', border: 'none'}}>
         <div >
           <input
             type="text"

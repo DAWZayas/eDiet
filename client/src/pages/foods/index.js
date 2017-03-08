@@ -5,6 +5,8 @@ import {push} from 'react-router-redux';
 
 import {getFoodsAction, createFoodAction} from '../../store/actions';
 import Food from '../../components/draw';
+const styles = require('./style.scss');
+
 
 const mapStateToProps = (state) => ({
    foods: state.foods.foods,
@@ -46,11 +48,10 @@ class TimeFoods extends React.Component{
 
   return (
     <div className="container" style={style}>
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          Create Food
-        </div>
-        <div className="panel-footer ">
+    <h1 className={`${styles.title}`}>Foods management </h1>
+
+      <div className="panel panel-default" >
+        <div className="panel-footer " style={{backgroundColor: 'rgb(255, 255, 255)', border: 'none'}}>
         <input
           type="text"
           className="form-control"
@@ -61,7 +62,7 @@ class TimeFoods extends React.Component{
         <br/>
         <div >
           <input
-            type="text"
+            type="number"
             className="form-control"
             id="newName"
             placeholder="ECalories..."

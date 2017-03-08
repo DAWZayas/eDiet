@@ -51,8 +51,8 @@ class Menus extends React.Component{
 
       return(
         <div className="panel panel-default" style={style.panel}>
-            <div className="panel-heading">
-              {/Menu/.test(this.props.route) ? <p><a  onClick={handleMenu} href="#" className="glyphicon glyphicon-plus" style={{color: 'rgb(232,142,58)'}} role="button"></a>Menu name :{this.props.menu}, Menu Level: {this.props.level}
+            <div className="panel-heading" style={{backgroundColor: 'rgb(255, 255, 255)', border: 'none'}}>
+              {/Menu/.test(this.props.route) ? <p><a  onClick={handleMenu} href="#" className="glyphicon glyphicon-plus" style={{color: 'rgb(57, 144, 128)'}} role="button"></a>Menu name :{this.props.menu}, Menu Level: {this.props.level}
                 <Modals menu={this.props.menu} route={this.props.route}/></p> : null}
 
               {/timeFood/.test(this.props.route) ? <p><a  onClick={handleTimeFood} href="#" className="glyphicon glyphicon-plus"  style={{color: 'rgb(12,145,82)'}} role="button"/>Time Food name:{this.props.menu}

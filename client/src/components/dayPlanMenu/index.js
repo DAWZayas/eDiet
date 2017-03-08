@@ -6,6 +6,8 @@ import moment from 'moment';
 
 import {getTimeFoodsAction} from '../../store/actions';
 
+const styles = require('./style.scss');
+
 const mapDispatchToProps = (dispatch) => ({
   doGetTimeFoods: payload => dispatch(getTimeFoodsAction(payload))
 });
@@ -43,7 +45,7 @@ class DayPlanMenu extends Component{
     return (
       <span>
         <center style={{marginBottom: '5%'}}>
-          <h2>  Menu name : {this.state.name} </h2>
+          <h2 className={`${styles.title}`}>  Menu name : {this.state.name} </h2>
         </center >
       {timeFoods.length !== 0 ?
           timeFoods.map((obj, index) =>

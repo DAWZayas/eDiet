@@ -10,6 +10,8 @@ import _ from 'lodash';
 import {getMenuAction, createMenuAction} from '../../store/actions';
 import Menu from '../../components/draw';
 
+const styles = require('./style.scss');
+
 const mapStateToProps = (state) => ({
    menus: state.menus.menu,
    hasMore: state.menus.hasMore,
@@ -44,12 +46,11 @@ const Create = ({ menus, doGetMenu, route, navTo, createMenu, hasMore, loadingMo
    };
 
   return (
+
       <div className="container" >
-        <div className="panel panel-default" style={style}>
-            <div className="panel-heading">
-              Create menu
-            </div>
-            <div className="panel-footer ">
+        <h1 className={`${styles.title}`}>Menus management </h1>
+        <div className={`panel panel-default ${styles.container}`} >
+            <div className="panel-footer " style={{backgroundColor: 'rgb(255, 255, 255)', border: 'none'}}>
             <input
               type="text"
               className="form-control"

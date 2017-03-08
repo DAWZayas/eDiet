@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+.title {
+  font-family: 'Lobster', sans-serif;
+  text-align: center;
+  font-size: 4em;
+}
+
+$a-tags: 'a, a:active, a:hover, a:visited, &:focus, &:active:focus, &:active:hover';
+
+body {
+  #{$a-tags} {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
+}
+
+.header {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  background-color: rgb(255,255,255);
+
+  button {
+    color: rgb(57, 144, 128);
+  }
+}
+
+.body {
+  ul {
+    list-style: none;
+  }
+
+  li {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    div {
+      align-items: baseline;
+      display: flex;
+      justify-content: space-between;
+      margin-right: 3%;
+    }
+  }
+}
+
+.container {
+  margin: 5% 0 0 0;
+}
+
+.prueba, .updateButton {
+  i {
+    color: rgb(57, 144, 128);
+  }
+}

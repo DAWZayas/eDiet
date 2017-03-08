@@ -6,6 +6,8 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {Link} from 'react-router';
 
 import {getMenuLevelAction} from '../../store/actions';
+const styles = require('./style.scss');
+
 
 const mapStateToProps = (state) => ({
     menuLevel: state.menus.menuLevel,
@@ -60,7 +62,8 @@ class Calendar extends React.Component{
     this.state = {events}
 
     return (
-      <div className="container" style={{marginTop: '5%'}}>
+      <div className="container">
+      <h1 className={`${styles.title}`}>Plannigng for this plan </h1>
       {this.props.menuLevel.length-1 > 0 ?
         <BigCalendar
             {...this.props}
