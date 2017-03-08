@@ -14,7 +14,7 @@ export default class ButttonsUser extends React.Component {
   }
   render(){
     const {user} = this.props;
-    console.log(  user.menusExercises.menus.length)
+    
     return (
     <div>
      {user ?
